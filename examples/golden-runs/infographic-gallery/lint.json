@@ -1,0 +1,2995 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "summary": {
+    "files": 48,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 384,
+    "total_checks": 384
+  },
+  "checks": [
+    {
+      "file": "compare-binary__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "compare-binary__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "compare-binary__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "compare-binary__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "compare-binary__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "compare-binary__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "compare-binary__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "compare-binary__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "compare-binary__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "compare-binary__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "compare-binary__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "compare-binary__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "compare-binary__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "compare-binary__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "compare-binary__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "compare-binary__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "compare-binary__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "compare-binary__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "compare-binary__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "compare-binary__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "compare-binary__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "compare-binary__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "compare-binary__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "compare-binary__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "compare-binary__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "compare-binary__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "compare-binary__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "compare-binary__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "compare-binary__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "compare-binary__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "compare-binary__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "compare-binary__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "cycle__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "cycle__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "cycle__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "cycle__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "cycle__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "cycle__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "cycle__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "cycle__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "cycle__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "cycle__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "cycle__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "cycle__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "cycle__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "cycle__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "cycle__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "cycle__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "cycle__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "cycle__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "cycle__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "cycle__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "cycle__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "cycle__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "cycle__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "cycle__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "cycle__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "cycle__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "cycle__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "cycle__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "cycle__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "cycle__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "cycle__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "cycle__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "funnel__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "funnel__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "funnel__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "funnel__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "funnel__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "funnel__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "funnel__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "funnel__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "funnel__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "funnel__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "funnel__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "funnel__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "funnel__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "funnel__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "funnel__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "funnel__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "funnel__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "funnel__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "funnel__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "funnel__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "funnel__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "funnel__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "funnel__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "funnel__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "funnel__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "funnel__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "funnel__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "funnel__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "funnel__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "funnel__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "funnel__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "funnel__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "hierarchy-tree__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "hierarchy-tree__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "hierarchy-tree__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "hierarchy-tree__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "hierarchy-tree__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "hierarchy-tree__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "hierarchy-tree__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "hierarchy-tree__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "hierarchy-tree__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "hierarchy-tree__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "hierarchy-tree__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "hierarchy-tree__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "hierarchy-tree__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "hierarchy-tree__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "hierarchy-tree__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "hierarchy-tree__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "hierarchy-tree__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "hierarchy-tree__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "hierarchy-tree__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "hierarchy-tree__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "hierarchy-tree__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "hierarchy-tree__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "hierarchy-tree__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "hierarchy-tree__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "hierarchy-tree__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "hierarchy-tree__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "hierarchy-tree__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "hierarchy-tree__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "hierarchy-tree__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "hierarchy-tree__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "hierarchy-tree__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "hierarchy-tree__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "list-grid__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "list-grid__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "list-grid__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "list-grid__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "list-grid__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "list-grid__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "list-grid__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "list-grid__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "list-grid__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "list-grid__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "list-grid__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "list-grid__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "list-grid__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "list-grid__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "list-grid__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "list-grid__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "list-grid__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "list-grid__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "list-grid__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "list-grid__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "list-grid__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "list-grid__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "list-grid__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "list-grid__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "list-grid__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "list-grid__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "list-grid__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "list-grid__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "list-grid__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "list-grid__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "list-grid__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "list-grid__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "list-row__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "list-row__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "list-row__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "list-row__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "list-row__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "list-row__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "list-row__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "list-row__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "list-row__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "list-row__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "list-row__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "list-row__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "list-row__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "list-row__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "list-row__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "list-row__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "list-row__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "list-row__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "list-row__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "list-row__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "list-row__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "list-row__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "list-row__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "list-row__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "list-row__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "list-row__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "list-row__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "list-row__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "list-row__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "list-row__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "list-row__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "list-row__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "mindmap__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "mindmap__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "mindmap__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "mindmap__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "mindmap__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "mindmap__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "mindmap__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "mindmap__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "mindmap__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "mindmap__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "mindmap__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "mindmap__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "mindmap__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "mindmap__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "mindmap__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "mindmap__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "mindmap__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "mindmap__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "mindmap__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "mindmap__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "mindmap__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "mindmap__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "mindmap__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "mindmap__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "mindmap__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "mindmap__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "mindmap__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "mindmap__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "mindmap__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "mindmap__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "mindmap__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "mindmap__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "pyramid__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "pyramid__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "pyramid__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "pyramid__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "pyramid__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "pyramid__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "pyramid__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "pyramid__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "pyramid__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "pyramid__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "pyramid__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "pyramid__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "pyramid__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "pyramid__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "pyramid__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "pyramid__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "pyramid__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "pyramid__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "pyramid__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "pyramid__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "pyramid__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "pyramid__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "pyramid__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "pyramid__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "pyramid__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "pyramid__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "pyramid__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "pyramid__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "pyramid__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "pyramid__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "pyramid__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "pyramid__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "quadrant__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "quadrant__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "quadrant__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "quadrant__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "quadrant__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "quadrant__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "quadrant__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "quadrant__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "quadrant__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "quadrant__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "quadrant__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "quadrant__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "quadrant__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "quadrant__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "quadrant__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "quadrant__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "quadrant__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "quadrant__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "quadrant__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "quadrant__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "quadrant__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "quadrant__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "quadrant__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "quadrant__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "quadrant__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "quadrant__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "quadrant__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "quadrant__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "quadrant__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "quadrant__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "quadrant__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "quadrant__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "sequence-steps__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "sequence-steps__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "sequence-steps__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "sequence-steps__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "sequence-steps__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "sequence-steps__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "sequence-steps__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "sequence-steps__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "sequence-steps__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "sequence-steps__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "sequence-steps__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "sequence-steps__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "sequence-steps__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "sequence-steps__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "sequence-steps__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "sequence-steps__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "sequence-steps__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "sequence-steps__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "sequence-steps__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "sequence-steps__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "sequence-steps__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "sequence-steps__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "sequence-steps__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "sequence-steps__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "sequence-steps__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "sequence-steps__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "sequence-steps__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "sequence-steps__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "sequence-steps__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "sequence-steps__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "sequence-steps__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "sequence-steps__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "stat-cards__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "stat-cards__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "stat-cards__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "stat-cards__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "stat-cards__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "stat-cards__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "stat-cards__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "stat-cards__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "stat-cards__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "stat-cards__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "stat-cards__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "stat-cards__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "stat-cards__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "stat-cards__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "stat-cards__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "stat-cards__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "stat-cards__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "stat-cards__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "stat-cards__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "stat-cards__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "stat-cards__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "stat-cards__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "stat-cards__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "stat-cards__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "stat-cards__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "stat-cards__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "stat-cards__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "stat-cards__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "stat-cards__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "stat-cards__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "stat-cards__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "stat-cards__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "timeline__editorial.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "timeline__editorial.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "timeline__editorial.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "timeline__editorial.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "timeline__editorial.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "timeline__editorial.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "timeline__editorial.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "timeline__editorial.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "timeline__minimal.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "timeline__minimal.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "timeline__minimal.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "timeline__minimal.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "timeline__minimal.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "timeline__minimal.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "timeline__minimal.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "timeline__minimal.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "timeline__technical.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "timeline__technical.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "timeline__technical.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "timeline__technical.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "timeline__technical.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "timeline__technical.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "timeline__technical.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "timeline__technical.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "timeline__warm.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "timeline__warm.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "timeline__warm.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "timeline__warm.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "timeline__warm.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "timeline__warm.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "timeline__warm.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "timeline__warm.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    }
+  ],
+  "metrics": [
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__editorial.html",
+      "tags": 86,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__minimal.html",
+      "tags": 86,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__technical.html",
+      "tags": 86,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__warm.html",
+      "tags": 86,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__editorial.html",
+      "tags": 91,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__minimal.html",
+      "tags": 91,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__technical.html",
+      "tags": 91,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__warm.html",
+      "tags": 91,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__editorial.html",
+      "tags": 57,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__minimal.html",
+      "tags": 57,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__technical.html",
+      "tags": 57,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__warm.html",
+      "tags": 57,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__editorial.html",
+      "tags": 88,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__minimal.html",
+      "tags": 88,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__technical.html",
+      "tags": 88,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__warm.html",
+      "tags": 88,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__editorial.html",
+      "tags": 120,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__minimal.html",
+      "tags": 120,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__technical.html",
+      "tags": 120,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__warm.html",
+      "tags": 120,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__editorial.html",
+      "tags": 91,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__minimal.html",
+      "tags": 91,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__technical.html",
+      "tags": 91,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__warm.html",
+      "tags": 91,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__editorial.html",
+      "tags": 94,
+      "inline_scripts": 0,
+      "containers": 2
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__minimal.html",
+      "tags": 94,
+      "inline_scripts": 0,
+      "containers": 2
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__technical.html",
+      "tags": 94,
+      "inline_scripts": 0,
+      "containers": 2
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__warm.html",
+      "tags": 94,
+      "inline_scripts": 0,
+      "containers": 2
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__editorial.html",
+      "tags": 55,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__minimal.html",
+      "tags": 55,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__technical.html",
+      "tags": 55,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__warm.html",
+      "tags": 55,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__editorial.html",
+      "tags": 54,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__minimal.html",
+      "tags": 54,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__technical.html",
+      "tags": 54,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__warm.html",
+      "tags": 54,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__editorial.html",
+      "tags": 45,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__minimal.html",
+      "tags": 45,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__technical.html",
+      "tags": 45,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__warm.html",
+      "tags": 45,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__editorial.html",
+      "tags": 103,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__minimal.html",
+      "tags": 103,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__technical.html",
+      "tags": 103,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__warm.html",
+      "tags": 103,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__editorial.html",
+      "tags": 62,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__minimal.html",
+      "tags": 62,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__technical.html",
+      "tags": 62,
+      "inline_scripts": 0,
+      "containers": 1
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__warm.html",
+      "tags": 62,
+      "inline_scripts": 0,
+      "containers": 1
+    }
+  ]
+}

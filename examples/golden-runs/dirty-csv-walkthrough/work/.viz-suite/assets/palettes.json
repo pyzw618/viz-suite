@@ -1,0 +1,906 @@
+{
+  "schema": "viz-suite.palettes/1",
+  "version": "2026.10",
+  "generated": "2026-10-25",
+  "method": {
+    "category_order": "seed = designed primary (colors[0]); greedily append the colour maximising the minimum normal-vision CIEDE2000 distance to those already chosen, preferring candidates that remain >=10 ΔE from every selected colour under protanopia and deuteranopia. Colours with WCAG contrast-on-white < 1.6 are demoted to the tail.",
+    "delta_e": "CIEDE2000 over CIE Lab (D65)",
+    "cvd": "Viénot/Brettel-style 3x3 approximation applied in linear sRGB for protanopia, deuteranopia and tritanopia; metrics are estimates, not clinical grade",
+    "thresholds": {
+      "cvd_min_delta_e_safe": 10.0,
+      "pairwise_duplicate_delta_e": 5.0,
+      "contrast_on_white_warning": 3.0
+    },
+    "safe_k": "largest prefix of category_order whose pairwise minimum ΔE stays >= 10 under both protanopia and deuteranopia"
+  },
+  "palettes": [
+    {
+      "id": "okabe_ito",
+      "name_zh": "Okabe-Ito 色盲安全",
+      "source": "Okabe & Ito (2008) universal design standard; also known as the Wong palette",
+      "license": "public-domain-standard",
+      "colors": [
+        "#0072B2",
+        "#E69F00",
+        "#009E73",
+        "#D55E00",
+        "#CC79A7",
+        "#56B4E9",
+        "#F0E442"
+      ],
+      "color_names": [
+        "蓝",
+        "橙",
+        "蓝绿",
+        "朱红",
+        "红紫",
+        "天蓝",
+        "黄"
+      ],
+      "tags": [
+        "colorblind",
+        "academic",
+        "print"
+      ],
+      "recommended_for": [
+        "学术出版图",
+        "最多 7 个分类"
+      ],
+      "upstream_colorblind": true,
+      "note": "黄色仅适合作为深色描边的填充色，不建议单独作线条或散点",
+      "category_order": [
+        0,
+        1,
+        4,
+        2,
+        5,
+        3,
+        6
+      ],
+      "min_delta_e": {
+        "normal": 21.72,
+        "protanopia": 12.25,
+        "deuteranopia": 11.61,
+        "tritanopia": 10.87,
+        "order4_normal": 38.4,
+        "order4_deuteranopia": 15.89
+      },
+      "contrast_on_white": [
+        5.19,
+        2.25,
+        3.42,
+        3.87,
+        3.06,
+        2.31,
+        1.32
+      ],
+      "low_contrast_colors": [
+        "#E69F00",
+        "#56B4E9",
+        "#F0E442"
+      ],
+      "computed_colorblind_safe": true,
+      "safe_k": 7
+    },
+    {
+      "id": "met_egypt",
+      "name_zh": "MetBrewer·Egypt",
+      "source": "MetBrewer (CC0 1.0), palette Egypt",
+      "license": "CC0-1.0",
+      "colors": [
+        "#dd5129",
+        "#0f7ba2",
+        "#43b284",
+        "#fab255"
+      ],
+      "tags": [
+        "colorblind",
+        "editorial",
+        "small-n"
+      ],
+      "recommended_for": [
+        "2–4 分类",
+        "报刊叙事"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        2,
+        1,
+        3
+      ],
+      "min_delta_e": {
+        "normal": 28.77,
+        "protanopia": 13.96,
+        "deuteranopia": 17.51,
+        "tritanopia": 15.03,
+        "order4_normal": 28.77,
+        "order4_deuteranopia": 17.51
+      },
+      "contrast_on_white": [
+        3.97,
+        4.8,
+        2.64,
+        1.82
+      ],
+      "low_contrast_colors": [
+        "#43b284",
+        "#fab255"
+      ],
+      "computed_colorblind_safe": true,
+      "safe_k": 4
+    },
+    {
+      "id": "met_java",
+      "name_zh": "MetBrewer·Java",
+      "source": "MetBrewer (CC0 1.0), palette Java",
+      "license": "CC0-1.0",
+      "colors": [
+        "#663171",
+        "#cf3a36",
+        "#ea7428",
+        "#e2998a",
+        "#0c7156"
+      ],
+      "tags": [
+        "colorblind",
+        "editorial",
+        "warm"
+      ],
+      "recommended_for": [
+        "2–5 分类",
+        "叙事汇报"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        2,
+        4,
+        3,
+        1
+      ],
+      "min_delta_e": {
+        "normal": 17.14,
+        "protanopia": 8.23,
+        "deuteranopia": 13.11,
+        "tritanopia": 11.4,
+        "order4_normal": 17.14,
+        "order4_deuteranopia": 14.77
+      },
+      "contrast_on_white": [
+        9.36,
+        4.87,
+        2.99,
+        2.29,
+        5.98
+      ],
+      "low_contrast_colors": [
+        "#ea7428",
+        "#e2998a"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 4
+    },
+    {
+      "id": "met_kandinsky",
+      "name_zh": "MetBrewer·Kandinsky",
+      "source": "MetBrewer (CC0 1.0), palette Kandinsky",
+      "license": "CC0-1.0",
+      "colors": [
+        "#3b7c70",
+        "#ce9642",
+        "#898e9f",
+        "#3b3a3e"
+      ],
+      "tags": [
+        "colorblind",
+        "muted",
+        "print"
+      ],
+      "recommended_for": [
+        "2–4 分类",
+        "低饱和学术风"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "min_delta_e": {
+        "normal": 25.21,
+        "protanopia": 15.11,
+        "deuteranopia": 13.81,
+        "tritanopia": 20.21,
+        "order4_normal": 25.21,
+        "order4_deuteranopia": 13.81
+      },
+      "contrast_on_white": [
+        4.88,
+        2.6,
+        3.26,
+        11.29
+      ],
+      "low_contrast_colors": [
+        "#ce9642"
+      ],
+      "computed_colorblind_safe": true,
+      "safe_k": 4
+    },
+    {
+      "id": "met_cassatt1",
+      "name_zh": "MetBrewer·Cassatt1",
+      "source": "MetBrewer (CC0 1.0), palette Cassatt1",
+      "license": "CC0-1.0",
+      "colors": [
+        "#b1615c",
+        "#d88782",
+        "#e3aba7",
+        "#edd7d9",
+        "#c9c9dd",
+        "#9d9dc7",
+        "#8282aa",
+        "#5a5a83"
+      ],
+      "tags": [
+        "colorblind",
+        "soft",
+        "large-n"
+      ],
+      "recommended_for": [
+        "4–8 分类",
+        "柔和分组"
+      ],
+      "upstream_colorblind": true,
+      "note": "该色板含大量相邻浅色，分类数 > 4 时请优先使用 category_order 前 4 位",
+      "category_order": [
+        0,
+        4,
+        7,
+        2,
+        6,
+        1,
+        5,
+        3
+      ],
+      "min_delta_e": {
+        "normal": 9.01,
+        "protanopia": 8.94,
+        "deuteranopia": 8.31,
+        "tritanopia": 8.97,
+        "order4_normal": 19.7,
+        "order4_deuteranopia": 19.23
+      },
+      "contrast_on_white": [
+        4.44,
+        2.72,
+        1.97,
+        1.37,
+        1.63,
+        2.6,
+        3.67,
+        6.51
+      ],
+      "low_contrast_colors": [
+        "#d88782",
+        "#e3aba7",
+        "#edd7d9",
+        "#c9c9dd",
+        "#9d9dc7"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 5
+    },
+    {
+      "id": "met_demuth",
+      "name_zh": "MetBrewer·Demuth",
+      "source": "MetBrewer (CC0 1.0), palette Demuth",
+      "license": "CC0-1.0",
+      "colors": [
+        "#591c19",
+        "#9b332b",
+        "#b64f32",
+        "#d39a2d",
+        "#f7c267",
+        "#b9b9b8",
+        "#8b8b99",
+        "#5d6174",
+        "#41485f",
+        "#262d42"
+      ],
+      "tags": [
+        "colorblind",
+        "muted",
+        "large-n"
+      ],
+      "recommended_for": [
+        "4–10 分类",
+        "深色叙事"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        4,
+        6,
+        8,
+        2,
+        5,
+        3,
+        1,
+        7,
+        9
+      ],
+      "min_delta_e": {
+        "normal": 8.83,
+        "protanopia": 8.88,
+        "deuteranopia": 8.81,
+        "tritanopia": 8.69,
+        "order4_normal": 26.27,
+        "order4_deuteranopia": 26.47
+      },
+      "contrast_on_white": [
+        13.08,
+        7.24,
+        5.06,
+        2.49,
+        1.63,
+        1.96,
+        3.36,
+        6.13,
+        9.06,
+        13.67
+      ],
+      "low_contrast_colors": [
+        "#d39a2d",
+        "#f7c267",
+        "#b9b9b8"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 7
+    },
+    {
+      "id": "met_okeeffe1",
+      "name_zh": "MetBrewer·OKeeffe1",
+      "source": "MetBrewer (CC0 1.0), palette OKeeffe1",
+      "license": "CC0-1.0",
+      "colors": [
+        "#6b200c",
+        "#973d21",
+        "#da6c42",
+        "#ee956a",
+        "#fbc2a9",
+        "#f6f2ee",
+        "#bad6f9",
+        "#7db0ea",
+        "#447fdd",
+        "#225bb2",
+        "#133e7e"
+      ],
+      "tags": [
+        "colorblind",
+        "diverging-rainbow",
+        "warm-cool"
+      ],
+      "recommended_for": [
+        "发散语义",
+        "6–11 分类"
+      ],
+      "upstream_colorblind": true,
+      "note": "非纯发散色阶，仅用于分类；严谨发散请用 diverging_cmap 派生",
+      "category_order": [
+        0,
+        7,
+        3,
+        10,
+        8,
+        9,
+        1,
+        2,
+        5,
+        4,
+        6
+      ],
+      "min_delta_e": {
+        "normal": 10.84,
+        "protanopia": 9.96,
+        "deuteranopia": 9.25,
+        "tritanopia": 10.47,
+        "order4_normal": 38.21,
+        "order4_deuteranopia": 42.38
+      },
+      "contrast_on_white": [
+        11.43,
+        6.99,
+        3.38,
+        2.3,
+        1.57,
+        1.11,
+        1.49,
+        2.27,
+        3.94,
+        6.55,
+        10.41
+      ],
+      "low_contrast_colors": [
+        "#ee956a",
+        "#fbc2a9",
+        "#f6f2ee",
+        "#bad6f9",
+        "#7db0ea"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 6
+    },
+    {
+      "id": "cb_dark2",
+      "name_zh": "ColorBrewer·Dark2",
+      "source": "ColorBrewer 2.0 (Apache-2.0), Dark2",
+      "license": "Apache-2.0",
+      "colors": [
+        "#1B9E77",
+        "#D95F02",
+        "#7570B3",
+        "#E7298A",
+        "#66A61E",
+        "#E6AB02",
+        "#A6761D",
+        "#666666"
+      ],
+      "tags": [
+        "general",
+        "medium-contrast"
+      ],
+      "recommended_for": [
+        "2–8 分类",
+        "通用默认"
+      ],
+      "upstream_colorblind": false,
+      "category_order": [
+        0,
+        1,
+        2,
+        5,
+        7,
+        3,
+        4,
+        6
+      ],
+      "min_delta_e": {
+        "normal": 17.37,
+        "protanopia": 2.12,
+        "deuteranopia": 3.3,
+        "tritanopia": 5.81,
+        "order4_normal": 26.57,
+        "order4_deuteranopia": 13.58
+      },
+      "contrast_on_white": [
+        3.39,
+        3.76,
+        4.44,
+        4.13,
+        2.98,
+        2.06,
+        4.01,
+        5.74
+      ],
+      "low_contrast_colors": [
+        "#66A61E",
+        "#E6AB02"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 5
+    },
+    {
+      "id": "cb_set2",
+      "name_zh": "ColorBrewer·Set2",
+      "source": "ColorBrewer 2.0 (Apache-2.0), Set2",
+      "license": "Apache-2.0",
+      "colors": [
+        "#66C2A5",
+        "#FC8D62",
+        "#8DA0CB",
+        "#E78AC3",
+        "#A6D854",
+        "#FFD92F",
+        "#E5C494",
+        "#B3B3B3"
+      ],
+      "tags": [
+        "pastel",
+        "low-contrast"
+      ],
+      "recommended_for": [
+        "大面积色块",
+        "报告配图"
+      ],
+      "upstream_colorblind": false,
+      "note": "低对比粉彩色，只建议用于面积填充并搭配深色描边",
+      "category_order": [
+        0,
+        1,
+        3,
+        2,
+        4,
+        6,
+        7,
+        5
+      ],
+      "min_delta_e": {
+        "normal": 16.8,
+        "protanopia": 1.61,
+        "deuteranopia": 3.59,
+        "tritanopia": 4.57,
+        "order4_normal": 26.29,
+        "order4_deuteranopia": 9.35
+      },
+      "contrast_on_white": [
+        2.14,
+        2.3,
+        2.62,
+        2.38,
+        1.67,
+        1.38,
+        1.66,
+        2.1
+      ],
+      "low_contrast_colors": [
+        "#66C2A5",
+        "#FC8D62",
+        "#8DA0CB",
+        "#E78AC3",
+        "#A6D854",
+        "#FFD92F",
+        "#E5C494",
+        "#B3B3B3"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 3
+    },
+    {
+      "id": "cb_paired",
+      "name_zh": "ColorBrewer·Paired",
+      "source": "ColorBrewer 2.0 (Apache-2.0), Paired",
+      "license": "Apache-2.0",
+      "colors": [
+        "#A6CEE3",
+        "#1F78B4",
+        "#B2DF8A",
+        "#33A02C",
+        "#FB9A99",
+        "#E31A1C",
+        "#FDBF6F",
+        "#FF7F00",
+        "#CAB2D6",
+        "#6A3D9A",
+        "#FFFF99",
+        "#B15928"
+      ],
+      "tags": [
+        "paired",
+        "before-after"
+      ],
+      "recommended_for": [
+        "前后/对照成对语义"
+      ],
+      "upstream_colorblind": false,
+      "note": "浅/深成对设计，适合哑铃图与前后对比，不适合无序分类",
+      "category_order": [
+        0,
+        5,
+        9,
+        6,
+        4,
+        7,
+        3,
+        1,
+        8,
+        11,
+        10,
+        2
+      ],
+      "min_delta_e": {
+        "normal": 13.79,
+        "protanopia": 1.25,
+        "deuteranopia": 2.86,
+        "tritanopia": 8.24,
+        "order4_normal": 37.45,
+        "order4_deuteranopia": 23.13
+      },
+      "contrast_on_white": [
+        1.67,
+        4.77,
+        1.52,
+        3.38,
+        2.06,
+        4.74,
+        1.63,
+        2.53,
+        1.94,
+        7.64,
+        1.05,
+        4.85
+      ],
+      "low_contrast_colors": [
+        "#A6CEE3",
+        "#B2DF8A",
+        "#FB9A99",
+        "#FDBF6F",
+        "#FF7F00",
+        "#CAB2D6",
+        "#FFFF99"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 6
+    },
+    {
+      "id": "academic_muted",
+      "name_zh": "学术低饱和（自研）",
+      "source": "viz-suite original",
+      "license": "MIT",
+      "colors": [
+        "#3B5B92",
+        "#B5533C",
+        "#4F7F5E",
+        "#C08A2E",
+        "#6C5B7B",
+        "#2F7F8F",
+        "#8C6D46",
+        "#7A7F87"
+      ],
+      "tags": [
+        "muted",
+        "print",
+        "academic"
+      ],
+      "recommended_for": [
+        "论文插图",
+        "黑白打印可辨识"
+      ],
+      "category_order": [
+        0,
+        3,
+        2,
+        5,
+        1,
+        7,
+        4,
+        6
+      ],
+      "min_delta_e": {
+        "normal": 15.97,
+        "protanopia": 4.15,
+        "deuteranopia": 3.8,
+        "tritanopia": 6.29,
+        "order4_normal": 20.54,
+        "order4_deuteranopia": 11.86
+      },
+      "contrast_on_white": [
+        6.78,
+        4.92,
+        4.64,
+        3.04,
+        6.14,
+        4.61,
+        4.78,
+        4.03
+      ],
+      "low_contrast_colors": [],
+      "computed_colorblind_safe": false,
+      "safe_k": 4
+    },
+    {
+      "id": "business_clean",
+      "name_zh": "商业清爽（自研）",
+      "source": "viz-suite original",
+      "license": "MIT",
+      "colors": [
+        "#1F5C99",
+        "#E8892D",
+        "#2A9D8F",
+        "#C14953",
+        "#6A4C93",
+        "#8AB17D",
+        "#B08968",
+        "#6C757D"
+      ],
+      "tags": [
+        "business",
+        "dashboard",
+        "medium-contrast"
+      ],
+      "recommended_for": [
+        "经营分析",
+        "看板"
+      ],
+      "category_order": [
+        0,
+        1,
+        5,
+        3,
+        2,
+        4,
+        7,
+        6
+      ],
+      "min_delta_e": {
+        "normal": 14.57,
+        "protanopia": 2.22,
+        "deuteranopia": 3.04,
+        "tritanopia": 12.76,
+        "order4_normal": 31.38,
+        "order4_deuteranopia": 14.43
+      },
+      "contrast_on_white": [
+        6.89,
+        2.61,
+        3.32,
+        4.83,
+        6.85,
+        2.42,
+        3.17,
+        4.69
+      ],
+      "low_contrast_colors": [
+        "#E8892D",
+        "#8AB17D"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 5
+    },
+    {
+      "id": "bi_ibcs",
+      "name_zh": "IBCS 语义（自研）",
+      "source": "viz-suite original, inspired by IBCS notation principles",
+      "license": "MIT",
+      "colors": [
+        "#1F3B57",
+        "#5C8AA8",
+        "#D08C3C",
+        "#A34A3F",
+        "#4F7F5E",
+        "#8C8C8C"
+      ],
+      "tags": [
+        "ibi",
+        "business",
+        "semantic"
+      ],
+      "recommended_for": [
+        "实际/预算/预测语义",
+        "KPI 看板"
+      ],
+      "category_order": [
+        0,
+        2,
+        4,
+        1,
+        5,
+        3
+      ],
+      "min_delta_e": {
+        "normal": 15.57,
+        "protanopia": 11.55,
+        "deuteranopia": 9.29,
+        "tritanopia": 8.56,
+        "order4_normal": 27.67,
+        "order4_deuteranopia": 23.56
+      },
+      "contrast_on_white": [
+        11.53,
+        3.71,
+        2.8,
+        5.82,
+        4.64,
+        3.36
+      ],
+      "low_contrast_colors": [
+        "#D08C3C"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 5
+    },
+    {
+      "id": "editorial_warm",
+      "name_zh": "报刊暖调（自研）",
+      "source": "viz-suite original",
+      "license": "MIT",
+      "colors": [
+        "#B4472E",
+        "#1D4E6B",
+        "#D9A441",
+        "#5B7F6C",
+        "#8A5A83",
+        "#4A4A4A"
+      ],
+      "tags": [
+        "editorial",
+        "story",
+        "warm"
+      ],
+      "recommended_for": [
+        "数据新闻",
+        "汇报叙事"
+      ],
+      "category_order": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        4
+      ],
+      "min_delta_e": {
+        "normal": 15.28,
+        "protanopia": 8.54,
+        "deuteranopia": 14.73,
+        "tritanopia": 16.47,
+        "order4_normal": 27.91,
+        "order4_deuteranopia": 17.72
+      },
+      "contrast_on_white": [
+        5.41,
+        8.92,
+        2.25,
+        4.47,
+        5.43,
+        8.86
+      ],
+      "low_contrast_colors": [
+        "#D9A441"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 5
+    },
+    {
+      "id": "gray_print",
+      "name_zh": "灰度打印（自研）",
+      "source": "viz-suite original",
+      "license": "MIT",
+      "colors": [
+        "#1A1A1A",
+        "#4D4D4D",
+        "#808080",
+        "#B3B3B3",
+        "#D9D9D9"
+      ],
+      "tags": [
+        "grayscale",
+        "print"
+      ],
+      "recommended_for": [
+        "纯黑白打印",
+        "叠加纹理填充"
+      ],
+      "note": "灰度色板必须叠加线型/纹理编码，不得仅靠明度区分",
+      "category_order": [
+        0,
+        3,
+        1,
+        2,
+        4
+      ],
+      "min_delta_e": {
+        "normal": 9.53,
+        "protanopia": 9.53,
+        "deuteranopia": 9.53,
+        "tritanopia": 9.53,
+        "order4_normal": 16.29,
+        "order4_deuteranopia": 16.29
+      },
+      "contrast_on_white": [
+        17.4,
+        8.45,
+        3.95,
+        2.1,
+        1.41
+      ],
+      "low_contrast_colors": [
+        "#B3B3B3",
+        "#D9D9D9"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 4
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KPI 卡片页 · 静态 HTML</title>
+<style>
+:root{--viz-bg:#F8FAFC;--viz-surface:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:24px;overflow-x:hidden}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+header h1{font-size:22px;margin:0 0 4px;font-weight:700}
+header p{margin:0;color:var(--viz-muted);font-size:13px}
+.badge{background:var(--viz-surface);border:1px solid var(--viz-grid);border-radius:999px;padding:6px 12px;font-size:12px;color:var(--viz-muted)}
+.kpi-figure{margin:0}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;min-height:360px}
+.card{background:var(--viz-surface);border:1px solid var(--viz-grid);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card .label{font-size:12px;color:var(--viz-muted)}
+.card .value{font-size:28px;font-weight:700;line-height:1.1}
+.card .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto}
+.delta{font-size:12px;font-weight:600}
+.delta.up{color:var(--viz-positive)}
+.delta.down{color:var(--viz-negative)}
+.delta.flat{color:var(--viz-muted)}
+.spark{width:96px;height:34px;flex:0 0 auto}
+.spark svg{display:block;width:100%;height:100%}
+.note{font-size:11px;color:var(--viz-muted);margin-top:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (max-width:900px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){body{padding:14px}.kpi-grid{grid-template-columns:1fr;min-height:0}header h1{font-size:18px}.card .value{font-size:24px}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-surface:#111827;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>客服经营 KPI 概览</h1><p>2025 年第二季度｜静态 HTML，无任何外部依赖</p></div>
+  <span class="badge">As of 2025-06-30</span>
+</header>
+<figure class="kpi-figure">
+  <figcaption class="sr-only">四项核心 KPI：收入、订单量、客单价与满意度</figcaption>
+  <div class="kpi-grid">
+    <article class="card">
+      <div class="label">季度收入</div>
+      <div class="value">1,188 万元</div>
+      <div class="foot">
+        <span class="delta up">▲ 6.3% 环比</span>
+        <span class="spark"><svg viewBox="0 0 96 34" role="img" aria-label="收入近六期上升趋势"><polyline points="2,30 20,27 38,24 56,22 74,16 94,9" fill="none" stroke="#0072B2" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      </div>
+    </article>
+    <article class="card">
+      <div class="label">订单量</div>
+      <div class="value">35,900 单</div>
+      <div class="foot">
+        <span class="delta up">▲ 4.8% 环比</span>
+        <span class="spark"><svg viewBox="0 0 96 34" role="img" aria-label="订单量近六期上升趋势"><polyline points="2,29 20,26 38,27 56,21 74,17 94,12" fill="none" stroke="#E69F00" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      </div>
+    </article>
+    <article class="card">
+      <div class="label">客单价</div>
+      <div class="value">331 元</div>
+      <div class="foot">
+        <span class="delta flat">■ 基本持平</span>
+        <span class="spark"><svg viewBox="0 0 96 34" role="img" aria-label="客单价近六期基本持平"><polyline points="2,17 20,16 38,18 56,15 74,16 94,15" fill="none" stroke="#6B7280" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      </div>
+    </article>
+    <article class="card">
+      <div class="label">满意度</div>
+      <div class="value">4.21 分</div>
+      <div class="foot">
+        <span class="delta up">▲ 0.08 分</span>
+        <span class="spark"><svg viewBox="0 0 96 34" role="img" aria-label="满意度近六期上升趋势"><polyline points="2,28 20,25 38,23 56,18 74,14 94,11" fill="none" stroke="#198038" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+      </div>
+    </article>
+  </div>
+</figure>
+<p class="note">数据来源：演示数据（合成）｜飞书/邮件可直接粘贴｜深色模式自动适配</p>
+</body>
+</html>

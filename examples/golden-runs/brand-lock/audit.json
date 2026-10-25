@@ -1,0 +1,580 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "visual_verified": false,
+  "warnings": [
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 8,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 48,
+    "total_checks": 48
+  },
+  "checks": [
+    {
+      "file": "fig-01-rank.pdf",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-01-rank.pdf",
+      "check": "pdf_page_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 页；首页 150.0×96.0 mm"
+    },
+    {
+      "file": "fig-01-rank.pdf",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页宽 150.01mm，目标 150.0mm"
+    },
+    {
+      "file": "fig-01-rank.pdf",
+      "check": "pdf_fonts",
+      "severity": "info",
+      "passed": true,
+      "detail": "4 个字体全部嵌入"
+    },
+    {
+      "file": "fig-01-rank.pdf",
+      "check": "pdf_vector",
+      "severity": "info",
+      "passed": true,
+      "detail": "内容流含约 264 个矢量绘制操作（文字/图元保持矢量）"
+    },
+    {
+      "file": "fig-01-rank.pdf",
+      "check": "pdf_content",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页文本 188 字符，图像 0 个，矢量操作约 264 个"
+    },
+    {
+      "file": "fig-02-satisfaction.pdf",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-02-satisfaction.pdf",
+      "check": "pdf_page_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 页；首页 150.0×93.0 mm"
+    },
+    {
+      "file": "fig-02-satisfaction.pdf",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页宽 150.01mm，目标 150.0mm"
+    },
+    {
+      "file": "fig-02-satisfaction.pdf",
+      "check": "pdf_fonts",
+      "severity": "info",
+      "passed": true,
+      "detail": "3 个字体全部嵌入"
+    },
+    {
+      "file": "fig-02-satisfaction.pdf",
+      "check": "pdf_vector",
+      "severity": "info",
+      "passed": true,
+      "detail": "内容流含约 379 个矢量绘制操作（文字/图元保持矢量）"
+    },
+    {
+      "file": "fig-02-satisfaction.pdf",
+      "check": "pdf_content",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页文本 221 字符，图像 0 个，矢量操作约 379 个"
+    },
+    {
+      "file": "fig-03-rank-change.pdf",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-03-rank-change.pdf",
+      "check": "pdf_page_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 页；首页 150.0×102.0 mm"
+    },
+    {
+      "file": "fig-03-rank-change.pdf",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页宽 150.01mm，目标 150.0mm"
+    },
+    {
+      "file": "fig-03-rank-change.pdf",
+      "check": "pdf_fonts",
+      "severity": "info",
+      "passed": true,
+      "detail": "4 个字体全部嵌入"
+    },
+    {
+      "file": "fig-03-rank-change.pdf",
+      "check": "pdf_vector",
+      "severity": "info",
+      "passed": true,
+      "detail": "内容流含约 66 个矢量绘制操作（文字/图元保持矢量）"
+    },
+    {
+      "file": "fig-03-rank-change.pdf",
+      "check": "pdf_content",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页文本 207 字符，图像 0 个，矢量操作约 66 个"
+    },
+    {
+      "file": "fig-04-revenue-mix.pdf",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-04-revenue-mix.pdf",
+      "check": "pdf_page_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 页；首页 150.0×90.0 mm"
+    },
+    {
+      "file": "fig-04-revenue-mix.pdf",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页宽 150.01mm，目标 150.0mm"
+    },
+    {
+      "file": "fig-04-revenue-mix.pdf",
+      "check": "pdf_fonts",
+      "severity": "info",
+      "passed": true,
+      "detail": "3 个字体全部嵌入"
+    },
+    {
+      "file": "fig-04-revenue-mix.pdf",
+      "check": "pdf_vector",
+      "severity": "info",
+      "passed": true,
+      "detail": "内容流含约 177 个矢量绘制操作（文字/图元保持矢量）"
+    },
+    {
+      "file": "fig-04-revenue-mix.pdf",
+      "check": "pdf_content",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页文本 145 字符，图像 0 个，矢量操作约 177 个"
+    },
+    {
+      "file": "fig-01-rank_300dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-01-rank_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 149.9×96.0 mm"
+    },
+    {
+      "file": "fig-01-rank_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 149.94mm，目标 150.0mm（容差 ±1.50mm）"
+    },
+    {
+      "file": "fig-01-rank_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "fig-01-rank_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "fig-01-rank_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #0B2545 / 背景 #FFFFFF 对比度 15.39:1（正文要求 ≥4.5:1）",
+      "ratio": 15.39
+    },
+    {
+      "file": "fig-02-satisfaction_300dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-02-satisfaction_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 149.9×93.0 mm"
+    },
+    {
+      "file": "fig-02-satisfaction_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 149.94mm，目标 150.0mm（容差 ±1.50mm）"
+    },
+    {
+      "file": "fig-02-satisfaction_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "fig-02-satisfaction_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "fig-02-satisfaction_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #0B2545 / 背景 #FFFFFF 对比度 15.39:1（正文要求 ≥4.5:1）",
+      "ratio": 15.39
+    },
+    {
+      "file": "fig-03-rank-change_300dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-03-rank-change_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 149.9×101.9 mm"
+    },
+    {
+      "file": "fig-03-rank-change_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 149.94mm，目标 150.0mm（容差 ±1.50mm）"
+    },
+    {
+      "file": "fig-03-rank-change_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "fig-03-rank-change_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "fig-03-rank-change_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #0B2545 / 背景 #FFFFFF 对比度 15.39:1（正文要求 ≥4.5:1）",
+      "ratio": 15.39
+    },
+    {
+      "file": "fig-04-revenue-mix_300dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-04-revenue-mix_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 149.9×89.9 mm"
+    },
+    {
+      "file": "fig-04-revenue-mix_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 149.94mm，目标 150.0mm（容差 ±1.50mm）"
+    },
+    {
+      "file": "fig-04-revenue-mix_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "fig-04-revenue-mix_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "fig-04-revenue-mix_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #0B2545 / 背景 #FFFFFF 对比度 15.39:1（正文要求 ≥4.5:1）",
+      "ratio": 15.39
+    }
+  ],
+  "metrics": [
+    {
+      "file": "outputs\\fig-01-rank.pdf",
+      "pages": 1,
+      "width_mm": 150.01,
+      "height_mm": 96.01,
+      "page_size_mm": [
+        150.01,
+        96.01
+      ],
+      "fonts": [
+        {
+          "name": "/GRKHWR+ArialMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/EPBOBP+Arial-BoldMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/FKHVZB+MicrosoftYaHei",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/GBUBHG+MicrosoftYaHei-Bold",
+          "subtype": "/Type0",
+          "embedded": true
+        }
+      ],
+      "text_chars": 188,
+      "images": 0,
+      "vector_ops_approx": 264
+    },
+    {
+      "file": "outputs\\fig-02-satisfaction.pdf",
+      "pages": 1,
+      "width_mm": 150.01,
+      "height_mm": 92.99,
+      "page_size_mm": [
+        150.01,
+        92.99
+      ],
+      "fonts": [
+        {
+          "name": "/EITADY+ArialMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/GJZKWB+MicrosoftYaHei",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/DXNFHO+MicrosoftYaHei-Bold",
+          "subtype": "/Type0",
+          "embedded": true
+        }
+      ],
+      "text_chars": 221,
+      "images": 0,
+      "vector_ops_approx": 379
+    },
+    {
+      "file": "outputs\\fig-03-rank-change.pdf",
+      "pages": 1,
+      "width_mm": 150.01,
+      "height_mm": 102.01,
+      "page_size_mm": [
+        150.01,
+        102.01
+      ],
+      "fonts": [
+        {
+          "name": "/HHOEPV+ArialMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/EIQLXL+Arial-BoldMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/COTFLY+MicrosoftYaHei",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/HEYULL+MicrosoftYaHei-Bold",
+          "subtype": "/Type0",
+          "embedded": true
+        }
+      ],
+      "text_chars": 207,
+      "images": 0,
+      "vector_ops_approx": 66
+    },
+    {
+      "file": "outputs\\fig-04-revenue-mix.pdf",
+      "pages": 1,
+      "width_mm": 150.01,
+      "height_mm": 89.99,
+      "page_size_mm": [
+        150.01,
+        89.99
+      ],
+      "fonts": [
+        {
+          "name": "/DCRRWF+ArialMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/FUZGEA+MicrosoftYaHei",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/UABXAV+MicrosoftYaHei-Bold",
+          "subtype": "/Type0",
+          "embedded": true
+        }
+      ],
+      "text_chars": 145,
+      "images": 0,
+      "vector_ops_approx": 177
+    },
+    {
+      "file": "outputs\\fig-01-rank_300dpi.png",
+      "width_px": 1771,
+      "height_px": 1134,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 149.94,
+      "height_mm": 96.01,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 3.12,
+        "bottom": 0.78,
+        "left": 1.0,
+        "right": 1.25
+      }
+    },
+    {
+      "file": "outputs\\fig-02-satisfaction_300dpi.png",
+      "width_px": 1771,
+      "height_px": 1098,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 149.94,
+      "height_mm": 92.96,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 3.24,
+        "bottom": 0.81,
+        "left": 1.0,
+        "right": 1.25
+      }
+    },
+    {
+      "file": "outputs\\fig-03-rank-change_300dpi.png",
+      "width_px": 1771,
+      "height_px": 1204,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 149.94,
+      "height_mm": 101.94,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 3.32,
+        "bottom": 0.74,
+        "left": 1.0,
+        "right": 1.25
+      }
+    },
+    {
+      "file": "outputs\\fig-04-revenue-mix_300dpi.png",
+      "width_px": 1771,
+      "height_px": 1062,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 149.94,
+      "height_mm": 89.92,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 3.35,
+        "bottom": 0.84,
+        "left": 1.0,
+        "right": 1.25
+      }
+    }
+  ]
+}

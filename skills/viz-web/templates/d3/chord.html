@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>弦图 · D3 v7</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 10px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 165px);min-height:440px}
+svg{display:block;width:100%;height:100%}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:460px}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>直播与电商之间的流量互导最频繁，门店主要向私域导流</h1><p>弦宽=渠道间流转量（千次）｜颜色为流出渠道｜演示用合成数据</p></header>
+<figure>
+  <div id="chart" role="img" aria-label="五个渠道之间流量互导的弦图，直播与电商互导最频繁"></div>
+  <figcaption>数据来源：演示数据（合成）｜D3 v7｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/d3.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid')};
+const labels = ['门店', '电商', '直播', '私域', '社媒'];
+const COLORS = ['#0072B2', '#E69F00', '#CC79A7', '#009E73', '#D55E00'];
+const matrix = [
+  [0, 120, 80, 260, 40],
+  [110, 0, 290, 150, 90],
+  [70, 310, 0, 120, 210],
+  [240, 140, 110, 0, 60],
+  [35, 85, 220, 55, 0]
+];
+
+function draw() {
+  const host = document.getElementById('chart');
+  const width = host.clientWidth;
+  const height = host.clientHeight;
+  const mobile = width < 600;
+  const outer = Math.max(100, Math.min(width, height) / 2 - (mobile ? 34 : 72));
+  const inner = outer - (mobile ? 12 : 18);
+  d3.select(host).selectAll('*').remove();
+  const svg = d3.select(host).append('svg')
+    .attr('viewBox', `0 0 ${width} ${height}`).attr('width', width).attr('height', height);
+  const g = svg.append('g').attr('transform', `translate(${width / 2},${height / 2})`);
+  const chord = d3.chord().padAngle(0.045).sortSubgroups(d3.descending)(matrix);
+  const arc = d3.arc().innerRadius(inner).outerRadius(outer);
+  const ribbon = d3.ribbon().radius(inner - 1);
+
+  g.append('g').selectAll('path').data(chord.groups).join('path')
+    .attr('d', arc)
+    .attr('fill', d => COLORS[d.index])
+    .attr('fill-opacity', 0.88)
+    .attr('stroke', '#fff').attr('stroke-width', 1.2);
+
+  g.append('g').attr('fill-opacity', 0.56).selectAll('path').data(chord).join('path')
+    .attr('d', ribbon)
+    .attr('fill', d => COLORS[d.source.index])
+    .attr('stroke', d => d3.color(COLORS[d.source.index]).darker(0.6))
+    .attr('stroke-width', 0.4)
+    .append('title')
+    .text(d => `${labels[d.source.index]} → ${labels[d.target.index]}：${d.source.value}`);
+
+  if (mobile) {
+    const legend = svg.append('g').attr('transform', `translate(0,${height - 58})`);
+    labels.forEach((name, i) => {
+      const x = 22 + (i % 2) * 178;
+      const y = Math.floor(i / 2) * 17;
+      legend.append('rect').attr('x', x).attr('y', y - 8).attr('width', 8).attr('height', 8)
+        .attr('rx', 2).attr('fill', COLORS[i]);
+      legend.append('text').attr('x', x + 12).attr('y', y).attr('font-size', 10)
+        .attr('fill', ROLE.text).text(`${name} ${matrix[i].reduce((a, b) => a + b, 0)}`);
+    });
+  } else {
+    g.append('g').selectAll('text').data(chord.groups).join('text')
+      .each(d => { d.angle = (d.startAngle + d.endAngle) / 2; })
+      .attr('dy', '0.35em')
+      .attr('transform', d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${outer + 8}) ${d.angle > Math.PI ? 'rotate(180)' : ''}`)
+      .attr('text-anchor', d => d.angle > Math.PI ? 'end' : 'start')
+      .attr('fill', ROLE.text)
+      .attr('font-size', 12)
+      .text(d => `${labels[d.index]} ${d.value}`);
+  }
+
+  svg.append('text')
+    .attr('x', width / 2).attr('y', height - 6)
+    .attr('text-anchor', 'middle').attr('font-size', mobile ? 10 : 11).attr('fill', ROLE.muted)
+    .text('弧长为该渠道总流出量；弦为两渠道之间的流转量');
+}
+draw();
+let timer = null;
+window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(draw, 160); });
+</script>
+</body>
+</html>

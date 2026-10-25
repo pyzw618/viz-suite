@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>折线过渡 · D3 v7</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 10px;color:var(--viz-muted);font-size:13px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+button{border:1px solid var(--viz-context);background:var(--viz-bg);color:var(--viz-text);border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer}
+button.active{background:var(--viz-focal);border-color:var(--viz-focal);color:#fff}
+#chart{width:100%;height:calc(100vh - 220px);min-height:420px}
+svg{display:block;width:100%;height:100%}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 205px)}button{font-size:11px;padding:5px 10px}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}button{background:transparent}}
+</style>
+</head>
+<body>
+<header><h1>2025 年收入与利润均高于 2024 年，利润增速更快</h1><p>单位：万元｜点击按钮切换指标，坐标轴与折线平滑过渡｜演示用合成数据</p></header>
+<div class="toolbar">
+  <button id="btn-revenue" class="active">收入</button>
+  <button id="btn-profit">利润</button>
+</div>
+<figure>
+  <div id="chart" role="img" aria-label="2024 与 2025 年收入折线图，2025 年更高；可切换为利润"></div>
+  <figcaption>数据来源：演示数据（合成）｜D3 v7｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/d3.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context')};
+const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const DATA = {
+  revenue: {
+    label: '收入（万元）',
+    series: [
+      {name: '2024', color: ROLE.context, values: [128,132,141,138,150,156,162,168,175,182,190,205]},
+      {name: '2025', color: ROLE.focal, values: [140,148,155,162,171,184,192,201,210,221,232,242]}
+    ]
+  },
+  profit: {
+    label: '利润（万元）',
+    series: [
+      {name: '2024', color: ROLE.context, values: [18,19,21,20,23,25,26,27,29,31,34,38]},
+      {name: '2025', color: ROLE.focal, values: [21,23,25,27,30,33,35,38,41,44,48,51]}
+    ]
+  }
+};
+let metric = 'revenue';
+let width = 0, height = 0, svg, gPlot, x, y, line, xAxis, yAxis, paths, dots, hoverLine, hoverDots, tooltip, gx, gy;
+const margin = {top: 20, right: 24, bottom: 42, left: 58};
+
+function layout() {
+  const host = document.getElementById('chart');
+  width = host.clientWidth;
+  height = host.clientHeight;
+  const mobile = width < 600;
+  margin.left = mobile ? 44 : 58;
+  margin.right = mobile ? 14 : 26;
+  margin.bottom = mobile ? 38 : 42;
+  d3.select(host).selectAll('*').remove();
+  svg = d3.select(host).append('svg').attr('viewBox', `0 0 ${width} ${height}`).attr('width', width).attr('height', height);
+  gPlot = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
+  const w = Math.max(10, width - margin.left - margin.right);
+  const h = Math.max(10, height - margin.top - margin.bottom);
+  x = d3.scalePoint().domain(months).range([0, w]).padding(0.2);
+  y = d3.scaleLinear().range([h, 0]).nice();
+  xAxis = d3.axisBottom(x).tickSizeOuter(0).tickFormat(d => mobile ? d.replace('月','') : d);
+  if (mobile) xAxis.tickValues(months.filter((_, i) => i % 2 === 0));
+  yAxis = d3.axisLeft(y).ticks(mobile ? 5 : 6).tickSizeOuter(0).tickFormat(d3.format('~s'));
+  gx = gPlot.append('g').attr('class', 'x-axis').attr('transform', `translate(0,${h})`)
+    .call(xAxis).call(g => g.selectAll('text').attr('fill', ROLE.muted).attr('font-size', mobile ? 10 : 12))
+    .call(g => g.selectAll('line').attr('stroke', ROLE.grid))
+    .call(g => g.select('.domain').attr('stroke', ROLE.grid));
+  gy = gPlot.append('g').attr('class', 'y-axis')
+    .call(yAxis).call(g => g.selectAll('text').attr('fill', ROLE.muted).attr('font-size', mobile ? 10 : 12))
+    .call(g => g.selectAll('line').attr('stroke', ROLE.grid))
+    .call(g => g.select('.domain').remove());
+
+  line = d3.line().x((d, i) => x(months[i])).y(d => y(d)).curve(d3.curveMonotoneX);
+  paths = gPlot.append('g').selectAll('path').data(DATA[metric].series).join('path')
+    .attr('fill', 'none').attr('stroke', d => d.color).attr('stroke-width', 2.2).attr('stroke-linecap', 'round');
+  dots = gPlot.append('g').selectAll('g.series').data(DATA[metric].series).join('g').attr('class', 'series');
+  dots.selectAll('circle').data(d => d.values.map((v, i) => ({v, i, color: d.color}))).join('circle')
+    .attr('cx', (d, i) => x(months[i])).attr('cy', d => y(d.v)).attr('r', mobile ? 2.2 : 3)
+    .attr('fill', '#fff').attr('stroke', d => d.color).attr('stroke-width', 1.2);
+
+  // 图例
+  const legend = svg.append('g').attr('transform', `translate(${margin.left},8)`);
+  DATA[metric].series.forEach((s, i) => {
+    const g = legend.append('g').attr('transform', `translate(${i * (mobile ? 70 : 90)},0)`);
+    g.append('line').attr('x1', 0).attr('x2', 18).attr('y1', 0).attr('y2', 0).attr('stroke', s.color).attr('stroke-width', 2.4);
+    g.append('text').attr('x', 24).attr('y', 4).attr('fill', ROLE.text).attr('font-size', mobile ? 10 : 12).text(s.name);
+  });
+  svg.append('text').attr('id', 'metric-label').attr('x', margin.left).attr('y', height - 6)
+    .attr('fill', ROLE.muted).attr('font-size', mobile ? 10 : 11).text(DATA[metric].label);
+
+  hoverLine = gPlot.append('line').attr('y1', 0).attr('y2', h).attr('stroke', ROLE.muted).attr('stroke-dasharray', '3 3').attr('opacity', 0);
+  hoverDots = gPlot.append('g').selectAll('circle').data(DATA[metric].series).join('circle')
+    .attr('r', 4).attr('fill', d => d.color).attr('stroke', '#fff').attr('stroke-width', 1).attr('opacity', 0);
+  tooltip = svg.append('g').attr('opacity', 0).attr('pointer-events', 'none');
+  tooltip.append('rect').attr('rx', 4).attr('fill', '#fff').attr('stroke', ROLE.grid);
+  tooltip.append('text').attr('font-size', mobile ? 10 : 11).attr('fill', ROLE.text);
+
+  svg.append('rect').attr('x', margin.left).attr('y', margin.top).attr('width', w).attr('height', h)
+    .attr('fill', 'transparent').attr('cursor', 'crosshair')
+    .on('mousemove', function(event) {
+      const [mx] = d3.pointer(event, this);
+      const i = Math.max(0, Math.min(months.length - 1, Math.round((mx / w) * (months.length - 1))));
+      const px = x(months[i]);
+      hoverLine.attr('x1', px).attr('x2', px).attr('opacity', 1);
+      hoverDots.attr('cx', px).attr('cy', (d, j) => y(DATA[metric].series[j].values[i])).attr('opacity', 1);
+      const lines = [`${months[i]}`, ...DATA[metric].series.map(s => `${s.name}：${s.values[i]}`)];
+      const tw = mobile ? 104 : 118;
+      const th = 18 * lines.length + 8;
+      const tx = Math.min(w - tw, Math.max(4, px + 10));
+      tooltip.attr('opacity', 1).attr('transform', `translate(${margin.left + tx},${margin.top + 8})`);
+      tooltip.select('rect').attr('width', tw).attr('height', th);
+      tooltip.select('text').selectAll('tspan').data(lines).join('tspan')
+        .attr('x', 8).attr('y', (d, k) => 16 + k * 16)
+        .attr('fill', k => k === 0 ? ROLE.text : ROLE.muted).text(d => d);
+    })
+    .on('mouseleave', () => { hoverLine.attr('opacity', 0); hoverDots.attr('opacity', 0); tooltip.attr('opacity', 0); });
+
+  update(false);
+}
+
+function update(animate) {
+  const h = Math.max(10, height - margin.top - margin.bottom);
+  const all = DATA[metric].series.flatMap(s => s.values);
+  const [lo, hi] = d3.extent(all);
+  y.domain([Math.max(0, lo * 0.88), hi * 1.06]).nice();
+  svg.select('#metric-label').text(DATA[metric].label);
+  gx.call(xAxis);
+  gy.transition().duration(animate ? 650 : 0).call(yAxis);
+  gy.selectAll('text').attr('fill', ROLE.muted).attr('font-size', width < 600 ? 10 : 12);
+  gy.selectAll('line').attr('stroke', ROLE.grid);
+  gy.select('.domain').remove();
+  paths.data(DATA[metric].series).transition().duration(animate ? 650 : 0).attr('d', d => line(d.values));
+  gPlot.selectAll('g.series').remove();
+  const gs = gPlot.append('g').selectAll('g.series').data(DATA[metric].series).join('g');
+  gs.selectAll('circle').data(d => d.values.map((v, i) => ({v, i, color: d.color}))).join('circle')
+    .attr('cx', (d, i) => x(months[i])).attr('cy', d => y(d.v)).attr('r', width < 600 ? 2.2 : 3)
+    .attr('fill', '#fff').attr('stroke', d => d.color).attr('stroke-width', 1.2);
+  dots = gs;
+}
+
+document.getElementById('btn-revenue').addEventListener('click', () => {
+  metric = 'revenue';
+  document.getElementById('btn-revenue').classList.add('active');
+  document.getElementById('btn-profit').classList.remove('active');
+  update(true);
+});
+document.getElementById('btn-profit').addEventListener('click', () => {
+  metric = 'profit';
+  document.getElementById('btn-profit').classList.add('active');
+  document.getElementById('btn-revenue').classList.remove('active');
+  update(true);
+});
+let timer = null;
+window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(layout, 180); });
+layout();
+</script>
+</body>
+</html>

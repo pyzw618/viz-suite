@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" data-chart-type="bar" data-title="Monthly Revenue by Channel">
+  <title>Monthly Revenue by Channel</title>
+  <desc>Source-level SVG fixture with explicit data attributes.</desc>
+  <rect data-category="A" data-value="12" x="80" y="300" width="70" height="120" fill="#0072B2"/>
+  <rect data-category="B" data-value="18" x="200" y="220" width="70" height="200" fill="#0072B2"/>
+  <rect data-category="C" data-value="9" x="320" y="340" width="70" height="80" fill="#0072B2"/>
+  <rect data-category="D" data-value="24" x="440" y="140" width="70" height="280" fill="#0072B2"/>
+  <rect data-category="E" data-value="15" x="560" y="260" width="70" height="160" fill="#0072B2"/>
+</svg>

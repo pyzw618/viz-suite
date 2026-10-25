@@ -1,0 +1,176 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\measurements.json",
+    "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\title.png",
+    "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\x_axis.png",
+    "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\y_axis.png",
+    "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\legend.png",
+    "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\x-ticks.png",
+    "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\y-ticks.png"
+  ],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "measurements": {
+    "image": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\input\\source.png",
+    "width": 1000,
+    "height": 700,
+    "dpi": null,
+    "plot_bbox": [
+      130,
+      105,
+      930,
+      595
+    ],
+    "axis": {
+      "type": "cartesian",
+      "y_axis_x": 130,
+      "x_axis_y": 595,
+      "y_extent": [
+        105,
+        595
+      ],
+      "x_extent": [
+        125,
+        930
+      ]
+    },
+    "content_bbox": [
+      106,
+      153,
+      893,
+      614
+    ],
+    "x_ticks_px": [
+      215,
+      373,
+      530,
+      687,
+      844
+    ],
+    "y_ticks_px": [
+      156,
+      245,
+      333,
+      420,
+      506,
+      595
+    ],
+    "palette": [
+      {
+        "hex": "#0072B2",
+        "share": 0.996,
+        "bgr": [
+          178,
+          114,
+          0
+        ]
+      }
+    ],
+    "pie": null,
+    "quality": {
+      "sharpness": 925.77,
+      "low_resolution": false,
+      "width": 1000,
+      "height": 700
+    },
+    "chart_type_hint": "bar",
+    "evidence_hint": "B",
+    "text_crops": [
+      {
+        "name": "title",
+        "path": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\title.png",
+        "bbox": [
+          382,
+          65,
+          678,
+          99
+        ],
+        "scale": 2.0
+      },
+      {
+        "name": "x_axis",
+        "path": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\x_axis.png",
+        "bbox": [
+          105,
+          0,
+          855,
+          45
+        ],
+        "scale": 2.0
+      },
+      {
+        "name": "y_axis",
+        "path": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\y_axis.png",
+        "bbox": [
+          76,
+          145,
+          135,
+          607
+        ],
+        "scale": 2.0
+      },
+      {
+        "name": "legend",
+        "path": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\legend.png",
+        "bbox": [
+          252,
+          65,
+          548,
+          99
+        ],
+        "scale": 2.0
+      },
+      {
+        "name": "x-ticks",
+        "path": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\x-ticks.png",
+        "bbox": [
+          205,
+          593,
+          854,
+          623
+        ],
+        "scale": 2.0
+      },
+      {
+        "name": "y-ticks",
+        "path": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\work\\inspect\\text-crops\\y-ticks.png",
+        "bbox": [
+          84,
+          146,
+          136,
+          605
+        ],
+        "scale": 2.0
+      }
+    ],
+    "text_regions": {
+      "title": [
+        390,
+        73,
+        670,
+        91
+      ],
+      "x_axis": [
+        113,
+        0,
+        847,
+        37
+      ],
+      "y_axis": [
+        84,
+        153,
+        127,
+        599
+      ],
+      "legend": [
+        260,
+        73,
+        540,
+        91
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "outputs": [
+    "..\\outputs\\fig-04-revenue-mix.pdf",
+    "..\\outputs\\fig-04-revenue-mix_300dpi.png",
+    "..\\outputs\\fig-04-revenue-mix_600dpi.png",
+    "..\\outputs\\fig-04-revenue-mix_data.csv"
+  ],
+  "rows_used": 12,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "figure": {
+    "recipe": "stacked_bar_total_line",
+    "x": [
+      "电商",
+      "直播",
+      "私域",
+      "门店"
+    ],
+    "series": [
+      "2024Q4",
+      "2025Q1",
+      "2025Q2"
+    ],
+    "palette": "okabe_ito",
+    "layout": null,
+    "width_mm": 150,
+    "height_mm": 90.0,
+    "visual_verified": false,
+    "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "data": "examples/fixtures/经营实验_渠道月度.csv",
+  "scenes": {
+    "academic": {
+      "skill": "viz-scene-academic",
+      "engine": "viz-python",
+      "recipe": "forest_interval_diamond",
+      "title": "",
+      "panel_label": "a",
+      "width_mm": 183,
+      "layout": "clean_open",
+      "font_pt": "6–8",
+      "palette": "okabe_ito",
+      "formats": ["pdf", "svg", "png_300", "png_600"],
+      "notes": "图内无大标题；图注独立；n 与 95% CI 必须出现；不编造 p 值"
+    },
+    "bi": {
+      "skill": "viz-scene-bi",
+      "engine": "viz-web",
+      "template": "12-column KPI dashboard",
+      "title_mode": "modules + As-of + target",
+      "viewport": ["1280x800", "390x844"],
+      "palette": "IBCS actual solid / target dashed / RAG status",
+      "formats": ["html", "csv", "png_desktop", "png_mobile"],
+      "notes": "目标完成率必须有目标值；实际/目标双重编码；筛选联动"
+    },
+    "story": {
+      "skill": "viz-scene-story",
+      "engine": "viz-python",
+      "recipe": "stacked_bar_total_line",
+      "title_mode": "Action Title",
+      "width_mm": 254,
+      "aspect": "16:9",
+      "font_px_min": 14,
+      "palette": "single focal #0072B2 + context #CBD5E1",
+      "formats": ["svg", "png_300", "png_600"],
+      "notes": "单一焦点；直接标注；来源与假设固定左下；不截断基线"
+    }
+  }
+}

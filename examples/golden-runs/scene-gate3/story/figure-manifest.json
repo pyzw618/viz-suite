@@ -1,0 +1,11 @@
+{
+  "palette": "okabe_ito",
+  "layout_family": "clean_open",
+  "width_mm": 254,
+  "series_color_map": {
+    "直播": "#0072B2",
+    "电商": "#CBD5E1",
+    "门店": "#CBD5E1",
+    "私域": "#CBD5E1"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "chart_type": "bar",
+  "evidence_level": "C",
+  "plot_bbox": [
+    66,
+    70,
+    357,
+    238
+  ],
+  "axes": {
+    "x": {
+      "scale": "category",
+      "positions": [
+        83.46000000000001,
+        147.48000000000002,
+        211.50000000000003,
+        275.52000000000004,
+        339.54
+      ],
+      "values": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "mapping": {
+        "A": 83.46000000000001,
+        "B": 147.48000000000002,
+        "C": 211.50000000000003,
+        "D": 275.52000000000004,
+        "E": 339.54
+      },
+      "r2": 1.0
+    },
+    "y": {
+      "scale": "linear",
+      "a": -0.16534391534391543,
+      "b": 38.7962962962963,
+      "r2": 1.0,
+      "positions": [
+        83.44,
+        113.67999999999999,
+        143.92,
+        174.16,
+        204.39999999999998,
+        234.64
+      ],
+      "values": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "direction": "y"
+    }
+  },
+  "series": [
+    {
+      "name": "Revenue",
+      "color": "#0072B2"
+    }
+  ],
+  "title": "Monthly Revenue by Channel",
+  "warnings": [
+    "C 级：x 刻度未检出，使用均匀位置近似",
+    "C 级：y 刻度未检出，使用均匀位置近似",
+    "C 级：低清/近似输入，数据仅作骨架参考，不承诺 5% 误差"
+  ],
+  "no_compensation": true,
+  "ylim": [
+    -0.556,
+    27.222
+  ],
+  "xlim": [
+    -0.65,
+    4.65
+  ],
+  "precision_claimed": false,
+  "data_csv": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\lowres\\bar_lowres_data.csv",
+  "code": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\lowres\\reproduction.py",
+  "rows": 5,
+  "status": "partial"
+}

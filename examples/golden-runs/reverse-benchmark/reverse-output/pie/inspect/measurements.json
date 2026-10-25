@@ -1,0 +1,161 @@
+{
+  "image": "examples\\golden-runs\\reverse-benchmark\\images\\pie.png",
+  "width": 1000,
+  "height": 700,
+  "dpi": null,
+  "plot_bbox": [
+    259,
+    123,
+    740,
+    604
+  ],
+  "axis": {
+    "type": "none",
+    "note": "pie 无坐标轴"
+  },
+  "content_bbox": [
+    259,
+    123,
+    740,
+    604
+  ],
+  "x_ticks_px": [],
+  "y_ticks_px": [],
+  "palette": [
+    {
+      "hex": "#0072B2",
+      "share": 0.3502,
+      "bgr": [
+        178,
+        114,
+        0
+      ]
+    },
+    {
+      "hex": "#D55E00",
+      "share": 0.2483,
+      "bgr": [
+        0,
+        94,
+        213
+      ]
+    },
+    {
+      "hex": "#009E73",
+      "share": 0.1983,
+      "bgr": [
+        115,
+        158,
+        0
+      ]
+    },
+    {
+      "hex": "#CC79A7",
+      "share": 0.1177,
+      "bgr": [
+        167,
+        121,
+        204
+      ]
+    },
+    {
+      "hex": "#56B4E8",
+      "share": 0.0791,
+      "bgr": [
+        232,
+        180,
+        86
+      ]
+    }
+  ],
+  "pie": {
+    "center": [
+      499.8,
+      363.6
+    ],
+    "radius": 240.6,
+    "aspect": 1.001,
+    "fill_ratio": 1.0,
+    "is_3d": false
+  },
+  "quality": {
+    "sharpness": 472.59,
+    "low_resolution": false,
+    "width": 1000,
+    "height": 700
+  },
+  "chart_type_hint": "pie",
+  "evidence_hint": "B",
+  "text_crops": [
+    {
+      "name": "title",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie\\inspect\\text-crops\\title.png",
+      "bbox": [
+        382,
+        56,
+        585,
+        117
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "x_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie\\inspect\\text-crops\\x_axis.png",
+      "bbox": [
+        535,
+        6,
+        583,
+        31
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "y_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie\\inspect\\text-crops\\y_axis.png",
+      "bbox": [
+        213,
+        433,
+        253,
+        457
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "legend",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie\\inspect\\text-crops\\legend.png",
+      "bbox": [
+        123,
+        56,
+        326,
+        117
+      ],
+      "scale": 2.0
+    }
+  ],
+  "text_regions": {
+    "title": [
+      390,
+      64,
+      577,
+      109
+    ],
+    "x_axis": [
+      543,
+      14,
+      575,
+      23
+    ],
+    "y_axis": [
+      221,
+      441,
+      245,
+      449
+    ],
+    "legend": [
+      131,
+      64,
+      318,
+      109
+    ]
+  }
+}

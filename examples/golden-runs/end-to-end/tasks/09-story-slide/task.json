@@ -1,0 +1,29 @@
+{
+  "id": "09-story-slide",
+  "title": "高管汇报 16:9 故事图",
+  "prompt": "把上半年渠道变化做成一页 16:9 高管汇报图：Action Title、单焦点色、灰色背景系列、直接标注。",
+  "route": {
+    "primary": "viz-python",
+    "scenes": [
+      "viz-scene-story"
+    ],
+    "support": [
+      "viz-audit"
+    ],
+    "not_use": [
+      "viz-web"
+    ]
+  },
+  "inputs": [
+    "examples/fixtures/经营实验_渠道月度.csv"
+  ],
+  "outputs": [
+    "examples/golden-runs/scene-gate3/story/outputs/story-revenue-shift.svg",
+    "examples/golden-runs/scene-gate3/story/outputs/story-revenue-shift_300dpi.png",
+    "examples/golden-runs/scene-gate3/story/outputs/story-revenue-shift_600dpi.png",
+    "examples/golden-runs/scene-gate3/story/audit.json",
+    "examples/golden-runs/scene-gate3/story/render.json"
+  ],
+  "verification": "254×142.9 mm；Action Title；直播焦点/其余冷灰；audit 17/17；目检通过。",
+  "notes": "标题是结论；来源/假设左下；没有截断基线。"
+}

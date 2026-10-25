@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>力导向网络 · D3 v7</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 10px;color:var(--viz-muted);font-size:13px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 8px;color:var(--viz-muted);font-size:12px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+#chart{width:100%;height:calc(100vh - 190px);min-height:420px}
+svg{display:block;width:100%;height:100%}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}.legend{font-size:11px;gap:10px}#chart{height:calc(100vh - 175px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>三个社区内部连接紧密，跨社区桥接集中在枢纽节点</h1><p>节点大小=加权度｜灰色边=跨社区｜可拖拽节点</p></header>
+<div class="legend">
+  <span><i style="background:#0072B2"></i>社区 A</span>
+  <span><i style="background:#E69F00"></i>社区 B</span>
+  <span><i style="background:#CC79A7"></i>社区 C</span>
+</div>
+<figure>
+  <div id="chart" role="img" aria-label="三个社区的网络图，社区内部连接密集，存在跨社区枢纽连接"></div>
+  <figcaption>数据来源：演示数据（合成）｜D3 v7｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/d3.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal')};
+const GROUP_COLORS = {'社区 A': '#0072B2', '社区 B': '#E69F00', '社区 C': '#CC79A7'};
+const groups = ['社区 A', '社区 B', '社区 C'];
+let seed = 42;
+const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+const nodes = [];
+const links = [];
+for (const g of groups) {
+  for (let i = 0; i < 14; i++) nodes.push({id: `${g.slice(-1)}${String(i).padStart(2, '0')}`, group: g, r: 3 + rand() * 4});
+}
+for (const g of groups) {
+  const members = nodes.filter(n => n.group === g);
+  for (let i = 0; i < 34; i++) {
+    const a = members[Math.floor(rand() * members.length)];
+    const b = members[Math.floor(rand() * members.length)];
+    if (a !== b) links.push({source: a.id, target: b.id, weight: 1 + Math.floor(rand() * 3)});
+  }
+}
+const hubs = groups.map(g => nodes.filter(n => n.group === g)[0]);
+for (let i = 0; i < hubs.length; i++) for (let j = i + 1; j < hubs.length; j++) {
+  links.push({source: hubs[i].id, target: hubs[j].id, weight: 3});
+}
+const byId = new Map(nodes.map(n => [n.id, n]));
+const degree = new Map(nodes.map(n => [n.id, 0]));
+links.forEach(l => { degree.set(l.source, degree.get(l.source) + l.weight); degree.set(l.target, degree.get(l.target) + l.weight); });
+const maxDeg = Math.max(...degree.values());
+
+function draw() {
+  const host = document.getElementById('chart');
+  const width = host.clientWidth;
+  const height = host.clientHeight;
+  const mobile = width < 600;
+  d3.select(host).selectAll('*').remove();
+  const svg = d3.select(host).append('svg').attr('viewBox', `0 0 ${width} ${height}`).attr('width', width).attr('height', height);
+  const defs = svg.append('defs');
+  const glow = defs.append('filter').attr('id', 'soft');
+  glow.append('feGaussianBlur').attr('stdDeviation', 1.2);
+
+  const simNodes = nodes.map(d => Object.assign({}, d));
+  const simLinks = links.map(d => Object.assign({}, d));
+  const centers = mobile
+    ? {'社区 A': [width * 0.26, height * 0.24], '社区 B': [width * 0.74, height * 0.56], '社区 C': [width * 0.50, height * 0.82]}
+    : {'社区 A': [width * 0.28, height * 0.38], '社区 B': [width * 0.72, height * 0.68], '社区 C': [width * 0.52, height * 0.22]};
+  simNodes.forEach(d => {
+    const [cx, cy] = centers[d.group];
+    d.x = cx + (rand() - 0.5) * 80;
+    d.y = cy + (rand() - 0.5) * 80;
+  });
+  const sim = d3.forceSimulation(simNodes)
+    .force('link', d3.forceLink(simLinks).id(d => d.id).distance(d => 48 + 7 * d.weight).strength(0.6))
+    .force('charge', d3.forceManyBody().strength(mobile ? -70 : -110))
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force('x', d3.forceX(d => centers[d.group][0]).strength(0.075))
+    .force('y', d3.forceY(d => centers[d.group][1]).strength(0.075))
+    .force('collide', d3.forceCollide().radius(d => 5 + d.r));
+  sim.stop();
+  for (let i = 0; i < 260; i++) sim.tick();
+
+  const gLinks = svg.append('g').attr('stroke-linecap', 'round');
+  const link = gLinks.selectAll('line').data(simLinks).join('line')
+    .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+    .attr('x2', d => d.target.x).attr('y2', d => d.target.y)
+    .attr('stroke', d => d.source.group === d.target.group ? GROUP_COLORS[d.source.group] : ROLE.muted)
+    .attr('stroke-opacity', d => d.source.group === d.target.group ? 0.22 : 0.42)
+    .attr('stroke-width', d => d.source.group === d.target.group ? 0.5 + 0.35 * d.weight : 0.9 + 0.35 * d.weight);
+
+  const node = svg.append('g').selectAll('g').data(simNodes).join('g').attr('cursor', 'grab');
+  node.append('circle')
+    .attr('cx', 0).attr('cy', 0)
+    .attr('r', d => 3 + 9 * (degree.get(d.id) / maxDeg))
+    .attr('fill', d => GROUP_COLORS[d.group]).attr('fill-opacity', 0.92)
+    .attr('stroke', '#fff').attr('stroke-width', 1.2)
+    .append('title').text(d => `${d.id}｜${d.group}｜加权度 ${degree.get(d.id)}`);
+
+  node.filter(d => {
+    const members = simNodes.filter(n => n.group === d.group).sort((a, b) => degree.get(b.id) - degree.get(a.id));
+    return members.slice(0, mobile ? 1 : 2).some(n => n.id === d.id);
+  }).append('text')
+    .attr('x', 8).attr('y', 3)
+    .text(d => d.id).attr('font-size', mobile ? 9 : 10)
+    .attr('fill', ROLE.text)
+    .attr('paint-order', 'stroke').attr('stroke', '#fff').attr('stroke-width', 3);
+
+  node.call(d3.drag()
+    .on('start', (event, d) => { if (!event.active) sim.alphaTarget(0.2).restart(); d.fx = d.x; d.fy = d.y; })
+    .on('drag', (event, d) => { d.fx = event.x; d.fy = event.y; })
+    .on('end', (event, d) => { if (!event.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+  sim.on('tick', () => {
+    link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    node.attr('transform', d => `translate(${d.x},${d.y})`);
+    node.select('circle').attr('cx', 0).attr('cy', 0);
+    node.select('text').attr('x', 8).attr('y', 3);
+    node.selectAll('circle').attr('cx', 0).attr('cy', 0);
+    node.selectAll('text').attr('x', 8).attr('y', 3);
+  });
+  // 初次静态渲染：把 circle/text 放到最终位置
+  node.attr('transform', d => `translate(${d.x},${d.y})`);
+}
+draw();
+let timer = null;
+window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(draw, 160); });
+</script>
+</body>
+</html>

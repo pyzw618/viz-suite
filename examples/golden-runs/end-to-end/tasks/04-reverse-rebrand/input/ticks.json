@@ -1,0 +1,32 @@
+{
+  "title": "Monthly Revenue by Channel",
+  "x_label": "Channel",
+  "y_label": "Revenue (k)",
+  "x": {
+    "values": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "scale": "category"
+  },
+  "y": {
+    "values": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25
+    ],
+    "scale": "linear"
+  },
+  "series": [
+    {
+      "name": "Revenue",
+      "color": "#0072B2"
+    }
+  ]
+}

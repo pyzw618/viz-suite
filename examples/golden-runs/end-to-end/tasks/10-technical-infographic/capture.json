@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples\\golden-runs\\end-to-end\\tasks\\10-technical-infographic\\shots\\pipeline_desktop.png"
+  ],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "cdp",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 800
+    }
+  ],
+  "captures": [
+    {
+      "file": "examples/golden-runs/end-to-end/tasks/10-technical-infographic/outputs/pipeline.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\end-to-end\\tasks\\10-technical-infographic\\shots\\pipeline_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    }
+  ],
+  "browser_version": "Chrome/156.0.8078.48"
+}

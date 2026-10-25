@@ -1,0 +1,39 @@
+{
+  "title": "Share by Region",
+  "categories": [
+    "North",
+    "South",
+    "East",
+    "West",
+    "Central"
+  ],
+  "axes_rect": [
+    0.12,
+    0.1,
+    0.76,
+    0.76
+  ],
+  "series": [
+    {
+      "name": "North",
+      "color": "#0072B2"
+    },
+    {
+      "name": "South",
+      "color": "#D55E00"
+    },
+    {
+      "name": "East",
+      "color": "#009E73"
+    },
+    {
+      "name": "West",
+      "color": "#CC79A7"
+    },
+    {
+      "name": "Central",
+      "color": "#56B4E9"
+    }
+  ],
+  "unit": "percent"
+}

@@ -1,0 +1,18 @@
+{
+  "eyebrow": "6 月转化复盘",
+  "title": "从曝光到复购，支付转化率 4.3%",
+  "claim": "曝光 120 万次，支付 5.2 万单；复购 1.6 万单，复购率 30.8%。",
+  "subtitle": "2025 年 6 月｜全渠道合并口径",
+  "icon": "filter",
+  "layout": "funnel",
+  "style": "editorial",
+  "source": "数据来源：增长分析部 2025 年 6 月转化漏斗（合成演示数据）",
+  "footnote": "转化率 = 下一阶段人数 ÷ 上一阶段人数；去重口径为用户数。",
+  "modules": [
+    {"title": "曝光", "value": "120", "unit": "万", "body": "信息流、搜索与私域触达合计", "meta": "起点｜100%", "icon": "eye"},
+    {"title": "点击", "value": "48", "unit": "万", "body": "点击率 40.0%", "meta": "点击率 40.0%", "icon": "target"},
+    {"title": "加购", "value": "12", "unit": "万", "body": "加购率 25.0%", "meta": "加购率 25.0%", "icon": "shopping-cart"},
+    {"title": "支付", "value": "5.2", "unit": "万", "body": "支付转化率 43.3%", "meta": "支付率 43.3%", "icon": "credit-card"},
+    {"title": "复购", "value": "1.6", "unit": "万", "body": "复购率 30.8%", "meta": "复购率 30.8%", "icon": "repeat"}
+  ]
+}

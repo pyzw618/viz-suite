@@ -1,0 +1,23 @@
+# viz-suite · soft_grid
+# 横向柔和虚线网格，仅保留左/下轴。对应 viz_style.apply_style(ax, "soft_grid")。
+axes.spines.top: False
+axes.spines.right: False
+axes.linewidth: 0.8
+xtick.direction: out
+ytick.direction: out
+xtick.major.size: 3.0
+ytick.major.size: 3.0
+axes.grid: True
+axes.grid.axis: y
+grid.color: E2E8F0
+grid.linestyle: --
+grid.linewidth: 0.6
+grid.alpha: 0.35
+axes.axisbelow: True
+legend.frameon: False
+axes.prop_cycle: cycler('color', ['0072B2', 'E69F00', 'CC79A7', '009E73', 'D55E00', '56B4E9'])
+font.family: sans-serif
+font.sans-serif: Arial, Microsoft YaHei, SimHei, DejaVu Sans, sans-serif
+axes.unicode_minus: False
+pdf.fonttype: 42
+ps.fonttype: 42

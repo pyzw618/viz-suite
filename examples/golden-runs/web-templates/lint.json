@@ -1,0 +1,1321 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "summary": {
+    "files": 21,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 168,
+    "total_checks": 168
+  },
+  "checks": [
+    {
+      "file": "area.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "area.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "area.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "area.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "area.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "area.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "area.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "area.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "bar.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "bar.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "bar.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "bar.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "bar.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "bar.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "bar.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "bar.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "boxplot.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "boxplot.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "boxplot.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "boxplot.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "boxplot.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "boxplot.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "boxplot.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "boxplot.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "bubble.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "bubble.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "bubble.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "bubble.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "bubble.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "bubble.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "bubble.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "bubble.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "donut.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "donut.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "donut.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "donut.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "donut.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "donut.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "donut.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "donut.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "funnel.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "funnel.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "funnel.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "funnel.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "funnel.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "funnel.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "funnel.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "funnel.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "gauge.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "gauge.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "gauge.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "gauge.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "gauge.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "gauge.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "gauge.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "gauge.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "hbar.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "hbar.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "hbar.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "hbar.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "hbar.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "hbar.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "hbar.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "hbar.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "heatmap.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "heatmap.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "heatmap.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "heatmap.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "heatmap.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "heatmap.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "heatmap.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "heatmap.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "line.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "line.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "line.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "line.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "line.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "line.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "line.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "line.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "radar.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "radar.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "radar.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "radar.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "radar.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "radar.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "radar.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "radar.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "sankey.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "sankey.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "sankey.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "sankey.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "sankey.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "sankey.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "sankey.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "sankey.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "scatter.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "scatter.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "scatter.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "scatter.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "scatter.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "scatter.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "scatter.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "scatter.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "stacked_bar.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "stacked_bar.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "stacked_bar.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "stacked_bar.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "stacked_bar.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "stacked_bar.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "stacked_bar.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "stacked_bar.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "treemap.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "treemap.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "treemap.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "treemap.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "treemap.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "treemap.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "treemap.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "treemap.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "chord.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "chord.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "chord.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "chord.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "chord.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "chord.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "chord.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "chord.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "force_network.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "force_network.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "force_network.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "force_network.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "force_network.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "force_network.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "force_network.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "force_network.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "line_transition.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "line_transition.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "line_transition.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "line_transition.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "line_transition.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "line_transition.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "line_transition.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "line_transition.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "treemap.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "treemap.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "treemap.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "treemap.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "treemap.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "treemap.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "treemap.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "treemap.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "sales_dashboard.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "sales_dashboard.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "sales_dashboard.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "sales_dashboard.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "sales_dashboard.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "sales_dashboard.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "sales_dashboard.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "sales_dashboard.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    },
+    {
+      "file": "kpi_cards.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "kpi_cards.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "kpi_cards.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "kpi_cards.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "kpi_cards.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "kpi_cards.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "kpi_cards.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "kpi_cards.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    }
+  ],
+  "metrics": [
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\area.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\bar.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\boxplot.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\bubble.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\donut.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\funnel.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\gauge.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\hbar.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\heatmap.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\line.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\radar.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\sankey.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\scatter.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\stacked_bar.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\treemap.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\chord.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\force_network.html",
+      "tags": 22,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\line_transition.html",
+      "tags": 18,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\treemap.html",
+      "tags": 15,
+      "inline_scripts": 1,
+      "containers": 1
+    },
+    {
+      "file": "skills\\viz-web\\templates\\dashboard\\sales_dashboard.html",
+      "tags": 52,
+      "inline_scripts": 1,
+      "containers": 3
+    },
+    {
+      "file": "skills\\viz-web\\templates\\kpi\\kpi_cards.html",
+      "tags": 48,
+      "inline_scripts": 0,
+      "containers": 1
+    }
+  ]
+}

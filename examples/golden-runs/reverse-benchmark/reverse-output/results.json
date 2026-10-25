@@ -1,0 +1,133 @@
+{
+  "gate": {
+    "clean_median_error_pct": 0.23,
+    "max_median_error_pct": 0.863,
+    "min_ssim": 0.9488,
+    "error_pass": true,
+    "ssim_pass": true,
+    "lowres_pass": true,
+    "three_d_pass": true,
+    "pass": true
+  },
+  "clean": {
+    "bar": {
+      "evidence": "B",
+      "rows": 5,
+      "median_error_pct": 0.192,
+      "ssim": 0.9488,
+      "delta_e": 1.504,
+      "layout_iou": 1.0,
+      "status": "success",
+      "warnings": []
+    },
+    "line": {
+      "evidence": "B",
+      "rows": 12,
+      "median_error_pct": 0.223,
+      "ssim": 0.996,
+      "delta_e": 0.084,
+      "layout_iou": 1.0,
+      "status": "success",
+      "warnings": []
+    },
+    "scatter": {
+      "evidence": "B",
+      "rows": 20,
+      "median_error_pct": 0.23,
+      "ssim": 0.9991,
+      "delta_e": 0.014,
+      "layout_iou": 1.0,
+      "status": "success",
+      "warnings": []
+    },
+    "pie": {
+      "evidence": "B",
+      "rows": 5,
+      "median_error_pct": 0.863,
+      "ssim": 0.9834,
+      "delta_e": 0.252,
+      "layout_iou": 0.9946,
+      "status": "success",
+      "warnings": []
+    },
+    "heatmap": {
+      "evidence": "B",
+      "rows": 30,
+      "median_error_pct": 0.423,
+      "ssim": 0.9962,
+      "delta_e": 0.199,
+      "layout_iou": 0.9918,
+      "status": "success",
+      "warnings": []
+    }
+  },
+  "lowres": {
+    "evidence": "C",
+    "status": "partial",
+    "precision_claimed": false,
+    "warnings": [
+      "C 级：x 刻度未检出，使用均匀位置近似",
+      "C 级：y 刻度未检出，使用均匀位置近似",
+      "C 级：低清/近似输入，数据仅作骨架参考，不承诺 5% 误差"
+    ],
+    "correct_downgrade": true
+  },
+  "three_d": {
+    "evidence": "X",
+    "refused": true,
+    "status": "partial",
+    "warnings": [
+      "X 级：3D/视角不可逆，已拒绝数值反推"
+    ],
+    "correct_refusal": true
+  },
+  "source_level": {
+    "echarts_source.html": {
+      "evidence": "SOURCE",
+      "format": "echarts",
+      "rows": 5,
+      "status": "success",
+      "exact_error_pct": 0.0,
+      "browser_snippet": true,
+      "warnings": []
+    },
+    "chartjs_source.html": {
+      "evidence": "SOURCE",
+      "format": "chartjs",
+      "rows": 12,
+      "status": "success",
+      "exact_error_pct": 0.0,
+      "browser_snippet": true,
+      "warnings": []
+    },
+    "plotly_source.html": {
+      "evidence": "SOURCE",
+      "format": "plotly",
+      "rows": 5,
+      "status": "success",
+      "exact_error_pct": 0.0,
+      "browser_snippet": true,
+      "warnings": []
+    },
+    "bar_source.svg": {
+      "evidence": "SOURCE",
+      "format": "svg",
+      "rows": 5,
+      "status": "success",
+      "exact_error_pct": 0.0,
+      "browser_snippet": true,
+      "warnings": []
+    },
+    "generic_c.html": {
+      "evidence": "GUESS",
+      "format": null,
+      "rows": 0,
+      "status": "partial",
+      "exact_error_pct": null,
+      "browser_snippet": true,
+      "warnings": [
+        "未找到可静态读取的图表配置：已降级为 C 级结构骨架，数据为 TODO"
+      ]
+    }
+  }
+}

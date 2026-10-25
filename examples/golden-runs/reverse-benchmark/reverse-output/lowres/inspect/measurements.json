@@ -1,0 +1,152 @@
+{
+  "image": "examples\\golden-runs\\reverse-benchmark\\images\\bar_lowres.png",
+  "width": 400,
+  "height": 280,
+  "dpi": null,
+  "plot_bbox": [
+    66,
+    70,
+    357,
+    238
+  ],
+  "axis": {
+    "type": "none",
+    "note": "未检测到坐标轴，使用内容包围盒"
+  },
+  "content_bbox": [
+    66,
+    70,
+    357,
+    238
+  ],
+  "x_ticks_px": [],
+  "y_ticks_px": [],
+  "palette": [
+    {
+      "hex": "#0072B2",
+      "share": 0.8213,
+      "bgr": [
+        178,
+        114,
+        0
+      ]
+    },
+    {
+      "hex": "#0474B4",
+      "share": 0.0591,
+      "bgr": [
+        180,
+        116,
+        4
+      ]
+    },
+    {
+      "hex": "#0068AC",
+      "share": 0.0517,
+      "bgr": [
+        172,
+        104,
+        0
+      ]
+    },
+    {
+      "hex": "#9AC7E0",
+      "share": 0.0269,
+      "bgr": [
+        224,
+        199,
+        154
+      ]
+    },
+    {
+      "hex": "#65AAD1",
+      "share": 0.0228,
+      "bgr": [
+        209,
+        170,
+        101
+      ]
+    }
+  ],
+  "pie": null,
+  "quality": {
+    "sharpness": 787.35,
+    "low_resolution": true,
+    "width": 400,
+    "height": 280
+  },
+  "chart_type_hint": "bar",
+  "evidence_hint": "C",
+  "text_crops": [
+    {
+      "name": "title",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\lowres\\inspect\\text-crops\\title.png",
+      "bbox": [
+        148,
+        22,
+        273,
+        44
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "x_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\lowres\\inspect\\text-crops\\x_axis.png",
+      "bbox": [
+        193,
+        3,
+        228,
+        20
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "y_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\lowres\\inspect\\text-crops\\y_axis.png",
+      "bbox": [
+        27,
+        119,
+        53,
+        162
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "legend",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\lowres\\inspect\\text-crops\\legend.png",
+      "bbox": [
+        82,
+        22,
+        207,
+        44
+      ],
+      "scale": 2.0
+    }
+  ],
+  "text_regions": {
+    "title": [
+      156,
+      30,
+      265,
+      36
+    ],
+    "x_axis": [
+      201,
+      11,
+      220,
+      12
+    ],
+    "y_axis": [
+      35,
+      127,
+      45,
+      154
+    ],
+    "legend": [
+      90,
+      30,
+      199,
+      36
+    ]
+  }
+}

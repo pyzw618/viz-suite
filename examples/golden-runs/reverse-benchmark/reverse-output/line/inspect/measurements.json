@@ -1,0 +1,216 @@
+{
+  "image": "examples\\golden-runs\\reverse-benchmark\\images\\line.png",
+  "width": 1000,
+  "height": 700,
+  "dpi": null,
+  "plot_bbox": [
+    130,
+    105,
+    930,
+    595
+  ],
+  "axis": {
+    "type": "cartesian",
+    "y_axis_x": 130,
+    "x_axis_y": 595,
+    "y_extent": [
+      105,
+      595
+    ],
+    "x_extent": [
+      125,
+      930
+    ]
+  },
+  "content_bbox": [
+    106,
+    118,
+    891,
+    614
+  ],
+  "x_ticks_px": [
+    173,
+    316,
+    460,
+    602,
+    744,
+    887
+  ],
+  "y_ticks_px": [
+    136,
+    210,
+    289,
+    365,
+    442,
+    516,
+    595
+  ],
+  "palette": [
+    {
+      "hex": "#0474B3",
+      "share": 0.3667,
+      "bgr": [
+        179,
+        116,
+        4
+      ]
+    },
+    {
+      "hex": "#D55F02",
+      "share": 0.3165,
+      "bgr": [
+        2,
+        95,
+        213
+      ]
+    },
+    {
+      "hex": "#8FC1DD",
+      "share": 0.0793,
+      "bgr": [
+        221,
+        193,
+        143
+      ]
+    },
+    {
+      "hex": "#4799C7",
+      "share": 0.0773,
+      "bgr": [
+        199,
+        153,
+        71
+      ]
+    },
+    {
+      "hex": "#DE8137",
+      "share": 0.0523,
+      "bgr": [
+        55,
+        129,
+        222
+      ]
+    },
+    {
+      "hex": "#F0C6A5",
+      "share": 0.0507,
+      "bgr": [
+        165,
+        198,
+        240
+      ]
+    },
+    {
+      "hex": "#E7A36E",
+      "share": 0.0492,
+      "bgr": [
+        110,
+        163,
+        231
+      ]
+    }
+  ],
+  "pie": null,
+  "quality": {
+    "sharpness": 946.08,
+    "low_resolution": false,
+    "width": 1000,
+    "height": 700
+  },
+  "chart_type_hint": "line",
+  "evidence_hint": "B",
+  "text_crops": [
+    {
+      "name": "title",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\inspect\\text-crops\\title.png",
+      "bbox": [
+        410,
+        65,
+        650,
+        99
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "x_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\inspect\\text-crops\\x_axis.png",
+      "bbox": [
+        105,
+        0,
+        897,
+        45
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "y_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\inspect\\text-crops\\y_axis.png",
+      "bbox": [
+        75,
+        124,
+        135,
+        607
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "legend",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\inspect\\text-crops\\legend.png",
+      "bbox": [
+        280,
+        65,
+        520,
+        99
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "x-ticks",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\inspect\\text-crops\\x-ticks.png",
+      "bbox": [
+        163,
+        593,
+        897,
+        623
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "y-ticks",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\inspect\\text-crops\\y-ticks.png",
+      "bbox": [
+        84,
+        126,
+        136,
+        605
+      ],
+      "scale": 2.0
+    }
+  ],
+  "text_regions": {
+    "title": [
+      418,
+      73,
+      642,
+      91
+    ],
+    "x_axis": [
+      113,
+      0,
+      889,
+      37
+    ],
+    "y_axis": [
+      83,
+      132,
+      127,
+      599
+    ],
+    "legend": [
+      288,
+      73,
+      512,
+      91
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "report": {
+    "base": "skills\\viz-python\\recipes\\grouped_errorbar_bar.py",
+    "adapted": "examples\\golden-runs\\dirty-csv-walkthrough\\work\\grouped_errorbar_bar.py",
+    "base_style_args": 33,
+    "adapted_style_args": 33,
+    "base_layers": {
+      "barh": 1,
+      "errorbar": 2,
+      "bar": 1,
+      "axvline": 1,
+      "annotate": 2,
+      "axhline": 1
+    },
+    "adapted_layers": {
+      "barh": 1,
+      "errorbar": 2,
+      "bar": 1,
+      "axvline": 1,
+      "annotate": 2,
+      "axhline": 1
+    },
+    "missing_layers": {},
+    "missing_features": [],
+    "added_features": [],
+    "changed_values": [],
+    "issues": []
+  },
+  "verdict": "pass"
+}

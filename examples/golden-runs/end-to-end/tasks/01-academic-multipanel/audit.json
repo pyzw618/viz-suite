@@ -1,0 +1,268 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "visual_verified": false,
+  "warnings": [
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 4,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 23,
+    "total_checks": 23
+  },
+  "checks": [
+    {
+      "file": "fig-academic-multipanel.pdf",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=38.4；protanopia ΔE=17.9；deuteranopia ΔE=26.5；tritanopia ΔE=12.4（阈值 ΔE≥10.0）",
+      "min_delta_e": 12.4
+    },
+    {
+      "file": "fig-academic-multipanel.pdf",
+      "check": "pdf_page_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 页；首页 183.0×76.9 mm"
+    },
+    {
+      "file": "fig-academic-multipanel.pdf",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页宽 183.01mm，目标 183.0mm"
+    },
+    {
+      "file": "fig-academic-multipanel.pdf",
+      "check": "pdf_fonts",
+      "severity": "info",
+      "passed": true,
+      "detail": "2 个字体全部嵌入"
+    },
+    {
+      "file": "fig-academic-multipanel.pdf",
+      "check": "pdf_vector",
+      "severity": "info",
+      "passed": true,
+      "detail": "内容流含约 389 个矢量绘制操作（文字/图元保持矢量）"
+    },
+    {
+      "file": "fig-academic-multipanel.pdf",
+      "check": "pdf_content",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页文本 349 字符，图像 0 个，矢量操作约 389 个"
+    },
+    {
+      "file": "fig-academic-multipanel.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 183.0×76.9 mm"
+    },
+    {
+      "file": "fig-academic-multipanel.svg",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 183.01mm，目标 183.0mm"
+    },
+    {
+      "file": "fig-academic-multipanel.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "46 个文本节点，字体：['Arial', 'DejaVu Sans', 'Microsoft YaHei', 'Segoe UI', 'SimHei', 'sans-serif']"
+    },
+    {
+      "file": "fig-academic-multipanel.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "fig-academic-multipanel.svg",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=38.4；protanopia ΔE=17.9；deuteranopia ΔE=26.5；tritanopia ΔE=12.4（阈值 ΔE≥10.0）",
+      "min_delta_e": 12.4
+    },
+    {
+      "file": "fig-academic-multipanel_300dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=38.4；protanopia ΔE=17.9；deuteranopia ΔE=26.5；tritanopia ΔE=12.4（阈值 ΔE≥10.0）",
+      "min_delta_e": 12.4
+    },
+    {
+      "file": "fig-academic-multipanel_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 183.0×76.8 mm"
+    },
+    {
+      "file": "fig-academic-multipanel_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 182.97mm，目标 183.0mm（容差 ±1.83mm）"
+    },
+    {
+      "file": "fig-academic-multipanel_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "fig-academic-multipanel_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "fig-academic-multipanel_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #1F2937 / 背景 #FFFFFF 对比度 14.68:1（正文要求 ≥4.5:1）",
+      "ratio": 14.68
+    },
+    {
+      "file": "fig-academic-multipanel_600dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=38.4；protanopia ΔE=17.9；deuteranopia ΔE=26.5；tritanopia ΔE=12.4（阈值 ΔE≥10.0）",
+      "min_delta_e": 12.4
+    },
+    {
+      "file": "fig-academic-multipanel_600dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "600 dpi，物理尺寸 183.0×76.8 mm"
+    },
+    {
+      "file": "fig-academic-multipanel_600dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 183.01mm，目标 183.0mm（容差 ±1.83mm）"
+    },
+    {
+      "file": "fig-academic-multipanel_600dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "fig-academic-multipanel_600dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "fig-academic-multipanel_600dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #1F2937 / 背景 #FFFFFF 对比度 14.68:1（正文要求 ≥4.5:1）",
+      "ratio": 14.68
+    }
+  ],
+  "metrics": [
+    {
+      "file": "outputs\\fig-academic-multipanel.pdf",
+      "pages": 1,
+      "width_mm": 183.01,
+      "height_mm": 76.86,
+      "page_size_mm": [
+        183.01,
+        76.86
+      ],
+      "fonts": [
+        {
+          "name": "/ELUGPM+ArialMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/ELUGPM+Arial-BoldMT",
+          "subtype": "/Type0",
+          "embedded": true
+        }
+      ],
+      "text_chars": 349,
+      "images": 0,
+      "vector_ops_approx": 389
+    },
+    {
+      "file": "outputs\\fig-academic-multipanel.svg",
+      "width_mm": 183.01,
+      "height_mm": 76.86,
+      "text_elements": 46,
+      "font_families": [
+        "Arial",
+        "DejaVu Sans",
+        "Microsoft YaHei",
+        "Segoe UI",
+        "SimHei",
+        "sans-serif"
+      ]
+    },
+    {
+      "file": "outputs\\fig-academic-multipanel_300dpi.png",
+      "width_px": 2161,
+      "height_px": 907,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 182.97,
+      "height_mm": 76.79,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 5.39,
+        "bottom": 0.6,
+        "left": 1.0,
+        "right": 3.0
+      }
+    },
+    {
+      "file": "outputs\\fig-academic-multipanel_600dpi.png",
+      "width_px": 4323,
+      "height_px": 1815,
+      "mode": "RGBA",
+      "dpi": 600.0,
+      "width_mm": 183.01,
+      "height_mm": 76.84,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 5.39,
+        "bottom": 0.6,
+        "left": 1.0,
+        "right": 3.0
+      }
+    }
+  ]
+}

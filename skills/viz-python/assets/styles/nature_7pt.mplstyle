@@ -1,0 +1,22 @@
+# viz-suite · nature_7pt
+# 派生自 SciencePlots (MIT) 的 journals/nature.mplstyle，剥离专有字体与 LaTeX preamble。
+# 来源：https://github.com/garrettj403/SciencePlots  (MIT)
+figure.figsize: 3.3, 2.5
+axes.labelsize: 7
+xtick.labelsize: 7
+ytick.labelsize: 7
+legend.fontsize: 7
+font.size: 7
+font.family: sans-serif
+font.sans-serif: Arial, Helvetica, Microsoft YaHei, SimHei, DejaVu Sans, sans-serif
+axes.unicode_minus: False
+mathtext.fontset: dejavusans
+axes.linewidth: 0.5
+grid.linewidth: 0.5
+lines.linewidth: 1.0
+lines.markersize: 3
+xtick.direction: in
+ytick.direction: in
+legend.frameon: False
+pdf.fonttype: 42
+ps.fonttype: 42

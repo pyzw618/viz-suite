@@ -1,0 +1,606 @@
+{
+  "version": "lucide-static 1.61.0",
+  "license": "ISC",
+  "icons": [
+    {
+      "name": "trending-up",
+      "label_zh": "增长",
+      "category": "商业经营",
+      "file": "trending-up.svg"
+    },
+    {
+      "name": "trending-down",
+      "label_zh": "下降",
+      "category": "商业经营",
+      "file": "trending-down.svg"
+    },
+    {
+      "name": "chart-line",
+      "label_zh": "趋势",
+      "category": "商业经营",
+      "file": "chart-line.svg"
+    },
+    {
+      "name": "chart-column",
+      "label_zh": "柱状",
+      "category": "商业经营",
+      "file": "chart-column.svg"
+    },
+    {
+      "name": "chart-bar",
+      "label_zh": "条形",
+      "category": "商业经营",
+      "file": "chart-bar.svg"
+    },
+    {
+      "name": "chart-pie",
+      "label_zh": "占比",
+      "category": "商业经营",
+      "file": "chart-pie.svg"
+    },
+    {
+      "name": "activity",
+      "label_zh": "活跃",
+      "category": "商业经营",
+      "file": "activity.svg"
+    },
+    {
+      "name": "target",
+      "label_zh": "目标",
+      "category": "商业经营",
+      "file": "target.svg"
+    },
+    {
+      "name": "users",
+      "label_zh": "用户",
+      "category": "商业经营",
+      "file": "users.svg"
+    },
+    {
+      "name": "user-check",
+      "label_zh": "留存",
+      "category": "商业经营",
+      "file": "user-check.svg"
+    },
+    {
+      "name": "user-plus",
+      "label_zh": "新增",
+      "category": "商业经营",
+      "file": "user-plus.svg"
+    },
+    {
+      "name": "shopping-cart",
+      "label_zh": "交易",
+      "category": "商业经营",
+      "file": "shopping-cart.svg"
+    },
+    {
+      "name": "shopping-bag",
+      "label_zh": "订单",
+      "category": "商业经营",
+      "file": "shopping-bag.svg"
+    },
+    {
+      "name": "megaphone",
+      "label_zh": "营销",
+      "category": "商业经营",
+      "file": "megaphone.svg"
+    },
+    {
+      "name": "truck",
+      "label_zh": "履约",
+      "category": "商业经营",
+      "file": "truck.svg"
+    },
+    {
+      "name": "package",
+      "label_zh": "商品",
+      "category": "商业经营",
+      "file": "package.svg"
+    },
+    {
+      "name": "box",
+      "label_zh": "库存",
+      "category": "商业经营",
+      "file": "box.svg"
+    },
+    {
+      "name": "dollar-sign",
+      "label_zh": "金额",
+      "category": "商业经营",
+      "file": "dollar-sign.svg"
+    },
+    {
+      "name": "percent",
+      "label_zh": "比例",
+      "category": "商业经营",
+      "file": "percent.svg"
+    },
+    {
+      "name": "circle-dollar-sign",
+      "label_zh": "收入",
+      "category": "商业经营",
+      "file": "circle-dollar-sign.svg"
+    },
+    {
+      "name": "wallet",
+      "label_zh": "客单",
+      "category": "商业经营",
+      "file": "wallet.svg"
+    },
+    {
+      "name": "credit-card",
+      "label_zh": "支付",
+      "category": "商业经营",
+      "file": "credit-card.svg"
+    },
+    {
+      "name": "banknote",
+      "label_zh": "现金流",
+      "category": "商业经营",
+      "file": "banknote.svg"
+    },
+    {
+      "name": "receipt",
+      "label_zh": "账单",
+      "category": "商业经营",
+      "file": "receipt.svg"
+    },
+    {
+      "name": "calculator",
+      "label_zh": "核算",
+      "category": "商业经营",
+      "file": "calculator.svg"
+    },
+    {
+      "name": "scale",
+      "label_zh": "权衡",
+      "category": "战略与地理",
+      "file": "scale.svg"
+    },
+    {
+      "name": "handshake",
+      "label_zh": "合作",
+      "category": "战略与地理",
+      "file": "handshake.svg"
+    },
+    {
+      "name": "briefcase",
+      "label_zh": "业务",
+      "category": "战略与地理",
+      "file": "briefcase.svg"
+    },
+    {
+      "name": "building-2",
+      "label_zh": "组织",
+      "category": "战略与地理",
+      "file": "building-2.svg"
+    },
+    {
+      "name": "store",
+      "label_zh": "门店",
+      "category": "战略与地理",
+      "file": "store.svg"
+    },
+    {
+      "name": "factory",
+      "label_zh": "制造",
+      "category": "战略与地理",
+      "file": "factory.svg"
+    },
+    {
+      "name": "leaf",
+      "label_zh": "可持续",
+      "category": "战略与地理",
+      "file": "leaf.svg"
+    },
+    {
+      "name": "globe",
+      "label_zh": "全球",
+      "category": "战略与地理",
+      "file": "globe.svg"
+    },
+    {
+      "name": "map-pin",
+      "label_zh": "地点",
+      "category": "战略与地理",
+      "file": "map-pin.svg"
+    },
+    {
+      "name": "map",
+      "label_zh": "地图",
+      "category": "战略与地理",
+      "file": "map.svg"
+    },
+    {
+      "name": "navigation",
+      "label_zh": "导航",
+      "category": "战略与地理",
+      "file": "navigation.svg"
+    },
+    {
+      "name": "compass",
+      "label_zh": "方向",
+      "category": "战略与地理",
+      "file": "compass.svg"
+    },
+    {
+      "name": "route",
+      "label_zh": "路径",
+      "category": "战略与地理",
+      "file": "route.svg"
+    },
+    {
+      "name": "locate",
+      "label_zh": "定位",
+      "category": "战略与地理",
+      "file": "locate.svg"
+    },
+    {
+      "name": "layers",
+      "label_zh": "分层",
+      "category": "战略与地理",
+      "file": "layers.svg"
+    },
+    {
+      "name": "network",
+      "label_zh": "网络",
+      "category": "研究与数据",
+      "file": "network.svg"
+    },
+    {
+      "name": "git-branch",
+      "label_zh": "分支",
+      "category": "研究与数据",
+      "file": "git-branch.svg"
+    },
+    {
+      "name": "workflow",
+      "label_zh": "流程",
+      "category": "研究与数据",
+      "file": "workflow.svg"
+    },
+    {
+      "name": "repeat",
+      "label_zh": "循环",
+      "category": "研究与数据",
+      "file": "repeat.svg"
+    },
+    {
+      "name": "refresh-cw",
+      "label_zh": "迭代",
+      "category": "研究与数据",
+      "file": "refresh-cw.svg"
+    },
+    {
+      "name": "database",
+      "label_zh": "数据",
+      "category": "研究与数据",
+      "file": "database.svg"
+    },
+    {
+      "name": "server",
+      "label_zh": "系统",
+      "category": "研究与数据",
+      "file": "server.svg"
+    },
+    {
+      "name": "cpu",
+      "label_zh": "算力",
+      "category": "研究与数据",
+      "file": "cpu.svg"
+    },
+    {
+      "name": "code",
+      "label_zh": "代码",
+      "category": "研究与数据",
+      "file": "code.svg"
+    },
+    {
+      "name": "file-text",
+      "label_zh": "文档",
+      "category": "研究与数据",
+      "file": "file-text.svg"
+    },
+    {
+      "name": "clipboard",
+      "label_zh": "清单",
+      "category": "研究与数据",
+      "file": "clipboard.svg"
+    },
+    {
+      "name": "book-open",
+      "label_zh": "研究",
+      "category": "研究与数据",
+      "file": "book-open.svg"
+    },
+    {
+      "name": "graduation-cap",
+      "label_zh": "学术",
+      "category": "研究与数据",
+      "file": "graduation-cap.svg"
+    },
+    {
+      "name": "flask-conical",
+      "label_zh": "实验",
+      "category": "研究与数据",
+      "file": "flask-conical.svg"
+    },
+    {
+      "name": "microscope",
+      "label_zh": "观察",
+      "category": "研究与数据",
+      "file": "microscope.svg"
+    },
+    {
+      "name": "dna",
+      "label_zh": "机理",
+      "category": "研究与数据",
+      "file": "dna.svg"
+    },
+    {
+      "name": "heart-pulse",
+      "label_zh": "健康",
+      "category": "研究与数据",
+      "file": "heart-pulse.svg"
+    },
+    {
+      "name": "pill",
+      "label_zh": "干预",
+      "category": "研究与数据",
+      "file": "pill.svg"
+    },
+    {
+      "name": "stethoscope",
+      "label_zh": "诊断",
+      "category": "研究与数据",
+      "file": "stethoscope.svg"
+    },
+    {
+      "name": "clock",
+      "label_zh": "时间",
+      "category": "研究与数据",
+      "file": "clock.svg"
+    },
+    {
+      "name": "calendar",
+      "label_zh": "日历",
+      "category": "时间与交互",
+      "file": "calendar.svg"
+    },
+    {
+      "name": "calendar-days",
+      "label_zh": "排期",
+      "category": "时间与交互",
+      "file": "calendar-days.svg"
+    },
+    {
+      "name": "search",
+      "label_zh": "检索",
+      "category": "时间与交互",
+      "file": "search.svg"
+    },
+    {
+      "name": "filter",
+      "label_zh": "筛选",
+      "category": "时间与交互",
+      "file": "filter.svg"
+    },
+    {
+      "name": "sliders-horizontal",
+      "label_zh": "调节",
+      "category": "时间与交互",
+      "file": "sliders-horizontal.svg"
+    },
+    {
+      "name": "settings",
+      "label_zh": "设置",
+      "category": "时间与交互",
+      "file": "settings.svg"
+    },
+    {
+      "name": "gauge",
+      "label_zh": "仪表",
+      "category": "时间与交互",
+      "file": "gauge.svg"
+    },
+    {
+      "name": "gauge-circle",
+      "label_zh": "阈值",
+      "category": "时间与交互",
+      "file": "gauge-circle.svg"
+    },
+    {
+      "name": "eye",
+      "label_zh": "洞察",
+      "category": "时间与交互",
+      "file": "eye.svg"
+    },
+    {
+      "name": "message-square",
+      "label_zh": "反馈",
+      "category": "时间与交互",
+      "file": "message-square.svg"
+    },
+    {
+      "name": "mail",
+      "label_zh": "邮件",
+      "category": "时间与交互",
+      "file": "mail.svg"
+    },
+    {
+      "name": "phone",
+      "label_zh": "电话",
+      "category": "时间与交互",
+      "file": "phone.svg"
+    },
+    {
+      "name": "headphones",
+      "label_zh": "客服",
+      "category": "时间与交互",
+      "file": "headphones.svg"
+    },
+    {
+      "name": "bell",
+      "label_zh": "提醒",
+      "category": "时间与交互",
+      "file": "bell.svg"
+    },
+    {
+      "name": "lock",
+      "label_zh": "安全",
+      "category": "时间与交互",
+      "file": "lock.svg"
+    },
+    {
+      "name": "key",
+      "label_zh": "关键",
+      "category": "时间与交互",
+      "file": "key.svg"
+    },
+    {
+      "name": "download",
+      "label_zh": "下载",
+      "category": "时间与交互",
+      "file": "download.svg"
+    },
+    {
+      "name": "upload",
+      "label_zh": "上传",
+      "category": "时间与交互",
+      "file": "upload.svg"
+    },
+    {
+      "name": "share-2",
+      "label_zh": "分享",
+      "category": "时间与交互",
+      "file": "share-2.svg"
+    },
+    {
+      "name": "link",
+      "label_zh": "关联",
+      "category": "时间与交互",
+      "file": "link.svg"
+    },
+    {
+      "name": "sparkles",
+      "label_zh": "亮点",
+      "category": "版式与标记",
+      "file": "sparkles.svg"
+    },
+    {
+      "name": "rocket",
+      "label_zh": "增长引擎",
+      "category": "版式与标记",
+      "file": "rocket.svg"
+    },
+    {
+      "name": "satellite",
+      "label_zh": "遥感",
+      "category": "版式与标记",
+      "file": "satellite.svg"
+    },
+    {
+      "name": "radar",
+      "label_zh": "监测",
+      "category": "版式与标记",
+      "file": "radar.svg"
+    },
+    {
+      "name": "scan-line",
+      "label_zh": "扫描",
+      "category": "版式与标记",
+      "file": "scan-line.svg"
+    },
+    {
+      "name": "smartphone",
+      "label_zh": "移动端",
+      "category": "版式与标记",
+      "file": "smartphone.svg"
+    },
+    {
+      "name": "monitor",
+      "label_zh": "桌面端",
+      "category": "版式与标记",
+      "file": "monitor.svg"
+    },
+    {
+      "name": "presentation",
+      "label_zh": "汇报",
+      "category": "版式与标记",
+      "file": "presentation.svg"
+    },
+    {
+      "name": "screen-share",
+      "label_zh": "演示",
+      "category": "版式与标记",
+      "file": "screen-share.svg"
+    },
+    {
+      "name": "layout-grid",
+      "label_zh": "网格",
+      "category": "版式与标记",
+      "file": "layout-grid.svg"
+    },
+    {
+      "name": "layout-list",
+      "label_zh": "列表",
+      "category": "版式与标记",
+      "file": "layout-list.svg"
+    },
+    {
+      "name": "columns-3",
+      "label_zh": "分栏",
+      "category": "版式与标记",
+      "file": "columns-3.svg"
+    },
+    {
+      "name": "rows-3",
+      "label_zh": "分行",
+      "category": "版式与标记",
+      "file": "rows-3.svg"
+    },
+    {
+      "name": "circle-dot",
+      "label_zh": "要点",
+      "category": "版式与标记",
+      "file": "circle-dot.svg"
+    },
+    {
+      "name": "hexagon",
+      "label_zh": "模块",
+      "category": "版式与标记",
+      "file": "hexagon.svg"
+    },
+    {
+      "name": "triangle",
+      "label_zh": "层级",
+      "category": "版式与标记",
+      "file": "triangle.svg"
+    },
+    {
+      "name": "square",
+      "label_zh": "卡片",
+      "category": "版式与标记",
+      "file": "square.svg"
+    },
+    {
+      "name": "component",
+      "label_zh": "组件",
+      "category": "版式与标记",
+      "file": "component.svg"
+    },
+    {
+      "name": "blocks",
+      "label_zh": "积木",
+      "category": "版式与标记",
+      "file": "blocks.svg"
+    },
+    {
+      "name": "puzzle",
+      "label_zh": "拼合",
+      "category": "版式与标记",
+      "file": "puzzle.svg"
+    }
+  ]
+}

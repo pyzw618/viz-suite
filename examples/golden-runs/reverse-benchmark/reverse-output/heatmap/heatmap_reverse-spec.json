@@ -1,0 +1,54 @@
+{
+  "chart_type": "heatmap",
+  "evidence_level": "B",
+  "plot_bbox": [
+    102,
+    120,
+    884,
+    594
+  ],
+  "axes": {},
+  "series": [
+    {
+      "name": "value",
+      "color": "viridis"
+    }
+  ],
+  "title": "Activation by Cohort",
+  "warnings": [],
+  "no_compensation": true,
+  "value_range": [
+    0,
+    1
+  ],
+  "heatmap_rect": [
+    0.1,
+    0.15,
+    0.72,
+    0.68
+  ],
+  "colorbar_rect": [
+    0.85,
+    0.15,
+    0.035,
+    0.68
+  ],
+  "heatmap_bbox": [
+    100,
+    118,
+    820,
+    595
+  ],
+  "colorbar_bbox": [
+    850,
+    118,
+    885,
+    595
+  ],
+  "rows": 30,
+  "cols": 6,
+  "data_csv": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\heatmap\\heatmap_data.csv",
+  "code": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\heatmap\\reproduction.py",
+  "status": "success",
+  "reproduction_png": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\heatmap\\reproduction.png"
+}

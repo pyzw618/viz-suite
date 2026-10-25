@@ -1,0 +1,15 @@
+{
+  "chart_type": "pie",
+  "evidence_level": "X",
+  "refused": true,
+  "reason": "3D/透视/不可逆图形：拒绝数值反推",
+  "measurements": [
+    62,
+    32,
+    887,
+    549
+  ],
+  "warnings": [
+    "仅提供 2D 规范化重构建议，不输出估算数据"
+  ]
+}

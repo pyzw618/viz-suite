@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "outputs": [
+    "..\\outputs\\fig-03-rank-change.pdf",
+    "..\\outputs\\fig-03-rank-change_300dpi.png",
+    "..\\outputs\\fig-03-rank-change_600dpi.png",
+    "..\\outputs\\fig-03-rank-change_data.csv"
+  ],
+  "rows_used": 6,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "figure": {
+    "recipe": "slope_rank_change",
+    "n": 6,
+    "biggest_mover": "产品 C",
+    "layout": null,
+    "width_mm": 150,
+    "height_mm": 102.0,
+    "visual_verified": false,
+    "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"
+  }
+}

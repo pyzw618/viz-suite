@@ -1,0 +1,614 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples\\golden-runs\\web-templates\\shots\\area_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\area_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\bar_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\bar_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\boxplot_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\boxplot_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\bubble_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\bubble_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\donut_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\donut_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\funnel_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\funnel_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\gauge_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\gauge_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\hbar_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\hbar_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\heatmap_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\heatmap_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\line_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\line_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\radar_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\radar_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\sankey_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\sankey_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\scatter_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\scatter_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\stacked_bar_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\stacked_bar_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\echarts_treemap_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\echarts_treemap_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\chord_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\chord_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\force_network_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\force_network_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\line_transition_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\line_transition_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\d3_treemap_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\d3_treemap_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\sales_dashboard_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\sales_dashboard_mobile.png",
+    "examples\\golden-runs\\web-templates\\shots\\kpi_cards_desktop.png",
+    "examples\\golden-runs\\web-templates\\shots\\kpi_cards_mobile.png"
+  ],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "cdp",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "captures": [
+    {
+      "file": "skills/viz-web/templates/echarts/area.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\area_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/area.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\area_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/bar.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\bar_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/bar.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\bar_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/boxplot.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\boxplot_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/boxplot.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\boxplot_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/bubble.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\bubble_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/bubble.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\bubble_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/donut.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\donut_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/donut.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\donut_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/funnel.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\funnel_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/funnel.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\funnel_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/gauge.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\gauge_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/gauge.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\gauge_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/hbar.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\hbar_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/hbar.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\hbar_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/heatmap.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\heatmap_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/heatmap.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\heatmap_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/line.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\line_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/line.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\line_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/radar.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\radar_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/radar.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\radar_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/sankey.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\sankey_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/sankey.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\sankey_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/scatter.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\scatter_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/scatter.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\scatter_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/stacked_bar.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\stacked_bar_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/stacked_bar.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\stacked_bar_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/treemap.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\echarts_treemap_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/echarts/treemap.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\echarts_treemap_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/d3/chord.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\chord_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/d3/chord.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\chord_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/d3/force_network.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\force_network_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/d3/force_network.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\force_network_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/d3/line_transition.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\line_transition_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/d3/line_transition.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\line_transition_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/d3/treemap.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\d3_treemap_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/d3/treemap.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\d3_treemap_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/dashboard/sales_dashboard.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\sales_dashboard_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/dashboard/sales_dashboard.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\sales_dashboard_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/kpi/kpi_cards.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\web-templates\\shots\\kpi_cards_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "mode": "cdp"
+    },
+    {
+      "file": "skills/viz-web/templates/kpi/kpi_cards.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\web-templates\\shots\\kpi_cards_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "mode": "cdp"
+    }
+  ],
+  "browser_version": "Chrome/156.0.8078.48"
+}

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>经营驾驶舱 · 离线单文件</title>
+<style>
+:root{--viz-bg:#F8FAFC;--viz-surface:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:18px 20px 24px;overflow-x:hidden}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.top h1{font-size:22px;margin:0 0 4px;font-weight:700}
+.top p{margin:0;color:var(--viz-muted);font-size:13px}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.filters label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--viz-muted)}
+select{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--viz-grid);border-radius:6px;background:var(--viz-surface);color:var(--viz-text);min-width:110px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.kpi{background:var(--viz-surface);border:1px solid var(--viz-grid);border-radius:10px;padding:14px 16px}
+.kpi .label{font-size:12px;color:var(--viz-muted);margin-bottom:6px}
+.kpi .value{font-size:24px;font-weight:700;line-height:1.1}
+.kpi .sub{font-size:12px;margin-top:6px;color:var(--viz-muted)}
+.kpi .sub.up{color:var(--viz-positive)}
+.kpi .sub.down{color:var(--viz-negative)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}
+.card{background:var(--viz-surface);border:1px solid var(--viz-grid);border-radius:10px;padding:12px 14px 10px;margin:0;min-width:0}
+.card figcaption{font-size:13px;font-weight:600;color:var(--viz-text);margin-bottom:4px}
+.card .hint{font-size:11px;color:var(--viz-muted);margin:0 0 4px}
+.chart{width:100%}
+.span-8{grid-column:span 8}.span-6{grid-column:span 6}.span-4{grid-column:span 4}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:8px 6px;border-bottom:1px solid var(--viz-grid);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--viz-muted);font-weight:600}
+footer{margin-top:14px;font-size:11px;color:var(--viz-muted)}
+@media (max-width:1000px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.span-8,.span-4,.span-6{grid-column:span 12}}
+@media (max-width:600px){
+  body{padding:12px}
+  .top h1{font-size:18px}.top p{font-size:12px}
+  .filters{width:100%}.filters label{flex:1}
+  select{width:100%}
+  .kpi .value{font-size:20px}
+  .card{padding:10px}
+}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-surface:#111827;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>经营驾驶舱：收入、渠道与区域明细</h1>
+    <p>离线单文件｜筛选区域与季度后，KPI、趋势、渠道与明细联动更新</p>
+  </div>
+  <div class="filters">
+    <label>区域<select id="region"><option value="全部">全部区域</option><option>华东</option><option>华南</option><option>华北</option></select></label>
+    <label>季度<select id="quarter"><option>2025Q1</option><option selected>2025Q2</option></select></label>
+  </div>
+</header>
+
+<section class="kpis" id="kpis" aria-label="核心 KPI 卡片"></section>
+
+<section class="grid">
+  <figure class="card span-8">
+    <figcaption>收入趋势：实际 vs 目标</figcaption>
+    <p class="hint">单位：万元｜虚线为目标｜纵轴按数据范围缩放（折线图，非面积）</p>
+    <div id="line" class="chart" role="img" aria-label="季度内月度收入实际与目标折线图" style="height:220px"></div>
+  </figure>
+  <figure class="card span-4">
+    <figcaption>渠道构成</figcaption>
+    <p class="hint">按收入占比</p>
+    <div id="donut" class="chart" role="img" aria-label="渠道收入占比圆环图" style="height:220px"></div>
+  </figure>
+  <figure class="card span-6">
+    <figcaption>渠道收入</figcaption>
+    <p class="hint">单位：万元</p>
+    <div id="bar" class="chart" role="img" aria-label="各渠道收入横向条形图" style="height:200px"></div>
+  </figure>
+  <figure class="card span-6">
+    <figcaption>区域明细</figcaption>
+    <p class="hint">目标完成率 = 实际收入 ÷ 目标收入</p>
+    <div class="table-wrap">
+      <table aria-label="区域收入明细">
+        <thead><tr><th>区域</th><th>收入（万元）</th><th>目标完成率</th><th>订单量</th><th>满意度</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </figure>
+</section>
+<footer>数据来源：演示数据（合成）｜ECharts 5｜零外部网络请求｜可直接拖入浏览器或嵌入报告</footer>
+
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const COLORS = [ROLE.focal, '#E69F00', '#CC79A7', '#009E73'];
+const CHANNELS = ['门店', '电商', '直播', '私域'];
+const MONTHS = {'2025Q1': ['1月', '2月', '3月'], '2025Q2': ['4月', '5月', '6月']};
+const RAW = {
+  '2025Q1': {
+    '华东': {revenue: 420, target: 400, orders: 12800, satisfaction: 4.30, channels: [180, 118, 82, 40], trend: [132, 140, 148], targetTrend: [128, 134, 138]},
+    '华南': {revenue: 360, target: 350, orders: 11500, satisfaction: 4.10, channels: [152, 98, 72, 38], trend: [114, 120, 126], targetTrend: [112, 118, 120]},
+    '华北': {revenue: 300, target: 320, orders: 9800, satisfaction: 3.95, channels: [128, 82, 60, 30], trend: [96, 100, 104], targetTrend: [104, 108, 108]}
+  },
+  '2025Q2': {
+    '华东': {revenue: 468, target: 440, orders: 13600, satisfaction: 4.35, channels: [196, 132, 98, 42], trend: [150, 156, 162], targetTrend: [144, 148, 148]},
+    '华南': {revenue: 398, target: 380, orders: 12200, satisfaction: 4.18, channels: [166, 108, 84, 40], trend: [128, 132, 138], targetTrend: [124, 128, 128]},
+    '华北': {revenue: 322, target: 340, orders: 10100, satisfaction: 4.00, channels: [136, 88, 66, 32], trend: [104, 108, 110], targetTrend: [110, 114, 116]}
+  }
+};
+
+function aggregate(region, quarter) {
+  const rows = region === '全部' ? Object.entries(RAW[quarter]).map(([name, d]) => ({name, ...d})) : [{name: region, ...RAW[quarter][region]}];
+  const total = rows.reduce((acc, d) => {
+    acc.revenue += d.revenue; acc.target += d.target; acc.orders += d.orders;
+    acc.satisfactionWeighted += d.satisfaction * d.orders;
+    d.channels.forEach((v, i) => { acc.channels[i] += v; });
+    d.trend.forEach((v, i) => { acc.trend[i] += v; acc.targetTrend[i] += d.targetTrend[i]; });
+    return acc;
+  }, {revenue: 0, target: 0, orders: 0, satisfactionWeighted: 0, channels: [0, 0, 0, 0], trend: [0, 0, 0], targetTrend: [0, 0, 0]});
+  return {rows, total: {...total, satisfaction: total.satisfactionWeighted / Math.max(total.orders, 1)}};
+}
+
+function kpiCard(label, value, sub, tone) {
+  const card = document.createElement('div'); card.className = 'kpi';
+  const l = document.createElement('div'); l.className = 'label'; l.textContent = label;
+  const v = document.createElement('div'); v.className = 'value'; v.textContent = value;
+  const s = document.createElement('div'); s.className = 'sub' + (tone ? ' ' + tone : ''); s.textContent = sub;
+  card.append(l, v, s); return card;
+}
+
+function renderKpis(data) {
+  const host = document.getElementById('kpis'); host.replaceChildren();
+  const attain = data.revenue / Math.max(data.target, 1) * 100;
+  const ticket = data.revenue * 10000 / Math.max(data.orders, 1);
+  host.append(
+    kpiCard('收入', data.revenue.toLocaleString() + ' 万元', `目标完成率 ${attain.toFixed(1)}%`, attain >= 100 ? 'up' : 'down'),
+    kpiCard('订单量', data.orders.toLocaleString() + ' 单', '较目标口径按季度汇总', ''),
+    kpiCard('客单价', ticket.toFixed(0) + ' 元', '收入 ÷ 订单量', ''),
+    kpiCard('满意度', data.satisfaction.toFixed(2) + ' 分', data.satisfaction >= 4.0 ? '高于 4.0 服务基线' : '低于 4.0 服务基线', data.satisfaction >= 4.0 ? 'up' : 'down')
+  );
+}
+
+const charts = {
+  line: echarts.init(document.getElementById('line')),
+  donut: echarts.init(document.getElementById('donut')),
+  bar: echarts.init(document.getElementById('bar'))
+};
+
+function lineOption(data, quarter) {
+  const mobile = window.innerWidth < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '月度收入实际值总体高于目标值。'}},
+    tooltip: {trigger: 'axis'},
+    legend: {top: 0, right: 0, data: ['实际', '目标'], textStyle: {color: ROLE.text, fontSize: mobile ? 10 : 12}},
+    grid: {left: mobile ? 40 : 52, right: mobile ? 12 : 20, top: 38, bottom: mobile ? 28 : 34},
+    xAxis: {type: 'category', data: MONTHS[quarter], boundaryGap: false, axisTick: {show: false},
+      axisLine: {lineStyle: {color: ROLE.grid}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 11}},
+    yAxis: {type: 'value', name: mobile ? '' : '万元', nameTextStyle: {color: ROLE.muted},
+      min: value => Math.floor(value.min * 0.90), max: value => Math.ceil(value.max * 1.05),
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.5}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 9 : 11}},
+    series: [
+      {name: '实际', type: 'line', data: data.trend, smooth: false, symbol: 'circle', symbolSize: 6,
+       lineStyle: {width: 2.2, color: ROLE.focal}, itemStyle: {color: ROLE.focal, borderColor: '#fff', borderWidth: 1}},
+      {name: '目标', type: 'line', data: data.targetTrend, smooth: false, symbol: 'none',
+       lineStyle: {width: 1.4, type: 'dashed', color: ROLE.muted}}
+    ]
+  };
+}
+function donutOption(total) {
+  const mobile = window.innerWidth < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '门店渠道收入占比最高。'}},
+    color: COLORS,
+    tooltip: {trigger: 'item', formatter: p => `${p.name}<br/>${p.value} 万元（${p.percent}%）`},
+    legend: {bottom: 0, left: 'center', textStyle: {color: ROLE.text, fontSize: mobile ? 10 : 11}},
+    series: [{
+      type: 'pie', radius: ['42%', '64%'], center: ['50%', '43%'],
+      itemStyle: {borderColor: '#fff', borderWidth: 2},
+      label: {show: false}, labelLine: {show: false},
+      data: CHANNELS.map((name, i) => ({name, value: total.channels[i]}))
+    }]
+  };
+}
+function barOption(total) {
+  const mobile = window.innerWidth < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '门店渠道收入最高，私域最低。'}},
+    tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'}},
+    grid: {left: mobile ? 52 : 62, right: mobile ? 36 : 46, top: 12, bottom: 22},
+    xAxis: {type: 'value', splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.5}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 9 : 11}},
+    yAxis: {type: 'category', data: CHANNELS, inverse: true, axisTick: {show: false},
+      axisLine: {lineStyle: {color: ROLE.grid}}, axisLabel: {color: ROLE.text, fontSize: mobile ? 10 : 12}},
+    series: [{
+      type: 'bar', data: total.channels, barWidth: mobile ? 12 : 16,
+      itemStyle: {color: 'rgba(0,114,178,0.18)', borderColor: ROLE.focal, borderWidth: 1.2, borderRadius: [0, 2, 2, 0]},
+      label: {show: true, position: 'right', color: ROLE.muted, fontSize: mobile ? 10 : 11}
+    }]
+  };
+}
+
+function renderTable(rows) {
+  const body = document.getElementById('rows'); body.replaceChildren();
+  for (const row of rows) {
+    const tr = document.createElement('tr');
+    const cells = [
+      row.name,
+      row.revenue.toLocaleString(),
+      (row.revenue / Math.max(row.target, 1) * 100).toFixed(1) + '%',
+      row.orders.toLocaleString(),
+      row.satisfaction.toFixed(2)
+    ];
+    cells.forEach((text, i) => {
+      const td = document.createElement('td'); td.textContent = text;
+      if (i === 0) td.style.color = ROLE.text;
+      tr.append(td);
+    });
+    body.append(tr);
+  }
+}
+
+function update() {
+  const region = document.getElementById('region').value;
+  const quarter = document.getElementById('quarter').value;
+  const data = aggregate(region, quarter);
+  renderKpis(data.total);
+  charts.line.setOption(lineOption(data.total, quarter), true);
+  charts.donut.setOption(donutOption(data.total), true);
+  charts.bar.setOption(barOption(data.total), true);
+  renderTable(data.rows);
+}
+
+document.getElementById('region').addEventListener('change', update);
+document.getElementById('quarter').addEventListener('change', update);
+const ro = new ResizeObserver(() => { Object.values(charts).forEach(c => c.resize()); });
+document.querySelectorAll('.chart').forEach(el => ro.observe(el));
+let resizeTimer = null;
+window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(update, 160); });
+update();
+</script>
+</body>
+</html>

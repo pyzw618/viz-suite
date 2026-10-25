@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>箱线图 · ECharts</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>方法 A 的中位评分最高，方法 E 的离散度最小</h1><p>箱体为四分位距，须线为 1.5×IQR 范围｜演示用合成数据</p></header>
+<figure>
+  <div id="chart" role="img" aria-label="五种方法的评分箱线图，方法 A 中位数最高"></div>
+  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const categories = ['方法 A', '方法 B', '方法 C', '方法 D', '方法 E'];
+const boxData = [
+  [42, 58, 66, 72, 86],
+  [38, 52, 60, 68, 84],
+  [45, 57, 64, 70, 82],
+  [40, 54, 62, 68, 80],
+  [52, 58, 62, 66, 74]
+];
+const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+function buildOption(width) {
+  const mobile = width < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '五种方法评分箱线图，方法 A 中位最高，方法 E 最集中。'}},
+    tooltip: {trigger: 'item', formatter: p => {
+      const v = p.value;
+      return `${p.name}<br/>最小 ${v[1]}｜Q1 ${v[2]}｜中位 ${v[3]}｜Q3 ${v[4]}｜最大 ${v[5]}`;
+    }},
+    grid: {left: mobile ? 42 : 58, right: mobile ? 16 : 28, top: mobile ? 24 : 30, bottom: mobile ? 42 : 48},
+    xAxis: {type: 'category', data: categories, axisTick: {show: false},
+      axisLine: {lineStyle: {color: ROLE.grid}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    yAxis: {type: 'value', min: 30, max: 90, name: mobile ? '' : '评分',
+      nameTextStyle: {color: ROLE.muted}, splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    series: [{
+      type: 'boxplot', data: boxData, boxWidth: mobile ? ['18%', '36%'] : ['28%', '48%'],
+      itemStyle: {color: 'rgba(0,114,178,0.16)', borderColor: ROLE.focal, borderWidth: 1.4},
+      emphasis: {itemStyle: {borderColor: ROLE.text, borderWidth: 2}},
+      tooltip: {show: true}
+    }]
+  };
+}
+function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+render();
+let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+</script>
+</body>
+</html>

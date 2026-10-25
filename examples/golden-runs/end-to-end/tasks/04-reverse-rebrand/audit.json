@@ -1,0 +1,236 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "visual_verified": false,
+  "warnings": [
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 4,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 19,
+    "total_checks": 19
+  },
+  "checks": [
+    {
+      "file": "branded.pdf",
+      "check": "pdf_page_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 页；首页 180.0×126.0 mm"
+    },
+    {
+      "file": "branded.pdf",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页宽 180.01mm，目标 180.0mm"
+    },
+    {
+      "file": "branded.pdf",
+      "check": "pdf_fonts",
+      "severity": "info",
+      "passed": true,
+      "detail": "2 个字体全部嵌入"
+    },
+    {
+      "file": "branded.pdf",
+      "check": "pdf_vector",
+      "severity": "info",
+      "passed": true,
+      "detail": "内容流含约 86 个矢量绘制操作（文字/图元保持矢量）"
+    },
+    {
+      "file": "branded.pdf",
+      "check": "pdf_content",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页文本 133 字符，图像 0 个，矢量操作约 86 个"
+    },
+    {
+      "file": "branded.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 180.0×126.0 mm"
+    },
+    {
+      "file": "branded.svg",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 180.01mm，目标 180.0mm"
+    },
+    {
+      "file": "branded.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "21 个文本节点，字体：['Arial', 'DejaVu Sans', 'Microsoft YaHei', 'Segoe UI', 'SimHei', 'sans-serif']"
+    },
+    {
+      "file": "branded.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "branded_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 180.0×126.0 mm"
+    },
+    {
+      "file": "branded_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 180.00mm，目标 180.0mm（容差 ±1.80mm）"
+    },
+    {
+      "file": "branded_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "branded_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "branded_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #0B2545 / 背景 #FFFFFF 对比度 15.39:1（正文要求 ≥4.5:1）",
+      "ratio": 15.39
+    },
+    {
+      "file": "branded_600dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "600 dpi，物理尺寸 180.0×126.0 mm"
+    },
+    {
+      "file": "branded_600dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 180.00mm，目标 180.0mm（容差 ±1.80mm）"
+    },
+    {
+      "file": "branded_600dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "branded_600dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "branded_600dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #0B2545 / 背景 #FFFFFF 对比度 15.39:1（正文要求 ≥4.5:1）",
+      "ratio": 15.39
+    }
+  ],
+  "metrics": [
+    {
+      "file": "outputs\\branded.pdf",
+      "pages": 1,
+      "width_mm": 180.01,
+      "height_mm": 126.01,
+      "page_size_mm": [
+        180.01,
+        126.01
+      ],
+      "fonts": [
+        {
+          "name": "/ELUGPM+ArialMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/DFIMHP+MicrosoftYaHei",
+          "subtype": "/Type0",
+          "embedded": true
+        }
+      ],
+      "text_chars": 133,
+      "images": 0,
+      "vector_ops_approx": 86
+    },
+    {
+      "file": "outputs\\branded.svg",
+      "width_mm": 180.01,
+      "height_mm": 126.01,
+      "text_elements": 21,
+      "font_families": [
+        "Arial",
+        "DejaVu Sans",
+        "Microsoft YaHei",
+        "Segoe UI",
+        "SimHei",
+        "sans-serif"
+      ]
+    },
+    {
+      "file": "outputs\\branded_300dpi.png",
+      "width_px": 2126,
+      "height_px": 1488,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 180.0,
+      "height_mm": 125.98,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 6.09,
+        "bottom": 0.72,
+        "left": 1.0,
+        "right": 1.25
+      }
+    },
+    {
+      "file": "outputs\\branded_600dpi.png",
+      "width_px": 4252,
+      "height_px": 2976,
+      "mode": "RGBA",
+      "dpi": 600.0,
+      "width_mm": 180.0,
+      "height_mm": 125.98,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 6.09,
+        "bottom": 0.72,
+        "left": 1.0,
+        "right": 1.25
+      }
+    }
+  ]
+}

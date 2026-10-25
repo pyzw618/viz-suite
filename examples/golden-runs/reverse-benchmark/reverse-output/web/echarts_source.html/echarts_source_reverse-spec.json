@@ -1,0 +1,34 @@
+{
+  "chart_type": "bar",
+  "evidence_level": "SOURCE",
+  "format": "echarts",
+  "title": "Monthly Revenue by Channel",
+  "colors": [
+    "#0072B2"
+  ],
+  "data_csv": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\web\\echarts_source.html\\echarts_source_data.csv",
+  "data": [
+    {
+      "category": "A",
+      "value": 12
+    },
+    {
+      "category": "B",
+      "value": 18
+    },
+    {
+      "category": "C",
+      "value": 9
+    },
+    {
+      "category": "D",
+      "value": 24
+    },
+    {
+      "category": "E",
+      "value": 15
+    }
+  ],
+  "exact_data": true,
+  "source": "examples\\golden-runs\\reverse-benchmark\\web\\echarts_source.html"
+}

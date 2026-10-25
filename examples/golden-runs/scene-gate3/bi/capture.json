@@ -1,0 +1,56 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples\\golden-runs\\scene-gate3\\bi\\shots\\index_desktop.png",
+    "examples\\golden-runs\\scene-gate3\\bi\\shots\\index_mobile.png"
+  ],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "cdp",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 800
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "captures": [
+    {
+      "file": "examples/golden-runs/scene-gate3/bi/index.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\scene-gate3\\bi\\shots\\index_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        800
+      ],
+      "full_page": false,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/scene-gate3/bi/index.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\scene-gate3\\bi\\shots\\index_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        844
+      ],
+      "full_page": false,
+      "mode": "cdp"
+    }
+  ],
+  "browser_version": "Chrome/156.0.8078.48"
+}

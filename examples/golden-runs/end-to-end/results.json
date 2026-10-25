@@ -1,0 +1,158 @@
+{
+  "status": "success",
+  "tasks": 12,
+  "passed": 12,
+  "missing": [],
+  "skill_coverage": [
+    "viz-audit",
+    "viz-core",
+    "viz-infographic",
+    "viz-python",
+    "viz-reverse",
+    "viz-scene-academic",
+    "viz-scene-bi",
+    "viz-scene-geo",
+    "viz-scene-story",
+    "viz-web"
+  ],
+  "missing_skills": [],
+  "routing": {
+    "cases": 12,
+    "negative_cases": 4,
+    "task_routes_consistent": true
+  },
+  "details": [
+    {
+      "id": "01-academic-multipanel",
+      "title": "科研多面板组图",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 7,
+      "evidence": {
+        "render.json": "success",
+        "audit.json": "success"
+      }
+    },
+    {
+      "id": "02-sales-dashboard",
+      "title": "销售联动看板",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 7,
+      "evidence": {}
+    },
+    {
+      "id": "03-retro-infographic",
+      "title": "复盘一页纸信息图",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 7,
+      "evidence": {
+        "render.json": "success",
+        "lint.json": "success",
+        "layout.json": "success",
+        "capture.json": "success"
+      }
+    },
+    {
+      "id": "04-reverse-rebrand",
+      "title": "截图逆向换品牌色",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 8,
+      "evidence": {
+        "render.json": "success",
+        "audit.json": "success"
+      }
+    },
+    {
+      "id": "05-ugly-chart-fix",
+      "title": "问题丑图诊断与修复",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 8,
+      "evidence": {
+        "render.json": "success"
+      }
+    },
+    {
+      "id": "06-analysis-to-pdf",
+      "title": "分析→统计→绘图→PDF/PPT 交接",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 6,
+      "evidence": {
+        "render.json": "success",
+        "audit.json": "success"
+      }
+    },
+    {
+      "id": "07-academic-forest",
+      "title": "科研森林图（A/B 实验）",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 6,
+      "evidence": {}
+    },
+    {
+      "id": "08-geo-grid-map",
+      "title": "区域经营地图（合成网格）",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 7,
+      "evidence": {
+        "render.json": "success",
+        "audit.json": "success"
+      }
+    },
+    {
+      "id": "09-story-slide",
+      "title": "高管汇报 16:9 故事图",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 5,
+      "evidence": {}
+    },
+    {
+      "id": "10-technical-infographic",
+      "title": "技术管线信息图",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 7,
+      "evidence": {
+        "render.json": "success",
+        "lint.json": "success",
+        "layout.json": "success",
+        "capture.json": "success"
+      }
+    },
+    {
+      "id": "11-reverse-source-exact",
+      "title": "源码级精确提取",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 4,
+      "evidence": {}
+    },
+    {
+      "id": "12-reverse-refusal",
+      "title": "低清/3D 逆向降级",
+      "pass": true,
+      "route_ok": true,
+      "missing": [],
+      "outputs": 5,
+      "evidence": {}
+    }
+  ]
+}

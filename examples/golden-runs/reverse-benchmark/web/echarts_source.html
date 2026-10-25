@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>ECharts source fixture</title></head>
+<body>
+<h1>Monthly Revenue by Channel</h1>
+<div id="chart" style="width:800px;height:500px"></div>
+<script id="echarts-option" type="application/json">
+{
+  "title": {"text": "Monthly Revenue by Channel"},
+  "color": ["#0072B2"],
+  "xAxis": {"type": "category", "data": ["A", "B", "C", "D", "E"]},
+  "yAxis": {"type": "value", "name": "Revenue (k)"},
+  "series": [{"name": "Revenue", "type": "bar", "data": [12, 18, 9, 24, 15]}]
+}
+</script>
+</body>
+</html>

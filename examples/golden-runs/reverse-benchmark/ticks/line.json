@@ -1,0 +1,38 @@
+{
+  "title": "Weekly Trend by Series",
+  "x_label": "Week",
+  "y_label": "Value",
+  "x": {
+    "values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "scale": "linear"
+  },
+  "y": {
+    "values": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30
+    ],
+    "scale": "linear"
+  },
+  "series": [
+    {
+      "name": "Series A",
+      "color": "#0072B2"
+    },
+    {
+      "name": "Series B",
+      "color": "#D55E00"
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "visual_verified": false,
+  "warnings": [
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 4,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 19,
+    "total_checks": 19
+  },
+  "checks": [
+    {
+      "file": "geo-grid.pdf",
+      "check": "pdf_page_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 页；首页 160.0×112.0 mm"
+    },
+    {
+      "file": "geo-grid.pdf",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页宽 159.99mm，目标 160.0mm"
+    },
+    {
+      "file": "geo-grid.pdf",
+      "check": "pdf_fonts",
+      "severity": "info",
+      "passed": true,
+      "detail": "2 个字体全部嵌入"
+    },
+    {
+      "file": "geo-grid.pdf",
+      "check": "pdf_vector",
+      "severity": "info",
+      "passed": true,
+      "detail": "内容流含约 117 个矢量绘制操作（文字/图元保持矢量）"
+    },
+    {
+      "file": "geo-grid.pdf",
+      "check": "pdf_content",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页文本 197 字符，图像 1 个，矢量操作约 117 个"
+    },
+    {
+      "file": "geo-grid.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 160.0×112.0 mm"
+    },
+    {
+      "file": "geo-grid.svg",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 159.99mm，目标 160.0mm"
+    },
+    {
+      "file": "geo-grid.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "30 个文本节点，字体：['Arial', 'DejaVu Sans', 'Microsoft YaHei', 'Segoe UI', 'SimHei', 'sans-serif']"
+    },
+    {
+      "file": "geo-grid.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "geo-grid_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 159.9×111.9 mm"
+    },
+    {
+      "file": "geo-grid_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 159.94mm，目标 160.0mm（容差 ±1.60mm）"
+    },
+    {
+      "file": "geo-grid_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "geo-grid_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "geo-grid_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #1F2937 / 背景 #FFFFFF 对比度 14.68:1（正文要求 ≥4.5:1）",
+      "ratio": 14.68
+    },
+    {
+      "file": "geo-grid_600dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "600 dpi，物理尺寸 160.0×112.0 mm"
+    },
+    {
+      "file": "geo-grid_600dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 159.98mm，目标 160.0mm（容差 ±1.60mm）"
+    },
+    {
+      "file": "geo-grid_600dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "geo-grid_600dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "geo-grid_600dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #1F2937 / 背景 #FFFFFF 对比度 14.68:1（正文要求 ≥4.5:1）",
+      "ratio": 14.68
+    }
+  ],
+  "metrics": [
+    {
+      "file": "outputs\\geo-grid.pdf",
+      "pages": 1,
+      "width_mm": 159.99,
+      "height_mm": 111.99,
+      "page_size_mm": [
+        159.99,
+        111.99
+      ],
+      "fonts": [
+        {
+          "name": "/ELUGPM+ArialMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/DFIMHP+MicrosoftYaHei",
+          "subtype": "/Type0",
+          "embedded": true
+        }
+      ],
+      "text_chars": 197,
+      "images": 1,
+      "vector_ops_approx": 117
+    },
+    {
+      "file": "outputs\\geo-grid.svg",
+      "width_mm": 159.99,
+      "height_mm": 111.99,
+      "text_elements": 30,
+      "font_families": [
+        "Arial",
+        "DejaVu Sans",
+        "Microsoft YaHei",
+        "Segoe UI",
+        "SimHei",
+        "sans-serif"
+      ]
+    },
+    {
+      "file": "outputs\\geo-grid_300dpi.png",
+      "width_px": 1889,
+      "height_px": 1322,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 159.94,
+      "height_mm": 111.93,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 11.11,
+        "bottom": 0.72,
+        "left": 1.0,
+        "right": 5.5
+      }
+    },
+    {
+      "file": "outputs\\geo-grid_600dpi.png",
+      "width_px": 3779,
+      "height_px": 2645,
+      "mode": "RGBA",
+      "dpi": 600.0,
+      "width_mm": 159.98,
+      "height_mm": 111.97,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 11.11,
+        "bottom": 0.72,
+        "left": 1.0,
+        "right": 5.5
+      }
+    }
+  ]
+}

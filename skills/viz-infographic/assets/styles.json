@@ -1,0 +1,165 @@
+{
+  "version": "1.0",
+  "styles": [
+    {
+      "id": "editorial",
+      "name_zh": "报刊社论",
+      "description": "暖纸色、衬线标题、粗细分明的编辑网格；适合研究简报、深度报道与年度回顾。",
+      "colors": {
+        "bg": "#F5F0E6",
+        "surface": "#FFFDF8",
+        "surface2": "#EBE3D3",
+        "ink": "#1C1B19",
+        "muted": "#6B6459",
+        "accent": "#A4261D",
+        "accent2": "#1F4E79",
+        "positive": "#2F6B4F",
+        "negative": "#A4261D",
+        "border": "#D8CEBC",
+        "on_accent": "#FFFFFF"
+      },
+      "fonts": {
+        "display": "\"Source Han Serif SC\",\"Noto Serif CJK SC\",\"Songti SC\",SimSun,serif",
+        "body": "\"Source Han Sans SC\",\"Microsoft YaHei\",\"PingFang SC\",sans-serif",
+        "label": "Arial Narrow,Arial,sans-serif",
+        "mono": "Consolas,\"Courier New\",monospace"
+      },
+      "sizes": {
+        "title": 64,
+        "claim": 30,
+        "body": 18,
+        "small": 14,
+        "micro": 12,
+        "value": 66,
+        "label": 12
+      },
+      "radius": 0,
+      "border_width": 1,
+      "shadow": "none",
+      "texture": "rules",
+      "uppercase_labels": true,
+      "line_height": 1.55,
+      "card_padding": 22
+    },
+    {
+      "id": "minimal",
+      "name_zh": "高留白极简",
+      "description": "近白背景、细线、单一蓝点；适合董事会摘要、产品一页纸与克制的高级感。",
+      "colors": {
+        "bg": "#FFFFFF",
+        "surface": "#FFFFFF",
+        "surface2": "#F3F4F6",
+        "ink": "#111827",
+        "muted": "#6B7280",
+        "accent": "#0F62FE",
+        "accent2": "#111827",
+        "positive": "#15803D",
+        "negative": "#B91C1C",
+        "border": "#E5E7EB",
+        "on_accent": "#FFFFFF"
+      },
+      "fonts": {
+        "display": "Inter,\"Helvetica Neue\",\"Microsoft YaHei\",sans-serif",
+        "body": "Inter,\"Microsoft YaHei\",\"PingFang SC\",sans-serif",
+        "label": "Inter,Arial,sans-serif",
+        "mono": "ui-monospace,Consolas,monospace"
+      },
+      "sizes": {
+        "title": 60,
+        "claim": 28,
+        "body": 20,
+        "small": 15,
+        "micro": 12,
+        "value": 72,
+        "label": 12
+      },
+      "radius": 3,
+      "border_width": 1,
+      "shadow": "none",
+      "texture": "none",
+      "uppercase_labels": true,
+      "line_height": 1.65,
+      "card_padding": 26
+    },
+    {
+      "id": "technical",
+      "name_zh": "等宽工程网格",
+      "description": "蓝灰网格、等宽标签、方角卡片；适合数据管线、系统架构与技术复盘。",
+      "colors": {
+        "bg": "#F2F6FA",
+        "surface": "#FFFFFF",
+        "surface2": "#E3ECF5",
+        "ink": "#0B1F33",
+        "muted": "#5B7083",
+        "accent": "#00629B",
+        "accent2": "#00857C",
+        "positive": "#0F7B4D",
+        "negative": "#B42318",
+        "border": "#B8C9DA",
+        "on_accent": "#FFFFFF"
+      },
+      "fonts": {
+        "display": "\"IBM Plex Sans\",\"Segoe UI\",\"Microsoft YaHei\",sans-serif",
+        "body": "\"IBM Plex Sans\",\"Microsoft YaHei\",sans-serif",
+        "label": "\"JetBrains Mono\",Consolas,monospace",
+        "mono": "\"JetBrains Mono\",Consolas,monospace"
+      },
+      "sizes": {
+        "title": 56,
+        "claim": 27,
+        "body": 17,
+        "small": 13,
+        "micro": 11,
+        "value": 62,
+        "label": 11
+      },
+      "radius": 0,
+      "border_width": 1,
+      "shadow": "none",
+      "texture": "grid",
+      "uppercase_labels": true,
+      "line_height": 1.5,
+      "card_padding": 20
+    },
+    {
+      "id": "warm",
+      "name_zh": "柔和圆角",
+      "description": "奶油底、珊瑚与青绿、圆角卡片与轻阴影；适合用户研究、品牌与团队简报。",
+      "colors": {
+        "bg": "#FFF6EE",
+        "surface": "#FFFFFF",
+        "surface2": "#FFE8D9",
+        "ink": "#3B2F2F",
+        "muted": "#8A6F63",
+        "accent": "#E76F51",
+        "accent2": "#2A9D8F",
+        "positive": "#3A8D6D",
+        "negative": "#C44536",
+        "border": "#F3D6C7",
+        "on_accent": "#1F1A18"
+      },
+      "fonts": {
+        "display": "\"Nunito Sans\",\"Microsoft YaHei\",\"PingFang SC\",sans-serif",
+        "body": "\"Nunito Sans\",\"Microsoft YaHei\",sans-serif",
+        "label": "\"Nunito Sans\",Arial,sans-serif",
+        "mono": "Consolas,monospace"
+      },
+      "sizes": {
+        "title": 58,
+        "claim": 28,
+        "body": 19,
+        "small": 14,
+        "micro": 12,
+        "value": 68,
+        "label": 12
+      },
+      "radius": 22,
+      "border_width": 1,
+      "shadow": "0 8px 24px rgba(59,47,47,0.08)",
+      "texture": "dots",
+      "uppercase_labels": false,
+      "line_height": 1.6,
+      "card_padding": 24
+    }
+  ]
+}

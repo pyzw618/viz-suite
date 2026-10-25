@@ -1,0 +1,39 @@
+{
+  "status": "success",
+  "outputs": [
+    "..\\outputs\\fig-02-satisfaction.pdf",
+    "..\\outputs\\fig-02-satisfaction_300dpi.png",
+    "..\\outputs\\fig-02-satisfaction_600dpi.png",
+    "..\\outputs\\fig-02-satisfaction_data.csv"
+  ],
+  "rows_used": 707,
+  "rows_dropped": 13,
+  "verified": true,
+  "warnings": [
+    "13 行因缺失/空键被剔除；图注中的 n 为实际有效样本"
+  ],
+  "figure": {
+    "recipe": "grouped_errorbar_bar",
+    "orientation": "vertical",
+    "groups": [
+      "社媒舆情抓取",
+      "线上行为埋点",
+      "客服工单挖掘",
+      "门店拦截访谈",
+      "传统问卷回访",
+      "深度用户访谈"
+    ],
+    "series": [
+      "2024Q4",
+      "2025Q1",
+      "2025Q2"
+    ],
+    "palette": "okabe_ito",
+    "layout": null,
+    "width_mm": 150,
+    "height_mm": 93.0,
+    "stat": "mean_ci_normal",
+    "visual_verified": false,
+    "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"
+  }
+}

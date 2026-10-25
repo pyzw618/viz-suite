@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>圆环占比 · ECharts</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>企业微信与门店贡献近六成订单</h1><p>按订单量降序｜圆环中心为总计｜演示用合成数据</p></header>
+<figure>
+  <div id="chart" role="img" aria-label="五个客服渠道订单量占比圆环图，企业微信占比最高"></div>
+  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const COLORS = [ROLE.focal, '#E69F00', '#CC79A7', '#009E73', '#56B4E9'];
+const data = [
+  {name: '企业微信', value: 1284}, {name: '线下门店', value: 986}, {name: '400 热线', value: 742},
+  {name: '电商旗舰店', value: 531}, {name: '微信小程序', value: 318}
+];
+const total = data.reduce((s, d) => s + d.value, 0);
+const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+function buildOption(width) {
+  const mobile = width < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '企业微信与门店合计约占 57% 订单。'}},
+    color: COLORS,
+    tooltip: {trigger: 'item', formatter: p => `${p.name}<br/>${p.value.toLocaleString()} 单（${p.percent}%）`},
+    legend: {orient: mobile ? 'horizontal' : 'vertical', top: mobile ? 0 : 40, left: mobile ? 'center' : 10,
+      textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}},
+    graphic: [
+      {type: 'text', left: 'center', top: mobile ? '54%' : '45%', style: {text: '总计', fill: ROLE.muted, fontSize: mobile ? 12 : 13, textAlign: 'center'}},
+      {type: 'text', left: 'center', top: mobile ? '59%' : '50%', style: {text: total.toLocaleString(), fill: ROLE.text, fontSize: mobile ? 22 : 26, fontWeight: 'bold', textAlign: 'center'}},
+      {type: 'text', left: 'center', top: mobile ? '65%' : '56%', style: {text: '单', fill: ROLE.muted, fontSize: mobile ? 11 : 12, textAlign: 'center'}}
+    ],
+    series: [{
+      type: 'pie', radius: mobile ? ['46%', '64%'] : ['48%', '68%'], center: mobile ? ['50%', '60%'] : ['62%', '52%'],
+      avoidLabelOverlap: true, itemStyle: {borderColor: '#fff', borderWidth: 2},
+      label: {show: true, color: ROLE.text, fontSize: mobile ? 10 : 12,
+        formatter: p => mobile ? `${p.name}\n${p.percent}%` : `${p.name}\n${p.value.toLocaleString()} 单  ${p.percent}%`},
+      labelLine: {length: mobile ? 8 : 14, length2: mobile ? 8 : 18, lineStyle: {color: ROLE.muted}},
+      data
+    }]
+  };
+}
+function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+render();
+let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+</script>
+</body>
+</html>

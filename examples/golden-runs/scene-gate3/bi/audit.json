@@ -1,0 +1,34 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "visual_verified": false,
+  "warnings": [
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 1,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 1,
+    "total_checks": 1
+  },
+  "checks": [
+    {
+      "file": "index.html",
+      "check": "html_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用"
+    }
+  ],
+  "metrics": [
+    {
+      "file": "examples\\golden-runs\\scene-gate3\\bi\\index.html",
+      "chars": 16132,
+      "external_refs": 0
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "outputs": [
+    "..\\outputs\\story-revenue-shift.svg",
+    "..\\outputs\\story-revenue-shift_300dpi.png",
+    "..\\outputs\\story-revenue-shift_600dpi.png",
+    "..\\outputs\\story-revenue-shift_data.csv"
+  ],
+  "rows_used": 24,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "figure": {
+    "recipe": "stacked_bar_total_line",
+    "x": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月"
+    ],
+    "series": [
+      "电商",
+      "门店",
+      "私域",
+      "直播"
+    ],
+    "palette": "okabe_ito",
+    "layout": null,
+    "width_mm": 254,
+    "height_mm": 142.9,
+    "visual_verified": false,
+    "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"
+  }
+}

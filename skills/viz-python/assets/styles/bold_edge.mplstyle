@@ -1,0 +1,19 @@
+# viz-suite · bold_edge
+# 加重左下轴线与刻度，适合投影和远距阅读。
+axes.spines.top: False
+axes.spines.right: False
+axes.linewidth: 1.4
+xtick.direction: out
+ytick.direction: out
+xtick.major.size: 4.0
+ytick.major.size: 4.0
+xtick.major.width: 1.2
+ytick.major.width: 1.2
+axes.grid: False
+legend.frameon: False
+axes.prop_cycle: cycler('color', ['0072B2', 'E69F00', 'CC79A7', '009E73', 'D55E00', '56B4E9'])
+font.family: sans-serif
+font.sans-serif: Arial, Microsoft YaHei, SimHei, DejaVu Sans, sans-serif
+axes.unicode_minus: False
+pdf.fonttype: 42
+ps.fonttype: 42

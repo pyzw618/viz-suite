@@ -1,0 +1,75 @@
+{
+  "chart_type": "line",
+  "evidence_level": "SOURCE",
+  "format": "chartjs",
+  "title": "Weekly Trend by Series",
+  "colors": [
+    "#0072B2",
+    "#D55E00"
+  ],
+  "data_csv": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\web\\chartjs_source.html\\chartjs_source_data.csv",
+  "data": [
+    {
+      "x": 0,
+      "series": "Series A",
+      "value": 12
+    },
+    {
+      "x": 1,
+      "series": "Series A",
+      "value": 18
+    },
+    {
+      "x": 2,
+      "series": "Series A",
+      "value": 15
+    },
+    {
+      "x": 3,
+      "series": "Series A",
+      "value": 24
+    },
+    {
+      "x": 4,
+      "series": "Series A",
+      "value": 20
+    },
+    {
+      "x": 5,
+      "series": "Series A",
+      "value": 28
+    },
+    {
+      "x": 0,
+      "series": "Series B",
+      "value": 8
+    },
+    {
+      "x": 1,
+      "series": "Series B",
+      "value": 10
+    },
+    {
+      "x": 2,
+      "series": "Series B",
+      "value": 14
+    },
+    {
+      "x": 3,
+      "series": "Series B",
+      "value": 16
+    },
+    {
+      "x": 4,
+      "series": "Series B",
+      "value": 19
+    },
+    {
+      "x": 5,
+      "series": "Series B",
+      "value": 22
+    }
+  ],
+  "exact_data": true,
+  "source": "examples\\golden-runs\\reverse-benchmark\\web\\chartjs_source.html"
+}

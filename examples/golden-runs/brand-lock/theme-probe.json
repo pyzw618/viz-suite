@@ -1,0 +1,100 @@
+{
+  "status": "success",
+  "verified": true,
+  "figsize": [
+    5.906,
+    3.661
+  ],
+  "height_mm": 93.0,
+  "theme": {
+    "palette": "okabe_ito",
+    "layout_family": "soft_grid",
+    "fonts": [
+      "Arial",
+      "Microsoft YaHei",
+      "DejaVu Sans",
+      "sans-serif"
+    ],
+    "source": "project_extend",
+    "manifest": "figure-manifest.json"
+  },
+  "checks": [
+    {
+      "name": "manifest_located",
+      "ok": true,
+      "actual": "figure-manifest.json"
+    },
+    {
+      "name": "palette_locked",
+      "ok": true,
+      "actual": "okabe_ito"
+    },
+    {
+      "name": "layout_locked",
+      "ok": true,
+      "actual": "soft_grid"
+    },
+    {
+      "name": "width_locked",
+      "ok": true,
+      "actual": 150
+    },
+    {
+      "name": "extend_beats_manifest_footer",
+      "ok": true,
+      "actual": "数据来源：商业分析部｜内部资料"
+    },
+    {
+      "name": "extend_beats_manifest_fonts",
+      "ok": true,
+      "actual": [
+        "Microsoft YaHei",
+        "PingFang SC",
+        "Noto Sans CJK SC"
+      ]
+    },
+    {
+      "name": "font_en_override",
+      "ok": true,
+      "actual": [
+        "Arial",
+        "Inter"
+      ]
+    },
+    {
+      "name": "brand_focal",
+      "ok": true,
+      "actual": "#0F62FE"
+    },
+    {
+      "name": "brand_text",
+      "ok": true,
+      "actual": "#0B2545"
+    },
+    {
+      "name": "brand_grid",
+      "ok": true,
+      "actual": "#DCE7F3"
+    },
+    {
+      "name": "series_color_map_locked",
+      "ok": true,
+      "actual": {
+        "2024Q4": "#0072B2",
+        "2025Q1": "#E69F00",
+        "2025Q2": "#CC79A7"
+      }
+    },
+    {
+      "name": "font_stack_usable",
+      "ok": true,
+      "actual": [
+        "Arial",
+        "Microsoft YaHei",
+        "DejaVu Sans",
+        "sans-serif"
+      ]
+    }
+  ],
+  "warnings": []
+}

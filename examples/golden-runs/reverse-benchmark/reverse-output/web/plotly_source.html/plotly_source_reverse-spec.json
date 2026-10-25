@@ -1,0 +1,34 @@
+{
+  "chart_type": "pie",
+  "evidence_level": "SOURCE",
+  "format": "plotly",
+  "title": "Share by Region",
+  "colors": [
+    "#0072B2"
+  ],
+  "data_csv": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\web\\plotly_source.html\\plotly_source_data.csv",
+  "data": [
+    {
+      "category": "North",
+      "value": 35
+    },
+    {
+      "category": "South",
+      "value": 25
+    },
+    {
+      "category": "East",
+      "value": 20
+    },
+    {
+      "category": "West",
+      "value": 12
+    },
+    {
+      "category": "Central",
+      "value": 8
+    }
+  ],
+  "exact_data": true,
+  "source": "examples\\golden-runs\\reverse-benchmark\\web\\plotly_source.html"
+}

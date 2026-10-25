@@ -1,0 +1,292 @@
+{
+  "status": "partial",
+  "outputs": [],
+  "rows_used": 369,
+  "rows_dropped": 3,
+  "verified": true,
+  "warnings": [
+    "已剔除 3 行全空行；作图样本量请使用 rows_used",
+    "列「调研渠道」最长标签约 36 个显示单位：优先横向条形图，禁止 45° 斜排",
+    "列「响应时长_分钟」的数值以文本存储，统计前已强制转换；交付时应在图注说明清洗口径",
+    "列「受访者编号」为高基数文本（361 个唯一值）：不宜直接作图，需聚合或取 Top-N",
+    "列「备注」缺失率 54%，超过 30%：需确认剔除口径或改用可用样本量标注",
+    "列「备注」最长标签约 36 个显示单位：优先横向条形图，禁止 45° 斜排",
+    "存在 8 行完全重复记录：确认是重复采集还是合法重复观测"
+  ],
+  "profile": {
+    "file": "examples/fixtures/客服满意度_原始脏数据.csv",
+    "encoding": "utf-8-sig",
+    "sheet": null,
+    "rows": 369,
+    "cols": 7,
+    "rows_with_missing": 233,
+    "missing_cells": 262,
+    "duplicate_rows": 8,
+    "label_budget": {
+      "max_label_units": 36,
+      "max_cardinality": 6,
+      "long_label_columns": [
+        "调研渠道",
+        "备注"
+      ],
+      "orientation_hint": "horizontal"
+    },
+    "group_candidates": [
+      "调研渠道",
+      "城市",
+      "季度"
+    ],
+    "group_sizes": {
+      "column": "调研渠道",
+      "n_groups": 6,
+      "min": 60,
+      "max": 63,
+      "top": [
+        {
+          "value": "电商平台旗舰店在线客服（含直播咨询）",
+          "count": 63
+        },
+        {
+          "value": "400 电话热线与语音机器人转人工",
+          "count": 62
+        },
+        {
+          "value": "微信小程序自助服务与公众号留言",
+          "count": 62
+        },
+        {
+          "value": "线下门店导购与体验顾问接待",
+          "count": 61
+        },
+        {
+          "value": "企业微信专属客户经理一对一",
+          "count": 61
+        },
+        {
+          "value": "第三方社交平台舆情与私信反馈",
+          "count": 60
+        }
+      ]
+    },
+    "value_candidates": [
+      "满意度评分",
+      "响应时长_分钟"
+    ],
+    "time_candidates": [],
+    "columns": [
+      {
+        "name": "调研渠道",
+        "kind": "categorical",
+        "missing": 0,
+        "missing_rate": 0.0,
+        "unique": 6,
+        "max_label_chars": 18,
+        "max_label_units": 36,
+        "median_label_units": 30.0,
+        "top_values": [
+          {
+            "value": "电商平台旗舰店在线客服（含直播咨询）",
+            "count": 63
+          },
+          {
+            "value": "400 电话热线与语音机器人转人工",
+            "count": 62
+          },
+          {
+            "value": "微信小程序自助服务与公众号留言",
+            "count": 62
+          },
+          {
+            "value": "线下门店导购与体验顾问接待",
+            "count": 61
+          },
+          {
+            "value": "企业微信专属客户经理一对一",
+            "count": 61
+          }
+        ]
+      },
+      {
+        "name": "城市",
+        "kind": "categorical",
+        "missing": 0,
+        "missing_rate": 0.0,
+        "unique": 6,
+        "max_label_chars": 2,
+        "max_label_units": 4,
+        "median_label_units": 4.0,
+        "top_values": [
+          {
+            "value": "成都",
+            "count": 75
+          },
+          {
+            "value": "深圳",
+            "count": 69
+          },
+          {
+            "value": "杭州",
+            "count": 67
+          },
+          {
+            "value": "广州",
+            "count": 56
+          },
+          {
+            "value": "北京",
+            "count": 54
+          }
+        ]
+      },
+      {
+        "name": "季度",
+        "kind": "categorical",
+        "missing": 0,
+        "missing_rate": 0.0,
+        "unique": 3,
+        "max_label_chars": 6,
+        "max_label_units": 6,
+        "median_label_units": 6.0,
+        "top_values": [
+          {
+            "value": "2025Q1",
+            "count": 126
+          },
+          {
+            "value": "2025Q2",
+            "count": 123
+          },
+          {
+            "value": "2024Q4",
+            "count": 120
+          }
+        ],
+        "period": "quarter",
+        "ordered_values": [
+          "2024Q4",
+          "2025Q1",
+          "2025Q2"
+        ]
+      },
+      {
+        "name": "满意度评分",
+        "kind": "numeric",
+        "missing": 36,
+        "missing_rate": 0.0976,
+        "unique": 37,
+        "min": 1.4,
+        "p01": 1.6,
+        "q1": 2.9,
+        "median": 3.5,
+        "mean": 3.5129,
+        "q3": 4.2,
+        "p99": 5.0,
+        "max": 5.0,
+        "std": 0.9033,
+        "skew": -0.1,
+        "zeros": 0,
+        "negatives": 0,
+        "outlier_share": 0.0
+      },
+      {
+        "name": "响应时长_分钟",
+        "kind": "numeric",
+        "missing": 28,
+        "missing_rate": 0.0759,
+        "unique": 168,
+        "numeric_text": true,
+        "min": 1.0,
+        "p01": 1.429,
+        "q1": 10.3,
+        "median": 13.9,
+        "mean": 13.9544,
+        "q3": 17.9,
+        "p99": 26.483,
+        "max": 27.9,
+        "std": 5.4336,
+        "skew": 0.003,
+        "zeros": 0,
+        "negatives": 0,
+        "outlier_share": 0.0
+      },
+      {
+        "name": "受访者编号",
+        "kind": "text",
+        "missing": 0,
+        "missing_rate": 0.0,
+        "unique": 361,
+        "max_label_chars": 5,
+        "max_label_units": 5,
+        "median_label_units": 5.0,
+        "top_values": [
+          {
+            "value": "R0143",
+            "count": 2
+          },
+          {
+            "value": "R0213",
+            "count": 2
+          },
+          {
+            "value": "R0060",
+            "count": 2
+          },
+          {
+            "value": "R0146",
+            "count": 2
+          },
+          {
+            "value": "R0333",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "name": "备注",
+        "kind": "categorical",
+        "missing": 198,
+        "missing_rate": 0.5366,
+        "unique": 5,
+        "max_label_chars": 18,
+        "max_label_units": 36,
+        "median_label_units": 28.0,
+        "top_values": [
+          {
+            "value": "用户主动补充：等待时间过长",
+            "count": 56
+          },
+          {
+            "value": "电话回访时用户正在开会，评分可能偏低",
+            "count": 47
+          },
+          {
+            "value": "门店网络故障，问卷由店员代填",
+            "count": 35
+          },
+          {
+            "value": "受访者中途退出，部分题项未答",
+            "count": 32
+          },
+          {
+            "value": "系统导出格式异常",
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "chart_hints": [
+      {
+        "family": "bar_grouped_horizontal",
+        "why": "分类 + 数值：分组/排序条形图；长标签自动横排"
+      },
+      {
+        "family": "scatter",
+        "why": "双数值维：散点或带边际密度的回归图"
+      },
+      {
+        "family": "heatmap_or_grouped",
+        "why": "双分类维：聚合热力矩阵或分组小多图"
+      }
+    ]
+  }
+}

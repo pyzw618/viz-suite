@@ -1,0 +1,32 @@
+{
+  "status": "success",
+  "outputs": [
+    "..\\outputs\\fig-01-rank.pdf",
+    "..\\outputs\\fig-01-rank_300dpi.png",
+    "..\\outputs\\fig-01-rank_600dpi.png",
+    "..\\outputs\\fig-01-rank_data.csv"
+  ],
+  "rows_used": 8,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "figure": {
+    "recipe": "lollipop_rank_badges",
+    "ranked": [
+      "深度集成模型",
+      "梯度提升树",
+      "随机森林",
+      "支持向量机",
+      "逻辑回归",
+      "朴素贝叶斯",
+      "K 近邻",
+      "决策树"
+    ],
+    "top_n": 3,
+    "layout": null,
+    "width_mm": 150,
+    "height_mm": 96.0,
+    "visual_verified": false,
+    "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "eyebrow": "增长能力诊断",
+  "title": "数据底座决定增长能力的上限",
+  "claim": "上层策略再快，也会被口径不一致与数据缺口拖慢；先补底座，再谈规模化。",
+  "subtitle": "五层能力模型｜自下而上建设",
+  "icon": "layers",
+  "layout": "pyramid",
+  "style": "minimal",
+  "source": "数据来源：增长能力评估工作坊（合成演示数据）",
+  "footnote": "层级越高越依赖下层稳定性；每层给出一个可验收动作。",
+  "modules": [
+    {"title": "组织能力", "value": "P5", "body": "跨团队实验评审与复盘机制", "icon": "users"},
+    {"title": "渠道策略", "value": "P4", "body": "按边际 ROI 分配预算与触点", "icon": "compass"},
+    {"title": "实验方法", "value": "P3", "body": "A/B 分流、样本量与显著性口径", "icon": "flask-conical"},
+    {"title": "指标口径", "value": "P2", "body": "收入、活跃、留存的唯一定义", "icon": "scale"},
+    {"title": "数据底座", "value": "P1", "body": "埋点、数仓与主键去重", "icon": "database"}
+  ]
+}

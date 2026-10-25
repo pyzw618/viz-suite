@@ -1,0 +1,81 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "summary": {
+    "files": 1,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 8,
+    "total_checks": 8
+  },
+  "checks": [
+    {
+      "file": "index.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "index.html",
+      "check": "container_height",
+      "severity": "info",
+      "passed": true,
+      "detail": "图表容器均有显式高度"
+    },
+    {
+      "file": "index.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "index.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "index.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "index.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "index.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "index.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 段内联脚本语法通过 node --check"
+    }
+  ],
+  "metrics": [
+    {
+      "file": "examples\\golden-runs\\scene-gate3\\bi\\index.html",
+      "tags": 75,
+      "inline_scripts": 1,
+      "containers": 3
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>月度收入趋势 · ECharts</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}
+header h1{font-size:20px;margin:0 0 4px;font-weight:700}
+header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 150px);min-height:420px}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header>
+  <h1>月度收入持续增长，2025 年 6 月同比 +18.0%</h1>
+  <p>单位：万元｜两年度同月份对比｜纵轴按数据范围缩放｜演示用合成数据</p>
+</header>
+<figure>
+  <div id="chart" role="img" aria-label="2024 与 2025 年 1 至 12 月收入折线图，2025 年整体高于 2024 年"></div>
+  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const COLORS = [ROLE.focal, '#E69F00', '#CC79A7', '#009E73'];
+const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const data2024 = [128, 132, 141, 138, 150, 156, 162, 168, 175, 182, 190, 205];
+const data2025 = [140, 148, 155, 162, 171, 184, 192, 201, 210, 221, 232, 242];
+const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+
+function buildOption(width) {
+  const mobile = width < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '2025 年各月收入均高于 2024 年，6 月同比增长 18%。'}},
+    color: COLORS,
+    tooltip: {trigger: 'axis', valueFormatter: v => v + ' 万元'},
+    legend: {data: ['2024', '2025'], top: 0, right: 0, textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}},
+    grid: {left: mobile ? 44 : 56, right: mobile ? 16 : 28, top: mobile ? 52 : 44, bottom: mobile ? 34 : 40},
+    xAxis: {type: 'category', boundaryGap: false, data: months,
+      axisLine: {lineStyle: {color: ROLE.grid}}, axisTick: {show: false},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12, interval: mobile ? 'auto' : 0}},
+    yAxis: {type: 'value', name: mobile ? '' : '收入（万元）', nameTextStyle: {color: ROLE.muted},
+      min: value => Math.floor(value.min / 20) * 20, max: value => Math.ceil(value.max / 20) * 20,
+      splitNumber: 7,
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    series: [
+      {name: '2024', type: 'line', smooth: false, data: data2024, symbol: 'circle', symbolSize: 5,
+       lineStyle: {width: 1.6, color: ROLE.muted}, itemStyle: {color: ROLE.muted, borderColor: '#fff', borderWidth: 1}},
+      {name: '2025', type: 'line', smooth: false, data: data2025, symbol: 'circle', symbolSize: 7,
+       lineStyle: {width: 2.4, color: ROLE.focal}, itemStyle: {color: ROLE.focal, borderColor: '#fff', borderWidth: 1},
+       endLabel: {show: true, color: ROLE.focal, fontSize: 11}}
+    ]
+  };
+}
+function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+render();
+let timer = null;
+window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>矩形树图 · ECharts</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>产品成本结构中原材料占比最高，物流次之</h1><p>面积=成本金额（万元）｜三级分类｜演示用合成数据</p></header>
+<figure>
+  <div id="chart" role="img" aria-label="产品成本矩形树图，原材料、物流、人力与渠道费用按面积展示"></div>
+  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const COLORS = [ROLE.focal, '#E69F00', '#CC79A7', '#009E73'];
+const data = [{
+  name: '总成本', children: [
+    {name: '原材料', value: 420, children: [
+      {name: '芯片', value: 180}, {name: '结构件', value: 120}, {name: '包装', value: 70}, {name: '其他物料', value: 50}
+    ]},
+    {name: '物流', value: 210, children: [
+      {name: '干线运输', value: 95}, {name: '仓储', value: 65}, {name: '末端配送', value: 50}
+    ]},
+    {name: '人力', value: 180, children: [
+      {name: '生产', value: 90}, {name: '客服', value: 50}, {name: '管理', value: 40}
+    ]},
+    {name: '渠道费用', value: 150, children: [
+      {name: '平台佣金', value: 80}, {name: '推广', value: 70}
+    ]}
+  ]
+}];
+const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+function buildOption(width) {
+  const mobile = width < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '总成本 960 万元，原材料 420 万最高。'}},
+    color: COLORS,
+    tooltip: {trigger: 'item', formatter: p => `${p.name}<br/>${p.value} 万元（${(p.value / 960 * 100).toFixed(1)}%）`},
+    series: [{
+      type: 'treemap', data, width: '100%', height: '100%', top: mobile ? 6 : 10, bottom: mobile ? 6 : 10,
+      left: mobile ? 4 : 10, right: mobile ? 4 : 10,
+      roam: false, nodeClick: false, breadcrumb: {show: false},
+      label: {show: true, color: '#fff', fontSize: mobile ? 10 : 12, formatter: p => p.name},
+      upperLabel: {show: true, height: mobile ? 20 : 26, color: '#fff', fontSize: mobile ? 11 : 13},
+      levels: [
+        {itemStyle: {borderColor: '#fff', borderWidth: 2, gapWidth: 2}},
+        {itemStyle: {borderColor: 'rgba(255,255,255,0.7)', borderWidth: 1, gapWidth: 1}, colorSaturation: [0.28, 0.5]},
+        {itemStyle: {borderColor: 'rgba(255,255,255,0.5)', borderWidth: 1, gapWidth: 1}, colorSaturation: [0.2, 0.4]}
+      ]
+    }]
+  };
+}
+function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+render();
+let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+</script>
+</body>
+</html>

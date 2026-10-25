@@ -1,0 +1,4241 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "summary": {
+    "files": 48,
+    "viewports": 2,
+    "combinations": 96,
+    "issues": 0,
+    "missing": 0
+  },
+  "results": [
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 28,
+          "h": 28
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1176,
+          "h": 638
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1176,
+          "h": 638
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1176,
+          "h": 638
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1176,
+          "h": 638
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1176,
+          "h": 638
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1176,
+          "h": 638
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1176,
+          "h": 638
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1176,
+          "h": 638
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 24,
+          "h": 24
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__editorial.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__minimal.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__minimal.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__technical.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__technical.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__warm.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__warm.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        }
+      ],
+      "ok": true
+    }
+  ]
+}

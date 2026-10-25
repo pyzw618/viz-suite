@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples\\golden-runs\\end-to-end\\tasks\\03-retro-infographic\\outputs\\retro.html",
+    "examples\\golden-runs\\end-to-end\\tasks\\03-retro-infographic\\outputs\\retro.svg"
+  ],
+  "rows_used": 4,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "infographic": {
+    "layout": "stat-cards",
+    "style": "editorial",
+    "title": "直播成为增长主引擎，整体目标完成率 100.6%",
+    "modules": 4,
+    "icons_used": [
+      "banknote",
+      "chart-pie",
+      "target",
+      "user-plus"
+    ],
+    "canvas": [
+      1200,
+      1600
+    ],
+    "contrast": {
+      "ink_on_bg": 15.15,
+      "ink_on_surface": 16.93,
+      "muted_on_surface": 5.75,
+      "on_accent": 7.31
+    },
+    "source": "数据来源：经营分析部 2025 年 6 月月报（合成演示数据）",
+    "visual_verified": false,
+    "note": "脚本只保证折行与结构；仍需浏览器截图/ViewImage 目检"
+  }
+}

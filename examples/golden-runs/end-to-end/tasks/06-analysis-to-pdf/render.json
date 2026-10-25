@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/outputs/report.pdf",
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/outputs/summary.csv",
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/outputs/handoff.md",
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/outputs/chart_300dpi.png"
+  ],
+  "rows_used": 6,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "report": {
+    "total_revenue": 1184.0,
+    "total_target": 1215.0,
+    "completion": 97.45,
+    "top_region": "华东",
+    "slides": 5,
+    "visual_verified": false
+  }
+}

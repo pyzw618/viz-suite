@@ -1,0 +1,21 @@
+# viz-suite · clean_open
+# 极简左下轴、刻度朝外、无网格。对应 viz_style.apply_style(ax, "clean_open")。
+axes.spines.top: False
+axes.spines.right: False
+axes.spines.left: True
+axes.spines.bottom: True
+axes.linewidth: 0.9
+xtick.direction: out
+ytick.direction: out
+xtick.major.size: 3.0
+ytick.major.size: 3.0
+xtick.top: False
+ytick.right: False
+axes.grid: False
+legend.frameon: False
+axes.prop_cycle: cycler('color', ['0072B2', 'D55E00', 'CC79A7', '009E73', 'E69F00', '56B4E9'])
+font.family: sans-serif
+font.sans-serif: Arial, Microsoft YaHei, SimHei, DejaVu Sans, sans-serif
+axes.unicode_minus: False
+pdf.fonttype: 42
+ps.fonttype: 42

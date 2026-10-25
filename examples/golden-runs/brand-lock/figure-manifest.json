@@ -1,0 +1,21 @@
+{
+  "palette": "okabe_ito",
+  "layout_family": "soft_grid",
+  "width_mm": 150,
+  "series_color_map": {
+    "2024Q4": "#0072B2",
+    "2025Q1": "#E69F00",
+    "2025Q2": "#CC79A7"
+  },
+  "fonts": {
+    "font_zh": ["SimHei"],
+    "font_en": ["Consolas"]
+  },
+  "footer": "数据来源：MANIFEST（应被 EXTEND 覆盖）",
+  "figures": [
+    {"id": "fig-01", "title": "模型综合得分排名", "recipe": "lollipop_rank_badges", "file": "outputs/fig-01-rank.pdf"},
+    {"id": "fig-02", "title": "渠道满意度（季度系列）", "recipe": "grouped_errorbar_bar", "file": "outputs/fig-02-satisfaction.pdf"},
+    {"id": "fig-03", "title": "产品排名变化", "recipe": "slope_rank_change", "file": "outputs/fig-03-rank-change.pdf"},
+    {"id": "fig-04", "title": "渠道收入构成（季度系列）", "recipe": "stacked_bar_total_line", "file": "outputs/fig-04-revenue-mix.pdf"}
+  ]
+}

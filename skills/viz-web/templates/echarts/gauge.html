@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KPI 仪表盘 · ECharts</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>核心 KPI：完成率 78%，满意度 4.2 分，成本偏差 −3.1%</h1><p>三个仪表盘分别对应 0–100%、0–5 分、−10%–+10%｜演示用合成数据</p></header>
+<figure>
+  <div id="chart" role="img" aria-label="三个 KPI 仪表盘：完成率 78%，满意度 4.2 分，成本偏差负 3.1%"></div>
+  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+function gauge(name, value, min, max, center, color, formatter) {
+  return {
+    type: 'gauge', min, max, center, radius: '32%', startAngle: 210, endAngle: -30,
+    splitNumber: 5, progress: {show: true, width: 8, itemStyle: {color}},
+    axisLine: {lineStyle: {width: 8, color: [[1, ROLE.grid]]}},
+    axisTick: {show: false}, splitLine: {length: 6, lineStyle: {color: ROLE.grid, width: 1}},
+    axisLabel: {distance: 12, color: ROLE.muted, fontSize: 9},
+    pointer: {width: 3, length: '58%', itemStyle: {color: ROLE.text}},
+    anchor: {show: true, size: 6, itemStyle: {color: ROLE.text}},
+    title: {show: true, offsetCenter: [0, '72%'], color: ROLE.muted, fontSize: 12},
+    detail: {valueAnimation: false, offsetCenter: [0, '40%'], color: ROLE.text, fontSize: 18,
+      fontWeight: 'bold', formatter},
+    data: [{value, name}]
+  };
+}
+function buildOption(width) {
+  const mobile = width < 600;
+  const centers = mobile
+    ? [['50%', '22%'], ['50%', '52%'], ['50%', '82%']]
+    : [['20%', '52%'], ['50%', '52%'], ['80%', '52%']];
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '完成率 78%，满意度 4.2 分，成本偏差负 3.1%。'}},
+    tooltip: {show: false},
+    series: [
+      gauge('完成率', 78, 0, 100, centers[0], ROLE.focal, v => v + '%'),
+      gauge('满意度', 4.2, 0, 5, centers[1], ROLE.positive, v => v.toFixed(1) + ' 分'),
+      gauge('成本偏差', -3.1, -10, 10, centers[2], ROLE.alert, v => v + '%')
+    ]
+  };
+}
+function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+render();
+let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+</script>
+</body>
+</html>

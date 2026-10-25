@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>漏斗图 · ECharts</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>从访问到复购：每一步转化率逐级收窄，交付环节流失最大</h1><p>单位：人｜漏斗宽度为绝对人数｜演示用合成数据</p></header>
+<figure>
+  <div id="chart" role="img" aria-label="从访问、注册、试用、下单到复购的转化漏斗，交付环节流失最大"></div>
+  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const COLORS = [ROLE.focal, '#3B82A0', '#56B4E9', '#E69F00', '#CC79A7'];
+const data = [
+  {name: '访问', value: 12000}, {name: '注册', value: 7200}, {name: '试用', value: 4300},
+  {name: '下单', value: 2600}, {name: '复购', value: 980}
+];
+const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+function buildOption(width) {
+  const mobile = width < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '访问 12000 人，最终复购 980 人，整体转化率约 8.2%。'}},
+    color: COLORS,
+    tooltip: {trigger: 'item', formatter: p => `${p.name}<br/>${p.value.toLocaleString()} 人（占访问 ${(p.value / 12000 * 100).toFixed(1)}%）`},
+    series: [{
+      type: 'funnel', left: mobile ? '8%' : '16%', right: mobile ? '8%' : '16%',
+      top: mobile ? 12 : 24, bottom: mobile ? 12 : 24, sort: 'descending', gap: 3,
+      minSize: '18%', maxSize: '100%',
+      label: {show: true, position: mobile ? 'inside' : 'right', color: mobile ? '#fff' : ROLE.text,
+        fontSize: mobile ? 11 : 13, formatter: p => `${p.name}  ${p.value.toLocaleString()}`},
+      labelLine: {show: false},
+      itemStyle: {borderColor: '#fff', borderWidth: 2, opacity: 0.92},
+      emphasis: {label: {fontWeight: 'bold'}},
+      data
+    }]
+  };
+}
+function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+render();
+let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+</script>
+</body>
+</html>

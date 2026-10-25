@@ -1,0 +1,37 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\compare\\diff.png"
+  ],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "compare": {
+    "original": "examples\\golden-runs\\reverse-benchmark\\images\\line.png",
+    "reproduction": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\reproduction.png",
+    "width": 1000,
+    "height": 700,
+    "ssim": 0.996,
+    "ssim_pass": true,
+    "delta_e_mean": 0.084,
+    "delta_e_median": 0.0,
+    "delta_e_content_mean": 3.591,
+    "layout_iou": 1.0,
+    "content_iou": 0.9226,
+    "bbox_original": [
+      83,
+      73,
+      931,
+      634
+    ],
+    "bbox_reproduction": [
+      83,
+      73,
+      931,
+      634
+    ],
+    "diff": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\compare\\diff.png",
+    "no_compensation": "本脚本只测量；未修改反推数据或添加像素偏移"
+  }
+}

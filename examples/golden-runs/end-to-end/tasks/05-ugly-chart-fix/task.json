@@ -1,0 +1,31 @@
+{
+  "id": "05-ugly-chart-fix",
+  "title": "问题丑图诊断与修复",
+  "prompt": "这张图基线截断、彩虹色、标签旋转、没有来源；诊断问题并重绘一张可信的排序横条图。",
+  "route": {
+    "primary": "viz-audit",
+    "scenes": [],
+    "support": [
+      "viz-python",
+      "viz-core"
+    ],
+    "not_use": [
+      "viz-reverse"
+    ]
+  },
+  "inputs": [
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/outputs/before.png"
+  ],
+  "outputs": [
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/outputs/before.png",
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/outputs/after.pdf",
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/outputs/after.svg",
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/outputs/after_300dpi.png",
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/outputs/after_600dpi.png",
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/audit-before.json",
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/audit-after.json",
+    "examples/golden-runs/end-to-end/tasks/05-ugly-chart-fix/render.json"
+  ],
+  "verification": "before：CVD protanopia ΔE=3.8、DPI 100；after：19/19 audit 通过；零基线、排序、直接标注、来源齐全。",
+  "notes": "不是所有丑图都要重做；先诊断数据/编码问题再重绘。"
+}

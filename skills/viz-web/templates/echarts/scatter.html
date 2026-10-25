@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>散点回归 · ECharts</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>投入时长与产出评分正相关（R² = 0.63）</h1><p>散点为单个样本｜深色线为最小二乘拟合｜演示用合成数据</p></header>
+<figure>
+  <div id="chart" role="img" aria-label="投入时长与产出评分散点图，呈明显正相关"></div>
+  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+let seed = 20261025;
+const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+const data = Array.from({length: 90}, () => {
+  const x = 8 + rand() * 42;
+  const y = Math.max(20, Math.min(100, 30 + 1.15 * x + (rand() - 0.5) * 18));
+  return [Number(x.toFixed(1)), Number(y.toFixed(1))];
+});
+const n = data.length;
+const sx = data.reduce((s, d) => s + d[0], 0);
+const sy = data.reduce((s, d) => s + d[1], 0);
+const sxx = data.reduce((s, d) => s + d[0] * d[0], 0);
+const sxy = data.reduce((s, d) => s + d[0] * d[1], 0);
+const slope = (n * sxy - sx * sy) / (n * sxx - sx * sx);
+const intercept = (sy - slope * sx) / n;
+const line = [[8, slope * 8 + intercept], [50, slope * 50 + intercept]];
+const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+function buildOption(width) {
+  const mobile = width < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '散点显示投入时长与产出评分正相关，并附线性拟合线。'}},
+    tooltip: {trigger: 'item', formatter: p => p.seriesName === '观测' ? `投入 ${p.value[0]} h<br/>产出 ${p.value[1]} 分` : ''},
+    grid: {left: mobile ? 42 : 58, right: mobile ? 16 : 28, top: mobile ? 24 : 30, bottom: mobile ? 36 : 44},
+    xAxis: {type: 'value', name: mobile ? '' : '投入时长（小时）', nameLocation: 'middle', nameGap: 26,
+      nameTextStyle: {color: ROLE.muted}, min: 5, max: 52,
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    yAxis: {type: 'value', name: mobile ? '' : '产出评分（0–100）', nameTextStyle: {color: ROLE.muted}, min: 20, max: 100,
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    series: [
+      {name: '观测', type: 'scatter', data, symbolSize: mobile ? 6 : 8,
+       itemStyle: {color: 'rgba(0,114,178,0.55)', borderColor: '#fff', borderWidth: 0.6}},
+      {name: '拟合', type: 'line', data: line, symbol: 'none', lineStyle: {width: 2, color: ROLE.text}, tooltip: {show: false}}
+    ]
+  };
+}
+function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+render();
+let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+</script>
+</body>
+</html>

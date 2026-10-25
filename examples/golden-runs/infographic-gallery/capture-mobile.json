@@ -1,0 +1,201 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\compare-binary__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\cycle__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\funnel__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\hierarchy-tree__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\list-grid__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\list-row__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\mindmap__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\pyramid__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\quadrant__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\sequence-steps__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\stat-cards__editorial_mobile.png",
+    "examples\\golden-runs\\infographic-gallery\\shots-mobile\\timeline__editorial_mobile.png"
+  ],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "cdp",
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "captures": [
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/compare-binary__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\compare-binary__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1378
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/cycle__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\cycle__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1380
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/funnel__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\funnel__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1465
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/hierarchy-tree__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\hierarchy-tree__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1220
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/list-grid__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\list-grid__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        2904
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/list-row__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\list-row__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1570
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/mindmap__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\mindmap__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1222
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/pyramid__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\pyramid__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1308
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/quadrant__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\quadrant__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        914
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/sequence-steps__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\sequence-steps__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1455
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/stat-cards__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\stat-cards__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        2440
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    },
+    {
+      "file": "examples/golden-runs/infographic-gallery/outputs/timeline__editorial.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "output": "examples\\golden-runs\\infographic-gallery\\shots-mobile\\timeline__editorial_mobile.png",
+      "ok": true,
+      "png_size": [
+        390,
+        1634
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    }
+  ],
+  "browser_version": "Chrome/156.0.8078.48"
+}

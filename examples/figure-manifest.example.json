@@ -1,0 +1,35 @@
+{
+  "palette": "okabe_ito",
+  "layout_family": "soft_grid",
+  "width_mm": 160,
+  "series_color_map": {
+    "2024Q4": "#0072B2",
+    "2025Q1": "#E69F00",
+    "2025Q2": "#CC79A7"
+  },
+  "fonts": {
+    "font_zh": ["Microsoft YaHei"],
+    "font_en": ["Arial"]
+  },
+  "footer": "数据来源：商业分析部 | 内部资料",
+  "figures": [
+    {
+      "id": "fig-01",
+      "title": "渠道满意度对比",
+      "recipe": "grouped_errorbar_bar",
+      "file": "outputs/fig-01-channel-satisfaction.pdf"
+    },
+    {
+      "id": "fig-02",
+      "title": "留存率分布",
+      "recipe": "raincloud_fusion",
+      "file": "outputs/fig-02-retention.pdf"
+    },
+    {
+      "id": "fig-03",
+      "title": "季度趋势",
+      "recipe": "TBD",
+      "file": "outputs/fig-03-trend.pdf"
+    }
+  ]
+}

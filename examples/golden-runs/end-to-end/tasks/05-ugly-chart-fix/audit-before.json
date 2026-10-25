@@ -1,0 +1,88 @@
+{
+  "status": "partial",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": false,
+  "visual_verified": false,
+  "warnings": [
+    "色板最小色差：正常 ΔE=10.8；protanopia ΔE=3.8；deuteranopia ΔE=8.7；tritanopia ΔE=15.6（阈值 ΔE≥10.0）",
+    "DPI 100 低于要求 300",
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 1,
+    "blocking": 1,
+    "warning": 1,
+    "passed": 4,
+    "total_checks": 6
+  },
+  "checks": [
+    {
+      "file": "before.png",
+      "check": "cvd_palette",
+      "severity": "blocking",
+      "passed": false,
+      "detail": "色板最小色差：正常 ΔE=10.8；protanopia ΔE=3.8；deuteranopia ΔE=8.7；tritanopia ΔE=15.6（阈值 ΔE≥10.0）",
+      "min_delta_e": 3.79
+    },
+    {
+      "file": "before.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "100 dpi，物理尺寸 203.2×127.0 mm"
+    },
+    {
+      "file": "before.png",
+      "check": "dpi_min",
+      "severity": "warning",
+      "passed": false,
+      "detail": "DPI 100 低于要求 300"
+    },
+    {
+      "file": "before.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "before.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "before.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #000000 / 背景 #FFFFFF 对比度 21.00:1（正文要求 ≥4.5:1）",
+      "ratio": 21.0
+    }
+  ],
+  "metrics": [
+    {
+      "file": "outputs\\before.png",
+      "width_px": 800,
+      "height_px": 500,
+      "mode": "RGBA",
+      "dpi": 100.0,
+      "width_mm": 203.2,
+      "height_mm": 127.0,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 7.2,
+        "bottom": 3.6,
+        "left": 5.5,
+        "right": 10.0
+      }
+    }
+  ]
+}

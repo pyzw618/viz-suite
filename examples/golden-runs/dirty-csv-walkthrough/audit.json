@@ -1,0 +1,159 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "visual_verified": false,
+  "warnings": [
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 2,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 12,
+    "total_checks": 12
+  },
+  "checks": [
+    {
+      "file": "fig-01-channel-satisfaction.pdf",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-01-channel-satisfaction.pdf",
+      "check": "pdf_page_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "1 页；首页 160.0×115.2 mm"
+    },
+    {
+      "file": "fig-01-channel-satisfaction.pdf",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页宽 159.99mm，目标 160.0mm"
+    },
+    {
+      "file": "fig-01-channel-satisfaction.pdf",
+      "check": "pdf_fonts",
+      "severity": "info",
+      "passed": true,
+      "detail": "3 个字体全部嵌入"
+    },
+    {
+      "file": "fig-01-channel-satisfaction.pdf",
+      "check": "pdf_vector",
+      "severity": "info",
+      "passed": true,
+      "detail": "内容流含约 381 个矢量绘制操作（文字/图元保持矢量）"
+    },
+    {
+      "file": "fig-01-channel-satisfaction.pdf",
+      "check": "pdf_content",
+      "severity": "info",
+      "passed": true,
+      "detail": "首页文本 282 字符，图像 0 个，矢量操作约 381 个"
+    },
+    {
+      "file": "fig-01-channel-satisfaction_300dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=41.1；protanopia ΔE=12.2；deuteranopia ΔE=25.2；tritanopia ΔE=10.9（阈值 ΔE≥10.0）",
+      "min_delta_e": 10.87
+    },
+    {
+      "file": "fig-01-channel-satisfaction_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 159.9×115.1 mm"
+    },
+    {
+      "file": "fig-01-channel-satisfaction_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 159.94mm，目标 160.0mm（容差 ±1.60mm）"
+    },
+    {
+      "file": "fig-01-channel-satisfaction_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "fig-01-channel-satisfaction_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "fig-01-channel-satisfaction_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #1F2937 / 背景 #FFFFFF 对比度 14.68:1（正文要求 ≥4.5:1）",
+      "ratio": 14.68
+    }
+  ],
+  "metrics": [
+    {
+      "file": "examples/golden-runs/dirty-csv-walkthrough/outputs/fig-01-channel-satisfaction.pdf",
+      "pages": 1,
+      "width_mm": 159.99,
+      "height_mm": 115.19,
+      "page_size_mm": [
+        159.99,
+        115.19
+      ],
+      "fonts": [
+        {
+          "name": "/CCSCXL+ArialMT",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/GKFNAK+MicrosoftYaHei",
+          "subtype": "/Type0",
+          "embedded": true
+        },
+        {
+          "name": "/GTJOWM+MicrosoftYaHei-Bold",
+          "subtype": "/Type0",
+          "embedded": true
+        }
+      ],
+      "text_chars": 282,
+      "images": 0,
+      "vector_ops_approx": 381
+    },
+    {
+      "file": "examples/golden-runs/dirty-csv-walkthrough/outputs/fig-01-channel-satisfaction_300dpi.png",
+      "width_px": 1889,
+      "height_px": 1360,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 159.94,
+      "height_mm": 115.15,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 3.48,
+        "bottom": 0.7,
+        "left": 1.0,
+        "right": 2.5
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples/golden-runs/end-to-end/tasks/01-academic-multipanel/outputs/fig-academic-multipanel.pdf",
+    "examples/golden-runs/end-to-end/tasks/01-academic-multipanel/outputs/fig-academic-multipanel.svg",
+    "examples/golden-runs/end-to-end/tasks/01-academic-multipanel/outputs/fig-academic-multipanel_300dpi.png",
+    "examples/golden-runs/end-to-end/tasks/01-academic-multipanel/outputs/fig-academic-multipanel_600dpi.png",
+    "examples/golden-runs/end-to-end/tasks/01-academic-multipanel/outputs/caption.txt"
+  ],
+  "rows_used": 270,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "figure": {
+    "recipe": "custom-multipanel",
+    "width_mm": 183,
+    "height_mm": 76.9,
+    "panels": [
+      "a",
+      "b",
+      "c"
+    ],
+    "visual_verified": false
+  }
+}

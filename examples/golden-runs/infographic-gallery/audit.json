@@ -1,0 +1,1366 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "visual_verified": false,
+  "warnings": [
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 48,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 144,
+    "total_checks": 144
+  },
+  "checks": [
+    {
+      "file": "compare-binary__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "compare-binary__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "23 个文本节点，字体：未标注"
+    },
+    {
+      "file": "compare-binary__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "compare-binary__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "compare-binary__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "23 个文本节点，字体：未标注"
+    },
+    {
+      "file": "compare-binary__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "compare-binary__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "compare-binary__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "23 个文本节点，字体：未标注"
+    },
+    {
+      "file": "compare-binary__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "compare-binary__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "compare-binary__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "23 个文本节点，字体：未标注"
+    },
+    {
+      "file": "compare-binary__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "cycle__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "cycle__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "cycle__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "cycle__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "cycle__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "cycle__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "cycle__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "cycle__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "cycle__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "cycle__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "cycle__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "cycle__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "funnel__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "funnel__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "30 个文本节点，字体：未标注"
+    },
+    {
+      "file": "funnel__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "funnel__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "funnel__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "30 个文本节点，字体：未标注"
+    },
+    {
+      "file": "funnel__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "funnel__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "funnel__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "30 个文本节点，字体：未标注"
+    },
+    {
+      "file": "funnel__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "funnel__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "funnel__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "30 个文本节点，字体：未标注"
+    },
+    {
+      "file": "funnel__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "hierarchy-tree__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "hierarchy-tree__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "27 个文本节点，字体：未标注"
+    },
+    {
+      "file": "hierarchy-tree__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "hierarchy-tree__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "hierarchy-tree__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "27 个文本节点，字体：未标注"
+    },
+    {
+      "file": "hierarchy-tree__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "hierarchy-tree__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "hierarchy-tree__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "27 个文本节点，字体：未标注"
+    },
+    {
+      "file": "hierarchy-tree__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "hierarchy-tree__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "hierarchy-tree__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "27 个文本节点，字体：未标注"
+    },
+    {
+      "file": "hierarchy-tree__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "list-grid__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "list-grid__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "52 个文本节点，字体：未标注"
+    },
+    {
+      "file": "list-grid__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "list-grid__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "list-grid__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "52 个文本节点，字体：未标注"
+    },
+    {
+      "file": "list-grid__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "list-grid__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "list-grid__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "52 个文本节点，字体：未标注"
+    },
+    {
+      "file": "list-grid__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "list-grid__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "list-grid__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "52 个文本节点，字体：未标注"
+    },
+    {
+      "file": "list-grid__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "list-row__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "list-row__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "list-row__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "list-row__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "list-row__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "list-row__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "list-row__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "list-row__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "list-row__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "list-row__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "list-row__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "list-row__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "mindmap__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "mindmap__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "mindmap__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "mindmap__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "mindmap__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "mindmap__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "mindmap__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "mindmap__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "mindmap__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "mindmap__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "mindmap__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "mindmap__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "pyramid__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "pyramid__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "27 个文本节点，字体：未标注"
+    },
+    {
+      "file": "pyramid__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "pyramid__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "pyramid__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "26 个文本节点，字体：未标注"
+    },
+    {
+      "file": "pyramid__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "pyramid__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "pyramid__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "26 个文本节点，字体：未标注"
+    },
+    {
+      "file": "pyramid__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "pyramid__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "pyramid__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "26 个文本节点，字体：未标注"
+    },
+    {
+      "file": "pyramid__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "quadrant__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "quadrant__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "quadrant__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "quadrant__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "quadrant__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "quadrant__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "quadrant__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "quadrant__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "quadrant__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "quadrant__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "quadrant__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "24 个文本节点，字体：未标注"
+    },
+    {
+      "file": "quadrant__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "sequence-steps__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "sequence-steps__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "21 个文本节点，字体：未标注"
+    },
+    {
+      "file": "sequence-steps__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "sequence-steps__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "sequence-steps__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "21 个文本节点，字体：未标注"
+    },
+    {
+      "file": "sequence-steps__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "sequence-steps__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "sequence-steps__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "21 个文本节点，字体：未标注"
+    },
+    {
+      "file": "sequence-steps__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "sequence-steps__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "sequence-steps__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "21 个文本节点，字体：未标注"
+    },
+    {
+      "file": "sequence-steps__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "stat-cards__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "stat-cards__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "36 个文本节点，字体：未标注"
+    },
+    {
+      "file": "stat-cards__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "stat-cards__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "stat-cards__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "36 个文本节点，字体：未标注"
+    },
+    {
+      "file": "stat-cards__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "stat-cards__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "stat-cards__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "36 个文本节点，字体：未标注"
+    },
+    {
+      "file": "stat-cards__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "stat-cards__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "stat-cards__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "36 个文本节点，字体：未标注"
+    },
+    {
+      "file": "stat-cards__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "timeline__editorial.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "timeline__editorial.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "25 个文本节点，字体：未标注"
+    },
+    {
+      "file": "timeline__editorial.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "timeline__minimal.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "timeline__minimal.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "25 个文本节点，字体：未标注"
+    },
+    {
+      "file": "timeline__minimal.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "timeline__technical.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "timeline__technical.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "25 个文本节点，字体：未标注"
+    },
+    {
+      "file": "timeline__technical.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "timeline__warm.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 317.5×423.3 mm"
+    },
+    {
+      "file": "timeline__warm.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "25 个文本节点，字体：未标注"
+    },
+    {
+      "file": "timeline__warm.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    }
+  ],
+  "metrics": [
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 23,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 23,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 23,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\compare-binary__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 23,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\cycle__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 30,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 30,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 30,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\funnel__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 30,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 27,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 27,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 27,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\hierarchy-tree__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 27,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 52,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 52,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 52,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-grid__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 52,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\list-row__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\mindmap__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 27,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 26,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 26,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\pyramid__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 26,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\quadrant__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 24,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 21,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 21,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 21,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\sequence-steps__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 21,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 36,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 36,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 36,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\stat-cards__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 36,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__editorial.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 25,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__minimal.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 25,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__technical.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 25,
+      "font_families": []
+    },
+    {
+      "file": "examples\\golden-runs\\infographic-gallery\\outputs\\timeline__warm.svg",
+      "width_mm": 317.5,
+      "height_mm": 423.33,
+      "text_elements": 25,
+      "font_families": []
+    }
+  ]
+}

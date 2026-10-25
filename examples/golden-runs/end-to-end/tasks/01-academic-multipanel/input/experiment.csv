@@ -1,0 +1,271 @@
+﻿subject_id,group,condition,score
+C01,Control,Baseline,42.36
+C01,Control,Week 4,43.3
+C01,Control,Week 8,49.18
+C02,Control,Baseline,50.9
+C02,Control,Week 4,57.1
+C02,Control,Week 8,53.81
+C03,Control,Baseline,61.42
+C03,Control,Week 4,61.01
+C03,Control,Week 8,63.33
+C04,Control,Baseline,45.27
+C04,Control,Week 4,47.39
+C04,Control,Week 8,42.08
+C05,Control,Baseline,70.05
+C05,Control,Week 4,76.28
+C05,Control,Week 8,68.16
+C06,Control,Baseline,61.08
+C06,Control,Week 4,62.48
+C06,Control,Week 8,63.92
+C07,Control,Baseline,39.47
+C07,Control,Week 4,35.64
+C07,Control,Week 8,38.48
+C08,Control,Baseline,50.39
+C08,Control,Week 4,43.67
+C08,Control,Week 8,52.08
+C09,Control,Baseline,55.65
+C09,Control,Week 4,52.48
+C09,Control,Week 8,54.15
+C10,Control,Baseline,52.92
+C10,Control,Week 4,52.07
+C10,Control,Week 8,53.9
+C11,Control,Baseline,55.1
+C11,Control,Week 4,53.91
+C11,Control,Week 8,59.6
+C12,Control,Baseline,43.57
+C12,Control,Week 4,45.41
+C12,Control,Week 8,48.25
+C13,Control,Baseline,55.6
+C13,Control,Week 4,64.45
+C13,Control,Week 8,64.91
+C14,Control,Baseline,59.83
+C14,Control,Week 4,56.02
+C14,Control,Week 8,61.62
+C15,Control,Baseline,57.51
+C15,Control,Week 4,51.43
+C15,Control,Week 8,49.99
+C16,Control,Baseline,50.49
+C16,Control,Week 4,47.1
+C16,Control,Week 8,50.38
+C17,Control,Baseline,45.1
+C17,Control,Week 4,43.16
+C17,Control,Week 8,49.82
+C18,Control,Baseline,38.89
+C18,Control,Week 4,50.81
+C18,Control,Week 8,47.36
+C19,Control,Baseline,57.47
+C19,Control,Week 4,57.79
+C19,Control,Week 8,54.55
+C20,Control,Baseline,56.61
+C20,Control,Week 4,61.44
+C20,Control,Week 8,69.56
+C21,Control,Baseline,53.78
+C21,Control,Week 4,57.98
+C21,Control,Week 8,54.67
+C22,Control,Baseline,45.71
+C22,Control,Week 4,41.06
+C22,Control,Week 8,52.75
+C23,Control,Baseline,51.15
+C23,Control,Week 4,57.36
+C23,Control,Week 8,62.41
+C24,Control,Baseline,46.3
+C24,Control,Week 4,44.37
+C24,Control,Week 8,50.32
+C25,Control,Baseline,51.36
+C25,Control,Week 4,44.36
+C25,Control,Week 8,54.5
+C26,Control,Baseline,62.59
+C26,Control,Week 4,64.36
+C26,Control,Week 8,68.46
+C27,Control,Baseline,62.0
+C27,Control,Week 4,61.02
+C27,Control,Week 8,58.24
+C28,Control,Baseline,51.81
+C28,Control,Week 4,43.91
+C28,Control,Week 8,43.43
+C29,Control,Baseline,43.18
+C29,Control,Week 4,51.03
+C29,Control,Week 8,47.18
+C30,Control,Baseline,56.78
+C30,Control,Week 4,58.59
+C30,Control,Week 8,64.87
+T01,Treatment A,Baseline,46.77
+T01,Treatment A,Week 4,45.08
+T01,Treatment A,Week 8,58.92
+T02,Treatment A,Baseline,49.17
+T02,Treatment A,Week 4,59.59
+T02,Treatment A,Week 8,69.36
+T03,Treatment A,Baseline,46.72
+T03,Treatment A,Week 4,59.58
+T03,Treatment A,Week 8,57.88
+T04,Treatment A,Baseline,46.37
+T04,Treatment A,Week 4,63.16
+T04,Treatment A,Week 8,68.6
+T05,Treatment A,Baseline,65.62
+T05,Treatment A,Week 4,69.6
+T05,Treatment A,Week 8,78.83
+T06,Treatment A,Baseline,52.31
+T06,Treatment A,Week 4,58.03
+T06,Treatment A,Week 8,67.03
+T07,Treatment A,Baseline,50.97
+T07,Treatment A,Week 4,50.85
+T07,Treatment A,Week 8,55.27
+T08,Treatment A,Baseline,42.93
+T08,Treatment A,Week 4,49.56
+T08,Treatment A,Week 8,58.01
+T09,Treatment A,Baseline,61.45
+T09,Treatment A,Week 4,73.07
+T09,Treatment A,Week 8,71.66
+T10,Treatment A,Baseline,38.33
+T10,Treatment A,Week 4,53.09
+T10,Treatment A,Week 8,61.92
+T11,Treatment A,Baseline,43.75
+T11,Treatment A,Week 4,55.28
+T11,Treatment A,Week 8,52.69
+T12,Treatment A,Baseline,52.43
+T12,Treatment A,Week 4,67.77
+T12,Treatment A,Week 8,66.35
+T13,Treatment A,Baseline,59.27
+T13,Treatment A,Week 4,73.62
+T13,Treatment A,Week 8,80.69
+T14,Treatment A,Baseline,62.9
+T14,Treatment A,Week 4,62.78
+T14,Treatment A,Week 8,68.03
+T15,Treatment A,Baseline,39.33
+T15,Treatment A,Week 4,54.83
+T15,Treatment A,Week 8,65.88
+T16,Treatment A,Baseline,41.36
+T16,Treatment A,Week 4,47.95
+T16,Treatment A,Week 8,49.96
+T17,Treatment A,Baseline,59.78
+T17,Treatment A,Week 4,62.18
+T17,Treatment A,Week 8,75.71
+T18,Treatment A,Baseline,42.14
+T18,Treatment A,Week 4,51.29
+T18,Treatment A,Week 8,51.78
+T19,Treatment A,Baseline,36.5
+T19,Treatment A,Week 4,56.85
+T19,Treatment A,Week 8,55.32
+T20,Treatment A,Baseline,54.2
+T20,Treatment A,Week 4,66.28
+T20,Treatment A,Week 8,57.91
+T21,Treatment A,Baseline,64.91
+T21,Treatment A,Week 4,61.49
+T21,Treatment A,Week 8,80.21
+T22,Treatment A,Baseline,42.8
+T22,Treatment A,Week 4,47.98
+T22,Treatment A,Week 8,55.49
+T23,Treatment A,Baseline,61.34
+T23,Treatment A,Week 4,63.28
+T23,Treatment A,Week 8,73.62
+T24,Treatment A,Baseline,43.91
+T24,Treatment A,Week 4,51.33
+T24,Treatment A,Week 8,55.75
+T25,Treatment A,Baseline,41.6
+T25,Treatment A,Week 4,47.26
+T25,Treatment A,Week 8,56.75
+T26,Treatment A,Baseline,59.8
+T26,Treatment A,Week 4,74.14
+T26,Treatment A,Week 8,79.07
+T27,Treatment A,Baseline,48.42
+T27,Treatment A,Week 4,53.35
+T27,Treatment A,Week 8,64.42
+T28,Treatment A,Baseline,52.65
+T28,Treatment A,Week 4,61.65
+T28,Treatment A,Week 8,68.62
+T29,Treatment A,Baseline,69.39
+T29,Treatment A,Week 4,72.22
+T29,Treatment A,Week 8,77.81
+T30,Treatment A,Baseline,44.89
+T30,Treatment A,Week 4,50.85
+T30,Treatment A,Week 8,61.08
+T01,Treatment B,Baseline,49.08
+T01,Treatment B,Week 4,66.75
+T01,Treatment B,Week 8,68.62
+T02,Treatment B,Baseline,55.89
+T02,Treatment B,Week 4,65.09
+T02,Treatment B,Week 8,77.76
+T03,Treatment B,Baseline,47.47
+T03,Treatment B,Week 4,56.11
+T03,Treatment B,Week 8,69.57
+T04,Treatment B,Baseline,41.31
+T04,Treatment B,Week 4,49.84
+T04,Treatment B,Week 8,72.94
+T05,Treatment B,Baseline,44.31
+T05,Treatment B,Week 4,52.69
+T05,Treatment B,Week 8,69.15
+T06,Treatment B,Baseline,50.9
+T06,Treatment B,Week 4,65.14
+T06,Treatment B,Week 8,68.62
+T07,Treatment B,Baseline,56.92
+T07,Treatment B,Week 4,62.88
+T07,Treatment B,Week 8,68.53
+T08,Treatment B,Baseline,36.73
+T08,Treatment B,Week 4,41.72
+T08,Treatment B,Week 8,58.77
+T09,Treatment B,Baseline,46.51
+T09,Treatment B,Week 4,50.49
+T09,Treatment B,Week 8,57.17
+T10,Treatment B,Baseline,65.51
+T10,Treatment B,Week 4,78.28
+T10,Treatment B,Week 8,87.86
+T11,Treatment B,Baseline,45.59
+T11,Treatment B,Week 4,70.51
+T11,Treatment B,Week 8,65.78
+T12,Treatment B,Baseline,37.54
+T12,Treatment B,Week 4,50.41
+T12,Treatment B,Week 8,58.25
+T13,Treatment B,Baseline,42.88
+T13,Treatment B,Week 4,45.51
+T13,Treatment B,Week 8,59.63
+T14,Treatment B,Baseline,43.37
+T14,Treatment B,Week 4,56.22
+T14,Treatment B,Week 8,63.44
+T15,Treatment B,Baseline,57.96
+T15,Treatment B,Week 4,70.55
+T15,Treatment B,Week 8,74.63
+T16,Treatment B,Baseline,48.61
+T16,Treatment B,Week 4,60.34
+T16,Treatment B,Week 8,75.69
+T17,Treatment B,Baseline,44.62
+T17,Treatment B,Week 4,63.49
+T17,Treatment B,Week 8,71.81
+T18,Treatment B,Baseline,48.64
+T18,Treatment B,Week 4,50.42
+T18,Treatment B,Week 8,58.05
+T19,Treatment B,Baseline,64.71
+T19,Treatment B,Week 4,72.73
+T19,Treatment B,Week 8,86.03
+T20,Treatment B,Baseline,66.86
+T20,Treatment B,Week 4,78.62
+T20,Treatment B,Week 8,82.04
+T21,Treatment B,Baseline,55.46
+T21,Treatment B,Week 4,72.71
+T21,Treatment B,Week 8,74.95
+T22,Treatment B,Baseline,52.41
+T22,Treatment B,Week 4,69.87
+T22,Treatment B,Week 8,84.89
+T23,Treatment B,Baseline,57.49
+T23,Treatment B,Week 4,69.51
+T23,Treatment B,Week 8,78.08
+T24,Treatment B,Baseline,48.53
+T24,Treatment B,Week 4,59.35
+T24,Treatment B,Week 8,67.01
+T25,Treatment B,Baseline,46.84
+T25,Treatment B,Week 4,59.22
+T25,Treatment B,Week 8,73.79
+T26,Treatment B,Baseline,41.88
+T26,Treatment B,Week 4,47.96
+T26,Treatment B,Week 8,61.23
+T27,Treatment B,Baseline,42.25
+T27,Treatment B,Week 4,61.24
+T27,Treatment B,Week 8,70.05
+T28,Treatment B,Baseline,50.01
+T28,Treatment B,Week 4,61.55
+T28,Treatment B,Week 8,57.92
+T29,Treatment B,Baseline,45.26
+T29,Treatment B,Week 4,56.98
+T29,Treatment B,Week 8,74.58
+T30,Treatment B,Baseline,54.27
+T30,Treatment B,Week 4,65.39
+T30,Treatment B,Week 8,75.86

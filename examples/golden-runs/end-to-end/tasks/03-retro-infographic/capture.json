@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "outputs": [
+    "examples\\golden-runs\\end-to-end\\tasks\\03-retro-infographic\\shots\\retro_desktop.png"
+  ],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "mode": "cdp",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1280,
+      "height": 800
+    }
+  ],
+  "captures": [
+    {
+      "file": "examples/golden-runs/end-to-end/tasks/03-retro-infographic/outputs/retro.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "output": "examples\\golden-runs\\end-to-end\\tasks\\03-retro-infographic\\shots\\retro_desktop.png",
+      "ok": true,
+      "png_size": [
+        1280,
+        1170
+      ],
+      "full_page": true,
+      "mode": "cdp"
+    }
+  ],
+  "browser_version": "Chrome/156.0.8078.48"
+}

@@ -1,0 +1,30 @@
+{
+  "status": "success",
+  "outputs": [
+    "..\\outputs\\fig-ab-conversion.pdf",
+    "..\\outputs\\fig-ab-conversion.svg",
+    "..\\outputs\\fig-ab-conversion_300dpi.png",
+    "..\\outputs\\fig-ab-conversion_600dpi.png",
+    "..\\outputs\\fig-ab-conversion_data.csv"
+  ],
+  "rows_used": 4,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "figure": {
+    "recipe": "forest_interval_diamond",
+    "studies": 4,
+    "summary": {
+      "summary_est": 2.71,
+      "summary_low": 1.78,
+      "summary_high": 3.63
+    },
+    "null": 0.0,
+    "palette": "okabe_ito",
+    "layout": "clean_open",
+    "width_mm": 183,
+    "height_mm": 106.1,
+    "visual_verified": false,
+    "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"
+  }
+}

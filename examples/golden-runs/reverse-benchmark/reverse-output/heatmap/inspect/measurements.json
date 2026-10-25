@@ -1,0 +1,179 @@
+{
+  "image": "examples\\golden-runs\\reverse-benchmark\\images\\heatmap.png",
+  "width": 1000,
+  "height": 700,
+  "dpi": null,
+  "plot_bbox": [
+    102,
+    120,
+    884,
+    594
+  ],
+  "axis": {
+    "type": "none",
+    "note": "未检测到坐标轴，使用内容包围盒"
+  },
+  "content_bbox": [
+    102,
+    120,
+    884,
+    594
+  ],
+  "x_ticks_px": [],
+  "y_ticks_px": [],
+  "palette": [
+    {
+      "hex": "#23898C",
+      "share": 0.1982,
+      "bgr": [
+        140,
+        137,
+        35
+      ]
+    },
+    {
+      "hex": "#33608D",
+      "share": 0.1664,
+      "bgr": [
+        141,
+        96,
+        51
+      ]
+    },
+    {
+      "hex": "#44367F",
+      "share": 0.134,
+      "bgr": [
+        127,
+        54,
+        68
+      ]
+    },
+    {
+      "hex": "#27AC80",
+      "share": 0.1332,
+      "bgr": [
+        128,
+        172,
+        39
+      ]
+    },
+    {
+      "hex": "#DDE321",
+      "share": 0.101,
+      "bgr": [
+        33,
+        227,
+        221
+      ]
+    },
+    {
+      "hex": "#80D24C",
+      "share": 0.1004,
+      "bgr": [
+        76,
+        210,
+        128
+      ]
+    },
+    {
+      "hex": "#50C369",
+      "share": 0.0993,
+      "bgr": [
+        105,
+        195,
+        80
+      ]
+    },
+    {
+      "hex": "#460A5D",
+      "share": 0.0677,
+      "bgr": [
+        93,
+        10,
+        70
+      ]
+    }
+  ],
+  "pie": null,
+  "quality": {
+    "sharpness": 2542.27,
+    "low_resolution": false,
+    "width": 1000,
+    "height": 700
+  },
+  "chart_type_hint": "heatmap",
+  "evidence_hint": "B",
+  "text_crops": [
+    {
+      "name": "title",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\heatmap\\inspect\\text-crops\\title.png",
+      "bbox": [
+        352,
+        79,
+        924,
+        123
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "x_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\heatmap\\inspect\\text-crops\\x_axis.png",
+      "bbox": [
+        145,
+        0,
+        925,
+        26
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "y_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\heatmap\\inspect\\text-crops\\y_axis.png",
+      "bbox": [
+        67,
+        155,
+        107,
+        559
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "legend",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\heatmap\\inspect\\text-crops\\legend.png",
+      "bbox": [
+        0,
+        79,
+        823,
+        127
+      ],
+      "scale": 2.0
+    }
+  ],
+  "text_regions": {
+    "title": [
+      360,
+      87,
+      916,
+      115
+    ],
+    "x_axis": [
+      153,
+      0,
+      917,
+      18
+    ],
+    "y_axis": [
+      75,
+      163,
+      99,
+      551
+    ],
+    "legend": [
+      0,
+      87,
+      815,
+      119
+    ]
+  }
+}

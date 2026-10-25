@@ -1,0 +1,84 @@
+{
+  "chart_type": "scatter",
+  "evidence_level": "B",
+  "plot_bbox": [
+    130,
+    105,
+    930,
+    595
+  ],
+  "axes": {
+    "x": {
+      "scale": "linear",
+      "a": 0.012522233124106753,
+      "b": -1.6367835557765784,
+      "r2": 0.99999,
+      "positions": [
+        130.0,
+        291.0,
+        450.0,
+        610.0,
+        771.0,
+        928.0
+      ],
+      "values": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "direction": "x"
+    },
+    "y": {
+      "scale": "linear",
+      "a": -0.07147514183120385,
+      "b": 42.48056207000576,
+      "r2": 0.99997,
+      "positions": [
+        105.0,
+        175.0,
+        243.0,
+        315.0,
+        385.0,
+        455.0,
+        523.0,
+        595.0
+      ],
+      "values": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35
+      ],
+      "direction": "y"
+    }
+  },
+  "series": [
+    {
+      "name": "Points",
+      "color": "#009E73"
+    }
+  ],
+  "title": "Spend vs Conversions",
+  "warnings": [],
+  "no_compensation": true,
+  "ylim": [
+    -0.047,
+    34.976
+  ],
+  "xlim": [
+    -0.009,
+    10.009
+  ],
+  "data_csv": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\scatter\\scatter_data.csv",
+  "code": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\scatter\\reproduction.py",
+  "rows": 20,
+  "status": "success",
+  "reproduction_png": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\scatter\\reproduction.png"
+}

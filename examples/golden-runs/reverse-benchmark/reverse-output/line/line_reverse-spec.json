@@ -1,0 +1,86 @@
+{
+  "chart_type": "line",
+  "evidence_level": "B",
+  "plot_bbox": [
+    130,
+    105,
+    930,
+    595
+  ],
+  "axes": {
+    "x": {
+      "scale": "linear",
+      "a": 0.0070055715514340195,
+      "b": -1.215288112777176,
+      "r2": 1.0,
+      "positions": [
+        173.0,
+        316.0,
+        460.0,
+        602.0,
+        744.0,
+        887.0
+      ],
+      "values": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "direction": "x"
+    },
+    "y": {
+      "scale": "linear",
+      "a": -0.06535611542149769,
+      "b": 38.83630895301197,
+      "r2": 0.99995,
+      "positions": [
+        136.0,
+        210.0,
+        289.0,
+        365.0,
+        442.0,
+        516.0,
+        595.0
+      ],
+      "values": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "direction": "y"
+    }
+  },
+  "series": [
+    {
+      "name": "Series A",
+      "color": "#0072B2"
+    },
+    {
+      "name": "Series B",
+      "color": "#D55E00"
+    }
+  ],
+  "title": "Weekly Trend by Series",
+  "warnings": [],
+  "no_compensation": true,
+  "ylim": [
+    -0.051,
+    31.974
+  ],
+  "xlim": [
+    -0.305,
+    5.3
+  ],
+  "data_csv": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\line_data.csv",
+  "code": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\reproduction.py",
+  "rows": 12,
+  "status": "success",
+  "reproduction_png": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\line\\reproduction.png"
+}

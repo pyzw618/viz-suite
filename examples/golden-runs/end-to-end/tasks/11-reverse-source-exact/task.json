@@ -1,0 +1,27 @@
+{
+  "id": "11-reverse-source-exact",
+  "title": "源码级精确提取",
+  "prompt": "从这个本地 ECharts 页面精确提取数据和配置，输出可复现的 JS/data.csv，不要做像素猜测。",
+  "route": {
+    "primary": "viz-reverse",
+    "scenes": [],
+    "support": [
+      "viz-audit"
+    ],
+    "not_use": [
+      "viz-python",
+      "viz-web"
+    ]
+  },
+  "inputs": [
+    "examples/golden-runs/reverse-benchmark/web/echarts_source.html"
+  ],
+  "outputs": [
+    "examples/golden-runs/reverse-benchmark/reverse-output/web/echarts_source.html/echarts_source_data.csv",
+    "examples/golden-runs/reverse-benchmark/reverse-output/web/echarts_source.html/echarts_source_reverse-spec.json",
+    "examples/golden-runs/reverse-benchmark/reverse-output/web/echarts_source.html/echarts_source_reproduction.js",
+    "examples/golden-runs/reverse-benchmark/reverse-output/web/echarts_source.html/echarts_source_browser-extract.js"
+  ],
+  "verification": "SOURCE 级；5 行精确数据，误差 0.0%；browser snippet 生成。",
+  "notes": "只解析本地文件；不执行未知脚本；实时页面用只读 Browser 片段。"
+}

@@ -1,0 +1,2 @@
+Figure 1 | Mean scores at Week 8 (a), trajectories with 95% CI bands (b), and paired change from baseline (c). Bars/boxes are means with 95% CI; points are individual participants (n=30/group).
+Synthetic demonstration data. No p-values are shown because no hypothesis test was supplied.

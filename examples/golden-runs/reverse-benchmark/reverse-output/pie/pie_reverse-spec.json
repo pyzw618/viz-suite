@@ -1,0 +1,47 @@
+{
+  "chart_type": "pie",
+  "evidence_level": "B",
+  "plot_bbox": [
+    259,
+    123,
+    740,
+    604
+  ],
+  "axes": {},
+  "series": [
+    {
+      "name": "North",
+      "color": "#0072B2"
+    },
+    {
+      "name": "South",
+      "color": "#D55E00"
+    },
+    {
+      "name": "East",
+      "color": "#009E73"
+    },
+    {
+      "name": "West",
+      "color": "#CC79A7"
+    },
+    {
+      "name": "Central",
+      "color": "#56B4E9"
+    }
+  ],
+  "title": "Share by Region",
+  "warnings": [],
+  "no_compensation": true,
+  "axes_rect": [
+    0.12,
+    0.1,
+    0.76,
+    0.76
+  ],
+  "data_csv": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie\\pie_data.csv",
+  "code": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie\\reproduction.py",
+  "rows": 5,
+  "status": "success",
+  "reproduction_png": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie\\reproduction.png"
+}

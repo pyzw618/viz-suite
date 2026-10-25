@@ -1,0 +1,129 @@
+{
+  "image": "examples\\golden-runs\\reverse-benchmark\\images\\pie_3d.png",
+  "width": 1000,
+  "height": 700,
+  "dpi": null,
+  "plot_bbox": [
+    62,
+    32,
+    887,
+    549
+  ],
+  "axis": {
+    "type": "none",
+    "note": "pie 无坐标轴"
+  },
+  "content_bbox": [
+    62,
+    32,
+    887,
+    549
+  ],
+  "x_ticks_px": [],
+  "y_ticks_px": [],
+  "palette": [
+    {
+      "hex": "#0072B2",
+      "share": 0.3488,
+      "bgr": [
+        178,
+        114,
+        0
+      ]
+    },
+    {
+      "hex": "#D55E00",
+      "share": 0.2481,
+      "bgr": [
+        0,
+        94,
+        213
+      ]
+    },
+    {
+      "hex": "#009E73",
+      "share": 0.197,
+      "bgr": [
+        115,
+        158,
+        0
+      ]
+    },
+    {
+      "hex": "#CC79A7",
+      "share": 0.1178,
+      "bgr": [
+        167,
+        121,
+        204
+      ]
+    },
+    {
+      "hex": "#56B4E9",
+      "share": 0.0784,
+      "bgr": [
+        233,
+        180,
+        86
+      ]
+    }
+  ],
+  "pie": {
+    "center": [
+      499.7,
+      354.8
+    ],
+    "radius": 386.8,
+    "aspect": 1.992,
+    "fill_ratio": 1.0,
+    "is_3d": true
+  },
+  "quality": {
+    "sharpness": 338.14,
+    "low_resolution": false,
+    "width": 1000,
+    "height": 700
+  },
+  "chart_type_hint": "pie",
+  "evidence_hint": "X",
+  "text_crops": [
+    {
+      "name": "x_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie_3d\\inspect\\text-crops\\x_axis.png",
+      "bbox": [
+        142,
+        3,
+        629,
+        76
+      ],
+      "scale": 2.0
+    },
+    {
+      "name": "y_axis",
+      "path": "examples\\golden-runs\\reverse-benchmark\\reverse-output\\pie_3d\\inspect\\text-crops\\y_axis.png",
+      "bbox": [
+        44,
+        409,
+        67,
+        432
+      ],
+      "scale": 2.0
+    }
+  ],
+  "text_regions": {
+    "title": null,
+    "x_axis": [
+      150,
+      11,
+      621,
+      68
+    ],
+    "y_axis": [
+      52,
+      417,
+      59,
+      424
+    ],
+    "legend": null
+  }
+}

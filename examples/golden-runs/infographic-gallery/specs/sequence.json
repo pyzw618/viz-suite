@@ -1,0 +1,18 @@
+{
+  "eyebrow": "增长实验流程",
+  "title": "从问题到复制的五步闭环",
+  "claim": "先统一口径，再做小样本实验；只有可复现的提升才进入规模化。",
+  "subtitle": "单次实验周期 4–6 周",
+  "icon": "workflow",
+  "layout": "sequence-steps",
+  "style": "technical",
+  "source": "数据来源：增长实验手册（合成演示数据）",
+  "footnote": "每步都有交付物；未通过显著性门槛不得进入下一步。",
+  "modules": [
+    {"title": "明确问题", "body": "把业务问题写成可检验假设，并定义成功指标。", "icon": "target"},
+    {"title": "统一口径", "body": "确认样本、去重、时间窗与收入确认规则。", "icon": "scale"},
+    {"title": "小样本实验", "body": "随机分流，预设样本量与显著性阈值。", "icon": "flask-conical"},
+    {"title": "规模复制", "body": "在更多渠道复现，检查效应是否稳定。", "icon": "rocket"},
+    {"title": "复盘迭代", "body": "归档实验代码、数据与决策，形成组织记忆。", "icon": "refresh-cw"}
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "chart_type": "bar",
+  "evidence_level": "B",
+  "plot_bbox": [
+    130,
+    105,
+    930,
+    595
+  ],
+  "axes": {
+    "x": {
+      "scale": "category",
+      "positions": [
+        215.0,
+        373.0,
+        530.0,
+        687.0,
+        844.0
+      ],
+      "values": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "mapping": {
+        "A": 215.0,
+        "B": 373.0,
+        "C": 530.0,
+        "D": 687.0,
+        "E": 844.0
+      },
+      "r2": 1.0
+    },
+    "y": {
+      "scale": "linear",
+      "a": -0.05709470829230009,
+      "b": 33.958094533189445,
+      "r2": 0.99997,
+      "positions": [
+        156.0,
+        245.0,
+        333.0,
+        420.0,
+        506.0,
+        595.0
+      ],
+      "values": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "direction": "y"
+    }
+  },
+  "series": [
+    {
+      "name": "Revenue",
+      "color": "#0072B2"
+    }
+  ],
+  "title": "Monthly Revenue by Channel",
+  "warnings": [],
+  "no_compensation": true,
+  "ylim": [
+    -0.013,
+    27.963
+  ],
+  "xlim": [
+    -0.65,
+    4.65
+  ],
+  "data_csv": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\outputs\\source_data.csv",
+  "code": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\outputs\\reproduction.py",
+  "rows": 5,
+  "status": "success",
+  "reproduction_png": "examples\\golden-runs\\end-to-end\\tasks\\04-reverse-rebrand\\outputs\\reproduction.png"
+}

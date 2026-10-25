@@ -1,0 +1,38 @@
+{
+  "eyebrow": "离线可视化管线",
+  "title": "从原始数据到可验收图表的五步管线",
+  "claim": "每一步都有确定性脚本与 JSON 协议；失败可定位、结果可复现。",
+  "subtitle": "local-first｜零外部网络｜PEP 723",
+  "icon": "workflow",
+  "layout": "sequence-steps",
+  "style": "technical",
+  "source": "数据来源：viz-suite 管线说明（合成演示）",
+  "footnote": "脚本统一返回 status/outputs/verified/warnings；失败不静默。",
+  "modules": [
+    {
+      "title": "读取与画像",
+      "body": "识别编码、列类型、缺失、重复与标签预算。",
+      "icon": "database"
+    },
+    {
+      "title": "选型与锁定",
+      "body": "按关系选图；多图写 manifest 锁色/尺寸/字体。",
+      "icon": "layout-grid"
+    },
+    {
+      "title": "确定性渲染",
+      "body": "配方/模板只改 PARAMS，保留图层与零基线。",
+      "icon": "code"
+    },
+    {
+      "title": "物理与视觉验收",
+      "body": "查 DPI/字体/对比度/溢出，再做多模态目检。",
+      "icon": "scan-line"
+    },
+    {
+      "title": "交付与复盘",
+      "body": "输出 PDF/SVG/HTML/CSV 与复现记录。",
+      "icon": "file-text"
+    }
+  ]
+}

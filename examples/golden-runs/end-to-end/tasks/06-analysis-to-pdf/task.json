@@ -1,0 +1,31 @@
+{
+  "id": "06-analysis-to-pdf",
+  "title": "分析→统计→绘图→PDF/PPT 交接",
+  "prompt": "从区域销售表完成统计摘要、图表和两页 PDF 报告，并给出 5 页 PPT 交接提纲。",
+  "route": {
+    "primary": "viz-core",
+    "scenes": [],
+    "support": [
+      "viz-python",
+      "viz-audit",
+      "host:pdf",
+      "host:pptx"
+    ],
+    "not_use": [
+      "viz-web"
+    ]
+  },
+  "inputs": [
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/input/regional_sales.csv"
+  ],
+  "outputs": [
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/outputs/report.pdf",
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/outputs/summary.csv",
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/outputs/chart_300dpi.png",
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/outputs/handoff.md",
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/audit.json",
+    "examples/golden-runs/end-to-end/tasks/06-analysis-to-pdf/render.json"
+  ],
+  "verification": "6 区域；完成率 97.4%；PDF 2 页；audit 8/8 通过；图表零基线；PPT 提纲 5 页。",
+  "notes": "PDF 由 matplotlib PdfPages；PPT 只交接提纲/素材，不冒充已生成 deck。"
+}

@@ -1,0 +1,42 @@
+{
+  "status": "success",
+  "outputs": [
+    "..\\outputs\\fig-01-channel-satisfaction.pdf",
+    "..\\outputs\\fig-01-channel-satisfaction_300dpi.png",
+    "..\\outputs\\fig-01-channel-satisfaction_600dpi.png",
+    "..\\outputs\\fig-01-channel-satisfaction_data.csv"
+  ],
+  "rows_used": 326,
+  "rows_dropped": 46,
+  "verified": true,
+  "warnings": [
+    "已剔除 3 行全空行",
+    "已剔除 8 行完全重复记录（DROP_DUPLICATES=True）",
+    "35 行因缺失/空键被剔除；图注中的 n 为实际有效样本",
+    "18 个分组×系列组合 n<30（400 电话热线与语音机器人转人工/2024Q4 (n=17)、400 电话热线与语音机器人转人工/2025Q1 (n=16)、400 电话热线与语音机器人转人工/2025Q2 (n=18)、企业微信专属客户经理一对一/2024Q4 (n=19)、企业微信专属客户经理一对一/2025Q1 (n=19)、企业微信专属客户经理一对一/2025Q2 (n=19) 等 18 个组合），正态近似 CI 仅供参考"
+  ],
+  "figure": {
+    "recipe": "grouped_errorbar_bar",
+    "orientation": "horizontal",
+    "groups": [
+      "第三方社交平台舆情与私信反馈",
+      "微信小程序自助服务与公众号留言",
+      "电商平台旗舰店在线客服（含直播咨询）",
+      "400 电话热线与语音机器人转人工",
+      "线下门店导购与体验顾问接待",
+      "企业微信专属客户经理一对一"
+    ],
+    "series": [
+      "2024Q4",
+      "2025Q1",
+      "2025Q2"
+    ],
+    "palette": "okabe_ito",
+    "layout": "soft_grid",
+    "width_mm": 160,
+    "height_mm": 115.2,
+    "stat": "mean_ci_normal",
+    "visual_verified": false,
+    "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"
+  }
+}

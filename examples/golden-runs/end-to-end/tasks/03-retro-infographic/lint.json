@@ -1,0 +1,83 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [
+    "1 个图表容器未显式设置高度，可能塌陷：['<svg id= class=lucide lucide-chart-pie>']"
+  ],
+  "summary": {
+    "files": 1,
+    "blocking": 0,
+    "warning": 1,
+    "passed": 7,
+    "total_checks": 8
+  },
+  "checks": [
+    {
+      "file": "retro.html",
+      "check": "offline",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部资源引用（离线自包含）"
+    },
+    {
+      "file": "retro.html",
+      "check": "container_height",
+      "severity": "warning",
+      "passed": false,
+      "detail": "1 个图表容器未显式设置高度，可能塌陷：['<svg id= class=lucide lucide-chart-pie>']"
+    },
+    {
+      "file": "retro.html",
+      "check": "viewport_meta",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 viewport meta"
+    },
+    {
+      "file": "retro.html",
+      "check": "charset",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 charset 声明"
+    },
+    {
+      "file": "retro.html",
+      "check": "lang",
+      "severity": "info",
+      "passed": true,
+      "detail": "html lang=zh-CN"
+    },
+    {
+      "file": "retro.html",
+      "check": "figure",
+      "severity": "info",
+      "passed": true,
+      "detail": "使用 <figure> 承载图表"
+    },
+    {
+      "file": "retro.html",
+      "check": "aria",
+      "severity": "info",
+      "passed": true,
+      "detail": "存在 aria 描述"
+    },
+    {
+      "file": "retro.html",
+      "check": "js_syntax",
+      "severity": "info",
+      "passed": true,
+      "detail": "0 段内联脚本语法通过 node --check"
+    }
+  ],
+  "metrics": [
+    {
+      "file": "examples\\golden-runs\\end-to-end\\tasks\\03-retro-infographic\\outputs\\retro.html",
+      "tags": 76,
+      "inline_scripts": 0,
+      "containers": 2
+    }
+  ]
+}

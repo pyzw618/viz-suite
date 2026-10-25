@@ -1,0 +1,30 @@
+{
+  "id": "07-academic-forest",
+  "title": "科研森林图（A/B 实验）",
+  "prompt": "把 A/B 实验按渠道汇总成森林图，双栏、95% CI、n、汇总菱形，适合期刊投稿。",
+  "route": {
+    "primary": "viz-python",
+    "scenes": [
+      "viz-scene-academic"
+    ],
+    "support": [
+      "viz-audit"
+    ],
+    "not_use": [
+      "viz-web"
+    ]
+  },
+  "inputs": [
+    "examples/golden-runs/scene-gate3/academic/forest_data.csv"
+  ],
+  "outputs": [
+    "examples/golden-runs/scene-gate3/academic/outputs/fig-ab-conversion.pdf",
+    "examples/golden-runs/scene-gate3/academic/outputs/fig-ab-conversion.svg",
+    "examples/golden-runs/scene-gate3/academic/outputs/fig-ab-conversion_300dpi.png",
+    "examples/golden-runs/scene-gate3/academic/outputs/fig-ab-conversion_600dpi.png",
+    "examples/golden-runs/scene-gate3/academic/caption.txt",
+    "examples/golden-runs/scene-gate3/academic/audit.json"
+  ],
+  "verification": "183 mm；4 渠道 + 汇总；汇总 2.71 [1.78,3.63]；audit 23/23；门店 CI 跨 0 明示。",
+  "notes": "无编造 p 值；无 Jet/Rainbow；图注独立。"
+}

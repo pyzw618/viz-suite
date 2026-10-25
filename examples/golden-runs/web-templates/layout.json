@@ -1,0 +1,1223 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "summary": {
+    "files": 21,
+    "viewports": 2,
+    "combinations": 42,
+    "issues": 0,
+    "missing": 0
+  },
+  "results": [
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\area.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\area.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\bar.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\bar.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\boxplot.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\boxplot.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\bubble.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\bubble.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\donut.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\donut.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\funnel.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\funnel.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\gauge.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\gauge.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\hbar.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\hbar.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\heatmap.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 630
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 630
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\heatmap.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 694
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 694
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\line.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\line.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\radar.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\radar.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\sankey.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\sankey.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\scatter.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\scatter.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\stacked_bar.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\stacked_bar.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\treemap.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 650
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 1152,
+          "h": 650
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\echarts\\treemap.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 714
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 286,
+          "h": 714
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\chord.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 635
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1152,
+          "h": 635
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\chord.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 460
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 286,
+          "h": 460
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\force_network.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 610
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1152,
+          "h": 610
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\force_network.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 669
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 286,
+          "h": 669
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\line_transition.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 580
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1152,
+          "h": 580
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\line_transition.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 639
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 286,
+          "h": 639
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\treemap.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 1152,
+          "h": 635
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 1152,
+          "h": 635
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\d3\\treemap.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "chart",
+          "w": 286,
+          "h": 699
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 286,
+          "h": 699
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\dashboard\\sales_dashboard.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "line",
+          "w": 793,
+          "h": 220
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 793,
+          "h": 220
+        },
+        {
+          "tag": "DIV",
+          "id": "donut",
+          "w": 375,
+          "h": 220
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 375,
+          "h": 220
+        },
+        {
+          "tag": "DIV",
+          "id": "bar",
+          "w": 584,
+          "h": 200
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 584,
+          "h": 200
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\dashboard\\sales_dashboard.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "DIV",
+          "id": "line",
+          "w": 344,
+          "h": 220
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 344,
+          "h": 220
+        },
+        {
+          "tag": "DIV",
+          "id": "donut",
+          "w": 344,
+          "h": 220
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 344,
+          "h": 220
+        },
+        {
+          "tag": "DIV",
+          "id": "bar",
+          "w": 344,
+          "h": 200
+        },
+        {
+          "tag": "CANVAS",
+          "id": "",
+          "w": 344,
+          "h": 200
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\kpi\\kpi_cards.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 96,
+          "h": 34
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 96,
+          "h": 34
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 96,
+          "h": 34
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 96,
+          "h": 34
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "skills\\viz-web\\templates\\kpi\\kpi_cards.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 96,
+          "h": 34
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 96,
+          "h": 34
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 96,
+          "h": 34
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 96,
+          "h": 34
+        }
+      ],
+      "ok": true
+    }
+  ]
+}

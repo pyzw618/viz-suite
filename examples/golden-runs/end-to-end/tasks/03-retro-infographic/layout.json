@@ -1,0 +1,107 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "warnings": [],
+  "summary": {
+    "files": 1,
+    "viewports": 2,
+    "combinations": 2,
+    "issues": 0,
+    "missing": 0
+  },
+  "results": [
+    {
+      "file": "examples\\golden-runs\\end-to-end\\tasks\\03-retro-infographic\\outputs\\retro.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "height": 800,
+      "innerWidth": 1280,
+      "innerHeight": 800,
+      "docScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    },
+    {
+      "file": "examples\\golden-runs\\end-to-end\\tasks\\03-retro-infographic\\outputs\\retro.html",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "innerWidth": 390,
+      "innerHeight": 844,
+      "docScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflowX": false,
+      "bad": [],
+      "charts": [
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 22,
+          "h": 22
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        },
+        {
+          "tag": "svg",
+          "id": "",
+          "w": 42,
+          "h": 42
+        }
+      ],
+      "ok": true
+    }
+  ]
+}

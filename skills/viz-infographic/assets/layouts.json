@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "layouts": [
+    {"id": "list-grid", "name_zh": "网格并列", "description": "并列展示 4–12 个同级要点，适合概念清单与能力矩阵。", "min_modules": 2, "max_modules": 12, "module_fields": ["title", "body", "icon"], "mobile": "单列或两列"},
+    {"id": "list-row", "name_zh": "横向卡片", "description": "逐行展示带图标的要点，适合 3–7 条并列论据。", "min_modules": 2, "max_modules": 7, "module_fields": ["title", "body", "icon", "value"], "mobile": "单列，图标置左"},
+    {"id": "sequence-steps", "name_zh": "步骤流", "description": "有先后顺序的 3–6 个步骤，强调流程与交付物。", "min_modules": 3, "max_modules": 6, "module_fields": ["title", "body", "icon"], "mobile": "纵向步骤"},
+    {"id": "timeline", "name_zh": "时间轴", "description": "3–8 个时间节点，按时间顺序展示事件、阶段或里程碑。", "min_modules": 3, "max_modules": 8, "module_fields": ["title", "body", "meta", "icon"], "mobile": "纵向时间轴"},
+    {"id": "pyramid", "name_zh": "金字塔", "description": "3–6 层级的优先级/成熟度/价值层级，自下而上收敛。", "min_modules": 3, "max_modules": 6, "module_fields": ["title", "body", "value"], "mobile": "纵向层级条"},
+    {"id": "funnel", "name_zh": "转化漏斗", "description": "3–6 阶段转化，展示每阶段数量与转化率。", "min_modules": 3, "max_modules": 6, "module_fields": ["title", "value", "meta", "body"], "mobile": "纵向漏斗"},
+    {"id": "quadrant", "name_zh": "四象限", "description": "2–12 个对象按 x/y 两个维度定位，适合优先级与组合分析。", "min_modules": 2, "max_modules": 12, "module_fields": ["title", "x", "y", "size", "body"], "mobile": "保留坐标，缩小标签"},
+    {"id": "compare-binary", "name_zh": "左右对比", "description": "左右双栏对比 2–8 个要点，适合方案 A/B、现状/目标。", "min_modules": 2, "max_modules": 8, "module_fields": ["title", "body", "side", "icon"], "mobile": "上下堆叠"},
+    {"id": "hierarchy-tree", "name_zh": "层级树", "description": "1 个根节点 + 3–8 个一级分支，可带二级子项。", "min_modules": 1, "max_modules": 8, "module_fields": ["title", "children", "icon"], "mobile": "缩进树"},
+    {"id": "mindmap", "name_zh": "思维导图", "description": "1 个中心主题 + 4–8 个放射分支，适合概念拆解。", "min_modules": 1, "max_modules": 8, "module_fields": ["title", "body", "icon"], "mobile": "中心 + 纵向分支"},
+    {"id": "cycle", "name_zh": "循环闭环", "description": "3–8 个循环节点，强调反馈、迭代与闭环。", "min_modules": 3, "max_modules": 8, "module_fields": ["title", "body", "icon"], "mobile": "纵向循环"},
+    {"id": "stat-cards", "name_zh": "核心大数卡", "description": "2–6 个核心数字，配标签、图标、变化与一句话解释。", "min_modules": 2, "max_modules": 6, "module_fields": ["value", "label", "body", "icon", "delta"], "mobile": "单列或双列"}
+  ]
+}

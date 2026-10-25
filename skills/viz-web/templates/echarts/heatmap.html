@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>热力矩阵 · ECharts</title>
+<style>
+:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
+#chart{width:100%;height:calc(100vh - 170px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
+@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 150px)}}
+@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+</style>
+</head>
+<body>
+<header><h1>工作日 10–12 点与 14–17 点为客服咨询高峰</h1><p>颜色为咨询量指数（0–100）｜行=星期，列=小时｜演示用合成数据</p></header>
+<figure>
+  <div id="chart" role="img" aria-label="星期与小时的热力矩阵，工作日上午和下午为咨询高峰"></div>
+  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+</figure>
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const days = ['周一','周二','周三','周四','周五','周六','周日'];
+const hours = ['8','9','10','11','12','13','14','15','16','17','18','19'];
+const data = [];
+for (let d = 0; d < days.length; d++) {
+  for (let h = 0; h < hours.length; h++) {
+    const workday = d < 5;
+    const peak = (h >= 2 && h <= 4) || (h >= 6 && h <= 9);
+    let v = workday ? (peak ? 65 + Math.round(28 * Math.sin((h + d) * 1.1)) : 28) : 12;
+    v = Math.max(2, Math.min(100, v + ((d * 7 + h * 5) % 9) - 4));
+    data.push([h, d, v]);
+  }
+}
+const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+function buildOption(width) {
+  const mobile = width < 600;
+  return {
+    backgroundColor: 'transparent',
+    aria: {enabled: true, decal: {show: false}, label: {description: '工作日上午 10 至 12 点和下午 14 至 17 点咨询量最高。'}},
+    tooltip: {position: 'top', formatter: p => `${days[p.value[1]]} ${hours[p.value[0]]}:00<br/>咨询指数 ${p.value[2]}`},
+    grid: {left: mobile ? 44 : 58, right: mobile ? 14 : 24, top: mobile ? 16 : 20, bottom: mobile ? 92 : 82},
+    xAxis: {type: 'category', data: hours.map(h => h + ':00'), splitArea: {show: false}, axisTick: {show: false},
+      axisLine: {lineStyle: {color: ROLE.grid}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 9 : 11, interval: mobile ? 1 : 0}},
+    yAxis: {type: 'category', data: days, splitArea: {show: false}, axisTick: {show: false},
+      axisLine: {lineStyle: {color: ROLE.grid}}, axisLabel: {color: ROLE.text, fontSize: mobile ? 10 : 12}},
+    visualMap: {min: 0, max: 100, calculable: false, orient: 'horizontal', left: 'center', bottom: mobile ? 8 : 12,
+      itemWidth: mobile ? 10 : 14, itemHeight: mobile ? 90 : 120,
+      inRange: {color: ['#F1F5F9', '#93C5FD', ROLE.focal, '#0B3C5D']},
+      textStyle: {color: ROLE.muted, fontSize: mobile ? 10 : 11}},
+    series: [{
+      type: 'heatmap', data, label: {show: !mobile && width > 900, color: '#fff', fontSize: 9},
+      itemStyle: {borderColor: '#fff', borderWidth: 1.5},
+      emphasis: {itemStyle: {shadowBlur: 8, shadowColor: 'rgba(15,23,42,0.25)'}}
+    }]
+  };
+}
+function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+render();
+let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+</script>
+</body>
+</html>

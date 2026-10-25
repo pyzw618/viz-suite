@@ -1,0 +1,49 @@
+{
+  "title": "Activation by Cohort",
+  "rows": 5,
+  "cols": 6,
+  "x": {
+    "values": [
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "C5",
+      "C6"
+    ],
+    "scale": "category"
+  },
+  "y": {
+    "values": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "scale": "category"
+  },
+  "value_range": [
+    0,
+    1
+  ],
+  "colormap": "viridis",
+  "heatmap_rect": [
+    0.1,
+    0.15,
+    0.72,
+    0.68
+  ],
+  "colorbar_rect": [
+    0.85,
+    0.15,
+    0.035,
+    0.68
+  ],
+  "series": [
+    {
+      "name": "value",
+      "color": "viridis"
+    }
+  ]
+}

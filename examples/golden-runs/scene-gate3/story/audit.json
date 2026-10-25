@@ -1,0 +1,200 @@
+{
+  "status": "success",
+  "outputs": [],
+  "rows_used": 0,
+  "rows_dropped": 0,
+  "verified": true,
+  "visual_verified": false,
+  "warnings": [
+    "本脚本只做确定性物理/色彩检查；文字重叠、审美与士气需按 references/audit-checklist.md 用 ViewImage 目检"
+  ],
+  "summary": {
+    "files": 3,
+    "blocking": 0,
+    "warning": 0,
+    "passed": 17,
+    "total_checks": 17
+  },
+  "checks": [
+    {
+      "file": "story-revenue-shift.svg",
+      "check": "svg_size",
+      "severity": "info",
+      "passed": true,
+      "detail": "物理尺寸 254.0×142.9 mm"
+    },
+    {
+      "file": "story-revenue-shift.svg",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 254.00mm，目标 254.0mm"
+    },
+    {
+      "file": "story-revenue-shift.svg",
+      "check": "svg_text",
+      "severity": "info",
+      "passed": true,
+      "detail": "29 个文本节点，字体：['Arial', 'DejaVu Sans', 'Microsoft YaHei', 'Segoe UI', 'SimHei', 'sans-serif']"
+    },
+    {
+      "file": "story-revenue-shift.svg",
+      "check": "svg_external",
+      "severity": "info",
+      "passed": true,
+      "detail": "无外部网络引用"
+    },
+    {
+      "file": "story-revenue-shift.svg",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=35.5；protanopia ΔE=32.7；deuteranopia ΔE=37.8；tritanopia ΔE=32.2（阈值 ΔE≥10.0）",
+      "min_delta_e": 32.25
+    },
+    {
+      "file": "story-revenue-shift_300dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=35.5；protanopia ΔE=32.7；deuteranopia ΔE=37.8；tritanopia ΔE=32.2（阈值 ΔE≥10.0）",
+      "min_delta_e": 32.25
+    },
+    {
+      "file": "story-revenue-shift_300dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "300 dpi，物理尺寸 254.0×142.8 mm"
+    },
+    {
+      "file": "story-revenue-shift_300dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 254.00mm，目标 254.0mm（容差 ±2.54mm）"
+    },
+    {
+      "file": "story-revenue-shift_300dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "story-revenue-shift_300dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "story-revenue-shift_300dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #1F2937 / 背景 #FFFFFF 对比度 14.68:1（正文要求 ≥4.5:1）",
+      "ratio": 14.68
+    },
+    {
+      "file": "story-revenue-shift_600dpi.png",
+      "check": "cvd_palette",
+      "severity": "info",
+      "passed": true,
+      "detail": "色板最小色差：正常 ΔE=35.5；protanopia ΔE=32.7；deuteranopia ΔE=37.8；tritanopia ΔE=32.2（阈值 ΔE≥10.0）",
+      "min_delta_e": 32.25
+    },
+    {
+      "file": "story-revenue-shift_600dpi.png",
+      "check": "dpi",
+      "severity": "info",
+      "passed": true,
+      "detail": "600 dpi，物理尺寸 254.0×142.9 mm"
+    },
+    {
+      "file": "story-revenue-shift_600dpi.png",
+      "check": "physical_width",
+      "severity": "info",
+      "passed": true,
+      "detail": "实际宽 254.00mm，目标 254.0mm（容差 ±2.54mm）"
+    },
+    {
+      "file": "story-revenue-shift_600dpi.png",
+      "check": "blank",
+      "severity": "info",
+      "passed": true,
+      "detail": "图像有可见内容"
+    },
+    {
+      "file": "story-revenue-shift_600dpi.png",
+      "check": "cropping",
+      "severity": "info",
+      "passed": true,
+      "detail": "四周留有安全边距"
+    },
+    {
+      "file": "story-revenue-shift_600dpi.png",
+      "check": "wcag_contrast",
+      "severity": "info",
+      "passed": true,
+      "detail": "文本 #1F2937 / 背景 #FFFFFF 对比度 14.68:1（正文要求 ≥4.5:1）",
+      "ratio": 14.68
+    }
+  ],
+  "metrics": [
+    {
+      "file": "outputs\\story-revenue-shift.svg",
+      "width_mm": 254.0,
+      "height_mm": 142.88,
+      "text_elements": 29,
+      "font_families": [
+        "Arial",
+        "DejaVu Sans",
+        "Microsoft YaHei",
+        "Segoe UI",
+        "SimHei",
+        "sans-serif"
+      ]
+    },
+    {
+      "file": "outputs\\story-revenue-shift_300dpi.png",
+      "width_px": 3000,
+      "height_px": 1687,
+      "mode": "RGBA",
+      "dpi": 300.0,
+      "width_mm": 254.0,
+      "height_mm": 142.83,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 3.12,
+        "bottom": 0.89,
+        "left": 1.0,
+        "right": 2.5
+      }
+    },
+    {
+      "file": "outputs\\story-revenue-shift_600dpi.png",
+      "width_px": 6000,
+      "height_px": 3375,
+      "mode": "RGBA",
+      "dpi": 600.0,
+      "width_mm": 254.0,
+      "height_mm": 142.88,
+      "background_rgb": [
+        255,
+        255,
+        255
+      ],
+      "content_margins_pct": {
+        "top": 3.11,
+        "bottom": 0.89,
+        "left": 1.0,
+        "right": 2.5
+      }
+    }
+  ]
+}

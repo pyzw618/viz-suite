@@ -1,0 +1,35 @@
+{
+  "title": "Spend vs Conversions",
+  "x_label": "Spend",
+  "y_label": "Conversions",
+  "x": {
+    "values": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10
+    ],
+    "scale": "linear"
+  },
+  "y": {
+    "values": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35
+    ],
+    "scale": "linear"
+  },
+  "series": [
+    {
+      "name": "Points",
+      "color": "#009E73"
+    }
+  ]
+}
