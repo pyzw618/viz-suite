@@ -3,55 +3,272 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>区域分组柱 · ECharts</title>
+<title>区域销售分组柱微看板 · ECharts</title>
 <style>
-:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
-body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
-#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
-@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
-@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+:root{
+  --viz-bg:#FFFFFF;
+  --viz-surface:#F8FAFC;
+  --viz-text:#1F2937;
+  --viz-muted:#6B7280;
+  --viz-grid:#E2E8F0;
+  --viz-focal:#0072B2;
+  --viz-context:#94A3B8;
+  --viz-positive:#198038;
+  --viz-negative:#DA1E28;
+  --viz-alert:#D97706;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 16px;overflow-x:hidden}
+header h1{font-size:20px;margin:0 0 4px;font-weight:700}
+header p{margin:0 0 14px;color:var(--viz-muted);font-size:13px}
+
+/* KPI Summary Strip */
+.stat-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+.stat-card{
+  background:var(--viz-surface);
+  border:1px solid var(--viz-grid);
+  border-radius:6px;
+  padding:10px 14px;
+}
+.stat-label{font-size:11px;color:var(--viz-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-value{font-size:20px;font-weight:700;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.stat-sub{font-size:11px;color:var(--viz-muted);display:flex;align-items:center;gap:4px}
+.stat-sub.positive{color:var(--viz-positive);font-weight:600}
+.stat-sub.negative{color:var(--viz-negative);font-weight:600}
+.stat-sub.highlight{color:var(--viz-focal);font-weight:600}
+
+#chart{width:100%;height:calc(100vh - 220px);min-height:440px}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:10px}
+
+@media (max-width:768px){
+  body{padding:12px}
+  .stat-strip{grid-template-columns:repeat(2,1fr);gap:8px}
+  header h1{font-size:17px}
+  #chart{height:calc(100vh - 240px);min-height:400px}
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --viz-bg:#0B1220;
+    --viz-surface:#1E293B;
+    --viz-text:#E5E7EB;
+    --viz-muted:#9CA3AF;
+    --viz-grid:#334155;
+    --viz-focal:#38BDF8;
+    --viz-context:#64748B;
+  }
+}
 </style>
 </head>
 <body>
-<header><h1>华东与华南 2025 年收入领先，西北增速最高</h1><p>单位：百万元｜2024 与 2025 分组对比｜演示用合成数据</p></header>
+<header>
+  <h1>华东与华南领跑 2025 全域营收，西北增速突破 +30.8%</h1>
+  <p>单位：百万元｜2024 基准（冷灰）vs 2025 当前（焦点蓝）双年对比｜全区均值参考线｜演示用合成数据</p>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="stat-label">2025 全域总营收</div>
+    <div class="stat-value" id="val-total">--</div>
+    <div class="stat-sub positive" id="val-yoy-total">--</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">区域营收冠军</div>
+    <div class="stat-value" id="val-champ">--</div>
+    <div class="stat-sub highlight" id="val-champ-sub">--</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">区域平均营收</div>
+    <div class="stat-value" id="val-avg">--</div>
+    <div class="stat-sub" id="val-avg-sub">五大核心战区</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">最高增速黑马</div>
+    <div class="stat-value" id="val-growth">--</div>
+    <div class="stat-sub positive" id="val-growth-sub">--</div>
+  </div>
+</div>
+
 <figure>
-  <div id="chart" role="img" aria-label="五大区域 2024 与 2025 年收入分组柱图，华东最高"></div>
-  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+  <div id="chart" role="img" aria-label="五大区域 2024 与 2025 年收入分组柱图微看板，华东居首，西北增速最高"></div>
+  <figcaption>数据来源：集团销售运营决策支持系统（演示数据合成）｜ECharts 5｜微看板卡片自包含</figcaption>
 </figure>
+
 <script src="../../assets/vendor/echarts.min.js"></script>
 <script>
 const css = getComputedStyle(document.documentElement);
 const C = k => css.getPropertyValue(k).trim();
-const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
-const COLORS = [ROLE.context, ROLE.focal];
+const ROLE = {
+  text: C('--viz-text'), muted: C('--viz-muted'), grid: C('--viz-grid'),
+  focal: C('--viz-focal'), context: C('--viz-context'),
+  positive: C('--viz-positive'), negative: C('--viz-negative'), alert: C('--viz-alert')
+};
 const regions = ['华东', '华南', '华北', '西南', '西北'];
 const y2024 = [86, 72, 64, 48, 26];
 const y2025 = [98, 84, 69, 57, 34];
+
+// 运行时数据统计
+const total25 = y2025.reduce((a, b) => a + b, 0);
+const total24 = y2024.reduce((a, b) => a + b, 0);
+const yoyTotal = (((total25 - total24) / total24) * 100).toFixed(1);
+const avg25 = (total25 / y2025.length).toFixed(1);
+const maxVal = Math.max(...y2025);
+const maxIdx = y2025.indexOf(maxVal);
+const champShare = ((maxVal / total25) * 100).toFixed(1);
+
+let maxGrowth = -Infinity;
+let growthIdx = 0;
+for (let i = 0; i < regions.length; i++) {
+  const g = ((y2025[i] - y2024[i]) / y2024[i]) * 100;
+  if (g > maxGrowth) {
+    maxGrowth = g;
+    growthIdx = i;
+  }
+}
+
+document.getElementById('val-total').textContent = total25.toLocaleString() + ' 百万元';
+document.getElementById('val-yoy-total').textContent = '↑ 同比 +' + yoyTotal + '% (+' + (total25 - total24) + ' 百万)';
+document.getElementById('val-champ').textContent = regions[maxIdx] + ' ' + maxVal + 'M';
+document.getElementById('val-champ-sub').textContent = '★ 贡献全域 ' + champShare + '% 份额';
+document.getElementById('val-avg').textContent = avg25 + ' 百万元';
+document.getElementById('val-growth').textContent = regions[growthIdx] + ' +' + maxGrowth.toFixed(1) + '%';
+document.getElementById('val-growth-sub').textContent = '↑ 增量 +' + (y2025[growthIdx] - y2024[growthIdx]) + ' 百万元';
+
 const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+
 function buildOption(width) {
   const mobile = width < 600;
   return {
     backgroundColor: 'transparent',
-    aria: {enabled: true, decal: {show: false}, label: {description: '华东和华南收入最高，西北 2025 年同比增长 31%。'}},
-    color: COLORS,
-    tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'}},
-    legend: {top: 0, right: 0, data: ['2024', '2025'], textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}},
-    grid: {left: mobile ? 42 : 56, right: mobile ? 16 : 28, top: mobile ? 56 : 44, bottom: mobile ? 32 : 38},
-    xAxis: {type: 'category', data: regions, axisTick: {show: false}, axisLine: {lineStyle: {color: ROLE.grid}},
-      axisLabel: {color: ROLE.muted, fontSize: mobile ? 11 : 12}},
-    yAxis: {type: 'value', name: mobile ? '' : '收入（百万元）', nameTextStyle: {color: ROLE.muted},
-      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    aria: {enabled: true, decal: {show: false}, label: {description: '华东与华南领跑 2025 年收入，西北同比增长 30.8%。'}},
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {type: 'shadow'},
+      formatter: params => {
+        const idx = params[0].dataIndex;
+        const reg = regions[idx];
+        const v24 = y2024[idx];
+        const v25 = y2025[idx];
+        const diff = v25 - v24;
+        const g = ((diff / v24) * 100).toFixed(1);
+        const sh = ((v25 / total25) * 100).toFixed(1);
+        return '<strong>' + reg + ' 经营指标</strong><br/>' +
+               '2025 年营收：' + v25 + ' 百万元 (占 ' + sh + '%)<br/>' +
+               '2024 年营收：' + v24 + ' 百万元<br/>' +
+               '同比增幅：+' + diff + ' 百万 (+' + g + '%)';
+      }
+    },
+    legend: {
+      top: 0, right: 12,
+      data: ['2024 基线', '2025 当前'],
+      textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}
+    },
+    grid: {
+      left: mobile ? 46 : 58,
+      right: mobile ? 16 : 28,
+      top: mobile ? 48 : 40,
+      bottom: mobile ? 34 : 40
+    },
+    xAxis: {
+      type: 'category',
+      data: regions,
+      axisTick: {show: false},
+      axisLine: {lineStyle: {color: ROLE.grid}},
+      axisLabel: {color: ROLE.text, fontSize: mobile ? 11 : 12, fontWeight: '500'}
+    },
+    yAxis: {
+      type: 'value',
+      name: mobile ? '' : '营收（百万元）',
+      nameTextStyle: {color: ROLE.muted},
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}
+    },
     series: [
-      {name: '2024', type: 'bar', data: y2024, barWidth: mobile ? 12 : 20, itemStyle: {color: ROLE.context, borderColor: ROLE.context, borderWidth: 1}},
-      {name: '2025', type: 'bar', data: y2025, barWidth: mobile ? 12 : 20, itemStyle: {color: 'rgba(0,114,178,0.22)', borderColor: ROLE.focal, borderWidth: 1.2},
-       label: {show: !mobile, position: 'top', color: ROLE.muted, fontSize: 11}}
+      {
+        name: '2024 基线',
+        type: 'bar',
+        data: y2024,
+        barWidth: mobile ? 14 : 24,
+        itemStyle: {
+          color: ROLE.context,
+          borderColor: '#FFFFFF',
+          borderWidth: 1,
+          borderRadius: [2, 2, 0, 0]
+        }
+      },
+      {
+        name: '2025 当前',
+        type: 'bar',
+        data: y2025.map((v, i) => ({
+          value: v,
+          itemStyle: {
+            color: i === maxIdx ? ROLE.focal : 'rgba(0,114,178,0.85)',
+            borderColor: '#FFFFFF',
+            borderWidth: 1,
+            borderRadius: [3, 3, 0, 0]
+          }
+        })),
+        barWidth: mobile ? 14 : 24,
+        markPoint: {
+          symbol: 'pin',
+          symbolSize: mobile ? 38 : 44,
+          data: [
+            {
+              coord: [maxIdx, maxVal],
+              name: '区域标杆',
+              value: '★',
+              itemStyle: {color: ROLE.focal}
+            }
+          ],
+          label: {fontSize: 12, fontWeight: 'bold', color: '#FFFFFF'}
+        },
+        markLine: {
+          symbol: ['none', 'none'],
+          data: [
+            {
+              yAxis: Number(avg25),
+              lineStyle: {color: ROLE.alert, type: 'dashed', width: 1.5},
+              label: {
+                formatter: '2025 均值 ' + avg25,
+                position: 'insideEndTop',
+                color: ROLE.alert,
+                fontSize: 11
+              }
+            }
+          ]
+        },
+        label: {
+          show: true,
+          position: 'top',
+          color: ROLE.text,
+          fontSize: mobile ? 9 : 11,
+          formatter: p => {
+            const idx = p.dataIndex;
+            const diff = y2025[idx] - y2024[idx];
+            const g = ((diff / y2024[idx]) * 100).toFixed(0);
+            return p.value + '\n(+' + g + '%)';
+          }
+        }
+      }
     ]
   };
 }
-function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+
+function render() {
+  chart.resize();
+  chart.setOption(buildOption(window.innerWidth), true);
+}
 render();
-let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+let timer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(timer);
+  timer = setTimeout(render, 120);
+});
 </script>
 </body>
 </html>

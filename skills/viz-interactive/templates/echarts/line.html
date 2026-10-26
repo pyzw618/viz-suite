@@ -3,70 +3,256 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>月度收入趋势 · ECharts</title>
+<title>月度收入趋势微看板 · ECharts</title>
 <style>
-:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
+:root{
+  --viz-bg:#FFFFFF;
+  --viz-surface:#F8FAFC;
+  --viz-text:#1F2937;
+  --viz-muted:#6B7280;
+  --viz-grid:#E2E8F0;
+  --viz-focal:#0072B2;
+  --viz-context:#CBD5E1;
+  --viz-positive:#198038;
+  --viz-negative:#DA1E28;
+  --viz-alert:#D97706;
+}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
-body{padding:20px 24px 12px;overflow-x:hidden}
+body{padding:20px 24px 16px;overflow-x:hidden}
 header h1{font-size:20px;margin:0 0 4px;font-weight:700}
-header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
-#chart{width:100%;height:calc(100vh - 150px);min-height:420px}
-figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
-@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
-@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+header p{margin:0 0 14px;color:var(--viz-muted);font-size:13px}
+
+/* KPI Summary Strip */
+.stat-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+.stat-card{
+  background:var(--viz-surface);
+  border:1px solid var(--viz-grid);
+  border-radius:6px;
+  padding:10px 14px;
+}
+.stat-label{font-size:11px;color:var(--viz-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-value{font-size:20px;font-weight:700;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.stat-sub{font-size:11px;color:var(--viz-muted);display:flex;align-items:center;gap:4px}
+.stat-sub.positive{color:var(--viz-positive);font-weight:600}
+.stat-sub.negative{color:var(--viz-negative);font-weight:600}
+.stat-sub.highlight{color:var(--viz-focal);font-weight:600}
+
+#chart{width:100%;height:calc(100vh - 220px);min-height:460px}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:10px}
+
+@media (max-width:768px){
+  body{padding:12px}
+  .stat-strip{grid-template-columns:repeat(2,1fr);gap:8px}
+  header h1{font-size:17px}
+  #chart{height:calc(100vh - 240px);min-height:420px}
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --viz-bg:#0B1220;
+    --viz-surface:#1E293B;
+    --viz-text:#E5E7EB;
+    --viz-muted:#9CA3AF;
+    --viz-grid:#334155;
+    --viz-focal:#38BDF8;
+    --viz-context:#475569;
+  }
+}
 </style>
 </head>
 <body>
 <header>
-  <h1>月度收入持续增长，2025 年 6 月同比 +18.0%</h1>
-  <p>单位：万元｜两年度同月份对比｜纵轴按数据范围缩放｜演示用合成数据</p>
+  <h1>月度收入持续跨周期增长，2025 年 6 月同比 +18.0%</h1>
+  <p>单位：万元｜主图双年同月走势 + 附带下半年冲刺底衬｜副图月度同比增量脉冲柱｜演示用合成数据</p>
 </header>
+
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="stat-label">2025 年度总营收</div>
+    <div class="stat-value" id="val-total">--</div>
+    <div class="stat-sub positive" id="val-yoy-total">--</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">2025 月均营收</div>
+    <div class="stat-value" id="val-avg">--</div>
+    <div class="stat-sub" id="val-sub-avg">年化稳步爬坡</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">历史单月峰值</div>
+    <div class="stat-value" id="val-peak">--</div>
+    <div class="stat-sub highlight" id="val-peak-month">--</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">净增创收总额</div>
+    <div class="stat-value" id="val-diff">--</div>
+    <div class="stat-sub positive" id="val-diff-sub">较 2024 全年增量</div>
+  </div>
+</div>
+
 <figure>
-  <div id="chart" role="img" aria-label="2024 与 2025 年 1 至 12 月收入折线图，2025 年整体高于 2024 年"></div>
-  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+  <div id="chart" role="img" aria-label="月度收入趋势双轴微看板，2025年整体高于2024年，底部附带同比增额柱图"></div>
+  <figcaption>数据来源：企业经营分析平台（演示数据合成）｜ECharts 5｜微看板卡片自包含</figcaption>
 </figure>
+
 <script src="../../assets/vendor/echarts.min.js"></script>
 <script>
 const css = getComputedStyle(document.documentElement);
 const C = k => css.getPropertyValue(k).trim();
-const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
-const COLORS = [ROLE.focal, '#E69F00', '#CC79A7', '#009E73'];
+const ROLE = {
+  text: C('--viz-text'), muted: C('--viz-muted'), grid: C('--viz-grid'),
+  focal: C('--viz-focal'), context: C('--viz-context'),
+  positive: C('--viz-positive'), negative: C('--viz-negative'), alert: C('--viz-alert')
+};
 const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 const data2024 = [128, 132, 141, 138, 150, 156, 162, 168, 175, 182, 190, 205];
 const data2025 = [140, 148, 155, 162, 171, 184, 192, 201, 210, 221, 232, 242];
+
+// 动态汇总与 KPI 计算
+const sum2024 = data2024.reduce((a, b) => a + b, 0);
+const sum2025 = data2025.reduce((a, b) => a + b, 0);
+const avg2025 = sum2025 / data2025.length;
+const diffSum = sum2025 - sum2024;
+const totalYoY = ((diffSum / sum2024) * 100).toFixed(1);
+const maxVal2025 = Math.max(...data2025);
+const maxIdx2025 = data2025.indexOf(maxVal2025);
+const yoyDeltas = data2025.map((v, i) => v - data2024[i]);
+
+document.getElementById('val-total').textContent = sum2025.toLocaleString() + ' 万元';
+document.getElementById('val-yoy-total').textContent = '↑ 同比 +' + totalYoY + '% (' + diffSum + ' 万元)';
+document.getElementById('val-avg').textContent = avg2025.toFixed(1) + ' 万元';
+document.getElementById('val-peak').textContent = maxVal2025 + ' 万元';
+document.getElementById('val-peak-month').textContent = '★ 创于 ' + months[maxIdx2025];
+document.getElementById('val-diff').textContent = '+' + diffSum.toLocaleString() + ' 万元';
+
 const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
 
 function buildOption(width) {
   const mobile = width < 600;
   return {
     backgroundColor: 'transparent',
-    aria: {enabled: true, decal: {show: false}, label: {description: '2025 年各月收入均高于 2024 年，6 月同比增长 18%。'}},
-    color: COLORS,
-    tooltip: {trigger: 'axis', valueFormatter: v => v + ' 万元'},
-    legend: {data: ['2024', '2025'], top: 0, right: 0, textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}},
-    grid: {left: mobile ? 44 : 56, right: mobile ? 16 : 28, top: mobile ? 52 : 44, bottom: mobile ? 34 : 40},
-    xAxis: {type: 'category', boundaryGap: false, data: months,
-      axisLine: {lineStyle: {color: ROLE.grid}}, axisTick: {show: false},
-      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12, interval: mobile ? 'auto' : 0}},
-    yAxis: {type: 'value', name: mobile ? '' : '收入（万元）', nameTextStyle: {color: ROLE.muted},
-      min: value => Math.floor(value.min / 20) * 20, max: value => Math.ceil(value.max / 20) * 20,
-      splitNumber: 7,
-      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
-      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    aria: {enabled: true, decal: {show: false}, label: {description: '2025 年各月收入持续领跑，下半年冲刺效应显著，附带各月同比增量副图。'}},
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {type: 'cross', lineStyle: {color: ROLE.muted, type: 'dashed'}},
+      formatter: params => {
+        const idx = params[0].dataIndex;
+        const m = months[idx];
+        const v24 = data2024[idx];
+        const v25 = data2025[idx];
+        const d = v25 - v24;
+        const pct = ((d / v24) * 100).toFixed(1);
+        return '<strong>' + m + ' 经营快报</strong><br/>' +
+               '2025 年营收：' + v25 + ' 万元<br/>' +
+               '2024 年营收：' + v24 + ' 万元<br/>' +
+               '同比增额：+' + d + ' 万元 (+' + pct + '%)';
+      }
+    },
+    legend: {
+      data: ['2024 年基线', '2025 年当前', '月度同比增量'],
+      top: 0, right: mobile ? 0 : 12,
+      textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}
+    },
+    axisPointer: {link: [{xAxisIndex: 'all'}]},
+    grid: [
+      {left: mobile ? 46 : 60, right: mobile ? 16 : 28, top: mobile ? 56 : 40, height: mobile ? '52%' : '56%'},
+      {left: mobile ? 46 : 60, right: mobile ? 16 : 28, top: mobile ? '72%' : '72%', height: mobile ? '20%' : '20%'}
+    ],
+    xAxis: [
+      {
+        type: 'category', boundaryGap: false, data: months, gridIndex: 0,
+        axisLine: {lineStyle: {color: ROLE.grid}}, axisTick: {show: false},
+        axisLabel: {show: false}
+      },
+      {
+        type: 'category', boundaryGap: true, data: months, gridIndex: 1,
+        axisLine: {lineStyle: {color: ROLE.grid}}, axisTick: {show: false},
+        axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 11, interval: 0}
+      }
+    ],
+    yAxis: [
+      {
+        gridIndex: 0, type: 'value',
+        name: mobile ? '' : '营收（万元）', nameTextStyle: {color: ROLE.muted},
+        min: 100, max: 260, splitNumber: 5,
+        splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
+        axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 11}
+      },
+      {
+        gridIndex: 1, type: 'value',
+        name: mobile ? '' : '增额', nameTextStyle: {color: ROLE.muted, fontSize: 10},
+        min: 0, max: 40, splitNumber: 2,
+        splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.4}},
+        axisLabel: {color: ROLE.muted, fontSize: 9}
+      }
+    ],
     series: [
-      {name: '2024', type: 'line', smooth: false, data: data2024, symbol: 'circle', symbolSize: 5,
-       lineStyle: {width: 1.6, color: ROLE.muted}, itemStyle: {color: ROLE.muted, borderColor: '#fff', borderWidth: 1}},
-      {name: '2025', type: 'line', smooth: false, data: data2025, symbol: 'circle', symbolSize: 7,
-       lineStyle: {width: 2.4, color: ROLE.focal}, itemStyle: {color: ROLE.focal, borderColor: '#fff', borderWidth: 1},
-       endLabel: {show: true, color: ROLE.focal, fontSize: 11}}
+      {
+        name: '2024 年基线', type: 'line', xAxisIndex: 0, yAxisIndex: 0,
+        data: data2024, symbol: 'circle', symbolSize: 5,
+        lineStyle: {width: 1.8, color: ROLE.context},
+        itemStyle: {color: ROLE.context, borderColor: '#fff', borderWidth: 1}
+      },
+      {
+        name: '2025 年当前', type: 'line', xAxisIndex: 0, yAxisIndex: 0,
+        data: data2025, symbol: 'circle', symbolSize: 7,
+        lineStyle: {width: 2.8, color: ROLE.focal},
+        itemStyle: {color: ROLE.focal, borderColor: '#fff', borderWidth: 1.5},
+        markArea: {
+          silent: true,
+          itemStyle: {color: 'rgba(0,114,178,0.05)'},
+          data: [[{name: '下半年冲刺季', xAxis: '7月'}, {xAxis: '12月'}]]
+        },
+        markPoint: {
+          symbol: 'pin', symbolSize: mobile ? 40 : 46,
+          data: [
+            {type: 'max', name: '年内最高', itemStyle: {color: ROLE.focal}},
+            {type: 'min', name: '年内起点', itemStyle: {color: ROLE.muted}}
+          ],
+          label: {fontSize: 10, fontWeight: 'bold'}
+        },
+        markLine: {
+          symbol: ['none', 'none'],
+          data: [
+            {
+              yAxis: Number(avg2025.toFixed(1)),
+              lineStyle: {color: ROLE.focal, type: 'dashed', width: 1.4, opacity: 0.8},
+              label: {
+                formatter: '2025 年均 ' + avg2025.toFixed(1),
+                position: 'insideEndTop',
+                color: ROLE.focal,
+                fontSize: 10
+              }
+            }
+          ]
+        }
+      },
+      {
+        name: '月度同比增量', type: 'bar', xAxisIndex: 1, yAxisIndex: 1,
+        data: yoyDeltas, barWidth: mobile ? 12 : 18,
+        itemStyle: {
+          color: ROLE.positive,
+          borderRadius: [2, 2, 0, 0]
+        }
+      }
     ]
   };
 }
-function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+
+function render() {
+  chart.resize();
+  chart.setOption(buildOption(window.innerWidth), true);
+}
 render();
 let timer = null;
-window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+window.addEventListener('resize', () => {
+  clearTimeout(timer);
+  timer = setTimeout(render, 120);
+});
 </script>
 </body>
 </html>

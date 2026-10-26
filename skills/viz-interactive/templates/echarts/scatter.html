@@ -3,27 +3,112 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>散点回归 · ECharts</title>
+<title>投入产出散点回归微看板 · ECharts</title>
 <style>
-:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
-body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
-#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
-@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
-@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+:root{
+  --viz-bg:#FFFFFF;
+  --viz-surface:#F8FAFC;
+  --viz-text:#1F2937;
+  --viz-muted:#6B7280;
+  --viz-grid:#E2E8F0;
+  --viz-focal:#0072B2;
+  --viz-context:#94A3B8;
+  --viz-positive:#198038;
+  --viz-negative:#DA1E28;
+  --viz-alert:#D97706;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 16px;overflow-x:hidden}
+header h1{font-size:20px;margin:0 0 4px;font-weight:700}
+header p{margin:0 0 14px;color:var(--viz-muted);font-size:13px}
+
+/* KPI Summary Strip */
+.stat-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+.stat-card{
+  background:var(--viz-surface);
+  border:1px solid var(--viz-grid);
+  border-radius:6px;
+  padding:10px 14px;
+}
+.stat-label{font-size:11px;color:var(--viz-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-value{font-size:20px;font-weight:700;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.stat-sub{font-size:11px;color:var(--viz-muted);display:flex;align-items:center;gap:4px}
+.stat-sub.positive{color:var(--viz-positive);font-weight:600}
+.stat-sub.negative{color:var(--viz-negative);font-weight:600}
+.stat-sub.highlight{color:var(--viz-focal);font-weight:600}
+
+#chart{width:100%;height:calc(100vh - 220px);min-height:440px}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:10px}
+
+@media (max-width:768px){
+  body{padding:12px}
+  .stat-strip{grid-template-columns:repeat(2,1fr);gap:8px}
+  header h1{font-size:17px}
+  #chart{height:calc(100vh - 240px);min-height:400px}
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --viz-bg:#0B1220;
+    --viz-surface:#1E293B;
+    --viz-text:#E5E7EB;
+    --viz-muted:#9CA3AF;
+    --viz-grid:#334155;
+    --viz-focal:#38BDF8;
+    --viz-context:#64748B;
+  }
+}
 </style>
 </head>
 <body>
-<header><h1>投入时长与产出评分正相关（R² = 0.63）</h1><p>散点为单个样本｜深色线为最小二乘拟合｜演示用合成数据</p></header>
+<header>
+  <h1>投入时长与产出效能呈现强正相关，拟合决定系数 R² = 0.63</h1>
+  <p>双轴均值十字准星划分象限｜实心散点带细白边｜最小二乘拟合趋势线｜演示用合成数据</p>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="stat-label">有效分析样本量</div>
+    <div class="stat-value" id="val-samples">--</div>
+    <div class="stat-sub" id="val-samples-sub">全量真实观测记录</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">回归拟合优度 R²</div>
+    <div class="stat-value" id="val-r2">--</div>
+    <div class="stat-sub positive" id="val-r2-sub">线性正相关显著</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">平均投入工时</div>
+    <div class="stat-value" id="val-avg-x">--</div>
+    <div class="stat-sub" id="val-avg-x-sub">横轴均值分界线</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">平均产出评分</div>
+    <div class="stat-value" id="val-avg-y">--</div>
+    <div class="stat-sub highlight" id="val-avg-y-sub">纵轴均值达标线</div>
+  </div>
+</div>
+
 <figure>
-  <div id="chart" role="img" aria-label="投入时长与产出评分散点图，呈明显正相关"></div>
-  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+  <div id="chart" role="img" aria-label="投入时长与产出评分相关性散点回归微看板，双轴交叉十字准星划分四象限"></div>
+  <figcaption>数据来源：人效与研发效能度量工场（演示数据合成）｜ECharts 5｜微看板卡片自包含</figcaption>
 </figure>
+
 <script src="../../assets/vendor/echarts.min.js"></script>
 <script>
 const css = getComputedStyle(document.documentElement);
 const C = k => css.getPropertyValue(k).trim();
-const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const ROLE = {
+  text: C('--viz-text'), muted: C('--viz-muted'), grid: C('--viz-grid'),
+  focal: C('--viz-focal'), context: C('--viz-context'),
+  positive: C('--viz-positive'), negative: C('--viz-negative'), alert: C('--viz-alert')
+};
+
 let seed = 20261025;
 const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
 const data = Array.from({length: 90}, () => {
@@ -31,37 +116,130 @@ const data = Array.from({length: 90}, () => {
   const y = Math.max(20, Math.min(100, 30 + 1.15 * x + (rand() - 0.5) * 18));
   return [Number(x.toFixed(1)), Number(y.toFixed(1))];
 });
+
 const n = data.length;
 const sx = data.reduce((s, d) => s + d[0], 0);
 const sy = data.reduce((s, d) => s + d[1], 0);
 const sxx = data.reduce((s, d) => s + d[0] * d[0], 0);
+const syy = data.reduce((s, d) => s + d[1] * d[1], 0);
 const sxy = data.reduce((s, d) => s + d[0] * d[1], 0);
+
+const avgX = sx / n;
+const avgY = sy / n;
 const slope = (n * sxy - sx * sy) / (n * sxx - sx * sx);
 const intercept = (sy - slope * sx) / n;
-const line = [[8, slope * 8 + intercept], [50, slope * 50 + intercept]];
+
+// R^2 计算
+const r = (n * sxy - sx * sy) / Math.sqrt((n * sxx - sx * sx) * (n * syy - sy * sy));
+const r2 = (r * r).toFixed(2);
+
+const minX = 8, maxX = 50;
+const line = [[minX, Number((slope * minX + intercept).toFixed(1))], [maxX, Number((slope * maxX + intercept).toFixed(1))]];
+
+document.getElementById('val-samples').textContent = n + ' 例';
+document.getElementById('val-samples-sub').textContent = '剔除缺失与极端噪点';
+document.getElementById('val-r2').textContent = 'R² = ' + r2;
+document.getElementById('val-avg-x').textContent = avgX.toFixed(1) + ' 小时';
+document.getElementById('val-avg-y').textContent = avgY.toFixed(1) + ' 分';
+
 const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+
 function buildOption(width) {
   const mobile = width < 600;
   return {
     backgroundColor: 'transparent',
-    aria: {enabled: true, decal: {show: false}, label: {description: '散点显示投入时长与产出评分正相关，并附线性拟合线。'}},
-    tooltip: {trigger: 'item', formatter: p => p.seriesName === '观测' ? `投入 ${p.value[0]} h<br/>产出 ${p.value[1]} 分` : ''},
-    grid: {left: mobile ? 42 : 58, right: mobile ? 16 : 28, top: mobile ? 24 : 30, bottom: mobile ? 36 : 44},
-    xAxis: {type: 'value', name: mobile ? '' : '投入时长（小时）', nameLocation: 'middle', nameGap: 26,
-      nameTextStyle: {color: ROLE.muted}, min: 5, max: 52,
-      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
-    yAxis: {type: 'value', name: mobile ? '' : '产出评分（0–100）', nameTextStyle: {color: ROLE.muted}, min: 20, max: 100,
-      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    aria: {enabled: true, decal: {show: false}, label: {description: '散点显示投入时长与产出评分显著正相关，并附双均值十字线与拟合线。'}},
+    tooltip: {
+      trigger: 'item',
+      formatter: p => {
+        if (p.seriesName === '观测样本') {
+          const x = p.value[0];
+          const y = p.value[1];
+          const tag = (x >= avgX && y >= avgY) ? '高效能区' : ((x < avgX && y < avgY) ? '初级探索区' : '过渡区');
+          return '<strong>样本观测点 (' + tag + ')</strong><br/>' +
+                 '投入工时：' + x + ' 小时<br/>' +
+                 '产出评分：' + y + ' 分';
+        }
+        return '';
+      }
+    },
+    grid: {
+      left: mobile ? 46 : 60,
+      right: mobile ? 24 : 40,
+      top: mobile ? 36 : 40,
+      bottom: mobile ? 40 : 48
+    },
+    xAxis: {
+      type: 'value',
+      name: mobile ? '' : '投入工时（小时）',
+      nameLocation: 'middle',
+      nameGap: 26,
+      nameTextStyle: {color: ROLE.muted},
+      min: 5, max: 52,
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}
+    },
+    yAxis: {
+      type: 'value',
+      name: mobile ? '' : '产出评分（0–100）',
+      nameTextStyle: {color: ROLE.muted},
+      min: 20, max: 100,
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}
+    },
     series: [
-      {name: '观测', type: 'scatter', data, symbolSize: mobile ? 6 : 8,
-       itemStyle: {color: 'rgba(0,114,178,0.55)', borderColor: '#fff', borderWidth: 0.6}},
-      {name: '拟合', type: 'line', data: line, symbol: 'none', lineStyle: {width: 2, color: ROLE.text}, tooltip: {show: false}}
+      {
+        name: '观测样本',
+        type: 'scatter',
+        data,
+        symbolSize: mobile ? 7 : 9,
+        itemStyle: {
+          color: p => {
+            const x = p.value[0], y = p.value[1];
+            return (x >= avgX && y >= avgY) ? ROLE.focal : 'rgba(100,116,139,0.65)';
+          },
+          borderColor: '#FFFFFF',
+          borderWidth: 0.8
+        },
+        markLine: {
+          silent: true,
+          symbol: ['none', 'none'],
+          data: [
+            {
+              xAxis: Number(avgX.toFixed(1)),
+              lineStyle: {color: ROLE.muted, type: 'dotted', width: 1.2},
+              label: {formatter: '工时均值 ' + avgX.toFixed(1), position: 'insideEndTop', color: ROLE.muted, fontSize: 10}
+            },
+            {
+              yAxis: Number(avgY.toFixed(1)),
+              lineStyle: {color: ROLE.muted, type: 'dotted', width: 1.2},
+              label: {formatter: '产出均值 ' + avgY.toFixed(1), position: 'insideEndRight', color: ROLE.muted, fontSize: 10}
+            }
+          ]
+        }
+      },
+      {
+        name: '线性回归拟合线',
+        type: 'line',
+        data: line,
+        symbol: 'none',
+        lineStyle: {width: 2.2, color: ROLE.alert},
+        tooltip: {show: false}
+      }
     ]
   };
 }
-function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+
+function render() {
+  chart.resize();
+  chart.setOption(buildOption(window.innerWidth), true);
+}
 render();
-let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+let timer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(timer);
+  timer = setTimeout(render, 120);
+});
 </script>
 </body>
 </html>

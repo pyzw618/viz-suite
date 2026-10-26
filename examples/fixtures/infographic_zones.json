@@ -1,0 +1,79 @@
+{
+  "title": "端到端智能数据流水线分阶段治理全景架构",
+  "subtitle": "覆盖从多源采集、加工流转到业务智能消费三阶段",
+  "eyebrow": "DATA OPS PIPELINE",
+  "icon": "database",
+  "claim": "通过阶段式泳道治理，端到端数据延时压缩 68%，异常发现时效提升至秒级",
+  "source": "数据技术部 · 2026 年度现代数据架构治理白皮书",
+  "as_of": "2026 Q3",
+  "footnote": "口径包含全域日志、业务 CDC 与批流一体湖仓集群",
+  "layout": "sequence-steps",
+  "style": "mckinsey",
+  "zones": [
+    {
+      "label": "源端接入与合规清洗阶段",
+      "kicker": "PHASE 01 · INGESTION",
+      "modules": [0, 1]
+    },
+    {
+      "label": "流批一体湖仓加工阶段",
+      "kicker": "PHASE 02 · PROCESSING",
+      "modules": [2, 3]
+    },
+    {
+      "label": "业务服务与智能洞察阶段",
+      "kicker": "PHASE 03 · SERVING",
+      "modules": [4, 5]
+    }
+  ],
+  "modules": [
+    {
+      "title": "多源异构实时 CDC 捕获",
+      "body": "支持 MySQL、PostgreSQL 与 Kafka 消息实时变更捕获，Schema 动态演进无感兼容。",
+      "icon": "server",
+      "delta": "+45% 吞吐",
+      "progress": 92.5,
+      "tags": ["Flink CDC", "零丢数", "毫秒级"]
+    },
+    {
+      "title": "敏感数据自动脱敏与分类分级",
+      "body": "基于 NLP 实体识别敏感资产，自动应用国密算法脱敏，确保数据出入合规。",
+      "icon": "shield-check",
+      "delta": "100% 合规率",
+      "progress": 99.8,
+      "tags": ["数据安全", "动态脱敏"]
+    },
+    {
+      "title": "Iceberg / Delta 湖仓一体分层建模",
+      "body": "构建 ODS → DWD → DWS 经典三层数仓，存算分离架构降低冷热存储成本 40%。",
+      "icon": "layers",
+      "delta": "-42% 成本",
+      "progress": 85.0,
+      "tags": ["存算分离", "ACID", "Iceberg"]
+    },
+    {
+      "title": "自动化数据质量巡检与大模型断言",
+      "body": "在数据流转链路嵌入 120+ 项行数对比、空值率与分布漂移断言，异常自动阻断。",
+      "icon": "activity",
+      "delta": "-88% 故障率",
+      "progress": 94.2,
+      "tags": ["Great Expectations", "自动告警"]
+    },
+    {
+      "title": "统一语义层指标平台（MetricStore）",
+      "body": "统一全域口径定义，屏蔽底层物理表变更，实现指标「一次定义、多端消费」。",
+      "icon": "target",
+      "delta": "口径一致性 100%",
+      "progress": 88.5,
+      "tags": ["Headless BI", "语义层"]
+    },
+    {
+      "title": "Agentic 智能问数与自动化洞察引擎",
+      "body": "结合检索增强与反思闭环，秒级响应自然语言业务提问，自动下钻归因异动。",
+      "icon": "sparkles",
+      "delta": "+3.5x 提效",
+      "progress": 96.0,
+      "tags": ["NL2SQL", "异动归因", "生成式分析"]
+    }
+  ]
+}

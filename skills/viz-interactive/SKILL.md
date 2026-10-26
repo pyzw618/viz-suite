@@ -20,6 +20,7 @@ description: 离线自包含交互图表与响应式商业看板通道。基于�
 
 - **零外链与安全 DOM**：仅引用本地 `echarts.min.js` / `d3.min.js`，严禁 `https://` CDN、在线字体或在线地图瓦片；动态文本一律用 `textContent`（禁 `innerHTML` / `document.write`）。
 - **显式高度与响应式重建**：图表容器必须设显式高度或 `min-height` 防塌陷；保留 `buildOption(width)` 与 `ResizeObserver`，窄屏自动抽稀刻度、收拢图例、单列折叠（详见 [ECharts/D3 护栏](references/echarts-d3-guardrails.md) 与 [响应式看板指南](references/responsive-dashboard-guide.md)）。
+- **微看板卡片结构**：单图优先升级为微看板卡片（顶部 3–4 格 KPI 卡由 JS 从数据动态计算并通过 `textContent` 写入；图内叠加 `markPoint` 峰谷气泡 / `markLine` 均值参考线 / `markArea` 重点区间；配合底部增量副图，杜绝单图空洞简陋感）。
 - **无障碍与统计诚实**：`<figure>` 包裹图表并配 `role="img"`、`aria-label` 与 `tabular-nums` 等宽数字；柱/面积强制零基线，红黄绿状态须配符号/文字双编码。
 
 ## 三、四步自动化与多模态验收闭环

@@ -3,59 +3,259 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>堆叠柱 · ECharts</title>
+<title>多产品线堆叠柱微看板 · ECharts</title>
 <style>
-:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
-body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
-#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
-@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
-@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+:root{
+  --viz-bg:#FFFFFF;
+  --viz-surface:#F8FAFC;
+  --viz-text:#1F2937;
+  --viz-muted:#6B7280;
+  --viz-grid:#E2E8F0;
+  --viz-focal:#0072B2;
+  --viz-context:#94A3B8;
+  --viz-positive:#198038;
+  --viz-negative:#DA1E28;
+  --viz-alert:#D97706;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 16px;overflow-x:hidden}
+header h1{font-size:20px;margin:0 0 4px;font-weight:700}
+header p{margin:0 0 14px;color:var(--viz-muted);font-size:13px}
+
+/* KPI Summary Strip */
+.stat-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+.stat-card{
+  background:var(--viz-surface);
+  border:1px solid var(--viz-grid);
+  border-radius:6px;
+  padding:10px 14px;
+}
+.stat-label{font-size:11px;color:var(--viz-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-value{font-size:20px;font-weight:700;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.stat-sub{font-size:11px;color:var(--viz-muted);display:flex;align-items:center;gap:4px}
+.stat-sub.positive{color:var(--viz-positive);font-weight:600}
+.stat-sub.negative{color:var(--viz-negative);font-weight:600}
+.stat-sub.highlight{color:var(--viz-focal);font-weight:600}
+
+#chart{width:100%;height:calc(100vh - 220px);min-height:440px}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:10px}
+
+@media (max-width:768px){
+  body{padding:12px}
+  .stat-strip{grid-template-columns:repeat(2,1fr);gap:8px}
+  header h1{font-size:17px}
+  #chart{height:calc(100vh - 240px);min-height:400px}
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --viz-bg:#0B1220;
+    --viz-surface:#1E293B;
+    --viz-text:#E5E7EB;
+    --viz-muted:#9CA3AF;
+    --viz-grid:#334155;
+    --viz-focal:#38BDF8;
+    --viz-context:#64748B;
+  }
+}
 </style>
 </head>
 <body>
-<header><h1>产品线 A 贡献最大，总量在 6 月达到峰值</h1><p>单位：万元｜堆叠柱为三条产品线，标签为当月总量｜演示用合成数据</p></header>
+<header>
+  <h1>产品线 A 构成核心基本盘，上半年总营收在 6 月达到峰值</h1>
+  <p>单位：万元｜堆叠柱编码三大产品线结构｜顶部折线编码全域当月总量｜演示用合成数据</p>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="stat-label">上半年累计总营收</div>
+    <div class="stat-value" id="val-total">--</div>
+    <div class="stat-sub positive" id="val-total-sub">--</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">第一核心支柱</div>
+    <div class="stat-value" id="val-pillar">--</div>
+    <div class="stat-sub highlight" id="val-pillar-sub">--</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">当期单月最高峰</div>
+    <div class="stat-value" id="val-peak">--</div>
+    <div class="stat-sub positive" id="val-peak-sub">--</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">月均复合攀升</div>
+    <div class="stat-value" id="val-avg">--</div>
+    <div class="stat-sub" id="val-avg-sub">总计 6 个统计周期</div>
+  </div>
+</div>
+
 <figure>
-  <div id="chart" role="img" aria-label="三条产品线 1 至 6 月收入堆叠柱图，总量逐月增长至 6 月峰值"></div>
-  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+  <div id="chart" role="img" aria-label="三条产品线 1 至 6 月收入堆叠柱微看板，总量逐月稳步增长并在 6 月达到峰值"></div>
+  <figcaption>数据来源：商业智能多维分析中心（演示数据合成）｜ECharts 5｜微看板卡片自包含</figcaption>
 </figure>
+
 <script src="../../assets/vendor/echarts.min.js"></script>
 <script>
 const css = getComputedStyle(document.documentElement);
 const C = k => css.getPropertyValue(k).trim();
-const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const ROLE = {
+  text: C('--viz-text'), muted: C('--viz-muted'), grid: C('--viz-grid'),
+  focal: C('--viz-focal'), context: C('--viz-context'),
+  positive: C('--viz-positive'), negative: C('--viz-negative'), alert: C('--viz-alert')
+};
 const COLORS = [ROLE.focal, '#E69F00', '#CC79A7'];
 const months = ['1月', '2月', '3月', '4月', '5月', '6月'];
-const series = {'产品线 A': [42, 45, 48, 52, 55, 58], '产品线 B': [28, 30, 29, 33, 35, 37], '产品线 C': [15, 18, 20, 21, 24, 26]};
+const series = {
+  '产品线 A': [42, 45, 48, 52, 55, 58],
+  '产品线 B': [28, 30, 29, 33, 35, 37],
+  '产品线 C': [15, 18, 20, 21, 24, 26]
+};
 const totals = months.map((_, i) => Object.values(series).reduce((s, arr) => s + arr[i], 0));
+
+// 统计 KPI
+const grandTotal = totals.reduce((a, b) => a + b, 0);
+const startTotal = totals[0];
+const endTotal = totals[totals.length - 1];
+const totalGrowth = (((endTotal - startTotal) / startTotal) * 100).toFixed(1);
+const peakVal = Math.max(...totals);
+const peakIdx = totals.indexOf(peakVal);
+const avgMonth = (grandTotal / totals.length).toFixed(1);
+
+// 计算各产品线累计
+const pSums = {};
+for (const [k, arr] of Object.entries(series)) {
+  pSums[k] = arr.reduce((a, b) => a + b, 0);
+}
+let topPName = '';
+let topPVal = -1;
+for (const [k, v] of Object.entries(pSums)) {
+  if (v > topPVal) {
+    topPVal = v;
+    topPName = k;
+  }
+}
+const topPShare = ((topPVal / grandTotal) * 100).toFixed(1);
+
+document.getElementById('val-total').textContent = grandTotal.toLocaleString() + ' 万元';
+document.getElementById('val-total-sub').textContent = '↑ 较期初增 +' + totalGrowth + '%';
+document.getElementById('val-pillar').textContent = topPName + ' ' + topPVal + 'W';
+document.getElementById('val-pillar-sub').textContent = '★ 占据总盘 ' + topPShare + '%';
+document.getElementById('val-peak').textContent = peakVal + ' 万元';
+document.getElementById('val-peak-sub').textContent = '★ 创于 ' + months[peakIdx] + ' 季末冲刺';
+document.getElementById('val-avg').textContent = avgMonth + ' 万元/月';
+
 const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+
 function buildOption(width) {
   const mobile = width < 600;
   return {
     backgroundColor: 'transparent',
-    aria: {enabled: true, decal: {show: false}, label: {description: '三条产品线收入均增长，总量从 85 增至 121 万元。'}},
+    aria: {enabled: true, decal: {show: false}, label: {description: '三条产品线持续增长，总量从 85 万元升至 121 万元。'}},
     color: COLORS,
-    tooltip: {trigger: 'axis', axisPointer: {type: 'shadow'}},
-    legend: {top: 0, right: 0, data: Object.keys(series), textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}},
-    grid: {left: mobile ? 42 : 56, right: mobile ? 16 : 28, top: mobile ? 58 : 46, bottom: mobile ? 30 : 38},
-    xAxis: {type: 'category', data: months, axisTick: {show: false}, axisLine: {lineStyle: {color: ROLE.grid}},
-      axisLabel: {color: ROLE.muted, fontSize: mobile ? 11 : 12}},
-    yAxis: {type: 'value', name: mobile ? '' : '收入（万元）', nameTextStyle: {color: ROLE.muted},
-      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {type: 'shadow'},
+      formatter: params => {
+        const idx = params[0].dataIndex;
+        const tot = totals[idx];
+        let tip = '<strong>' + months[idx] + ' 营收构成 (总量 ' + tot + ' 万元)</strong><br/>';
+        for (const p of params) {
+          if (p.seriesName !== '总量走势') {
+            const pct = ((p.value / tot) * 100).toFixed(1);
+            tip += p.marker + ' ' + p.seriesName + '：' + p.value + ' 万元 (' + pct + '%)<br/>';
+          }
+        }
+        return tip;
+      }
+    },
+    legend: {
+      top: 0, right: 12,
+      data: [...Object.keys(series), '总量走势'],
+      textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}
+    },
+    grid: {
+      left: mobile ? 46 : 60,
+      right: mobile ? 20 : 36,
+      top: mobile ? 56 : 46,
+      bottom: mobile ? 34 : 40
+    },
+    xAxis: {
+      type: 'category',
+      data: months,
+      axisTick: {show: false},
+      axisLine: {lineStyle: {color: ROLE.grid}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 11 : 12}
+    },
+    yAxis: {
+      type: 'value',
+      name: mobile ? '' : '营收（万元）',
+      nameTextStyle: {color: ROLE.muted},
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}
+    },
     series: [
       ...Object.entries(series).map(([name, data], i) => ({
-        name, type: 'bar', stack: 'total', data, barWidth: mobile ? 26 : 40,
-        itemStyle: {color: COLORS[i], opacity: 0.28, borderColor: COLORS[i], borderWidth: 1.2}
+        name,
+        type: 'bar',
+        stack: 'total',
+        data,
+        barWidth: mobile ? 22 : 36,
+        itemStyle: {
+          color: COLORS[i],
+          opacity: 0.88,
+          borderColor: '#FFFFFF',
+          borderWidth: 1.2
+        }
       })),
-      {name: '总量', type: 'line', data: totals, symbol: 'circle', symbolSize: 7,
-       lineStyle: {width: 2, color: ROLE.text}, itemStyle: {color: '#fff', borderColor: ROLE.text, borderWidth: 1.4},
-       label: {show: !mobile, position: 'top', color: ROLE.muted, fontSize: 11}}
+      {
+        name: '总量走势',
+        type: 'line',
+        data: totals,
+        symbol: 'circle',
+        symbolSize: 8,
+        lineStyle: {width: 2.4, color: ROLE.text},
+        itemStyle: {color: '#FFFFFF', borderColor: ROLE.text, borderWidth: 2},
+        markPoint: {
+          symbol: 'pin',
+          symbolSize: mobile ? 40 : 46,
+          data: [
+            {
+              coord: [peakIdx, peakVal],
+              name: '历史峰值',
+              value: '★ 121',
+              itemStyle: {color: ROLE.focal}
+            }
+          ],
+          label: {fontSize: 10, fontWeight: 'bold', color: '#FFFFFF'}
+        },
+        label: {
+          show: true,
+          position: 'top',
+          color: ROLE.text,
+          fontSize: mobile ? 10 : 11,
+          fontWeight: 'bold',
+          formatter: '{c}'
+        }
+      }
     ]
   };
 }
-function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+
+function render() {
+  chart.resize();
+  chart.setOption(buildOption(window.innerWidth), true);
+}
 render();
-let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+let timer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(timer);
+  timer = setTimeout(render, 120);
+});
 </script>
 </body>
 </html>

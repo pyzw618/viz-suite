@@ -20,7 +20,7 @@ description: 结构化信息图与逻辑架构图通道。将复盘主张、业�
 
 ## 二、数据 JSON 与图标契约
 
-- 在 `<WORKSPACE>/spec.json` 组织输入：顶层含 `eyebrow`、`title`（短标题）、`claim`、`layout`、`style`、`source` 与 `modules` 数组（支持微组件：`value`, `delta`, `progress` 0–100, `tags` 标签）。
+- 在 `<WORKSPACE>/spec.json` 组织输入：顶层含 `eyebrow`、`title`（短标题）、`claim`、`layout`、`style`、`source` 与 `modules` 数组（支持微组件：`value`, `delta`, `progress` 0–100, `tags` 标签；支持 `zones` 阶段底框将多模块包裹入泳道容器，终结白框漂浮感）。
 - **图标规范**：仅从 `assets/icons/index.json`（100 个本地 Lucide 线性图标）按语义选取，**严禁用 Emoji 充当图标**。
 
 ## 三、渲染与双端质检闭环

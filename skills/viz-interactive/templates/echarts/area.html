@@ -3,55 +3,235 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>渠道流量堆叠面积 · ECharts</title>
+<title>渠道流量堆叠面积微看板 · ECharts</title>
 <style>
-:root{--viz-bg:#FFFFFF;--viz-text:#1F2937;--viz-muted:#6B7280;--viz-grid:#E2E8F0;--viz-focal:#0072B2;--viz-context:#CBD5E1;--viz-positive:#198038;--viz-negative:#DA1E28;--viz-alert:#D97706}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
-body{padding:20px 24px 12px;overflow-x:hidden}header h1{font-size:20px;margin:0 0 4px;font-weight:700}header p{margin:0 0 12px;color:var(--viz-muted);font-size:13px}
-#chart{width:100%;height:calc(100vh - 150px);min-height:420px}figcaption{font-size:12px;color:var(--viz-muted);margin-top:8px}
-@media (max-width:600px){body{padding:12px}header h1{font-size:17px}header p{font-size:12px}#chart{height:calc(100vh - 130px)}}
-@media (prefers-color-scheme: dark){:root{--viz-bg:#0B1220;--viz-text:#E5E7EB;--viz-muted:#9CA3AF;--viz-grid:#334155}}
+:root{
+  --viz-bg:#FFFFFF;
+  --viz-surface:#F8FAFC;
+  --viz-text:#1F2937;
+  --viz-muted:#6B7280;
+  --viz-grid:#E2E8F0;
+  --viz-focal:#0072B2;
+  --viz-context:#94A3B8;
+  --viz-positive:#198038;
+  --viz-negative:#DA1E28;
+  --viz-alert:#D97706;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--viz-bg);color:var(--viz-text);font-family:"Inter","Microsoft YaHei","PingFang SC","Noto Sans CJK SC",Arial,sans-serif}
+body{padding:20px 24px 16px;overflow-x:hidden}
+header h1{font-size:20px;margin:0 0 4px;font-weight:700}
+header p{margin:0 0 14px;color:var(--viz-muted);font-size:13px}
+
+/* KPI Summary Strip */
+.stat-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+.stat-card{
+  background:var(--viz-surface);
+  border:1px solid var(--viz-grid);
+  border-radius:6px;
+  padding:10px 14px;
+}
+.stat-label{font-size:11px;color:var(--viz-muted);text-transform:uppercase;letter-spacing:0.5px}
+.stat-value{font-size:20px;font-weight:700;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.stat-sub{font-size:11px;color:var(--viz-muted);display:flex;align-items:center;gap:4px}
+.stat-sub.positive{color:var(--viz-positive);font-weight:600}
+.stat-sub.negative{color:var(--viz-negative);font-weight:600}
+.stat-sub.highlight{color:var(--viz-focal);font-weight:600}
+
+#chart{width:100%;height:calc(100vh - 220px);min-height:440px}
+figcaption{font-size:12px;color:var(--viz-muted);margin-top:10px}
+
+@media (max-width:768px){
+  body{padding:12px}
+  .stat-strip{grid-template-columns:repeat(2,1fr);gap:8px}
+  header h1{font-size:17px}
+  #chart{height:calc(100vh - 240px);min-height:400px}
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --viz-bg:#0B1220;
+    --viz-surface:#1E293B;
+    --viz-text:#E5E7EB;
+    --viz-muted:#9CA3AF;
+    --viz-grid:#334155;
+    --viz-focal:#38BDF8;
+    --viz-context:#64748B;
+  }
+}
 </style>
 </head>
 <body>
-<header><h1>直播渠道增长最快，三类渠道合计流量持续抬升</h1><p>单位：万次访问｜堆叠面积｜演示用合成数据</p></header>
+<header>
+  <h1>直播电商增长提速 6.7 倍，全域访问流量持续稳健抬升</h1>
+  <p>单位：万次访问｜堆叠面积编码流量构成｜标定 618 与双 11 关键大促节点｜演示用合成数据</p>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="stat-label">全域年度总流量</div>
+    <div class="stat-value" id="val-total">--</div>
+    <div class="stat-sub positive" id="val-total-sub">--</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">直播渠道爆发倍数</div>
+    <div class="stat-value" id="val-live">--</div>
+    <div class="stat-sub positive" id="val-live-sub">年内增长主力</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">自然流量基盘占比</div>
+    <div class="stat-value" id="val-organic">--</div>
+    <div class="stat-sub highlight" id="val-organic-sub">稳健防御底盘</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">单月流量巅峰</div>
+    <div class="stat-value" id="val-peak">--</div>
+    <div class="stat-sub positive" id="val-peak-sub">--</div>
+  </div>
+</div>
+
 <figure>
-  <div id="chart" role="img" aria-label="自然流量、付费投放与直播三类渠道的月度堆叠面积图，直播增长最快"></div>
-  <figcaption>数据来源：演示数据（合成）｜ECharts 5｜离线自包含</figcaption>
+  <div id="chart" role="img" aria-label="自然流量、付费投放与直播三类渠道的月度堆叠面积微看板，直播增长最为迅速"></div>
+  <figcaption>数据来源：全渠道流量与埋点分析平台（演示数据合成）｜ECharts 5｜微看板卡片自包含</figcaption>
 </figure>
+
 <script src="../../assets/vendor/echarts.min.js"></script>
 <script>
 const css = getComputedStyle(document.documentElement);
 const C = k => css.getPropertyValue(k).trim();
-const ROLE = {text:C('--viz-text'),muted:C('--viz-muted'),grid:C('--viz-grid'),focal:C('--viz-focal'),context:C('--viz-context'),positive:C('--viz-positive'),negative:C('--viz-negative'),alert:C('--viz-alert')};
+const ROLE = {
+  text: C('--viz-text'), muted: C('--viz-muted'), grid: C('--viz-grid'),
+  focal: C('--viz-focal'), context: C('--viz-context'),
+  positive: C('--viz-positive'), negative: C('--viz-negative'), alert: C('--viz-alert')
+};
 const COLORS = [ROLE.focal, '#E69F00', '#CC79A7'];
 const months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-const series = {自然流量:[42,44,46,45,47,49,48,50,52,53,54,55], 付费投放:[24,25,27,26,28,30,31,32,33,35,36,38], 直播:[6,7,9,12,14,18,21,24,27,31,36,40]};
+const series = {
+  自然流量: [42, 44, 46, 45, 47, 49, 48, 50, 52, 53, 54, 55],
+  付费投放: [24, 25, 27, 26, 28, 30, 31, 32, 33, 35, 36, 38],
+  直播: [6, 7, 9, 12, 14, 18, 21, 24, 27, 31, 36, 40]
+};
+
+// 动态汇总与 KPI 计算
+const monthTotals = months.map((_, i) => Object.values(series).reduce((s, arr) => s + arr[i], 0));
+const grandTotal = monthTotals.reduce((a, b) => a + b, 0);
+const startTotal = monthTotals[0];
+const endTotal = monthTotals[monthTotals.length - 1];
+const overallGrowth = (((endTotal - startTotal) / startTotal) * 100).toFixed(1);
+
+const liveArr = series['直播'];
+const liveRatio = (liveArr[liveArr.length - 1] / liveArr[0]).toFixed(1);
+const organicSum = series['自然流量'].reduce((a, b) => a + b, 0);
+const organicShare = ((organicSum / grandTotal) * 100).toFixed(1);
+
+const maxVal = Math.max(...monthTotals);
+const maxIdx = monthTotals.indexOf(maxVal);
+
+document.getElementById('val-total').textContent = grandTotal.toLocaleString() + ' 万次';
+document.getElementById('val-total-sub').textContent = '↑ 全年攀升 +' + overallGrowth + '%';
+document.getElementById('val-live').textContent = '↑ ' + liveRatio + ' 倍';
+document.getElementById('val-live-sub').textContent = '从 6 万增至 ' + liveArr[liveArr.length - 1] + ' 万次';
+document.getElementById('val-organic').textContent = organicShare + '%';
+document.getElementById('val-organic-sub').textContent = '累计 ' + organicSum + ' 万次稳健访问';
+document.getElementById('val-peak').textContent = maxVal + ' 万次';
+document.getElementById('val-peak-sub').textContent = '★ 创于 ' + months[maxIdx] + ' 年终冲刺';
+
 const chart = echarts.init(document.getElementById('chart'), null, {renderer: 'canvas'});
+
 function buildOption(width) {
   const mobile = width < 600;
   return {
     backgroundColor: 'transparent',
-    aria: {enabled: true, decal: {show: false}, label: {description: '三类渠道流量均上升，直播从 6 万次增至 40 万次。'}},
+    aria: {enabled: true, decal: {show: false}, label: {description: '三类渠道流量稳步攀升，直播渠道增长迅猛。'}},
     color: COLORS,
-    tooltip: {trigger: 'axis', axisPointer: {type: 'cross'}},
-    legend: {top: 0, right: 0, data: Object.keys(series), textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}},
-    grid: {left: mobile ? 44 : 56, right: mobile ? 16 : 28, top: mobile ? 58 : 46, bottom: mobile ? 32 : 38},
-    xAxis: {type: 'category', boundaryGap: false, data: months, axisTick: {show: false},
-      axisLine: {lineStyle: {color: ROLE.grid}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12, interval: mobile ? 'auto' : 0}},
-    yAxis: {type: 'value', name: mobile ? '' : '访问量（万次）', nameTextStyle: {color: ROLE.muted},
-      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}}, axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}},
-    series: Object.entries(series).map(([name, data], i) => ({
-      name, data, type: 'line', stack: 'total', smooth: false, showSymbol: false,
-      lineStyle: {width: 1.4, color: COLORS[i]},
-      areaStyle: {color: COLORS[i], opacity: 0.30},
-      emphasis: {focus: 'series'}
-    }))
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {type: 'cross', lineStyle: {color: ROLE.muted, type: 'dashed'}},
+      formatter: params => {
+        const idx = params[0].dataIndex;
+        const tot = monthTotals[idx];
+        let tip = '<strong>' + months[idx] + ' 全域流量：' + tot + ' 万次</strong><br/>';
+        for (const p of params) {
+          const pct = ((p.value / tot) * 100).toFixed(1);
+          tip += p.marker + ' ' + p.seriesName + '：' + p.value + ' 万次 (' + pct + '%)<br/>';
+        }
+        return tip;
+      }
+    },
+    legend: {
+      top: 0, right: 12,
+      data: Object.keys(series),
+      textStyle: {color: ROLE.text, fontSize: mobile ? 11 : 12}
+    },
+    grid: {
+      left: mobile ? 46 : 60,
+      right: mobile ? 20 : 36,
+      top: mobile ? 56 : 46,
+      bottom: mobile ? 34 : 40
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: months,
+      axisTick: {show: false},
+      axisLine: {lineStyle: {color: ROLE.grid}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12, interval: mobile ? 'auto' : 0}
+    },
+    yAxis: {
+      type: 'value',
+      name: mobile ? '' : '访问量（万次）',
+      nameTextStyle: {color: ROLE.muted},
+      splitLine: {lineStyle: {color: ROLE.grid, type: 'dashed', opacity: 0.55}},
+      axisLabel: {color: ROLE.muted, fontSize: mobile ? 10 : 12}
+    },
+    series: Object.entries(series).map(([name, data], i) => {
+      const isTop = (i === Object.keys(series).length - 1);
+      return {
+        name,
+        data,
+        type: 'line',
+        stack: 'total',
+        smooth: false,
+        showSymbol: false,
+        lineStyle: {width: 1.8, color: COLORS[i]},
+        areaStyle: {color: COLORS[i], opacity: 0.65},
+        emphasis: {focus: 'series'},
+        markLine: isTop ? {
+          symbol: ['none', 'none'],
+          data: [
+            {
+              name: '618大促',
+              xAxis: '6月',
+              lineStyle: {color: ROLE.alert, type: 'dashed', width: 1.2},
+              label: {formatter: '618 大促', position: 'insideEndTop', color: ROLE.alert, fontSize: 10}
+            },
+            {
+              name: '双11狂欢',
+              xAxis: '11月',
+              lineStyle: {color: ROLE.negative, type: 'dashed', width: 1.2},
+              label: {formatter: '双 11 狂欢', position: 'insideEndTop', color: ROLE.negative, fontSize: 10}
+            }
+          ]
+        } : undefined
+      };
+    })
   };
 }
-function render() { const w = window.innerWidth; chart.resize(); chart.setOption(buildOption(w), true); }
+
+function render() {
+  chart.resize();
+  chart.setOption(buildOption(window.innerWidth), true);
+}
 render();
-let timer = null; window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(render, 120); });
+let timer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(timer);
+  timer = setTimeout(render, 120);
+});
 </script>
 </body>
 </html>

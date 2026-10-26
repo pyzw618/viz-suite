@@ -46,7 +46,7 @@ window.addEventListener('resize', () => chart.resize());
 
 - 柱状/面积：`yAxis.min = 0`；不要用 `min: 'dataMin'` 截断基线。
 - 折线：允许按数据范围缩放，但要在副标题说明「纵轴按数据范围缩放」。
-- 双 Y 轴：禁止。两个量纲不同的指标应拆成上下两图或做指数化/标准化后同轴。
+- 双 Y 轴：严禁随意拼凑双轴制造伪相关；允许经典帕累托图（左轴频次 + 右轴 0–100% 累计线）及强绑定双量纲（左右轴须与序列颜色编码绑定）。
 - 分类轴：`boundaryGap: false` 只用于折线/面积；柱图保持默认 `true`。
 - 时间轴：有序分类优先 `type: 'category'`；真正时间序列用 `type: 'time'` 并显式格式化。
 
@@ -58,6 +58,15 @@ window.addEventListener('resize', () => chart.resize());
 - 浅填深边：ECharts 用 `itemStyle.color` + `borderColor/borderWidth` 或 `areaStyle.opacity`；不要把填充透明度写成 1。
 
 ### 4. 图例、标签与 tooltip
+
+### 5. 微看板卡片结构与分析信号层（解决单图空洞简陋）
+
+- **顶部 3–4 格 KPI 摘要带**：使用 `.stat-strip` 与 `.stat-card`，必须在运行时由 JS 从数据数组动态计算指标（总额、均值、峰值、同比 Δ 等），并通过安全 DOM API（`document.getElementById().textContent`）写入，正负增量配合红绿颜色与箭头符号双编码；移动端（≤768px）自适应折叠为 2 列。
+- **图内分析信号层**：
+  - `markPoint`：自动圈出年内极值点或冠军标杆（`coord`、`type: 'max'` / `'min'`），配胶囊引线；
+  - `markLine`：全域均值参考线、行业及格基准或帕累托 80% 治理截断线；
+  - `markArea`：高亮关键业务时间窗口（如冲刺季、大促节点、政策冲击期）。
+- **复合副视图**：折线图可配置双 Grid 联动展示月度同比增量脉冲柱；堆叠图叠加总量折线走势；条形图末端采用 `得分 (较均值 Δ)` 双编码，一图即是一份完整商业决策简报。
 
 - legend 不遮数据：桌面放右上/图外；手机可横排居中，必要时缩短系列名。
 - 直接标注优先于 legend：折线尾端 `endLabel`、条形端 `label`；但标签不得出界。

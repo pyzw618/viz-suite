@@ -232,6 +232,28 @@ def svg_list_grid(cv, top, height):
     gap = 16
     w = (SVG_W - 2 * SVG_M - gap * (cols - 1)) / cols
     h = (height - gap * (rows - 1)) / rows
+
+    # 阶段底框 / 泳道背景
+    zones = cv.spec.get("zones") or []
+    if zones:
+        for z in zones:
+            mods_in_z = [idx for idx in z.get("modules", []) if 0 <= idx < n]
+            if not mods_in_z:
+                continue
+            rows_in_z = [idx // cols for idx in mods_in_z]
+            cols_in_z = [idx % cols for idx in mods_in_z]
+            min_r, max_r = min(rows_in_z), max(rows_in_z)
+            min_c, max_c = min(cols_in_z), max(cols_in_z)
+            zx = SVG_M + min_c * (w + gap) - 8
+            zy = top + min_r * (h + gap) - 8
+            zw = (max_c - min_c + 1) * w + (max_c - min_c) * gap + 16
+            zh = (max_r - min_r + 1) * h + (max_r - min_r) * gap + 16
+            cv.rect(zx, zy, zw, zh, cv.colors.get("surface2", "#F1F5F9"), cv.colors["border"], 1, 10)
+            z_txt = f"{z.get('kicker') or ''} {z.get('label') or ''}".strip()
+            if z_txt:
+                cv.text(zx + zw - 14, zy + 16, z_txt, 11, cv.colors["muted"], "700",
+                        anchor="end", font=cv.fonts["label"])
+
     for i, m in enumerate(modules):
         r, c = divmod(i, cols)
         svg_card(cv, m, SVG_M + c * (w + gap), top + r * (h + gap), w, h,
@@ -267,6 +289,24 @@ def svg_sequence(cv, top, height):
     gap = 12
     h = (height - gap * (n - 1)) / max(1, n)
     line_x = SVG_M + 28
+
+    # 阶段底框 / 泳道背景
+    zones = cv.spec.get("zones") or []
+    if zones:
+        for z in zones:
+            mods_in_z = [idx for idx in z.get("modules", []) if 0 <= idx < n]
+            if not mods_in_z:
+                continue
+            min_i, max_i = min(mods_in_z), max(mods_in_z)
+            z_y = top + min_i * (h + gap) - 6
+            z_h = (max_i - min_i + 1) * h + (max_i - min_i) * gap + 12
+            cv.rect(SVG_M - 6, z_y, SVG_W - 2 * SVG_M + 12, z_h,
+                    cv.colors.get("surface2", "#F1F5F9"), cv.colors["border"], 1, 10)
+            z_txt = f"{z.get('kicker') or ''} {z.get('label') or ''}".strip()
+            if z_txt:
+                cv.text(SVG_W - SVG_M - 12, z_y + 16, z_txt, 11, cv.colors["muted"], "700",
+                        anchor="end", font=cv.fonts["label"])
+
     cv.line(line_x, top + 34, line_x, top + height - 18, cv.colors["border"], 2)
     for i, m in enumerate(modules):
         y = top + i * (h + gap)

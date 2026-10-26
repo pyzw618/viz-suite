@@ -258,6 +258,9 @@ def normalize_module(raw, warnings: list[str]) -> dict:
         "unit": safe_text(raw.get("unit")),
         "label": safe_text(raw.get("label")),
         "delta": safe_text(raw.get("delta")),
+        "progress": raw.get("progress"),
+        "tags": raw.get("tags") or [],
+        "zone": safe_text(raw.get("zone")),
         "meta": safe_text(raw.get("meta") or raw.get("date") or raw.get("time")),
         "icon": safe_text(raw.get("icon") or "circle-dot"),
         "side": safe_text(raw.get("side")).lower(),
@@ -356,6 +359,40 @@ def normalize_spec(spec: dict, layout: str, style: str, warnings: list[str]) -> 
     subtitle = shorten(spec.get("subtitle"), 100, "副标题")
     footnote = shorten(spec.get("footnote"), 160, "脚注")
     source = shorten(source, 180, "来源")
+    # 规范化阶段底框 / 泳道容器（Zones）
+    raw_zones = spec.get("zones") or []
+    zones = []
+    if raw_zones:
+        for z in raw_zones:
+            if isinstance(z, dict):
+                m_list = []
+                for idx in z.get("modules", []):
+                    try:
+                        i_val = int(idx)
+                        if 0 <= i_val < len(modules):
+                            m_list.append(i_val)
+                    except (ValueError, TypeError):
+                        pass
+                if m_list:
+                    zones.append({
+                        "label": safe_text(z.get("label") or z.get("title") or "分组"),
+                        "kicker": safe_text(z.get("kicker") or f"PHASE {len(zones)+1:02d}"),
+                        "modules": m_list,
+                        "tone": safe_text(z.get("tone") or "default"),
+                    })
+    elif any(m.get("zone") for m in modules):
+        z_map = {}
+        for idx, m in enumerate(modules):
+            z_name = m.get("zone") or "未分类"
+            z_map.setdefault(z_name, []).append(idx)
+        for z_name, m_indices in z_map.items():
+            zones.append({
+                "label": z_name,
+                "kicker": f"PHASE {len(zones)+1:02d}",
+                "modules": m_indices,
+                "tone": "default",
+            })
+
     normalized = {
         "eyebrow": safe_text(spec.get("eyebrow")),
         "title": title,
@@ -367,6 +404,7 @@ def normalize_spec(spec: dict, layout: str, style: str, warnings: list[str]) -> 
         "layout": layout,
         "style": style,
         "modules": modules,
+        "zones": zones,
         "root": root,
         "hub": hub,
         "left_label": safe_text(spec.get("left_label") or "现状"),
@@ -589,6 +627,12 @@ h1{font-family:var(--font-display);font-size:clamp(34px,var(--title),var(--title
 .style-technical .card{border-left:3px solid var(--accent)}
 .style-warm .card{box-shadow:var(--shadow)}
 .style-warm .step-num,.style-warm .vs{border-radius:14px}
+/* zones / swimlane containers */
+.zone-container{background:var(--surface2, rgba(0,0,0,0.025));border:1px dashed var(--border);border-radius:calc(var(--radius) + 4px);padding:18px 20px;margin-bottom:24px;position:relative}
+.zone-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.zone-kicker{font-family:var(--font-label);font-size:var(--micro);font-weight:700;letter-spacing:.12em;text-transform:$label_transform;color:var(--accent);background:var(--surface);border:1px solid var(--border);padding:2px 8px;border-radius:4px}
+.zone-title{font-family:var(--font-display);font-size:calc(var(--body) * 1.15);font-weight:700;color:var(--ink)}
+
 .style-warm .poster::before{border-radius:28px}
 
 @media (max-width:900px){
@@ -726,9 +770,22 @@ def card_html(module: dict, warnings: list[str], cls: str = "") -> str:
 
 
 def layout_list_grid(spec, style, warnings):
-    cols = 2 if len(spec["modules"]) <= 4 else 3
-    return (f'<section class="grid" style="--cols:{cols}">'
-            + "".join(card_html(m, warnings) for m in spec["modules"]) + "</section>")
+    zones = spec.get("zones") or []
+    if not zones:
+        cols = 2 if len(spec["modules"]) <= 4 else 3
+        return (f'<section class="grid" style="--cols:{cols}">'
+                + "".join(card_html(m, warnings) for m in spec["modules"]) + "</section>")
+
+    out = []
+    for z in zones:
+        z_kicker = f'<span class="zone-kicker">{esc(z["kicker"])}</span>' if z.get("kicker") else ""
+        z_title = f'<span class="zone-title">{esc(z["label"])}</span>'
+        z_head = f'<div class="zone-header">{z_kicker}{z_title}</div>'
+        z_mods = [spec["modules"][idx] for idx in z["modules"] if 0 <= idx < len(spec["modules"])]
+        cols = 2 if len(z_mods) <= 4 else 3
+        cards_html = f'<div class="grid" style="--cols:{cols}">' + "".join(card_html(m, warnings) for m in z_mods) + "</div>"
+        out.append(f'<section class="zone-container">{z_head}{cards_html}</section>')
+    return "".join(out)
 
 
 def layout_list_row(spec, style, warnings):
@@ -746,12 +803,29 @@ def layout_list_row(spec, style, warnings):
 
 
 def layout_sequence(spec, style, warnings):
-    steps = []
-    for i, m in enumerate(spec["modules"], start=1):
-        body = f'<p>{esc(m["body"])}</p>' if m.get("body") else ""
-        steps.append(f'<li class="step"><div class="step-num">{i:02d}</div>'
-                     f'<h3>{esc(m["title"])}</h3>{body}</li>')
-    return '<ol class="steps">' + "".join(steps) + "</ol>"
+    zones = spec.get("zones") or []
+    if not zones:
+        steps = []
+        for i, m in enumerate(spec["modules"], start=1):
+            body = f'<p>{esc(m["body"])}</p>' if m.get("body") else ""
+            steps.append(f'<li class="step"><div class="step-num">{i:02d}</div>'
+                         f'<h3>{esc(m["title"])}</h3>{body}</li>')
+        return '<ol class="steps">' + "".join(steps) + "</ol>"
+
+    out = []
+    for z in zones:
+        z_kicker = f'<span class="zone-kicker">{esc(z["kicker"])}</span>' if z.get("kicker") else ""
+        z_title = f'<span class="zone-title">{esc(z["label"])}</span>'
+        z_head = f'<div class="zone-header">{z_kicker}{z_title}</div>'
+        sub_steps = []
+        for idx in z["modules"]:
+            if 0 <= idx < len(spec["modules"]):
+                m = spec["modules"][idx]
+                body = f'<p>{esc(m["body"])}</p>' if m.get("body") else ""
+                sub_steps.append(f'<li class="step"><div class="step-num">{idx + 1:02d}</div>'
+                                 f'<h3>{esc(m["title"])}</h3>{body}</li>')
+        out.append(f'<section class="zone-container">{z_head}<ol class="steps">{"".join(sub_steps)}</ol></section>')
+    return "".join(out)
 
 
 def layout_timeline(spec, style, warnings):
