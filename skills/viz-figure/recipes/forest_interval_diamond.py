@@ -164,51 +164,78 @@ def main() -> int:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
         theme = vs.bootstrap(theme, font_scale=size["font_scale"])
-        pal = vs.palette(theme=theme)
+        pal = vs.select_palette("mckinsey_navy", theme=theme, cli_palette=PALETTE)
+        theme["palette_id"] = pal.id
         warnings.extend(size["notes"])
         roles = theme["colors"]["roles"]
+        focal_col = pal.colors[0]
+        accent_col = pal.colors[1] if len(pal) > 1 else roles["focal"]
 
         fig, ax = vs.figure(size["figsize"], theme=theme)
         vs.apply_style(ax, LAYOUT, theme=theme)
         ax.yaxis.grid(False)
         ax.xaxis.grid(True, linestyle="--", linewidth=0.6, color=roles["grid"], alpha=0.35)
         n = len(studies)
-        summary_y = n + 0.9
+        summary_y = n + 0.85
+        w_pcts = 100.0 * weights / max(float(weights.sum()), 1e-9)
         for i in range(n):
             if i % 2 == 0:
-                ax.axhspan(i - 0.5, i + 0.5, color=roles["grid"], alpha=0.20, zorder=0)
+                ax.axhspan(i - 0.5, i + 0.5, color=roles["grid"], alpha=0.22, zorder=0)
+
+        # Table-Plot Fusion 表头列标题（Lancet/NEJM 双栏规范）
+        hdr_y = -0.92
+        ax.text(0.5, hdr_y, "效应量与 95% CI", transform=ax.get_yaxis_transform(),
+                ha="center", va="center", fontsize=vs.font_size(theme, "annotation"),
+                fontweight="bold", color=roles["text"])
+        ax.text(1.03, hdr_y, "权重%", transform=ax.get_yaxis_transform(),
+                ha="left", va="center", fontsize=vs.font_size(theme, "annotation"),
+                fontweight="bold", color=roles["text"])
+        ax.text(1.20, hdr_y, "OR [95% CI]", transform=ax.get_yaxis_transform(),
+                ha="left", va="center", fontsize=vs.font_size(theme, "annotation"),
+                fontweight="bold", color=roles["text"])
+        ax.axhline(-0.55, color=roles["text"], linewidth=0.85, zorder=3)
 
         for i, row in studies.iterrows():
-            ax.plot([row[LOW_COL], row[HIGH_COL]], [i, i], color=roles["text"], linewidth=1.1,
+            sig_fav = (row[HIGH_COL] < NULL_VALUE) or (row[LOW_COL] > NULL_VALUE)
+            pt_col = focal_col if sig_fav else vs.mix("#64748B", focal_col, 0.45)
+            ax.plot([row[LOW_COL], row[HIGH_COL]], [i, i], color=roles["text"], linewidth=1.15,
                     solid_capstyle="butt", zorder=3)
-            ax.plot([row[LOW_COL], row[LOW_COL]], [i - 0.09, i + 0.09], color=roles["text"],
+            ax.plot([row[LOW_COL], row[LOW_COL]], [i - 0.10, i + 0.10], color=roles["text"],
                     linewidth=1.0, zorder=3)
-            ax.plot([row[HIGH_COL], row[HIGH_COL]], [i - 0.09, i + 0.09], color=roles["text"],
+            ax.plot([row[HIGH_COL], row[HIGH_COL]], [i - 0.10, i + 0.10], color=roles["text"],
                     linewidth=1.0, zorder=3)
-            ax.scatter([row[EST_COL]], [i], s=float(sizes[i]), marker="s", color=roles["focal"],
-                       edgecolor="#FFFFFF", linewidth=0.6, zorder=4)
-            ax.text(1.02, i, f"{row[EST_COL]:.2f} [{row[LOW_COL]:.2f}, {row[HIGH_COL]:.2f}]",
+            ax.scatter([row[EST_COL]], [i], s=float(sizes[i]), marker="s", color=pt_col,
+                       edgecolor="#FFFFFF", linewidth=0.7, zorder=4)
+            ax.text(1.03, i, f"{w_pcts[i]:4.1f}%",
                     transform=ax.get_yaxis_transform(), ha="left", va="center",
                     fontsize=vs.font_size(theme, "annotation"), color=roles["muted_text"])
+            ax.text(1.20, i, f"{row[EST_COL]:.2f} [{row[LOW_COL]:.2f}, {row[HIGH_COL]:.2f}]",
+                    transform=ax.get_yaxis_transform(), ha="left", va="center",
+                    fontsize=vs.font_size(theme, "annotation"),
+                    fontweight="bold" if sig_fav else "normal",
+                    color=roles["text"] if sig_fav else roles["muted_text"])
 
         summary_stats = {}
         if not summary.empty:
+            ax.axhline(n - 0.35, color=roles["grid"], linewidth=0.85, linestyle="-", zorder=2)
             row = summary.iloc[0]
             low, est, high = float(row[LOW_COL]), float(row[EST_COL]), float(row[HIGH_COL])
             summary_stats = {"summary_est": est, "summary_low": low, "summary_high": high}
-            diamond = Polygon([[low, summary_y], [est, summary_y + 0.28],
-                               [high, summary_y], [est, summary_y - 0.28]],
-                              closed=True, facecolor=roles["focal"], edgecolor=roles["focal"],
-                              alpha=0.28, linewidth=1.0, zorder=4)
+            diamond = Polygon([[low, summary_y], [est, summary_y + 0.30],
+                               [high, summary_y], [est, summary_y - 0.30]],
+                              closed=True, facecolor=vs.mix("#FFFFFF", accent_col, 0.85),
+                              edgecolor=vs.mix("#0F172A", accent_col, 0.72),
+                              alpha=0.92, linewidth=1.1, zorder=4)
             ax.add_patch(diamond)
-            ax.text(1.02, summary_y, f"{est:.2f} [{low:.2f}, {high:.2f}]",
+            ax.text(1.03, summary_y, "100%",
                     transform=ax.get_yaxis_transform(), ha="left", va="center",
-                    fontsize=vs.font_size(theme, "annotation"), color=roles["focal"],
+                    fontsize=vs.font_size(theme, "annotation"), color=accent_col, fontweight="bold")
+            ax.text(1.20, summary_y, f"{est:.2f} [{low:.2f}, {high:.2f}]",
+                    transform=ax.get_yaxis_transform(), ha="left", va="center",
+                    fontsize=vs.font_size(theme, "annotation"), color=accent_col,
                     fontweight="bold")
 
-        ax.axvline(NULL_VALUE, color=roles["muted_text"], linestyle="--", linewidth=0.9, zorder=2)
-        ax.text(NULL_VALUE, -0.62, f"无效线 = {NULL_VALUE:g}", ha="center", va="bottom",
-                fontsize=vs.font_size(theme, "source"), color=roles["muted_text"])
+        ax.axvline(NULL_VALUE, color=roles["muted_text"], linestyle="--", linewidth=0.95, zorder=2)
         ticks = [0.5, 0.75, 1.0, 1.5, 2.0] if LOG_SCALE else None
         if LOG_SCALE:
             ax.set_xscale("log")
@@ -222,7 +249,7 @@ def main() -> int:
         ax.set_yticks(list(range(n)) + ([summary_y] if not summary.empty else []))
         ax.set_yticklabels(studies[LABEL_COL].astype(str).tolist()
                            + ([str(summary.iloc[0][LABEL_COL])] if not summary.empty else []))
-        ax.set_ylim(-0.8, summary_y + 0.8)
+        ax.set_ylim(-1.35, summary_y + 0.75)
         ax.invert_yaxis()
         if not summary.empty:
             tick_labels = ax.get_yticklabels()
@@ -233,8 +260,8 @@ def main() -> int:
         title = vs.fill_title(TITLE, **summary_stats) if summary_stats else "多指标效应量与 95% 置信区间"
         vs.add_header(fig, title, SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        left = min(0.38, 0.07 + max(vs.display_units(x) for x in studies[LABEL_COL].astype(str)) * 0.011)
-        vs.adjust_layout(fig, left=left, right=0.80, top=0.80, bottom=0.14, theme=theme)
+        left = min(0.32, 0.065 + max(vs.display_units(x) for x in studies[LABEL_COL].astype(str)) * 0.010)
+        vs.adjust_layout(fig, left=left, right=0.66, top=0.80, bottom=0.14, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_data.csv"

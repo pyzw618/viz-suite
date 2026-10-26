@@ -155,7 +155,8 @@ def main() -> int:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
         theme = vs.bootstrap(theme, font_scale=size["font_scale"])
-        pal = vs.palette(theme=theme)
+        pal = vs.select_palette("economist_civic", theme=theme, cli_palette=PALETTE)
+        theme["palette_id"] = pal.id
         if len(series) > pal.safe_k:
             warnings.append(f"系列数 {len(series)} 超过色板 {pal.id} 的 safe_k={pal.safe_k}，建议合并小类")
         colors = vs.series_color_map([str(s) for s in series], pal, theme)
@@ -165,39 +166,58 @@ def main() -> int:
         vs.apply_style(ax, LAYOUT, theme=theme)
         xpos = np.arange(len(x_values), dtype=float)
         bottom = np.zeros(len(x_values))
-        bar_w = 0.62
+        total_vec = pivot.sum(axis=1).to_numpy(dtype=float)
+        ymax_raw = float(total_vec.max()) if len(total_vec) else 1.0
+        bar_w = 0.60
         for name in series:
             values = pivot[name].to_numpy(dtype=float)
-            ax.bar(xpos, values, bottom=bottom, width=bar_w,
-                   zorder=3, **vs.bar_kwargs(colors[str(name)], theme=theme))
+            c_hex = colors[str(name)]
+            bkw = vs.bar_kwargs(c_hex, theme=theme)
+            ax.bar(xpos, values, bottom=bottom, width=bar_w, zorder=3, **bkw)
+            # 在足够高的色段内部嵌入构成占比%，提升图表信息密度
+            txt_col = vs.contrast_text(vs.mix("#FFFFFF", c_hex, 0.84), alpha=0.90)
+            for idx_x, (val, btm, tot) in enumerate(zip(values, bottom, total_vec)):
+                if tot > 0 and val >= 0.16 * ymax_raw and len(x_values) <= 10:
+                    share = 100.0 * val / tot
+                    ax.text(xpos[idx_x], btm + 0.5 * val, f"{share:.0f}%",
+                            ha="center", va="center", fontsize=vs.font_size(theme, "source"),
+                            fontweight="bold", color=txt_col, zorder=4)
             bottom += values
 
         if SHOW_TOTAL:
-            total = pivot.sum(axis=1).to_numpy(dtype=float)
-            ax.plot(xpos, total, color=theme["colors"]["roles"]["text"], linewidth=1.5,
-                    marker="o", markersize=4.2, markerfacecolor="#FFFFFF",
+            total = total_vec
+            ax.plot(xpos, total, color=theme["colors"]["roles"]["text"], linewidth=1.6,
+                    marker="o", markersize=4.6, markerfacecolor="#FFFFFF",
                     markeredgecolor=theme["colors"]["roles"]["text"],
-                    markeredgewidth=1.0, zorder=5)
+                    markeredgewidth=1.1, zorder=5)
+            peak_i = int(np.argmax(total)) if len(total) else -1
             if ANNOTATE_TOTAL:
-                for x, value in zip(xpos, total):
-                    ax.annotate(f"{value:,.0f}", (x, value), xytext=(0, 6),
-                                textcoords="offset points", ha="center", va="bottom",
-                                fontsize=vs.font_size(theme, "annotation"),
-                                color=theme["colors"]["roles"]["muted_text"])
+                for idx_x, (x, value) in enumerate(zip(xpos, total)):
+                    if idx_x == peak_i and len(total) >= 2 and total[0] > 0:
+                        growth = 100.0 * (value - total[0]) / abs(total[0])
+                        vs.annotate_champion(ax, float(x), float(value),
+                                             f"{value:,.0f} ({growth:+.0f}%)",
+                                             color=colors[str(series[0])],
+                                             offset_xy=(0, 10), theme=theme)
+                    else:
+                        ax.annotate(f"{value:,.0f}", (x, value), xytext=(0, 6),
+                                    textcoords="offset points", ha="center", va="bottom",
+                                    fontsize=vs.font_size(theme, "annotation"),
+                                    color=theme["colors"]["roles"]["muted_text"])
 
         ax.set_xticks(xpos)
         ax.set_xticklabels([str(v) for v in x_values])
         ax.set_xlabel(X_LABEL)
         ax.set_ylabel(VALUE_LABEL)
         ymax = float(bottom.max()) if len(bottom) else 1.0
-        ax.set_ylim(0, ymax * 1.20)
+        ax.set_ylim(0, ymax * 1.26)
         vs.ensure_zero_baseline(ax, "y")
         ax.set_xlim(-0.6, len(x_values) - 0.4)
 
-        handles = [Patch(facecolor=vs.blend(colors[str(s)], theme["colors"]["backgrounds"]["white"],
-                                            theme["marks"]["fill_alpha"]),
-                         edgecolor=colors[str(s)], linewidth=theme["marks"]["edge_width"])
-                   for s in series]
+        handles = []
+        for s in series:
+            bkw = vs.bar_kwargs(colors[str(s)], theme=theme)
+            handles.append(Patch(facecolor=bkw["color"], edgecolor=bkw["edgecolor"], linewidth=bkw["linewidth"]))
         if SHOW_TOTAL:
             handles.append(plt.Line2D([0], [0], color=theme["colors"]["roles"]["text"],
                                       marker="o", markersize=4, markerfacecolor="white",

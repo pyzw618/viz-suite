@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" style="background:#0D1117;font-family:Inter,system-ui,sans-serif;">
+  <defs>
+    <linearGradient id="rag-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#161B22"/>
+      <stop offset="100%" stop-color="#0D1117"/>
+    </linearGradient>
+    <marker id="rag-arrow-cyan" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#58A6FF"/>
+    </marker>
+    <marker id="rag-arrow-amber" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#D29922"/>
+    </marker>
+    <marker id="rag-arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#3FB950"/>
+    </marker>
+  </defs>
+
+  <!-- Masthead -->
+  <g id="slot-header" transform="translate(60, 48)">
+    <rect x="0" y="0" width="4" height="40" fill="#58A6FF" rx="2"/>
+    <text x="16" y="24" fill="#F0F6FC" font-size="24" font-weight="700">自主 AI 智能体 RAG 检索生成与反思闭环 (Agentic RAG &amp; Self-Reflection Loop)</text>
+    <text x="16" y="44" fill="#8B949E" font-size="13">意图规划路由 → 混合检索与工具执行 → 幻觉自检与反思重试 → 最终可信回答合成</text>
+  </g>
+
+  <!-- Node 1: User Query & Intent Router -->
+  <g transform="translate(60, 140)">
+    <rect x="0" y="0" width="260" height="280" fill="#161B22" stroke="#30363D" stroke-width="1.5" rx="8"/>
+    <rect x="0" y="0" width="260" height="4" fill="#58A6FF"/>
+    <text x="20" y="32" fill="#58A6FF" font-size="12" font-weight="700">PHASE 1: QUERY &amp; ROUTE</text>
+    <text x="20" y="58" fill="#F0F6FC" font-size="16" font-weight="700">用户提问与意图规划</text>
+    
+    <g transform="translate(16, 76)">
+      <rect x="0" y="0" width="228" height="60" fill="#0D1117" stroke="#30363D" rx="4"/>
+      <text x="12" y="24" fill="#C9D1D9" font-size="12" font-weight="600">Complex User Query</text>
+      <text x="12" y="44" fill="#8B949E" font-size="11">多跳问答 / 工具调用 / 研报总结</text>
+    </g>
+
+    <g transform="translate(16, 148)">
+      <rect x="0" y="0" width="228" height="110" fill="#0D1117" stroke="#58A6FF" rx="4"/>
+      <text x="12" y="24" fill="#58A6FF" font-size="12" font-weight="600">Adaptive Query Router</text>
+      <text x="12" y="44" fill="#8B949E" font-size="11">· 简单问题 → 直接大模型回复</text>
+      <text x="12" y="64" fill="#8B949E" font-size="11">· 垂直事实 → 语义向量检索</text>
+      <text x="12" y="84" fill="#8B949E" font-size="11">· 复杂逻辑 → 拆分子查询 (Sub-queries)</text>
+    </g>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 320 280 L 390 280" stroke="#58A6FF" stroke-width="2" marker-end="url(#rag-arrow-cyan)"/>
+
+  <!-- Node 2: Multi-Source Hybrid Retrieval -->
+  <g transform="translate(400, 140)">
+    <rect x="0" y="0" width="280" height="280" fill="#161B22" stroke="#30363D" stroke-width="1.5" rx="8"/>
+    <rect x="0" y="0" width="280" height="4" fill="#BC8CFF"/>
+    <text x="20" y="32" fill="#BC8CFF" font-size="12" font-weight="700">PHASE 2: HYBRID RETRIEVAL</text>
+    <text x="20" y="58" fill="#F0F6FC" font-size="16" font-weight="700">混合检索与外部工具</text>
+
+    <!-- Sub 2.1: Dense Vector -->
+    <g transform="translate(16, 76)">
+      <rect x="0" y="0" width="248" height="54" fill="#0D1117" stroke="#30363D" rx="4"/>
+      <text x="12" y="22" fill="#F0F6FC" font-size="12" font-weight="600">Dense Vector Search (HNSW)</text>
+      <text x="12" y="40" fill="#8B949E" font-size="11">BGE-M3 嵌入 ｜ 语义余弦相似度</text>
+    </g>
+    <!-- Sub 2.2: Sparse Keyword -->
+    <g transform="translate(16, 138)">
+      <rect x="0" y="0" width="248" height="54" fill="#0D1117" stroke="#30363D" rx="4"/>
+      <text x="12" y="22" fill="#F0F6FC" font-size="12" font-weight="600">BM25 稀疏精准匹配</text>
+      <text x="12" y="40" fill="#8B949E" font-size="11">专有名词 / 代码编号 / 协议字段</text>
+    </g>
+    <!-- Sub 2.3: Re-ranker -->
+    <g transform="translate(16, 200)">
+      <rect x="0" y="0" width="248" height="64" fill="#0D1117" stroke="#BC8CFF" rx="4"/>
+      <text x="12" y="24" fill="#BC8CFF" font-size="12" font-weight="600">Cross-Encoder Re-ranker</text>
+      <text x="12" y="46" fill="#8B949E" font-size="11">Top-50 初筛 → Top-5 精排高相关分块</text>
+    </g>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 680 280 L 750 280" stroke="#58A6FF" stroke-width="2" marker-end="url(#rag-arrow-cyan)"/>
+
+  <!-- Node 3: Generation & Grounding -->
+  <g transform="translate(760, 140)">
+    <rect x="0" y="0" width="270" height="280" fill="#161B22" stroke="#30363D" stroke-width="1.5" rx="8"/>
+    <rect x="0" y="0" width="270" height="4" fill="#3FB950"/>
+    <text x="20" y="32" fill="#3FB950" font-size="12" font-weight="700">PHASE 3: GENERATION</text>
+    <text x="20" y="58" fill="#F0F6FC" font-size="16" font-weight="700">带溯源上下文生成</text>
+
+    <g transform="translate(16, 76)">
+      <rect x="0" y="0" width="238" height="90" fill="#0D1117" stroke="#30363D" rx="4"/>
+      <text x="12" y="24" fill="#F0F6FC" font-size="12" font-weight="600">LLM Generation Prompt</text>
+      <text x="12" y="44" fill="#8B949E" font-size="11">严格依据检索内容作答</text>
+      <text x="12" y="64" fill="#8B949E" font-size="11">禁止未经证实的知识推断幻觉</text>
+      <text x="12" y="82" fill="#3FB950" font-size="10" font-weight="600">强制附带引用角标 [1][2]</text>
+    </g>
+
+    <g transform="translate(16, 178)">
+      <rect x="0" y="0" width="238" height="86" fill="#0D1117" stroke="#3FB950" rx="4"/>
+      <text x="12" y="24" fill="#3FB950" font-size="12" font-weight="600">Draft Candidate Answer</text>
+      <text x="12" y="46" fill="#8B949E" font-size="11">输出初步候选回答与引用溯源凭据</text>
+      <text x="12" y="68" fill="#8B949E" font-size="11">待送入反思评估器裁决</text>
+    </g>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 1030 280 L 1090 280" stroke="#58A6FF" stroke-width="2" marker-end="url(#rag-arrow-cyan)"/>
+
+  <!-- Node 4: Self-Reflection & Guardrails -->
+  <g transform="translate(1100, 140)">
+    <rect x="0" y="0" width="240" height="280" fill="#161B22" stroke="#30363D" stroke-width="1.5" rx="8"/>
+    <rect x="0" y="0" width="240" height="4" fill="#D29922"/>
+    <text x="20" y="32" fill="#D29922" font-size="12" font-weight="700">PHASE 4: REFLECTION</text>
+    <text x="20" y="58" fill="#F0F6FC" font-size="16" font-weight="700">反思裁决安全栏</text>
+
+    <g transform="translate(14, 76)">
+      <rect x="0" y="0" width="212" height="60" fill="#0D1117" stroke="#30363D" rx="4"/>
+      <text x="10" y="24" fill="#F0F6FC" font-size="11" font-weight="600">1. 文档相关性 (Relevance)</text>
+      <text x="10" y="44" fill="#8B949E" font-size="10">检索片段是否解答问题？</text>
+    </g>
+    <g transform="translate(14, 144)">
+      <rect x="0" y="0" width="212" height="60" fill="#0D1117" stroke="#30363D" rx="4"/>
+      <text x="10" y="24" fill="#F0F6FC" font-size="11" font-weight="600">2. 事实忠实度 (Faithfulness)</text>
+      <text x="10" y="44" fill="#8B949E" font-size="10">回答是否由文档事实推导？</text>
+    </g>
+    <g transform="translate(14, 212)">
+      <rect x="0" y="0" width="212" height="54" fill="#0D1117" stroke="#D29922" rx="4"/>
+      <text x="10" y="22" fill="#D29922" font-size="11" font-weight="600">3. 回答完整性 (Completeness)</text>
+      <text x="10" y="40" fill="#8B949E" font-size="10">是否遗漏关键约束与限制？</text>
+    </g>
+  </g>
+
+  <!-- LOWER LOOP: Decision Fork -->
+  <!-- Case A: Pass -> Synthesize Final Output -->
+  <path d="M 1220 420 L 1220 540 L 980 540" fill="none" stroke="#3FB950" stroke-width="2.5" marker-end="url(#rag-arrow-green)"/>
+  <rect x="1060" y="528" width="120" height="24" fill="#238636" fill-opacity="0.3" stroke="#2EA043" rx="4"/>
+  <text x="1120" y="544" fill="#3FB950" font-size="11" font-weight="700" text-anchor="middle">✓ 验证通过 (Pass)</text>
+
+  <!-- Final Output Box -->
+  <g transform="translate(480, 480)">
+    <rect x="0" y="0" width="480" height="120" fill="#161B22" stroke="#2EA043" stroke-width="2" rx="8"/>
+    <text x="24" y="34" fill="#3FB950" font-size="16" font-weight="700">★ 最终交付：高可信、带凭证引用的权威答复</text>
+    <text x="24" y="58" fill="#C9D1D9" font-size="12">1. 准确回答用户核心问题，无幻觉虚构</text>
+    <text x="24" y="78" fill="#C9D1D9" font-size="12">2. 精确标注来源出处与时间戳（如 [2026 年 Q2 财报 P.42]）</text>
+    <text x="24" y="98" fill="#8B949E" font-size="11">事实对齐度 (RAG Triad Score): 0.982 ｜ 延迟：1.42s</text>
+  </g>
+
+  <!-- Case B: Fail -> Self-Correction & Query Re-write Loop -->
+  <path d="M 1220 420 L 1220 720 L 540 720 L 540 435" fill="none" stroke="#D29922" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#rag-arrow-amber)"/>
+  <rect x="800" y="708" width="180" height="24" fill="#9E6A03" fill-opacity="0.3" stroke="#D29922" rx="4"/>
+  <text x="890" y="724" fill="#D29922" font-size="11" font-weight="700" text-anchor="middle">✗ 校验未达标：改写查询重搜</text>
+
+  <!-- Footer -->
+  <g id="slot-footer" transform="translate(60, 856)">
+    <text x="0" y="14" fill="#8B949E" font-size="11">框架规范：Self-RAG (Asai et al.) &amp; Corrective RAG (CRAG) 架构 ｜ 评测体系：Ragas 综合三元指标</text>
+    <text x="1280" y="14" fill="#8B949E" font-size="11" text-anchor="end">最大反思重试上限：2 次 ｜ 幻觉发生率由传统 RAG 的 18.4% 降至 0.8%</text>
+  </g>
+</svg>

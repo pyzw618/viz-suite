@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" style="background:#F8F9FA;font-family:Inter,system-ui,serif;">
+  <defs>
+    <filter id="mck-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00205B" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Masthead -->
+  <g id="slot-header" transform="translate(70, 48)">
+    <rect x="0" y="0" width="1260" height="3" fill="#00205B"/>
+    <text x="0" y="24" fill="#00205B" font-size="11" font-weight="700" letter-spacing="1.5">STRATEGIC MEMORANDUM ｜ 麦肯锡金字塔原理战略推导</text>
+    <text x="0" y="52" fill="#00205B" font-size="24" font-weight="700" font-family="'Source Han Serif SC','Noto Serif SC',Georgia,serif">SCQA 结构化决策推导：传统分销向全域数字化直营全面跃迁</text>
+    <text x="0" y="74" fill="#495057" font-size="13">背景现状 (S) ｜ 核心矛盾冲突 (C) ｜ 破局关键提问 (Q) ｜ 战略核心主张与三大业务支柱 (A)</text>
+  </g>
+
+  <!-- SCQA Upper Strip -->
+  <g transform="translate(70, 145)">
+    <!-- Situation -->
+    <rect x="0" y="0" width="300" height="90" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" rx="0" filter="url(#mck-shadow)"/>
+    <rect x="0" y="0" width="300" height="4" fill="#00205B"/>
+    <text x="16" y="24" fill="#00205B" font-size="11" font-weight="700">SITUATION 现状背景</text>
+    <text x="16" y="46" fill="#111827" font-size="13" font-weight="600">线下经销网点覆盖 28 省</text>
+    <text x="16" y="68" fill="#4B5563" font-size="11">年营收稳定在 120 亿，但增速连续三年放缓至 2.4%</text>
+
+    <!-- Arrow -->
+    <text x="315" y="50" fill="#00A3E0" font-size="18" font-weight="700">→</text>
+
+    <!-- Complication -->
+    <rect x="340" y="0" width="300" height="90" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" rx="0" filter="url(#mck-shadow)"/>
+    <rect x="340" y="0" width="300" height="4" fill="#D9381E"/>
+    <text x="356" y="24" fill="#D9381E" font-size="11" font-weight="700">COMPLICATION 冲突痛点</text>
+    <text x="356" y="46" fill="#111827" font-size="13" font-weight="600">终端渠道层层加价且脱离用户</text>
+    <text x="356" y="68" fill="#4B5563" font-size="11">库存周转拉长至 85 天，DTC 新锐品牌蚕食核心年轻客群</text>
+
+    <!-- Arrow -->
+    <text x="655" y="50" fill="#00A3E0" font-size="18" font-weight="700">→</text>
+
+    <!-- Question -->
+    <rect x="680" y="0" width="270" height="90" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1" rx="0" filter="url(#mck-shadow)"/>
+    <rect x="680" y="0" width="270" height="4" fill="#D97706"/>
+    <text x="696" y="24" fill="#D97706" font-size="11" font-weight="700">QUESTION 破局提问</text>
+    <text x="696" y="46" fill="#111827" font-size="13" font-weight="600">如何兼顾存量经销同时？</text>
+    <text x="696" y="68" fill="#4B5563" font-size="11">低摩擦实现数字化直接触达与周转减半</text>
+
+    <!-- Arrow -->
+    <text x="965" y="50" fill="#00A3E0" font-size="18" font-weight="700">→</text>
+
+    <!-- Core Strategic Answer Apex -->
+    <rect x="990" y="0" width="270" height="90" fill="#00205B" stroke="#00205B" stroke-width="1" rx="0" filter="url(#mck-shadow)"/>
+    <text x="1006" y="24" fill="#00A3E0" font-size="11" font-weight="700">ANSWER 战略结论 (顶层主张)</text>
+    <text x="1006" y="48" fill="#FFFFFF" font-size="15" font-weight="700">启动「全域云仓+DTC赋能」</text>
+    <text x="1006" y="70" fill="#E2E8F0" font-size="11">重塑利益分配，实现 3 年直营渗透 40%</text>
+  </g>
+
+  <!-- Pyramid Downward Tree -->
+  <path d="M1125 235 L1125 270 L700 270 L700 300" fill="none" stroke="#00205B" stroke-width="2"/>
+  <path d="M280 270 L1120 270" fill="none" stroke="#00205B" stroke-width="2"/>
+  <path d="M280 270 L280 300" fill="none" stroke="#00205B" stroke-width="2"/>
+  <path d="M700 270 L700 300" fill="none" stroke="#00205B" stroke-width="2"/>
+  <path d="M1120 270 L1120 300" fill="none" stroke="#00205B" stroke-width="2"/>
+
+  <!-- Three MECE Strategic Pillars -->
+  <!-- Pillar A -->
+  <g transform="translate(70, 300)" filter="url(#mck-shadow)">
+    <rect x="0" y="0" width="390" height="110" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+    <rect x="0" y="0" width="390" height="4" fill="#00205B"/>
+    <text x="20" y="30" fill="#00205B" font-size="12" font-weight="700">PILLAR A 支柱一：渠道重构</text>
+    <text x="20" y="56" fill="#111827" font-size="16" font-weight="700">经销商向本地履约合伙人转型</text>
+    <text x="20" y="80" fill="#4B5563" font-size="12">传统买断批零制转变为轻资产仓配与分成结算制</text>
+    <text x="20" y="98" fill="#00A3E0" font-size="11" font-weight="600">目标：渠道库存降低 45% ｜ 现金流周转提升 2.1x</text>
+  </g>
+  <!-- Pillar A Sub-cards -->
+  <g transform="translate(70, 430)">
+    <rect x="0" y="0" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="24" fill="#00205B" font-size="12" font-weight="700">A.1 云仓统配网络</text>
+    <text x="16" y="44" fill="#4B5563" font-size="11">建立 8 大区域中心云仓与 120 个前置网点，支持 24 小时极速调拨</text>
+    <rect x="16" y="60" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="74" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">次日达覆盖率 92%</text>
+
+    <rect x="0" y="110" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="134" fill="#00205B" font-size="12" font-weight="700">A.2 统一数字化分账系统</text>
+    <text x="16" y="154" fill="#4B5563" font-size="11">线上订单就近智能分派本地经销商，保障渠道利益并激活本地服务</text>
+    <rect x="16" y="170" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="184" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">合伙人留存率 98%</text>
+
+    <rect x="0" y="220" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="244" fill="#00205B" font-size="12" font-weight="700">A.3 线下体验门店焕新</text>
+    <text x="16" y="264" fill="#4B5563" font-size="11">由传统货架式堆头改造为生活方式交互体验场，提升到店客单价</text>
+    <rect x="16" y="280" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="294" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">门店坪效 +38%</text>
+  </g>
+
+  <!-- Pillar B -->
+  <g transform="translate(505, 300)" filter="url(#mck-shadow)">
+    <rect x="0" y="0" width="390" height="110" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+    <rect x="0" y="0" width="390" height="4" fill="#00205B"/>
+    <text x="20" y="30" fill="#00205B" font-size="12" font-weight="700">PILLAR B 支柱二：用户直连</text>
+    <text x="20" y="56" fill="#111827" font-size="16" font-weight="700">打造全域会员私域运营中台</text>
+    <text x="20" y="80" fill="#4B5563" font-size="12">汇聚全渠道消费行为，构建统一高价值用户生命周期模型</text>
+    <text x="20" y="98" fill="#00A3E0" font-size="11" font-weight="600">目标：私域复购率翻倍 ｜ 获客成本下降 35%</text>
+  </g>
+  <!-- Pillar B Sub-cards -->
+  <g transform="translate(505, 430)">
+    <rect x="0" y="0" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="24" fill="#00205B" font-size="12" font-weight="700">B.1 统一 CDP 会员数据湖</text>
+    <text x="16" y="44" fill="#4B5563" font-size="11">清洗整合天猫/微信/门店 5000 万活跃会员，输出统一 360 度画像</text>
+    <rect x="16" y="60" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="74" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">标签准确率 94%</text>
+
+    <rect x="0" y="110" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="134" fill="#00205B" font-size="12" font-weight="700">B.2 智能生命周期触达</text>
+    <text x="16" y="154" fill="#4B5563" font-size="11">基于用户流失预警模型与复购推荐算法，实现关键节点自动化触达</text>
+    <rect x="16" y="170" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="184" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">召回转化率 18.6%</text>
+
+    <rect x="0" y="220" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="244" fill="#00205B" font-size="12" font-weight="700">B.3 会员等级与权益体系</text>
+    <text x="16" y="264" fill="#4B5563" font-size="11">升级成长值体系与黑金特权权益，拉开高阶会员忠诚度与客单壁垒</text>
+    <rect x="16" y="280" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="294" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">高净值贡献 62%</text>
+  </g>
+
+  <!-- Pillar C -->
+  <g transform="translate(940, 300)" filter="url(#mck-shadow)">
+    <rect x="0" y="0" width="390" height="110" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1"/>
+    <rect x="0" y="0" width="390" height="4" fill="#00205B"/>
+    <text x="20" y="30" fill="#00205B" font-size="12" font-weight="700">PILLAR C 支柱三：敏捷供应链</text>
+    <text x="20" y="56" fill="#111827" font-size="16" font-weight="700">以销定产实现小单快反机制</text>
+    <text x="20" y="80" fill="#4B5563" font-size="12">基于实时动销算法预测，重塑生产排期与面辅料战略储备</text>
+    <text x="20" y="98" fill="#00A3E0" font-size="11" font-weight="600">目标：新品开发周期 -60% ｜ 售罄率提升至 88%</text>
+  </g>
+  <!-- Pillar C Sub-cards -->
+  <g transform="translate(940, 430)">
+    <rect x="0" y="0" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="24" fill="#00205B" font-size="12" font-weight="700">C.1 7 天小单快反柔性产线</text>
+    <text x="16" y="44" fill="#4B5563" font-size="11">首单首批小批量快速试水，结合前 72 小时终端反响决定翻单规模</text>
+    <rect x="16" y="60" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="74" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">打样周期 48 小时</text>
+
+    <rect x="0" y="110" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="134" fill="#00205B" font-size="12" font-weight="700">C.2 智能补货与安全库存</text>
+    <text x="16" y="154" fill="#4B5563" font-size="11">引入天气、节庆与社交热度因子，动态预测未来 14 天各区域货量需求</text>
+    <rect x="16" y="170" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="184" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">断码率下降 70%</text>
+
+    <rect x="0" y="220" width="390" height="96" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="16" y="244" fill="#00205B" font-size="12" font-weight="700">C.3 上下游协同 SRM 门户</text>
+    <text x="16" y="264" fill="#4B5563" font-size="11">核心供应商共享排产计划与面料库存，实现端到端透明协同与对账</text>
+    <rect x="16" y="280" width="120" height="20" fill="#EEF2F6" rx="2"/>
+    <text x="76" y="294" fill="#00205B" font-size="10" font-weight="600" text-anchor="middle">供应商准时率 99.2%</text>
+  </g>
+
+  <!-- Footer -->
+  <g id="slot-footer" transform="translate(70, 856)">
+    <line x1="0" y1="0" x2="1260" y2="0" stroke="#D1D5DB" stroke-width="1"/>
+    <text x="0" y="20" fill="#6B7280" font-size="11">数据来源：企业内部财务审计报告、BCG/McKinsey 行业白皮书与战略工作坊研讨成果</text>
+    <text x="1260" y="20" fill="#6B7280" font-size="11" text-anchor="end">原则：MECE 完全独立穷尽 ｜ 结论先行 (Top-Down Pyramid)</text>
+  </g>
+</svg>

@@ -8,15 +8,34 @@
   "double_column_mm": 254,
   "aspect": 0.5625,
   "font_size_level": "large",
-  "formats": ["svg", "png", "pdf"],
-  "dpi": [300, 600],
-  "top_no_title": 0.90,
+  "formats": [
+    "svg",
+    "png",
+    "pdf"
+  ],
+  "dpi": [
+    300,
+    600
+  ],
+  "top_no_title": 0.9,
   "slots": {
     "title_paradigm": "Action Title 直书事实结论（发生了什么 + 关键数字 + 业务含义，≤2 行）；副标题仅放口径、单位与时间窗。",
     "canvas_sizing": "主交付 16:9 宽屏（254×142.9 mm，可直接拖入 PPT），移动端长图兼容 4:5（200×250 mm）。",
     "color_strategy": "单一焦点主色高亮主角系列，其余背景对比系列退为冷灰（#CBD5E1 / #94A3B8）；同套汇报跨页锁色。",
     "axis_and_grid": "弱化次要网格与冗余刻度，关键数值直接标注在数据点/条端，免除读者视线在图例与图形间往返。",
     "annotations": "关键拐点事件气泡、倍数/百分点差距箭头（如 2.4×、+18 pp）；左下角固定数据来源与推演假设。",
-    "prohibitions": ["只写指标名的哑巴标题", "相关性直接表述为因果", "满图彩虹多色平均用力", "截断基线夸大差异"]
-  }
+    "prohibitions": [
+      "只写指标名的哑巴标题",
+      "相关性直接表述为因果",
+      "满图彩虹多色平均用力",
+      "截断基线夸大差异"
+    ]
+  },
+  "recommended_palettes": [
+    "editorial_warm",
+    "economist_civic",
+    "editorial_sage_rust",
+    "met_hiroshige",
+    "met_archambault"
+  ]
 }

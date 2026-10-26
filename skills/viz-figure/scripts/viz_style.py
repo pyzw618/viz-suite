@@ -34,13 +34,14 @@ import numpy as np
 from matplotlib import font_manager
 from matplotlib.colors import LinearSegmentedColormap, to_hex, to_rgba
 
-__version__ = "2026.10"
+__version__ = "2026.10-p2"
 
 _WARNED: set[str] = set()
 _CACHE: dict[str, object] = {}
+_REGISTERED_FONT_FILES: set[str] = set()
 
 # --------------------------------------------------------------------------- #
-# 资产定位
+# 资产定位与自带开源字体注册
 # --------------------------------------------------------------------------- #
 def _asset_candidates() -> list[Path]:
     here = Path(__file__).resolve().parent
@@ -50,6 +51,21 @@ def _asset_candidates() -> list[Path]:
     seen: set[Path] = set()
     bases = [Path.cwd(), *Path.cwd().parents, here, *here.parents]
     for base in bases:
+        # 支持外部工作区通过 .viz-suite/font_source.json 或 runtime.json 指向技能根资产
+        for ptr_name in ("font_source.json", "runtime.json"):
+            ptr = base / ".viz-suite" / ptr_name
+            if ptr.is_file():
+                try:
+                    pdata = json.loads(ptr.read_text(encoding="utf-8"))
+                    for key in ("shared_assets", "skill_root"):
+                        val = pdata.get(key)
+                        if val:
+                            cand_p = Path(val) if key == "shared_assets" else Path(val) / "shared" / "assets"
+                            if cand_p not in seen:
+                                seen.add(cand_p)
+                                cands.append(cand_p)
+                except Exception:  # noqa: BLE001
+                    pass
         for p in (base / ".viz-suite" / "assets",
                   base / "skills" / "shared" / "assets",
                   base / "shared" / "assets",
@@ -63,6 +79,58 @@ def _asset_candidates() -> list[Path]:
     return cands
 
 
+def register_bundled_fonts() -> list[str]:
+    """自动扫描并向 Matplotlib 注册技能自带的 SIL OFL 多字重静态 TTF 字体。"""
+    font_dirs: list[Path] = []
+    if os.environ.get("VIZ_SUITE_FONTS"):
+        font_dirs.append(Path(os.environ["VIZ_SUITE_FONTS"]))
+    if os.environ.get("VIZ_SUITE_SKILL_ROOT"):
+        font_dirs.append(Path(os.environ["VIZ_SUITE_SKILL_ROOT"]) / "shared" / "assets" / "fonts")
+    here = Path(__file__).resolve().parent
+    for base in [Path.cwd(), *Path.cwd().parents, here, *here.parents]:
+        ptr = base / ".viz-suite" / "font_source.json"
+        if ptr.is_file():
+            try:
+                fdir = json.loads(ptr.read_text(encoding="utf-8")).get("fonts_dir")
+                if fdir:
+                    font_dirs.append(Path(fdir))
+            except Exception:  # noqa: BLE001
+                pass
+    for cand in _asset_candidates():
+        font_dirs.append(cand / "fonts")
+
+    added: list[str] = []
+    seen_dirs: set[Path] = set()
+    for fdir in font_dirs:
+        try:
+            resolved = fdir.resolve()
+        except OSError:
+            continue
+        if resolved in seen_dirs or not resolved.is_dir():
+            continue
+        seen_dirs.add(resolved)
+        for ext in ("*.ttf", "*.TTF"):
+            for fp in sorted(resolved.glob(ext)):
+                key = str(fp)
+                if key in _REGISTERED_FONT_FILES:
+                    continue
+                try:
+                    n_before = len(font_manager.fontManager.ttflist)
+                    font_manager.fontManager.addfont(key)
+                    if len(font_manager.fontManager.ttflist) > n_before:
+                        entry = font_manager.fontManager.ttflist.pop()
+                        font_manager.fontManager.ttflist.insert(0, entry)
+                    _REGISTERED_FONT_FILES.add(key)
+                    added.append(key)
+                except Exception as exc:  # noqa: BLE001
+                    warn_once(f"注册自带字体失败 {fp.name}: {exc}")
+    if added:
+        _CACHE.pop("font_names", None)
+        if hasattr(font_manager.fontManager, "_findfont_cached"):
+            font_manager.fontManager._findfont_cached.cache_clear()
+    return added
+
+
 def _load_json_asset(filename: str) -> dict | None:
     for cand in _asset_candidates():
         path = cand / filename
@@ -72,6 +140,24 @@ def _load_json_asset(filename: str) -> dict | None:
             except json.JSONDecodeError:
                 warn_once(f"{path} 解析失败，继续尝试下一处资产")
     return None
+
+
+def load_geo_asset(filename: str) -> dict:
+    """加载 skills/shared/assets/geo/ 下的合规底图（如 china_prov_tile_grid.json / ne_110m_countries.geojson）。"""
+    rel = filename if filename.startswith("geo/") else f"geo/{filename}"
+    data = _load_json_asset(rel)
+    if data is None:
+        raise FileNotFoundError(f"未找到地理底图资产：{rel}（请检查 skills/shared/assets/geo）")
+    return data
+
+
+def load_publisher_profile(journal: str) -> dict | None:
+    """读取 publisher_profiles.json 中的期刊出版规范（nature/science/cell/ieee/elsevier/plos/bmc/acs）。"""
+    data = _load_json_asset("publisher_profiles.json")
+    if not data:
+        return None
+    journals = data.get("journals", {})
+    return journals.get(str(journal).strip().lower())
 
 
 _LAST_LAYOUT_AUDIT: dict | None = None
@@ -86,11 +172,13 @@ _FALLBACK_TOKENS = {
         "default_palette": "okabe_ito",
         "palette_by_scene": {"academic": "okabe_ito", "bi": "bi_ibcs",
                              "story": "editorial_warm", "geo": "met_egypt", "default": "okabe_ito"},
-        "backgrounds": {"white": "#FFFFFF", "soft_tint": "#F8FAFC"},
+        "backgrounds": {"white": "#FFFFFF", "soft_tint": "#F8FAFC", "warm_paper": "#FBF7F0"},
     },
     "typography": {
-        "font_zh": ["Microsoft YaHei", "SimHei", "sans-serif"],
+        "font_zh": ["Noto Sans SC", "Microsoft YaHei", "SimHei", "sans-serif"],
         "font_en": ["Inter", "Arial", "DejaVu Sans"],
+        "font_serif_zh": ["IBM Plex Serif", "SimSun", "DejaVu Serif"],
+        "font_mono": ["JetBrains Mono", "Consolas", "DejaVu Sans Mono"],
         "size_pt": {"title": 13, "subtitle": 10.5, "axis_label": 10, "tick": 9,
                      "legend": 9, "annotation": 8.5, "source": 7.5, "panel_label": 12},
         "font_size_levels": {"small": 0.9, "regular": 1.0, "large": 1.12},
@@ -105,9 +193,9 @@ _FALLBACK_TOKENS = {
         "line_widths": {"thin": 0.8, "regular": 1.1, "bold": 1.5},
         "grid_alpha": 0.35, "grid_linewidth": 0.6,
     },
-    "marks": {"fill_alpha": 0.18, "edge_width": 1.0, "marker_edge": "#FFFFFF",
-              "marker_edge_width": 0.6, "scatter_size": 14.0, "violin_alpha": 0.22,
-              "box_alpha": 0.30, "jitter_width": 0.09,
+    "marks": {"fill_alpha": 0.78, "default_preset": "solid_vivid", "edge_width": 1.0, "marker_edge": "#FFFFFF",
+              "marker_edge_width": 0.6, "scatter_size": 18.0, "violin_alpha": 0.32,
+              "box_alpha": 0.45, "jitter_width": 0.09,
               "mean_line": {"color": "#6B7280", "linestyle": "--", "linewidth": 0.9},
               "zero_line": {"color": "#9CA3AF", "linewidth": 0.8}},
     "figure": {"single_column_mm": 89, "double_column_mm": 183, "default_width_mm": 160,
@@ -484,6 +572,17 @@ def palette(palette_id: str | None = None, theme: dict | None = None) -> Palette
     return Palette(palettes.get(pid, _FALLBACK_PALETTE))
 
 
+def select_palette(default_id: str | None = None, theme: dict | None = None,
+                   cli_palette: str | None = None) -> Palette:
+    """按优先级解析色板：CLI --palette > 显式场景/EXTEND/manifest > 配方推荐默认色板 > tokens 默认色板。"""
+    theme = theme or resolve_theme()
+    if cli_palette:
+        return palette(cli_palette, theme=theme)
+    if theme.get("_source") not in (None, "tokens"):
+        return palette(None, theme=theme)
+    return palette(default_id, theme=theme)
+
+
 def series_color_map(names: list[str], pal: Palette | None = None,
                      theme: dict | None = None) -> dict[str, str]:
     """锁定同一业务实体的跨图同色：manifest.series_color_map 优先，其余按 category_order 分配。"""
@@ -554,6 +653,24 @@ def sequential_cmap(base: str, name: str | None = None, n: int = 256,
                     light: str = "#FFFFFF", light_mix: float = 0.9) -> LinearSegmentedColormap:
     start = mix(light, base, 1.0 - light_mix)
     return LinearSegmentedColormap.from_list(name or f"seq_{base.strip('#')}", [start, base], N=n)
+
+
+def group_lightness_ramp(base_color: str, n: int,
+                         light_range: tuple[float, float] = (0.38, 0.96),
+                         reverse: bool = False) -> list[str]:
+    """同组单主色明度阶梯（组间分色、组内明度阶梯）：消除彩虹杂乱感，构建层次纵深。"""
+    n = max(1, int(n))
+    if n == 1:
+        return [base_color]
+    deep_anchor = mix("#0F172A", base_color, 0.80)
+    stops = np.linspace(light_range[0], light_range[1], n)
+    ramp = []
+    for t in stops:
+        if t <= 0.85:
+            ramp.append(mix("#FFFFFF", base_color, float(t / 0.85)))
+        else:
+            ramp.append(mix(base_color, deep_anchor, float((t - 0.85) / 0.15)))
+    return list(reversed(ramp)) if reverse else ramp
 
 
 def _hex_to_lab(color: str) -> tuple[float, float, float]:
@@ -634,6 +751,7 @@ def diverging_cmap(base: str, other: str | None = None, name: str | None = None,
 # 字体与 rcParams
 # --------------------------------------------------------------------------- #
 def _installed_fonts() -> set[str]:
+    register_bundled_fonts()
     if "font_names" not in _CACHE:
         _CACHE["font_names"] = {f.name for f in font_manager.fontManager.ttflist}
     return _CACHE["font_names"]  # type: ignore[return-value]
@@ -646,7 +764,8 @@ def available_fonts(candidates: list[str]) -> list[str]:
 
 def bootstrap(theme: dict | None = None, font_scale: float = 1.0,
               scene: str | None = None) -> dict:
-    """应用字体、场景预设与全局 rcParams，返回 theme。"""
+    """应用自带开源字体、场景预设与全局 rcParams，返回 theme。"""
+    register_bundled_fonts()
     if theme is None:
         theme = resolve_theme(scene=scene)
     elif scene:
@@ -658,6 +777,7 @@ def bootstrap(theme: dict | None = None, font_scale: float = 1.0,
     effective_scale = font_scale * level_scale if not theme.get("_level_applied_in_plan") else font_scale
     zh = available_fonts(typo.get("font_zh", []))
     en = available_fonts(typo.get("font_en", []))
+    mono = available_fonts(typo.get("font_mono", []))
     if not zh:
         warn_once("未检测到任何可用的中文字体，中文可能显示为方块；请先运行 detect_fonts.py")
     stack = en + zh + ["DejaVu Sans", "sans-serif"]
@@ -667,7 +787,8 @@ def bootstrap(theme: dict | None = None, font_scale: float = 1.0,
         # 只写 "sans-serif" 时只会解析到列表第一个字体，中文会变成方块。
         "font.family": stack,
         "font.sans-serif": stack,
-        "font.serif": available_fonts(typo.get("font_serif_zh", [])) + ["DejaVu Serif"],
+        "font.serif": available_fonts(typo.get("font_serif_zh", [])) + zh + ["DejaVu Serif"],
+        "font.monospace": mono + ["DejaVu Sans Mono", "monospace"],
         "axes.unicode_minus": False,
         "pdf.fonttype": 42,
         "ps.fonttype": 42,
@@ -945,18 +1066,198 @@ def ensure_zero_baseline(ax, axis: str = "y"):
 
 
 # --------------------------------------------------------------------------- #
-# 微质感与标注
+# 微质感、反空洞复合组件与语义标注
 # --------------------------------------------------------------------------- #
-def bar_kwargs(color: str, alpha: float | None = None, theme: dict | None = None) -> dict:
-    """浅填深边：同色系半透明填充 + 深色实线描边。"""
+def bar_kwargs(color: str, alpha: float | dict | None = None, theme: dict | None = None,
+               preset: str | None = None, is_focal: bool | None = None) -> dict:
+    """多档饱满微质感（取代单一 0.18 浅淡填充）：
+    - solid_vivid（默认）：82% 饱和度实心饱满色块 + 同色系深色微描边；
+    - focal_context：焦点序列高饱和实心 + 背景序列低饱和高级冷灰；
+    - translucent_outline：半透明填充 + 原色实线描边（仅重叠直方图/密度对比使用）。
+    """
+    if isinstance(alpha, dict) and theme is None:
+        theme = alpha
+        alpha = None
     theme = theme or resolve_theme()
     marks = theme.get("marks", {})
+    roles = theme.get("colors", {}).get("roles", {})
+    mode = preset or marks.get("default_preset", "solid_vivid")
+
+    if alpha is not None:
+        edge = mix("#0F172A", color, 0.72)
+        return {
+            "color": to_rgba(color, float(alpha)),
+            "edgecolor": edge,
+            "linewidth": marks.get("edge_width", 0.9),
+        }
+
+    if mode == "focal_context" or is_focal is not None:
+        focal = True if is_focal is None else bool(is_focal)
+        if focal:
+            fill = mix("#FFFFFF", color, 0.90)
+            edge = mix("#0F172A", color, 0.70)
+            return {"color": to_rgba(fill, 0.95), "edgecolor": edge, "linewidth": 1.1}
+        ctx = roles.get("context", "#CBD5E1")
+        fill = mix("#FFFFFF", ctx, 0.70)
+        edge = mix("#64748B", ctx, 0.55)
+        return {"color": to_rgba(fill, 0.78), "edgecolor": edge, "linewidth": 0.75}
+
+    if mode == "translucent_outline":
+        return {
+            "color": to_rgba(color, 0.26),
+            "edgecolor": color,
+            "linewidth": marks.get("edge_width", 1.0),
+        }
+
+    # 默认 solid_vivid：饱满温润出版级实心质感
+    fill = mix("#FFFFFF", color, 0.84)
+    edge = mix("#0F172A", color, 0.72)
+    fill_alpha = float(marks.get("fill_alpha", 0.88))
+    if fill_alpha < 0.55:
+        fill_alpha = 0.86
     return {
-        "color": to_rgba(color, marks.get("fill_alpha", 0.18) if alpha is None else alpha),
-        "edgecolor": color,
-        "linewidth": marks.get("edge_width", 1.0),
-        # 不要传 alpha=1.0：Patch.set_alpha 会覆盖 facecolor 里的透明度，导致浅填失效
+        "color": to_rgba(fill, min(0.95, fill_alpha)),
+        "edgecolor": edge,
+        "linewidth": marks.get("edge_width", 0.95),
     }
+
+
+def plot_feathered_band(ax, x, lo, hi, color: str, steps: int = 4,
+                        max_alpha: float = 0.28, horizontal: bool = False,
+                        zorder: float = 1.5, label: str | None = None):
+    """多层羽化置信带 / 分位区间带：外缘柔和过渡 + 核心区加密 + 细微上下边界线。"""
+    x_arr = np.asarray(x, dtype=float)
+    lo_arr = np.asarray(lo, dtype=float)
+    hi_arr = np.asarray(hi, dtype=float)
+    mid = 0.5 * (lo_arr + hi_arr)
+    half = 0.5 * (hi_arr - lo_arr)
+    steps = max(2, int(steps))
+    fn = ax.fill_betweenx if horizontal else ax.fill_between
+    layer_alpha = max_alpha / steps * 1.45
+    for idx, frac in enumerate(np.linspace(1.0, 0.30, steps)):
+        lbl = label if idx == 0 else None
+        fn(x_arr, mid - half * frac, mid + half * frac,
+           color=color, alpha=min(0.45, layer_alpha), linewidth=0, zorder=zorder, label=lbl)
+    edge_col = to_rgba(color, min(0.48, max_alpha * 1.4))
+    if horizontal:
+        ax.plot(lo_arr, x_arr, color=edge_col, linewidth=0.55, linestyle="-", zorder=zorder + 0.1)
+        ax.plot(hi_arr, x_arr, color=edge_col, linewidth=0.55, linestyle="-", zorder=zorder + 0.1)
+    else:
+        ax.plot(x_arr, lo_arr, color=edge_col, linewidth=0.55, linestyle="-", zorder=zorder + 0.1)
+        ax.plot(x_arr, hi_arr, color=edge_col, linewidth=0.55, linestyle="-", zorder=zorder + 0.1)
+    return ax
+
+
+def dual_metric_label(value: float, total_or_ref: float | None = None,
+                      mode: str = "share", fmt: str = "{:.1f}",
+                      pct_fmt: str = "{:.1f}%", unit: str = "") -> str:
+    """生成复合双指标文本（消除单调裸数字）：支持 绝对值+占比% 或 绝对值+涨跌Δ%。"""
+    head = f"{fmt.format(value)}{unit}"
+    if total_or_ref is None or not np.isfinite(total_or_ref):
+        return head
+    if mode == "share":
+        if abs(total_or_ref) < 1e-12:
+            return head
+        pct = 100.0 * value / total_or_ref
+        return f"{head} ({pct_fmt.format(pct)})"
+    if mode == "delta":
+        if abs(total_or_ref) < 1e-12:
+            return head
+        d_pct = 100.0 * (value - total_or_ref) / abs(total_or_ref)
+        sign = "+" if d_pct >= 0 else ""
+        return f"{head} ({sign}{pct_fmt.format(d_pct)})"
+    if mode == "raw_delta":
+        sign = "+" if total_or_ref >= 0 else ""
+        return f"{head} ({sign}{pct_fmt.format(total_or_ref)})"
+    return head
+
+
+def annotate_champion(ax, x: float, y: float, text: str, color: str | None = None,
+                      offset_xy: tuple[float, float] = (0.0, 14.0),
+                      theme: dict | None = None, ha: str = "center",
+                      va: str = "bottom", star: bool = True):
+    """冠军组/拐点语义胶囊标注（★ 焦点徽章 + 细引线），强化主次视觉锚点。"""
+    theme = theme or resolve_theme()
+    roles = theme.get("colors", {}).get("roles", {})
+    accent = color or roles.get("focal", "#0072B2")
+    badge_bg = mix("#FFFFFF", accent, 0.14)
+    badge_edge = mix("#FFFFFF", accent, 0.68)
+    badge_txt = mix("#0F172A", accent, 0.58)
+    prefix = "★ " if star and not str(text).lstrip().startswith("★") else ""
+    ann = ax.annotate(
+        f"{prefix}{text}",
+        xy=(x, y),
+        xytext=offset_xy,
+        textcoords="offset points",
+        ha=ha,
+        va=va,
+        fontsize=font_size(theme, "annotation"),
+        fontweight="bold",
+        color=badge_txt,
+        bbox={"boxstyle": "round,pad=0.28,rounding_size=0.35",
+              "facecolor": badge_bg, "edgecolor": badge_edge, "linewidth": 0.9},
+        arrowprops={"arrowstyle": "-", "color": badge_edge, "linewidth": 0.85,
+                    "shrinkA": 0, "shrinkB": 3},
+        zorder=6,
+    )
+    return ann
+
+
+def smooth_trend(x, y, frac: float = 0.42, n_grid: int = 160) -> tuple[np.ndarray, np.ndarray]:
+    """纯 NumPy 一维三次立方加权局部线性平滑（LOWESS），零额外依赖生成平滑趋势拟合曲线。"""
+    xv = np.asarray(x, dtype=float)
+    yv = np.asarray(y, dtype=float)
+    mask = np.isfinite(xv) & np.isfinite(yv)
+    xv, yv = xv[mask], yv[mask]
+    n = len(xv)
+    if n < 3:
+        return xv, yv
+    order = np.argsort(xv)
+    xv, yv = xv[order], yv[order]
+    xg = np.linspace(float(xv.min()), float(xv.max()), max(n, int(n_grid)))
+    k = max(3, min(n, int(math.ceil(frac * n))))
+    yg = np.empty_like(xg)
+    for i, x0 in enumerate(xg):
+        dists = np.abs(xv - x0)
+        idx = np.argpartition(dists, k - 1)[:k]
+        d_max = float(dists[idx].max())
+        if d_max <= 1e-12:
+            yg[i] = float(yv[idx].mean())
+            continue
+        u = np.clip(dists[idx] / (d_max * 1.001), 0.0, 1.0)
+        w = (1.0 - u ** 3) ** 3
+        dx = xv[idx] - x0
+        sw = float(w.sum())
+        swx = float((w * dx).sum())
+        swx2 = float((w * dx * dx).sum())
+        swy = float((w * yv[idx]).sum())
+        swxy = float((w * dx * yv[idx]).sum())
+        denom = sw * swx2 - swx * swx
+        if abs(denom) > 1e-12:
+            yg[i] = (swx2 * swy - swx * swxy) / denom
+        else:
+            yg[i] = swy / max(sw, 1e-12)
+    return xg, yg
+
+
+def add_dead_space_inset(ax_main, rect: tuple[float, float, float, float],
+                         theme: dict | None = None, title: str = "",
+                         facecolor: str | None = None, border: bool = True):
+    """在主图结构性留白区（如降序长尾条形右下角）开辟精巧内嵌副图卡片（Dead-Space Inset）。"""
+    theme = theme or resolve_theme()
+    roles = theme.get("colors", {}).get("roles", {})
+    bgs = theme.get("colors", {}).get("backgrounds", {})
+    ax_in = ax_main.inset_axes(list(rect))
+    ax_in.set_facecolor(facecolor or bgs.get("soft_tint", "#F8FAFC"))
+    for sp in ax_in.spines.values():
+        sp.set_visible(border)
+        sp.set_color(roles.get("grid", "#CBD5E1"))
+        sp.set_linewidth(0.75)
+    if title:
+        ax_in.set_title(title, fontsize=font_size(theme, "annotation") * 0.95,
+                        fontweight="bold", color=roles.get("text", "#1F2937"), pad=4)
+    ax_in.tick_params(labelsize=font_size(theme, "source"), length=2.0, width=0.6)
+    return ax_in
 
 
 def marker_kwargs(color: str, size: float | None = None, alpha: float = 1.0,
@@ -1184,10 +1485,13 @@ def _auto_reflow_figure(fig, theme: dict | None = None) -> None:
 
     # 收集轴外上方的图例、轴标题与面板标号
     decor_boxes = []
+    ax_boxes = []
     for ax in fig.axes:
         if not ax.get_visible():
             continue
         ax_bb = ax.get_window_extent(renderer).transformed(inv)
+        if getattr(ax, "get_subplotspec", lambda: None)() is not None:
+            ax_boxes.append(ax_bb)
         leg = ax.get_legend()
         if leg is not None and leg.get_visible():
             l_bb = leg.get_window_extent(renderer).transformed(inv)
@@ -1216,14 +1520,14 @@ def _auto_reflow_figure(fig, theme: dict | None = None) -> None:
                 fig.canvas.draw()
                 renderer = fig.canvas.get_renderer()
     else:
-        # 3B. 有页眉时检测轴上方装饰（图例/子标题）与页眉的水平+纵向碰撞，动态下移 top
+        # 3B. 有页眉时检测绘图轴顶边、轴上方装饰（图例/子标题）与页眉的碰撞，动态下移 top
         h_boxes = [t.get_window_extent(renderer).transformed(inv) for t in header_texts]
         min_shift = 0.0
         for hb in h_boxes:
-            for db in decor_boxes:
+            for db in [*decor_boxes, *ax_boxes]:
                 horiz_overlap = min(float(hb.x1), float(db.x1)) > max(float(hb.x0), float(db.x0)) - 0.018
-                if horiz_overlap and float(db.y1) > float(hb.y0) - 0.012:
-                    needed = float(db.y1) - (float(hb.y0) - 0.016)
+                if horiz_overlap and float(db.y1) > float(hb.y0) - 0.014:
+                    needed = float(db.y1) - (float(hb.y0) - 0.020)
                     if needed > min_shift:
                         min_shift = needed
 
@@ -1293,13 +1597,36 @@ def adjust_layout(fig, left: float | None = None, right: float | None = None,
     return fig
 
 
+def _iter_all_axes(fig) -> list:
+    out: list = []
+    seen: set[int] = set()
+
+    def visit(ax):
+        aid = id(ax)
+        if aid in seen:
+            return
+        seen.add(aid)
+        out.append(ax)
+        for child in getattr(ax, "child_axes", ()):
+            visit(child)
+
+    for ax in fig.axes:
+        visit(ax)
+    return out
+
+
 def _in_range_tick_labels(ax, axis_name: str) -> list:
-    if axis_name == "x":
-        lo, hi = sorted(ax.get_xlim())
-        ticks = ax.xaxis.get_major_ticks()
-    else:
-        lo, hi = sorted(ax.get_ylim())
-        ticks = ax.yaxis.get_major_ticks()
+    if getattr(ax, "name", "") == "3d":
+        return []
+    try:
+        if axis_name == "x":
+            lo, hi = sorted(ax.get_xlim())
+            ticks = ax.xaxis.get_major_ticks()
+        else:
+            lo, hi = sorted(ax.get_ylim())
+            ticks = ax.yaxis.get_major_ticks()
+    except Exception:  # noqa: BLE001
+        return []
     span = max(hi - lo, 1e-9)
     out = []
     for tick in ticks:
@@ -1354,7 +1681,7 @@ def check_text_collisions(fig, pad_px: float = 1.5) -> dict:
         for t in leg.get_texts():
             push(t, "legend_text", group=gid)
 
-    for ax_i, ax in enumerate(fig.axes):
+    for ax_i, ax in enumerate(_iter_all_axes(fig)):
         if not ax.get_visible():
             continue
         for ttl in (ax.title, getattr(ax, "_left_title", None), getattr(ax, "_right_title", None)):

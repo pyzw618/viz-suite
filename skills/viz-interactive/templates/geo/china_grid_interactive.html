@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中国省级均权网格交互地图 · China Tile Grid</title>
+<style>
+:root {
+  --geo-bg: #FFFFFF;
+  --geo-surface: #F8FAFC;
+  --geo-card: #FFFFFF;
+  --geo-text: #0F172A;
+  --geo-muted: #64748B;
+  --geo-border: #E2E8F0;
+  --geo-focal: #0284C7;
+  --geo-accent: #0284C7;
+  --geo-hover: #F0F9FF;
+  --geo-highlight: #D97706;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--geo-bg); color: var(--geo-text);
+  font-family: "Inter", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+body { padding: 20px 24px 20px; overflow-x: hidden; }
+
+header h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
+header p { margin: 0 0 16px; color: var(--geo-muted); font-size: 13px; }
+
+/* Summary Strip */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.stat-card {
+  background: var(--geo-surface);
+  border: 1px solid var(--geo-border);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+.stat-label { font-size: 11px; color: var(--geo-muted); text-transform: uppercase; }
+.stat-val { font-size: 20px; font-weight: 700; margin: 3px 0 2px; font-variant-numeric: tabular-nums; }
+.stat-sub { font-size: 11px; color: var(--geo-muted); }
+.stat-sub.up { color: #16A34A; font-weight: 600; }
+
+/* Layout Grid Container */
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* 12 x 9 Tile Grid */
+.cartogram-box {
+  background: var(--geo-surface);
+  border: 1px solid var(--geo-border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(9, 58px);
+  gap: 6px;
+  height: 570px;
+}
+.prov-tile {
+  background: var(--geo-card);
+  border: 1px solid var(--geo-border);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  position: relative;
+}
+.prov-tile:hover, .prov-tile.active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.22);
+  border-color: var(--geo-focal);
+  z-index: 10;
+}
+.tile-abbr { font-size: 13px; font-weight: 700; color: var(--geo-text); }
+.tile-val { font-size: 10px; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 2px; }
+
+/* Inspector Sidebar */
+.inspector-card {
+  background: var(--geo-surface);
+  border: 1px solid var(--geo-border);
+  border-radius: 8px;
+  padding: 20px;
+  position: sticky;
+  top: 20px;
+}
+.inspect-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+.inspect-prov { font-size: 22px; font-weight: 700; color: var(--geo-text); }
+.inspect-region { font-size: 12px; color: var(--geo-muted); background: var(--geo-card); padding: 2px 8px; border-radius: 4px; border: 1px solid var(--geo-border); }
+
+.inspect-metric-row { display: flex; justify-content: space-between; margin: 12px 0 6px; }
+.inspect-metric-val { font-size: 28px; font-weight: 800; color: var(--geo-focal); font-variant-numeric: tabular-nums; }
+.inspect-rank-pill { font-size: 12px; font-weight: 700; background: #E0F2FE; color: #0369A1; padding: 4px 10px; border-radius: 12px; height: fit-content; }
+
+.sparkline-box { margin-top: 18px; }
+.spark-title { font-size: 12px; color: var(--geo-muted); margin-bottom: 8px; }
+
+/* Legend */
+.legend-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: var(--geo-muted);
+}
+.legend-bar {
+  width: 160px; height: 10px;
+  background: linear-gradient(to right, #E0F2FE, #38BDF8, #0284C7, #0369A1);
+  border-radius: 2px;
+}
+
+@media (max-width: 960px) {
+  .main-container { grid-template-columns: 1fr; }
+  .tile-grid { grid-template-rows: repeat(9, 46px); gap: 4px; }
+  .tile-abbr { font-size: 11px; }
+  .tile-val { font-size: 9px; }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --geo-bg: #0B132B;
+    --geo-surface: #1C2541;
+    --geo-card: #0F172A;
+    --geo-text: #F8FAFC;
+    --geo-muted: #94A3B8;
+    --geo-border: #334155;
+    --geo-focal: #38BDF8;
+    --geo-hover: #1E293B;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>中国 34 省级行政区高质量发展综合景气指数</h1>
+  <p>均权方形网格地图（Cartogram）｜杜绝新疆/西藏地理面积视觉压制｜Hover 省份实时联动微观数据看板</p>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="stat-label">全国综合均值</div>
+    <div class="stat-val">+9.8%</div>
+    <div class="stat-sub up">↑ 同比加速 1.4 个百分点</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">全国景气领跑</div>
+    <div class="stat-val">海南省 ★</div>
+    <div class="stat-sub">+18.4% 自由贸易港效应</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">正向增长行政区</div>
+    <div class="stat-val">34 / 34 个</div>
+    <div class="stat-sub">100% 实现稳健扩张</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">区域贡献双极</div>
+    <div class="stat-val">54.2%</div>
+    <div class="stat-sub">华东与华南大区合计占比</div>
+  </div>
+</div>
+
+<figure style="margin:0">
+<div class="main-container">
+  <div class="cartogram-box">
+    <div class="tile-grid cartogram-map" id="tile-grid" role="img" aria-label="中国 34 省级行政区均权方形网格地图"></div>
+    <div class="legend-strip">
+      <span>低景气 (+4.0%)</span>
+      <div class="legend-bar"></div>
+      <span>高景气 (+18.4%)</span>
+      <span style="margin-left:auto">注：包含 23 省 / 5 自治区 / 4 直辖市 / 2 特别行政区</span>
+    </div>
+  </div>
+
+  <div class="inspector-card" id="inspector">
+    <div class="inspect-header">
+      <div class="inspect-prov" id="insp-name">广东省</div>
+      <div class="inspect-region" id="insp-region">华南地区</div>
+    </div>
+    <div class="inspect-metric-row">
+      <div class="inspect-metric-val" id="insp-val">+14.2%</div>
+      <div class="inspect-rank-pill" id="insp-rank">全国第 3 名</div>
+    </div>
+    <div style="font-size:12px;color:var(--geo-muted);margin-bottom:14px;" id="insp-desc">制造业外贸与战略新兴产业双轮驱动强劲</div>
+
+    <div class="sparkline-box">
+      <div class="spark-title">过去 4 个季度景气度演进轨迹：</div>
+      <svg id="sparkline-svg" width="100%" height="70" viewBox="0 0 280 70" aria-label="季度走势迷你折线图">
+        <path id="spark-area" fill="#0284C7" fill-opacity="0.12" d=""/>
+        <path id="spark-line" fill="none" stroke="#0284C7" stroke-width="2.2" d=""/>
+        <g id="spark-dots"></g>
+      </svg>
+    </div>
+
+    <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--geo-border);font-size:11px;color:var(--geo-muted);">
+      <div>固定资产投资：<strong style="color:var(--geo-text)" id="insp-inv">+8.6%</strong></div>
+      <div style="margin-top:4px;">高新企业新增数：<strong style="color:var(--geo-text)" id="insp-ent">1,420 家</strong></div>
+    </div>
+  </div>
+</div>
+<figcaption style="font-size:12px;color:var(--geo-muted);margin-top:14px;">数据来源：国家统计局及各省统计公报 ｜ 空间均权制图标准：Antigravity China Grid Cartogram 2026</figcaption>
+</figure>
+
+<script>
+// 34 Province Coordinates on 12 cols x 9 rows grid (1-based index)
+const PROVINCES = [
+  { id: 'HLJ', name: '黑龙江', abbr: '黑', col: 11, row: 1, val: 5.8, region: '东北', inv: '+4.2%', ent: '320 家', hist: [4.8, 5.1, 5.4, 5.8] },
+  { id: 'JL', name: '吉林', abbr: '吉', col: 11, row: 2, val: 6.9, region: '东北', inv: '+5.5%', ent: '410 家', hist: [5.2, 5.8, 6.2, 6.9] },
+  { id: 'LN', name: '辽宁', abbr: '辽', col: 10, row: 2, val: 6.2, region: '东北', inv: '+4.9%', ent: '580 家', hist: [5.0, 5.4, 5.9, 6.2] },
+  { id: 'XJ', name: '新疆', abbr: '新', col: 1, row: 3, val: 11.2, region: '西北', inv: '+9.4%', ent: '360 家', hist: [9.2, 9.8, 10.4, 11.2] },
+  { id: 'GS', name: '甘肃', abbr: '甘', col: 4, row: 3, val: 8.4, region: '西北', inv: '+7.1%', ent: '290 家', hist: [7.0, 7.5, 7.9, 8.4] },
+  { id: 'NMG', name: '内蒙古', abbr: '蒙', col: 6, row: 3, val: 9.6, region: '华北', inv: '+8.2%', ent: '440 家', hist: [8.1, 8.5, 9.0, 9.6] },
+  { id: 'BJ', name: '北京', abbr: '京', col: 8, row: 3, val: 12.8, region: '华北', inv: '+9.8%', ent: '2,890 家', hist: [10.5, 11.2, 12.0, 12.8] },
+  { id: 'TJ', name: '天津', abbr: '津', col: 9, row: 3, val: 7.4, region: '华北', inv: '+5.8%', ent: '670 家', hist: [6.1, 6.6, 7.0, 7.4] },
+  { id: 'HEB', name: '河北', abbr: '冀', col: 8, row: 4, val: 8.1, region: '华北', inv: '+6.8%', ent: '890 家', hist: [6.8, 7.2, 7.6, 8.1] },
+  { id: 'SD', name: '山东', abbr: '鲁', col: 9, row: 4, val: 11.6, region: '华东', inv: '+9.1%', ent: '2,100 家', hist: [9.8, 10.4, 11.0, 11.6] },
+  { id: 'SX', name: '山西', abbr: '晋', col: 7, row: 4, val: 7.8, region: '华北', inv: '+6.2%', ent: '510 家', hist: [6.5, 7.0, 7.4, 7.8] },
+  { id: 'SN', name: '陕西', abbr: '陕', col: 6, row: 4, val: 10.4, region: '西北', inv: '+8.6%', ent: '1,120 家', hist: [8.6, 9.2, 9.8, 10.4] },
+  { id: 'NX', name: '宁夏', abbr: '宁', col: 5, row: 4, val: 7.9, region: '西北', inv: '+6.5%', ent: '210 家', hist: [6.8, 7.1, 7.5, 7.9] },
+  { id: 'QH', name: '青海', abbr: '青', col: 3, row: 4, val: 6.8, region: '西北', inv: '+5.4%', ent: '150 家', hist: [5.8, 6.1, 6.4, 6.8] },
+  { id: 'XZ', name: '西藏', abbr: '藏', col: 2, row: 5, val: 12.1, region: '西南', inv: '+11.2%', ent: '110 家', hist: [9.5, 10.4, 11.2, 12.1] },
+  { id: 'SC', name: '四川', abbr: '川', col: 5, row: 5, val: 13.5, region: '西南', inv: '+10.4%', ent: '1,860 家', hist: [11.0, 11.8, 12.6, 13.5] },
+  { id: 'CQ', name: '重庆', abbr: '渝', col: 6, row: 5, val: 12.4, region: '西南', inv: '+9.6%', ent: '1,280 家', hist: [10.2, 10.9, 11.6, 12.4] },
+  { id: 'HEN', name: '河南', abbr: '豫', col: 7, row: 5, val: 8.9, region: '华中', inv: '+7.4%', ent: '1,450 家', hist: [7.5, 8.0, 8.4, 8.9] },
+  { id: 'AH', name: '安徽', abbr: '皖', col: 8, row: 5, val: 13.1, region: '华东', inv: '+11.0%', ent: '1,720 家', hist: [10.6, 11.4, 12.2, 13.1] },
+  { id: 'JS', name: '江苏', abbr: '苏', col: 9, row: 5, val: 14.8, region: '华东', inv: '+11.8%', ent: '3,450 家', hist: [12.2, 13.1, 14.0, 14.8] },
+  { id: 'SH', name: '上海', abbr: '沪', col: 10, row: 5, val: 13.9, region: '华东', inv: '+10.2%', ent: '3,120 家', hist: [11.5, 12.3, 13.1, 13.9] },
+  { id: 'HUB', name: '湖北', abbr: '鄂', col: 7, row: 6, val: 11.8, region: '华中', inv: '+9.4%', ent: '1,640 家', hist: [9.8, 10.5, 11.1, 11.8] },
+  { id: 'HUN', name: '湖南', abbr: '湘', col: 7, row: 7, val: 10.6, region: '华中', inv: '+8.4%', ent: '1,380 家', hist: [8.8, 9.4, 10.0, 10.6] },
+  { id: 'JX', name: '江西', abbr: '赣', col: 8, row: 6, val: 9.8, region: '华东', inv: '+7.8%', ent: '980 家', hist: [8.2, 8.7, 9.2, 9.8] },
+  { id: 'ZJ', name: '浙江', abbr: '浙', col: 9, row: 6, val: 15.2, region: '华东', inv: '+12.1%', ent: '3,210 家', hist: [12.8, 13.6, 14.4, 15.2] },
+  { id: 'GZ', name: '贵州', abbr: '黔', col: 5, row: 6, val: 8.8, region: '西南', inv: '+7.2%', ent: '460 家', hist: [7.2, 7.8, 8.3, 8.8] },
+  { id: 'YN', name: '云南', abbr: '滇', col: 4, row: 7, val: 8.2, region: '西南', inv: '+6.6%', ent: '520 家', hist: [6.9, 7.3, 7.8, 8.2] },
+  { id: 'GX', name: '广西', abbr: '桂', col: 6, row: 7, val: 7.6, region: '华南', inv: '+6.1%', ent: '610 家', hist: [6.3, 6.7, 7.1, 7.6] },
+  { id: 'GD', name: '广东', abbr: '粤', col: 8, row: 7, val: 14.2, region: '华南', inv: '+8.6%', ent: '1,420 家', hist: [11.8, 12.6, 13.4, 14.2] },
+  { id: 'FJ', name: '福建', abbr: '闽', col: 9, row: 7, val: 12.6, region: '华东', inv: '+9.9%', ent: '1,560 家', hist: [10.4, 11.1, 11.8, 12.6] },
+  { id: 'TW', name: '台湾', abbr: '台', col: 10, row: 7, val: 9.2, region: '华东', inv: '+7.4%', ent: '1,890 家', hist: [7.8, 8.3, 8.7, 9.2] },
+  { id: 'HK', name: '香港', abbr: '港', col: 8, row: 8, val: 10.8, region: '华南', inv: '+8.1%', ent: '2,300 家', hist: [8.9, 9.5, 10.1, 10.8] },
+  { id: 'MO', name: '澳门', abbr: '澳', col: 7, row: 8, val: 11.5, region: '华南', inv: '+9.0%', ent: '480 家', hist: [9.1, 9.9, 10.7, 11.5] },
+  { id: 'HI', name: '海南', abbr: '琼', col: 6, row: 9, val: 18.4, region: '华南', inv: '+16.2%', ent: '840 家', hist: [13.5, 15.0, 16.6, 18.4] }
+];
+
+// Calculate ranks
+const sorted = [...PROVINCES].sort((a, b) => b.val - a.val);
+PROVINCES.forEach(p => {
+  p.rank = sorted.findIndex(s => s.id === p.id) + 1;
+});
+
+// Color mapping (from min 5.8 to max 18.4)
+const minVal = 5.0, maxVal = 18.5;
+function getColor(v) {
+  const norm = (v - minVal) / (maxVal - minVal);
+  // interpolate between #BAE6FD (0) and #0369A1 (1)
+  const r = Math.round(186 + (3 - 186) * norm);
+  const g = Math.round(230 + (105 - 230) * norm);
+  const b = Math.round(253 + (161 - 253) * norm);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+function getTextColor(v) {
+  const norm = (v - minVal) / (maxVal - minVal);
+  return norm > 0.45 ? '#FFFFFF' : '#0F172A';
+}
+
+const gridContainer = document.getElementById('tile-grid');
+let activeTile = null;
+
+PROVINCES.forEach(p => {
+  const tile = document.createElement('div');
+  tile.className = 'prov-tile';
+  tile.style.gridColumn = p.col;
+  tile.style.gridRow = p.row;
+  tile.style.backgroundColor = getColor(p.val);
+
+  const txtColor = getTextColor(p.val);
+  const star = p.rank === 1 ? '★ ' : '';
+
+  const abbrDiv = document.createElement('div');
+  abbrDiv.className = 'tile-abbr';
+  abbrDiv.style.color = txtColor;
+  abbrDiv.textContent = star + p.abbr;
+
+  const valDiv = document.createElement('div');
+  valDiv.className = 'tile-val';
+  valDiv.style.color = txtColor;
+  valDiv.textContent = `+${p.val.toFixed(1)}%`;
+
+  tile.appendChild(abbrDiv);
+  tile.appendChild(valDiv);
+
+  tile.addEventListener('mouseenter', () => selectProvince(p, tile));
+  gridContainer.appendChild(tile);
+
+  if (p.id === 'GD') {
+    activeTile = tile;
+    tile.classList.add('active');
+  }
+});
+
+function drawSparkline(hist) {
+  const w = 280, h = 70, pad = 12;
+  const minH = Math.min(...hist) * 0.9, maxH = Math.max(...hist) * 1.05;
+  const pts = hist.map((v, i) => {
+    const x = pad + (i / (hist.length - 1)) * (w - 2 * pad);
+    const y = h - pad - ((v - minH) / (maxH - minH)) * (h - 2 * pad);
+    return [x, y];
+  });
+
+  const lineD = 'M ' + pts.map(p => `${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' L ');
+  const areaD = lineD + ` L ${pts[pts.length - 1][0].toFixed(1)},${h} L ${pts[0][0].toFixed(1)},${h} Z`;
+
+  document.getElementById('spark-line').setAttribute('d', lineD);
+  document.getElementById('spark-area').setAttribute('d', areaD);
+
+  const dotsG = document.getElementById('spark-dots');
+  while (dotsG.firstChild) dotsG.removeChild(dotsG.firstChild);
+
+  pts.forEach((p, idx) => {
+    const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttribute('cx', p[0]);
+    c.setAttribute('cy', p[1]);
+    c.setAttribute('r', idx === pts.length - 1 ? '4' : '2.5');
+    c.setAttribute('fill', '#0284C7');
+    dotsG.appendChild(c);
+  });
+}
+
+function selectProvince(p, el) {
+  if (activeTile) activeTile.classList.remove('active');
+  activeTile = el;
+  el.classList.add('active');
+
+  // Update inspector safely via textContent
+  document.getElementById('insp-name').textContent = p.name + ' (省/市/区)';
+  document.getElementById('insp-region').textContent = p.region + '地区';
+  document.getElementById('insp-val').textContent = `+${p.val.toFixed(1)}%`;
+  document.getElementById('insp-rank').textContent = `全国第 ${p.rank} 名`;
+  document.getElementById('insp-inv').textContent = p.inv;
+  document.getElementById('insp-ent').textContent = p.ent;
+
+  drawSparkline(p.hist);
+}
+
+// Initial sparkline
+drawSparkline([11.8, 12.6, 13.4, 14.2]);
+</script>
+</body>
+</html>

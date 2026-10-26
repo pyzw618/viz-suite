@@ -160,6 +160,87 @@
       "uppercase_labels": false,
       "line_height": 1.6,
       "card_padding": 24
+    },
+    {
+      "id": "mckinsey",
+      "name_zh": "战略咨询 (McKinsey)",
+      "description": "麦肯锡/波士顿咨询报告经典风格：午夜蓝底衬、电光青主色与琥珀高亮、衬线大标题、发丝边框与极致信息密度。",
+      "colors": {
+        "bg": "#F8F9FA",
+        "surface": "#FFFFFF",
+        "surface2": "#E9ECEF",
+        "ink": "#00205B",
+        "muted": "#495057",
+        "accent": "#00205B",
+        "accent2": "#00A3E0",
+        "positive": "#0F7B4D",
+        "negative": "#D9381E",
+        "highlight": "#D97706",
+        "border": "#D1D5DB",
+        "on_accent": "#FFFFFF"
+      },
+      "fonts": {
+        "display": "\"Source Han Serif SC\",\"Noto Serif CJK SC\",\"Georgia\",serif",
+        "body": "Inter,\"Microsoft YaHei\",\"PingFang SC\",sans-serif",
+        "label": "Inter,Arial,sans-serif",
+        "mono": "\"JetBrains Mono\",Consolas,monospace"
+      },
+      "sizes": {
+        "title": 52,
+        "claim": 24,
+        "body": 17,
+        "small": 13,
+        "micro": 11,
+        "value": 60,
+        "label": 11
+      },
+      "radius": 0,
+      "border_width": 1,
+      "shadow": "none",
+      "texture": "rules",
+      "uppercase_labels": true,
+      "line_height": 1.48,
+      "card_padding": 20
+    },
+    {
+      "id": "academic_blueprint",
+      "name_zh": "学术蓝图 (Academic Blueprint)",
+      "description": "顶级期刊与工程蓝图风格：极深蓝基调、鼠尾草绿与科技青、蓝图坐标浅纹、IBM Plex 衬线与 JetBrains 等宽标注。",
+      "colors": {
+        "bg": "#EEF4F8",
+        "surface": "#FFFFFF",
+        "surface2": "#DCE7F0",
+        "ink": "#0B2545",
+        "muted": "#4A607A",
+        "accent": "#134074",
+        "accent2": "#007791",
+        "positive": "#1B6B4D",
+        "negative": "#A82828",
+        "border": "#8DA9C4",
+        "on_accent": "#FFFFFF"
+      },
+      "fonts": {
+        "display": "\"IBM Plex Serif\",\"Source Han Serif SC\",serif",
+        "body": "Inter,\"Microsoft YaHei\",sans-serif",
+        "label": "\"JetBrains Mono\",Consolas,monospace",
+        "mono": "\"JetBrains Mono\",Consolas,monospace"
+      },
+      "sizes": {
+        "title": 50,
+        "claim": 23,
+        "body": 16,
+        "small": 12,
+        "micro": 10,
+        "value": 58,
+        "label": 11
+      },
+      "radius": 2,
+      "border_width": 1,
+      "shadow": "none",
+      "texture": "grid",
+      "uppercase_labels": true,
+      "line_height": 1.5,
+      "card_padding": 18
     }
   ]
 }

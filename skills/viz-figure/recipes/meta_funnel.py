@@ -151,8 +151,8 @@ def main() -> int:
             ax.plot(pooled - z * se_grid, se_grid, color=focal, linewidth=0.7, alpha=0.45)
             ax.plot(pooled + z * se_grid, se_grid, color=focal, linewidth=0.7, alpha=0.45)
             label = {2.576: "99%", 1.96: "95%", 1.645: "90%"}[z]
-            ax.text(pooled + z * se_grid[-1] * 0.985, se_grid[-1] * 0.985, label,
-                    ha="left", va="center", fontsize=vs.font_size(theme, "source"),
+            ax.text(pooled + z * se_grid[-1] * 0.94, se_grid[-1] * 0.94, label,
+                    ha="right", va="center", fontsize=vs.font_size(theme, "source"),
                     color=focal, alpha=0.65)
 
         sizes = 18 + 110 * (weights / weights.max())

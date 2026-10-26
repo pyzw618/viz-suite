@@ -4,7 +4,7 @@ import math
 
 SVG_W, SVG_H = 1200, 1600
 SVG_M = 72
-BODY_TOP = 336
+BODY_TOP = 216
 BODY_BOTTOM = 1500
 
 
@@ -98,37 +98,42 @@ def svg_header(cv):
     cv.rect(0, 0, SVG_W, SVG_H, colors["bg"])
     svg_texture(cv)
     if style["id"] == "warm":
-        cv.rect(SVG_M - 18, 28, SVG_W - 2 * (SVG_M - 18), 286, colors["surface"],
+        cv.rect(SVG_M - 18, 22, SVG_W - 2 * (SVG_M - 18), 180, colors["surface"],
                 colors["border"], 1, style.get("radius", 20))
     elif style["id"] == "technical":
-        cv.line(SVG_M, 44, SVG_M, 292, colors["accent"], 5)
+        cv.line(SVG_M, 32, SVG_M, 196, colors["accent"], 4)
+    elif style["id"] == "mckinsey":
+        cv.rect(SVG_M, 30, SVG_W - 2 * SVG_M, 3, colors["accent"])
+    elif style["id"] == "academic_blueprint":
+        cv.line(SVG_M, 30, SVG_W - SVG_M, 30, colors["accent"], 2)
     else:
-        cv.line(SVG_M, 44, SVG_W - SVG_M, 44, colors["accent"], 5)
+        cv.line(SVG_M, 32, SVG_W - SVG_M, 32, colors["accent"], 4)
 
-    y = 72
+    y = 52
     x = SVG_M + (14 if style["id"] == "technical" else 0)
     if spec.get("eyebrow"):
-        cv.icon(spec.get("icon"), x, y - 16, 20, colors["accent"])
-        cv.text(x + 28, y, spec["eyebrow"], style["sizes"]["micro"], colors["accent"],
-                "700", font=cv.fonts["label"], extra='letter-spacing="1.6"')
-    title_y = 104
+        cv.icon(spec.get("icon"), x, y - 14, 18, colors["accent"])
+        cv.text(x + 26, y, spec["eyebrow"], style["sizes"]["micro"], colors["accent"],
+                "700", font=cv.fonts["label"], extra='letter-spacing="1.4"')
+    title_y = y + 16
     title_size, title_lines = cv.r.fit_text(
-        spec["title"], SVG_W - 2 * SVG_M - 30, 148, style["sizes"]["title"], 38, 1.12, 2)
+        spec["title"], SVG_W - 2 * SVG_M - 30, 96, style["sizes"]["title"], 32, 1.10, 2)
     y = cv.text_lines(title_lines, x, title_y + title_size * 0.82, title_size,
-                      colors["ink"], "700", font=cv.fonts["display"], line_height=1.12)
-    y += 12
+                      colors["ink"], "700", font=cv.fonts["display"], line_height=1.10)
+    y += 8
     if spec.get("claim"):
         claim_size, claim_lines = cv.r.fit_text(
-            spec["claim"], SVG_W - 2 * SVG_M - 80, 82, style["sizes"]["claim"], 19, 1.35, 2)
-        cv.rect(x, y + 2, 4, len(claim_lines) * claim_size * 1.35, colors["accent"])
-        y = cv.text_lines(claim_lines, x + 18, y + claim_size * 0.95, claim_size,
-                          colors["ink"], "400", font=cv.fonts["body"], line_height=1.35)
-        y += 8
+            spec["claim"], SVG_W - 2 * SVG_M - 60, 56, style["sizes"]["claim"], 18, 1.30, 2)
+        cv.rect(x, y + 2, 4, len(claim_lines) * claim_size * 1.30, colors["accent"])
+        y = cv.text_lines(claim_lines, x + 16, y + claim_size * 0.92, claim_size,
+                          colors["ink"], "400", font=cv.fonts["body"], line_height=1.30)
+        y += 6
     meta = "　｜　".join(p for p in [spec.get("subtitle"), spec.get("as_of")] if p)
     if meta:
-        cv.text(x, y + 14, meta, style["sizes"]["small"], colors["muted"],
+        cv.text(x, y + 12, meta, style["sizes"]["small"], colors["muted"],
                 font=cv.fonts["body"])
-    return max(BODY_TOP, y + 34)
+        y += 14
+    return max(BODY_TOP, y + 20)
 
 
 def svg_footer(cv):
@@ -168,16 +173,38 @@ def svg_card(cv, m, x, y, w, h, big_value=False, compact=False, watermark=False)
         cv.text(x + pad, cursor, m["label"], style["sizes"]["micro"], colors["muted"], "700",
                 font=cv.fonts["label"], extra='letter-spacing="1.0"')
         cursor += style["sizes"]["micro"] + 8
+    if m.get("delta"):
+        up = not str(m["delta"]).strip().startswith(("-", "↓", "−"))
+        d_color = colors.get("positive", "#0F7B4D") if up else colors.get("negative", "#B42318")
+        arrow = "↑" if up else "↓"
+        cv.text(right_x, cursor - 4, f"{arrow} {m['delta'].lstrip('+-↑↓− ')}", 12, d_color, "700",
+                anchor="end", font=cv.fonts["label"])
     title_size, title_lines = cv.r.fit_text(m["title"], w - 2 * pad, 54, 21, 15, 1.25, 2)
     cursor = cv.text_lines(title_lines, x + pad, cursor + title_size * 0.86, title_size,
                            colors["ink"], "700", font=cv.fonts["display"], line_height=1.25)
     cursor += 6
+    if m.get("progress") is not None:
+        p_val = max(0.0, min(100.0, float(m["progress"])))
+        bar_w = w - 2 * pad
+        cv.rect(x + pad, cursor, bar_w, 5, colors.get("surface2", "#E5E7EB"), rx=2)
+        cv.rect(x + pad, cursor, bar_w * (p_val / 100.0), 5, colors["accent"], rx=2)
+        cursor += 10
     body_space = max(12, y + h - pad - cursor)
     body_end = cursor
     if m.get("body"):
         body_size, body_lines = cv.r.fit_text(m["body"], w - 2 * pad, body_space, 16, 11, 1.35, 4)
         body_end = cv.text_lines(body_lines, x + pad, cursor + body_size * 0.92, body_size,
                                  colors["muted"], font=cv.fonts["body"], line_height=1.35)
+    if m.get("tags"):
+        tag_x = x + pad
+        for tag in m["tags"][:3]:
+            t_str = str(tag)
+            t_w = len(t_str) * 9 + 12
+            cv.rect(tag_x, body_end + 6, t_w, 18, colors.get("surface2", "#E5E7EB"), rx=3)
+            cv.text(tag_x + t_w / 2, body_end + 18, t_str, 9, colors["muted"], "600",
+                    anchor="middle", font=cv.fonts["body"])
+            tag_x += t_w + 5
+        body_end += 24
     if m.get("items"):
         item_y = body_end + 10
         for item in m["items"][:3]:
@@ -414,37 +441,76 @@ def svg_compare(cv, top, height):
 def svg_hierarchy(cv, top, height):
     root = cv.spec["root"]
     children = root.get("children") or []
-    root_w, root_h = 380, 92
+    root_w, root_h = 380, 84
     root_x = (SVG_W - root_w) / 2
-    cv.rect(root_x, top + 10, root_w, root_h, cv.colors["accent"], "none", 0,
+    cv.rect(root_x, top + 6, root_w, root_h, cv.colors["accent"], "none", 0,
             cv.style.get("radius", 0))
-    cv.icon(root.get("icon"), root_x + 20, top + 32, 26, cv.colors["on_accent"])
-    cv.text(root_x + 58, top + 50, root["title"], 20, cv.colors["on_accent"], "700",
+    cv.icon(root.get("icon"), root_x + 20, top + 26, 26, cv.colors["on_accent"])
+    cv.text(root_x + 58, top + 46, root["title"], 20, cv.colors["on_accent"], "700",
             font=cv.fonts["display"])
     if not children:
         return
     n = len(children)
     gap = 14
     child_w = (SVG_W - 2 * SVG_M - gap * (n - 1)) / n
-    child_y = top + 200
-    line_y = top + 120
-    cv.line(SVG_W / 2, top + 102, SVG_W / 2, line_y, cv.colors["border"], 2)
+    child_y = top + 150
+    line_y = top + 110
+    cv.line(SVG_W / 2, top + 90, SVG_W / 2, line_y, cv.colors["border"], 2)
     cv.line(SVG_M + child_w / 2, line_y, SVG_W - SVG_M - child_w / 2, line_y,
             cv.colors["border"], 2)
-    h = min(200, height - 220)
-    for i, child in enumerate(children):
-        x = SVG_M + i * (child_w + gap)
-        cv.line(x + child_w / 2, line_y, x + child_w / 2, child_y, cv.colors["border"], 2)
-        cv.rect(x, child_y, child_w, h, cv.colors["surface"], cv.colors["border"], 1,
-                cv.style.get("radius", 0))
-        cv.icon(child.get("icon"), x + 16, child_y + 18, 26, cv.colors["accent"])
-        size, lines = cv.r.fit_text(child["title"], child_w - 56, 44, 15, 11, 1.2, 2)
-        cv.text_lines(lines, x + 50, child_y + 34, size, cv.colors["ink"], "700",
-                      font=cv.fonts["body"], line_height=1.2)
-        if child.get("body"):
-            bsize, blines = cv.r.fit_text(child["body"], child_w - 32, h - 70, 11, 9, 1.3, 4)
-            cv.text_lines(blines, x + 16, child_y + 70, bsize, cv.colors["muted"],
-                          font=cv.fonts["body"], line_height=1.3)
+
+    has_sub = any(bool(c.get("children")) for c in children)
+    if has_sub:
+        tier1_h = 160
+        for i, child in enumerate(children):
+            x = SVG_M + i * (child_w + gap)
+            cv.line(x + child_w / 2, line_y, x + child_w / 2, child_y, cv.colors["border"], 2)
+            cv.rect(x, child_y, child_w, tier1_h, cv.colors["surface"], cv.colors["border"], 1,
+                    cv.style.get("radius", 0))
+            cv.icon(child.get("icon"), x + 16, child_y + 16, 24, cv.colors["accent"])
+            size, lines = cv.r.fit_text(child["title"], child_w - 52, 38, 15, 11, 1.2, 2)
+            cv.text_lines(lines, x + 48, child_y + 30, size, cv.colors["ink"], "700",
+                          font=cv.fonts["body"], line_height=1.2)
+            sub_children = child.get("children") or []
+            if sub_children:
+                sub_y = child_y + tier1_h + 24
+                cv.line(x + child_w / 2, child_y + tier1_h, x + child_w / 2, sub_y, cv.colors["border"], 1.5)
+                m_sub = len(sub_children)
+                sub_h = min(120, (height - 360) / max(1, m_sub))
+                for j, sub in enumerate(sub_children):
+                    sy = sub_y + j * (sub_h + 8)
+                    cv.rect(x + 6, sy, child_w - 12, sub_h, cv.colors.get("surface2", "#F3F4F6"),
+                            cv.colors["border"], 1, cv.style.get("radius", 0))
+                    cv.text(x + 14, sy + 20, sub.get("title", ""), 12, cv.colors["ink"], "700",
+                            font=cv.fonts["body"])
+                    if sub.get("body"):
+                        bsize, blines = cv.r.fit_text(sub["body"], child_w - 28, sub_h - 28, 10, 8, 1.25, 2)
+                        cv.text_lines(blines, x + 14, sy + 36, bsize, cv.colors["muted"],
+                                      font=cv.fonts["body"], line_height=1.25)
+    else:
+        h = max(360, height - 190)
+        for i, child in enumerate(children):
+            x = SVG_M + i * (child_w + gap)
+            cv.line(x + child_w / 2, line_y, x + child_w / 2, child_y, cv.colors["border"], 2)
+            cv.rect(x, child_y, child_w, h, cv.colors["surface"], cv.colors["border"], 1,
+                    cv.style.get("radius", 0))
+            cv.icon(child.get("icon"), x + 16, child_y + 18, 26, cv.colors["accent"])
+            size, lines = cv.r.fit_text(child["title"], child_w - 56, 44, 16, 11, 1.2, 2)
+            cv.text_lines(lines, x + 50, child_y + 34, size, cv.colors["ink"], "700",
+                          font=cv.fonts["body"], line_height=1.2)
+            if child.get("body"):
+                bsize, blines = cv.r.fit_text(child["body"], child_w - 32, 120, 12, 9, 1.35, 4)
+                cv.text_lines(blines, x + 16, child_y + 70, bsize, cv.colors["muted"],
+                              font=cv.fonts["body"], line_height=1.35)
+            if child.get("items"):
+                iy = child_y + 190
+                for item in child["items"][:5]:
+                    cv.text(x + 16, iy + 10, "·", 16, cv.colors["accent"], "700")
+                    line_txt = item["title"] + (("：" + item["body"]) if item.get("body") else "")
+                    isize, ilines = cv.r.fit_text(line_txt, child_w - 44, 24, 12, 9, 1.3, 1)
+                    cv.text(x + 28, iy + 10, ilines[0] if ilines else "", isize,
+                            cv.colors["muted"], font=cv.fonts["body"])
+                    iy += isize * 1.5
 
 
 def svg_mindmap(cv, top, height, cycle=False):

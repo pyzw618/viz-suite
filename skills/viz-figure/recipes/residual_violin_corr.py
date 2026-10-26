@@ -202,7 +202,7 @@ def main() -> int:
         ax_corr.set_yticks(np.arange(n))
         ax_corr.set_xticklabels(features, rotation=0, fontsize=vs.font_size(theme, "source"))
         ax_corr.set_yticklabels(features, fontsize=vs.font_size(theme, "source"))
-        ax_corr.tick_params(length=0)
+        ax_corr.tick_params(top=True, bottom=False, labeltop=True, labelbottom=False, length=0)
         for spine in ax_corr.spines.values():
             spine.set_visible(False)
         for i in range(n):
@@ -213,12 +213,12 @@ def main() -> int:
                              fontsize=vs.font_size(theme, "source"),
                              color=vs.contrast_text(cell, background="#FFFFFF", alpha=1.0))
         ax_corr.set_title("变量相关矩阵", fontsize=vs.font_size(theme, "annotation"),
-                          color=roles["muted_text"], pad=6)
+                          color=roles["muted_text"], pad=18)
 
         vs.add_header(fig, TITLE, SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
         vs.adjust_layout(fig, left=0.09, right=0.97, top=0.80, bottom=0.18, theme=theme)
-        cb = fig.colorbar(im, ax=ax_corr, orientation="horizontal", fraction=0.05, pad=0.10,
+        cb = fig.colorbar(im, ax=ax_corr, orientation="horizontal", fraction=0.05, pad=0.12,
                           ticks=[-1, 0, 1])
         cb.ax.set_title("Pearson r", fontsize=vs.font_size(theme, "source"),
                         color=roles["muted_text"], pad=3)

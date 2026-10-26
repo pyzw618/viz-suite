@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" style="background:#0B132B;font-family:Inter,system-ui,sans-serif;">
+  <defs>
+    <linearGradient id="ml-bronze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#CD7F32" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#CD7F32" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="ml-silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#94A3B8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#94A3B8" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="ml-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0.05"/>
+    </linearGradient>
+    <marker id="ml-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+  </defs>
+
+  <!-- Masthead -->
+  <g id="slot-header" transform="translate(60, 48)">
+    <rect x="0" y="0" width="4" height="40" fill="#38BDF8" rx="2"/>
+    <text x="16" y="24" fill="#F8FAFC" font-size="24" font-weight="700">现代化湖仓一体 Medallion 架构 (Bronze / Silver / Gold Lakehouse)</text>
+    <text x="16" y="44" fill="#94A3B8" font-size="13">流批一体摄取 → 原始快照 (Bronze) → 清洗规范化 (Silver) → 聚合业务集市 (Gold) → 下游应用消费</text>
+  </g>
+
+  <!-- Column 1: Source & Ingestion -->
+  <g transform="translate(60, 120)">
+    <rect x="0" y="0" width="220" height="700" fill="#1C2541" stroke="#3A506B" rx="8"/>
+    <text x="20" y="36" fill="#38BDF8" font-size="15" font-weight="700">01 异构多源接入</text>
+    <text x="20" y="56" fill="#6FFFE9" font-size="11">Data Ingestion Layer</text>
+
+    <!-- Source Box 1 -->
+    <g transform="translate(16, 80)">
+      <rect x="0" y="0" width="188" height="90" fill="#0B132B" stroke="#3A506B" rx="6"/>
+      <text x="14" y="26" fill="#F8FAFC" font-size="13" font-weight="600">业务关系库 OLTP</text>
+      <text x="14" y="46" fill="#94A3B8" font-size="11">MySQL / PostgreSQL</text>
+      <rect x="14" y="60" width="80" height="18" fill="#1C2541" rx="3"/>
+      <text x="54" y="73" fill="#38BDF8" font-size="10" font-weight="600" text-anchor="middle">Flink CDC</text>
+    </g>
+    <!-- Source Box 2 -->
+    <g transform="translate(16, 190)">
+      <rect x="0" y="0" width="188" height="90" fill="#0B132B" stroke="#3A506B" rx="6"/>
+      <text x="14" y="26" fill="#F8FAFC" font-size="13" font-weight="600">日志与埋点事件流</text>
+      <text x="14" y="46" fill="#94A3B8" font-size="11">App / Web Clickstream</text>
+      <rect x="14" y="60" width="80" height="18" fill="#1C2541" rx="3"/>
+      <text x="54" y="73" fill="#38BDF8" font-size="10" font-weight="600" text-anchor="middle">Kafka 集群</text>
+    </g>
+    <!-- Source Box 3 -->
+    <g transform="translate(16, 300)">
+      <rect x="0" y="0" width="188" height="90" fill="#0B132B" stroke="#3A506B" rx="6"/>
+      <text x="14" y="26" fill="#F8FAFC" font-size="13" font-weight="600">三方与外部 API</text>
+      <text x="14" y="46" fill="#94A3B8" font-size="11">金融行情 / 气象遥测</text>
+      <rect x="14" y="60" width="80" height="18" fill="#1C2541" rx="3"/>
+      <text x="54" y="73" fill="#38BDF8" font-size="10" font-weight="600" text-anchor="middle">Airflow DAG</text>
+    </g>
+    <!-- Source Box 4 -->
+    <g transform="translate(16, 410)">
+      <rect x="0" y="0" width="188" height="90" fill="#0B132B" stroke="#3A506B" rx="6"/>
+      <text x="14" y="26" fill="#F8FAFC" font-size="13" font-weight="600">非结构化文件资产</text>
+      <text x="14" y="46" fill="#94A3B8" font-size="11">PDF 研报 / 图片视频</text>
+      <rect x="14" y="60" width="80" height="18" fill="#1C2541" rx="3"/>
+      <text x="54" y="73" fill="#38BDF8" font-size="10" font-weight="600" text-anchor="middle">S3 Bucket</text>
+    </g>
+    <!-- Ingestion Metric -->
+    <rect x="16" y="580" width="188" height="80" fill="#1C2541" stroke="#38BDF8" stroke-dasharray="4 2" rx="6"/>
+    <text x="26" y="608" fill="#38BDF8" font-size="12" font-weight="700">实时摄取能力</text>
+    <text x="26" y="628" fill="#F8FAFC" font-size="18" font-weight="700">120 万条/秒</text>
+    <text x="26" y="648" fill="#94A3B8" font-size="10">端到端延迟 &lt; 500ms</text>
+  </g>
+
+  <!-- Arrow Ingestion -> Bronze -->
+  <path d="M 290 320 L 330 320" stroke="#38BDF8" stroke-width="2" marker-end="url(#ml-arrow)"/>
+
+  <!-- Column 2: Bronze Layer (Raw State) -->
+  <g transform="translate(340, 120)">
+    <rect x="0" y="0" width="260" height="700" fill="url(#ml-bronze)" stroke="#CD7F32" stroke-width="1.5" rx="8"/>
+    <text x="20" y="36" fill="#FDBA74" font-size="16" font-weight="700">02 BRONZE 原始层</text>
+    <text x="20" y="56" fill="#94A3B8" font-size="11">Raw Historical Snapshot</text>
+
+    <g transform="translate(16, 80)">
+      <rect x="0" y="0" width="228" height="130" fill="#1C2541" stroke="#CD7F32" rx="6"/>
+      <text x="16" y="28" fill="#FED7AA" font-size="14" font-weight="600">全量原始快照归档</text>
+      <text x="16" y="50" fill="#CBD5E1" font-size="11">· 保持源端 Schema 原汁原味</text>
+      <text x="16" y="70" fill="#CBD5E1" font-size="11">· 写入即不可篡改 (Append-Only)</text>
+      <text x="16" y="90" fill="#CBD5E1" font-size="11">· 支持历史全量回溯与重放</text>
+      <text x="16" y="112" fill="#FDBA74" font-size="10" font-weight="600">存储格式：Parquet + Snappy</text>
+    </g>
+
+    <!-- Bronze Gate -->
+    <g transform="translate(16, 240)">
+      <rect x="0" y="0" width="228" height="180" fill="#1C2541" stroke="#CD7F32" rx="6"/>
+      <text x="16" y="28" fill="#FED7AA" font-size="14" font-weight="600">元数据与版本管理</text>
+      <text x="16" y="52" fill="#94A3B8" font-size="11">Apache Iceberg 表格式管理</text>
+      <text x="16" y="72" fill="#94A3B8" font-size="11">· ACID 事务级支持</text>
+      <text x="16" y="92" fill="#94A3B8" font-size="11">· 时间旅行 (Time Travel)</text>
+      <text x="16" y="112" fill="#94A3B8" font-size="11">· 分区演进 (Partition Evolution)</text>
+      <rect x="16" y="134" width="196" height="30" fill="#7C2D12" fill-opacity="0.4" rx="4"/>
+      <text x="114" y="154" fill="#FDBA74" font-size="11" font-weight="600" text-anchor="middle">数据保真度：100% 原始存证</text>
+    </g>
+  </g>
+
+  <!-- Arrow Bronze -> Silver -->
+  <path d="M 610 320 L 650 320" stroke="#38BDF8" stroke-width="2" marker-end="url(#ml-arrow)"/>
+  <!-- Quality Gate 1 Badge -->
+  <rect x="605" y="270" width="50" height="20" fill="#0284C7" rx="3"/>
+  <text x="630" y="284" fill="#FFFFFF" font-size="9" font-weight="700" text-anchor="middle">清洗校验</text>
+
+  <!-- Column 3: Silver Layer (Cleaned & Conformed) -->
+  <g transform="translate(660, 120)">
+    <rect x="0" y="0" width="280" height="700" fill="url(#ml-silver)" stroke="#94A3B8" stroke-width="1.5" rx="8"/>
+    <text x="20" y="36" fill="#E2E8F0" font-size="16" font-weight="700">03 SILVER 清洗整合层</text>
+    <text x="20" y="56" fill="#94A3B8" font-size="11">Cleansed, Conformed &amp; Enriched</text>
+
+    <g transform="translate(16, 80)">
+      <rect x="0" y="0" width="248" height="150" fill="#1C2541" stroke="#94A3B8" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">数据质量过滤与治理</text>
+      <text x="16" y="50" fill="#CBD5E1" font-size="11">· 统一主键去重与 SCD Type 2</text>
+      <text x="16" y="70" fill="#CBD5E1" font-size="11">· 脏数据过滤：缺失值/异常值</text>
+      <text x="16" y="90" fill="#CBD5E1" font-size="11">· 敏感字段自动化脱敏 (GDPR)</text>
+      <text x="16" y="110" fill="#CBD5E1" font-size="11">· 字段类型强制标准化校验</text>
+      <text x="16" y="132" fill="#38BDF8" font-size="10" font-weight="600">合规通过率：99.98%</text>
+    </g>
+
+    <g transform="translate(16, 250)">
+      <rect x="0" y="0" width="248" height="160" fill="#1C2541" stroke="#94A3B8" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">统一维度与实体建模</text>
+      <text x="16" y="52" fill="#94A3B8" font-size="11">OneID 统一用户中心画像</text>
+      <text x="16" y="72" fill="#94A3B8" font-size="11">· 统一商品分类与价格主数据</text>
+      <text x="16" y="92" fill="#94A3B8" font-size="11">· 全渠道订单交易明细宽表</text>
+      <text x="16" y="112" fill="#94A3B8" font-size="11">· dbt 模块化自动化流水线</text>
+      <rect x="16" y="126" width="216" height="24" fill="#334155" rx="3"/>
+      <text x="124" y="142" fill="#E2E8F0" font-size="10" font-weight="600" text-anchor="middle">企业级统一语义模型支撑</text>
+    </g>
+  </g>
+
+  <!-- Arrow Silver -> Gold -->
+  <path d="M 950 320 L 990 320" stroke="#38BDF8" stroke-width="2" marker-end="url(#ml-arrow)"/>
+  <!-- Quality Gate 2 Badge -->
+  <rect x="945" y="270" width="50" height="20" fill="#F59E0B" rx="3"/>
+  <text x="970" y="284" fill="#000000" font-size="9" font-weight="700" text-anchor="middle">指标聚合</text>
+
+  <!-- Column 4: Gold Layer (Curated & Aggregated) -->
+  <g transform="translate(1000, 120)">
+    <rect x="0" y="0" width="340" height="700" fill="url(#ml-gold)" stroke="#F59E0B" stroke-width="1.5" rx="8"/>
+    <text x="20" y="36" fill="#FDE68A" font-size="16" font-weight="700">04 GOLD 业务集市与消费终端</text>
+    <text x="20" y="56" fill="#94A3B8" font-size="11">Curated Business Aggregations &amp; AI Feeds</text>
+
+    <!-- Sub 4.1: BI Mart -->
+    <g transform="translate(16, 80)">
+      <rect x="0" y="0" width="308" height="120" fill="#1C2541" stroke="#F59E0B" rx="6"/>
+      <text x="16" y="26" fill="#FDE68A" font-size="13" font-weight="700">高并发 BI 分析看板 (StarRocks)</text>
+      <text x="16" y="46" fill="#CBD5E1" font-size="11">秒级多维穿透上卷下钻、高管驾驶舱</text>
+      <text x="16" y="66" fill="#CBD5E1" font-size="11">财务损益核算、供应链库存预警看板</text>
+      <rect x="16" y="82" width="130" height="22" fill="#78350F" fill-opacity="0.4" rx="3"/>
+      <text x="81" y="97" fill="#FBBF24" font-size="10" font-weight="600" text-anchor="middle">查询响应 P95 &lt; 0.2s</text>
+    </g>
+
+    <!-- Sub 4.2: Feature Store & AI -->
+    <g transform="translate(16, 220)">
+      <rect x="0" y="0" width="308" height="120" fill="#1C2541" stroke="#F59E0B" rx="6"/>
+      <text x="16" y="26" fill="#FDE68A" font-size="13" font-weight="700">AI 特征工程库 (Feast / Milvus)</text>
+      <text x="16" y="46" fill="#CBD5E1" font-size="11">实时特征计算、大模型 RAG 向量切片</text>
+      <text x="16" y="66" fill="#CBD5E1" font-size="11">个性化推荐召回、反欺诈风险分推断</text>
+      <rect x="16" y="82" width="130" height="22" fill="#78350F" fill-opacity="0.4" rx="3"/>
+      <text x="81" y="97" fill="#FBBF24" font-size="10" font-weight="600" text-anchor="middle">特征吞吐量 &gt; 50万/秒</text>
+    </g>
+
+    <!-- Sub 4.3: Operational API -->
+    <g transform="translate(16, 360)">
+      <rect x="0" y="0" width="308" height="120" fill="#1C2541" stroke="#F59E0B" rx="6"/>
+      <text x="16" y="26" fill="#FDE68A" font-size="13" font-weight="700">数据服务总线 (Data API Gateway)</text>
+      <text x="16" y="46" fill="#CBD5E1" font-size="11">RESTful / GraphQL 统一数据暴露</text>
+      <text x="16" y="66" fill="#CBD5E1" font-size="11">赋能业务系统反哺（反向 ETL 闭环）</text>
+      <rect x="16" y="82" width="130" height="22" fill="#78350F" fill-opacity="0.4" rx="3"/>
+      <text x="81" y="97" fill="#FBBF24" font-size="10" font-weight="600" text-anchor="middle">SLA 可用性 99.99%</text>
+    </g>
+  </g>
+
+  <!-- Footer -->
+  <g id="slot-footer" transform="translate(60, 856)">
+    <text x="0" y="14" fill="#64748B" font-size="11">架构标准：Databricks Medallion Architecture ｜ 存储格式：Apache Iceberg 1.4 + Parquet</text>
+    <text x="1280" y="14" fill="#64748B" font-size="11" text-anchor="end">总数据资产规模：1.8 PB ｜ 每天新增数据量：12 TB ｜ 冷热分层压缩比：4.8:1</text>
+  </g>
+</svg>

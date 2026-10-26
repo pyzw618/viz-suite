@@ -1,6 +1,6 @@
 ---
 name: viz-figure
-description: 出版级统计与科学图表生成及图表逆向通道。支持从真实数据画像、选型适配 28 套复合/多面板 Python 黄金配方（PDF/SVG/300-600DPI PNG，自动切换 academic/bi/story/geo 场景预设与碰撞自检），以及从 HTML/SVG/清晰位图做 SOURCE/B/C/X 级逆向数据提取与重绘。不用于交互网页看板（用 viz-interactive）或纯概念流程信息图（用 viz-diagram）。
+description: 出版级统计与科学图表生成及图表逆向通道。支持从真实数据画像、选型适配 42 套复合/多面板 Python 黄金配方（PDF/SVG/300-600DPI PNG，内置 OFL 字体库，自动切换 academic/bi/story/geo 场景预设与碰撞自检），以及从 HTML/SVG/清晰位图做 SOURCE/B/C/X 级逆向数据提取与重绘。不用于交互网页看板（用 viz-interactive）或纯概念流程信息图（用 viz-diagram）。
 ---
 
 # viz-figure · 统计与科学图表（含逆向工程）

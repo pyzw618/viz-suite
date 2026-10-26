@@ -22,14 +22,60 @@ from matplotlib.ft2font import FT2Font
 sys.stdout.reconfigure(encoding="utf-8")
 
 DEFAULT_ZH = [
-    "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "Source Han Sans SC",
+    "Noto Sans SC", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "Source Han Sans SC",
     "HarmonyOS Sans SC", "SimHei", "Source Han Sans CN", "WenQuanYi Zen Hei",
     "Microsoft JhengHei", "DengXian", "SimSun", "STSong", "Songti SC", "Noto Serif CJK SC",
 ]
 DEFAULT_EN = ["Inter", "Arial", "Helvetica", "Segoe UI", "Roboto", "DejaVu Sans"]
-SERIF_ZH = ["Source Han Serif SC", "Noto Serif CJK SC", "SimSun", "STSong", "Songti SC", "serif"]
+SERIF_ZH = ["Noto Serif SC", "IBM Plex Serif", "Source Han Serif SC", "Noto Serif CJK SC", "SimSun", "STSong", "Songti SC", "serif"]
 TEST_ZH = "数据可视化图表样本量均值中位数显著"
 TEST_EN = "ABCDEFGabcdefg0123456789-%"
+
+
+def register_bundled_fonts() -> list[str]:
+    here = Path(__file__).resolve().parent
+    added: list[str] = []
+    seen_dirs: set[Path] = set()
+    for base in [Path.cwd(), *Path.cwd().parents, here, *here.parents]:
+        for cand in (base / ".viz-suite" / "assets" / "fonts",
+                     base / "skills" / "shared" / "assets" / "fonts",
+                     base / "shared" / "assets" / "fonts"):
+            if cand.is_dir():
+                resolved = cand.resolve()
+                if resolved in seen_dirs:
+                    continue
+                seen_dirs.add(resolved)
+                for fp in sorted(resolved.glob("*.ttf")):
+                    try:
+                        n_before = len(font_manager.fontManager.ttflist)
+                        font_manager.fontManager.addfont(str(fp))
+                        if len(font_manager.fontManager.ttflist) > n_before:
+                            entry = font_manager.fontManager.ttflist.pop()
+                            font_manager.fontManager.ttflist.insert(0, entry)
+                        added.append(str(fp))
+                    except Exception:  # noqa: BLE001
+                        pass
+    if added and hasattr(font_manager.fontManager, "_findfont_cached"):
+        font_manager.fontManager._findfont_cached.cache_clear()
+    return added
+
+
+def _norm_weight(weight) -> int:
+    if isinstance(weight, (int, float)):
+        return int(weight)
+    s = str(weight).strip().lower()
+    if s in ("normal", "regular", "book"):
+        return 400
+    if s == "medium":
+        return 500
+    if s in ("semibold", "demibold"):
+        return 600
+    if s == "bold":
+        return 700
+    try:
+        return int(s)
+    except ValueError:
+        return 400
 
 
 def load_font_candidates() -> tuple[list[str], list[str], list[str]]:
@@ -60,7 +106,14 @@ def font_records(names: list[str]) -> list[dict]:
         entries = by_name.get(name)
         if not entries:
             continue
-        entry = min(entries, key=lambda e: (e.weight != "normal", e.style != "normal"))
+        entry = min(
+            entries,
+            key=lambda e: (
+                e.style != "normal",
+                abs(_norm_weight(e.weight) - 400),
+                any(tag in Path(e.fname).name.lower() for tag in ("narrow", "cond", "arialn")),
+            ),
+        )
         record = {"name": name, "file": entry.fname, "style": entry.style, "weight": entry.weight}
         try:
             with open(entry.fname, "rb") as fh:
@@ -89,6 +142,7 @@ def main() -> int:
     ap.add_argument("--out", default=None, help="另存 JSON 到文件")
     args = ap.parse_args()
 
+    bundled = register_bundled_fonts()
     zh_names, en_names, serif_names = load_font_candidates()
     zh = font_records(zh_names)
     en = font_records(en_names)

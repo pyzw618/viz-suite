@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" style="background:#090D16;font-family:Inter,system-ui,sans-serif;">
+  <defs>
+    <radialGradient id="df-glow-l" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#090D16" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="df-glow-r" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#090D16" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="df-arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38BDF8"/>
+    </marker>
+    <marker id="df-arrow-purple" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#C084FC"/>
+    </marker>
+  </defs>
+
+  <!-- Masthead -->
+  <g id="slot-header" transform="translate(60, 48)">
+    <rect x="0" y="0" width="4" height="40" fill="#38BDF8" rx="2"/>
+    <text x="16" y="24" fill="#F8FAFC" font-size="24" font-weight="700">双飞轮商业网络协同闭环 (Dual Flywheel Ecosystem Model)</text>
+    <text x="16" y="44" fill="#94A3B8" font-size="13">供给端规模效应 (Supply-Side) 与需求端体验网络效应 (Demand-Side) 深度耦合推进</text>
+  </g>
+
+  <!-- Left Glow -->
+  <circle cx="420" cy="480" r="280" fill="url(#df-glow-l)"/>
+  <!-- Right Glow -->
+  <circle cx="980" cy="480" r="280" fill="url(#df-glow-r)"/>
+
+  <!-- Center Convergence Badge -->
+  <g transform="translate(620, 410)">
+    <rect x="0" y="0" width="160" height="140" fill="#1E293B" stroke="#38BDF8" stroke-width="2" rx="12"/>
+    <circle cx="80" cy="46" r="22" fill="#0284C7" fill-opacity="0.2"/>
+    <text x="80" y="52" fill="#38BDF8" font-size="20" font-weight="700" text-anchor="middle">⇄</text>
+    <text x="80" y="86" fill="#F8FAFC" font-size="14" font-weight="700" text-anchor="middle">双轮耦合中枢</text>
+    <text x="80" y="106" fill="#94A3B8" font-size="11" text-anchor="middle">数据资产与飞轮动量</text>
+    <text x="80" y="124" fill="#34D399" font-size="10" font-weight="600" text-anchor="middle">LTV / CAC &gt; 4.5</text>
+  </g>
+
+  <!-- LEFT FLYWHEEL: Supply & Platform (Blue) -->
+  <circle cx="420" cy="480" r="210" fill="none" stroke="#1E293B" stroke-width="28"/>
+  <circle cx="420" cy="480" r="210" fill="none" stroke="#0284C7" stroke-width="4" stroke-dasharray="16 10"/>
+
+  <!-- Left Flywheel Node 1 (Top) -->
+  <g transform="translate(320, 210)">
+    <rect x="0" y="0" width="200" height="74" fill="#1E293B" stroke="#0284C7" stroke-width="1.2" rx="8"/>
+    <text x="16" y="24" fill="#38BDF8" font-size="11" font-weight="700">FLYWHEEL A.1</text>
+    <text x="16" y="44" fill="#F8FAFC" font-size="14" font-weight="600">海量优质供给入驻</text>
+    <text x="16" y="62" fill="#94A3B8" font-size="11">品类丰富度提升 300%</text>
+  </g>
+  <!-- Left Flywheel Node 2 (Left) -->
+  <g transform="translate(130, 440)">
+    <rect x="0" y="0" width="200" height="74" fill="#1E293B" stroke="#0284C7" stroke-width="1.2" rx="8"/>
+    <text x="16" y="24" fill="#38BDF8" font-size="11" font-weight="700">FLYWHEEL A.2</text>
+    <text x="16" y="44" fill="#F8FAFC" font-size="14" font-weight="600">规模采购成本骤降</text>
+    <text x="16" y="62" fill="#94A3B8" font-size="11">边际履约单票降本 38%</text>
+  </g>
+  <!-- Left Flywheel Node 3 (Bottom) -->
+  <g transform="translate(320, 680)">
+    <rect x="0" y="0" width="200" height="74" fill="#1E293B" stroke="#0284C7" stroke-width="1.2" rx="8"/>
+    <text x="16" y="24" fill="#38BDF8" font-size="11" font-weight="700">FLYWHEEL A.3</text>
+    <text x="16" y="44" fill="#F8FAFC" font-size="14" font-weight="600">极致商品性价比</text>
+    <text x="16" y="62" fill="#94A3B8" font-size="11">终端销售定价优势强化</text>
+  </g>
+
+  <!-- Left Rotating Arrows -->
+  <path d="M 420 270 A 210 210 0 0 0 210 480" fill="none" stroke="#38BDF8" stroke-width="3" marker-end="url(#df-arrow-blue)"/>
+  <path d="M 210 480 A 210 210 0 0 0 420 690" fill="none" stroke="#38BDF8" stroke-width="3" marker-end="url(#df-arrow-blue)"/>
+  <path d="M 420 690 A 210 210 0 0 0 620 520" fill="none" stroke="#38BDF8" stroke-width="3" marker-end="url(#df-arrow-blue)"/>
+
+  <!-- RIGHT FLYWHEEL: Demand & Users (Purple) -->
+  <circle cx="980" cy="480" r="210" fill="none" stroke="#1E293B" stroke-width="28"/>
+  <circle cx="980" cy="480" r="210" fill="none" stroke="#7C3AED" stroke-width="4" stroke-dasharray="16 10"/>
+
+  <!-- Right Flywheel Node 1 (Top) -->
+  <g transform="translate(880, 210)">
+    <rect x="0" y="0" width="200" height="74" fill="#1E293B" stroke="#8B5CF6" stroke-width="1.2" rx="8"/>
+    <text x="16" y="24" fill="#C084FC" font-size="11" font-weight="700">FLYWHEEL B.1</text>
+    <text x="16" y="44" fill="#F8FAFC" font-size="14" font-weight="600">客户体验与口碑裂变</text>
+    <text x="16" y="62" fill="#94A3B8" font-size="11">NPS 推荐值提升至 +72</text>
+  </g>
+  <!-- Right Flywheel Node 2 (Right) -->
+  <g transform="translate(1070, 440)">
+    <rect x="0" y="0" width="200" height="74" fill="#1E293B" stroke="#8B5CF6" stroke-width="1.2" rx="8"/>
+    <text x="16" y="24" fill="#C084FC" font-size="11" font-weight="700">FLYWHEEL B.2</text>
+    <text x="16" y="44" fill="#F8FAFC" font-size="14" font-weight="600">高频粘性自然流量</text>
+    <text x="16" y="62" fill="#94A3B8" font-size="11">MAU 突破 8500 万</text>
+  </g>
+  <!-- Right Flywheel Node 3 (Bottom) -->
+  <g transform="translate(880, 680)">
+    <rect x="0" y="0" width="200" height="74" fill="#1E293B" stroke="#8B5CF6" stroke-width="1.2" rx="8"/>
+    <text x="16" y="24" fill="#C084FC" font-size="11" font-weight="700">FLYWHEEL B.3</text>
+    <text x="16" y="44" fill="#F8FAFC" font-size="14" font-weight="600">交易体量与商家繁荣</text>
+    <text x="16" y="62" fill="#94A3B8" font-size="11">GMV 年化复合增长 42%</text>
+  </g>
+
+  <!-- Right Rotating Arrows -->
+  <path d="M 980 270 A 210 210 0 0 1 1190 480" fill="none" stroke="#C084FC" stroke-width="3" marker-end="url(#df-arrow-purple)"/>
+  <path d="M 1190 480 A 210 210 0 0 1 980 690" fill="none" stroke="#C084FC" stroke-width="3" marker-end="url(#df-arrow-purple)"/>
+  <path d="M 980 690 A 210 210 0 0 1 780 520" fill="none" stroke="#C084FC" stroke-width="3" marker-end="url(#df-arrow-purple)"/>
+
+  <!-- Footer -->
+  <g id="slot-footer" transform="translate(60, 856)">
+    <text x="0" y="14" fill="#64748B" font-size="11">飞轮理论来源：吉姆·柯林斯《从优秀到卓越》与亚马逊飞轮模型演进 ｜ 网络效应指数：Metcalfe 法则</text>
+    <text x="1280" y="14" fill="#64748B" font-size="11" text-anchor="end">平台动态净收益率：+26.4% ｜ 跨轮飞轮自增动量稳定达标</text>
+  </g>
+</svg>

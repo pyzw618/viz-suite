@@ -105,12 +105,30 @@ def main() -> int:
             target.mkdir(parents=True, exist_ok=True)
             jobs += [(assets[0] / "tokens.json", target / "tokens.json"),
                      (assets[0] / "palettes.json", target / "palettes.json")]
+            pub_src = assets[0] / "publisher_profiles.json"
+            if pub_src.is_file():
+                jobs.append((pub_src, target / "publisher_profiles.json"))
             scenes_src = assets[0] / "scenes"
             if scenes_src.is_dir():
                 scenes_dst = target / "scenes"
                 scenes_dst.mkdir(parents=True, exist_ok=True)
                 for sp in sorted(scenes_src.glob("*.json")):
                     jobs.append((sp, scenes_dst / sp.name))
+            geo_src = assets[0] / "geo"
+            if geo_src.is_dir():
+                geo_dst = target / "geo"
+                geo_dst.mkdir(parents=True, exist_ok=True)
+                for gp in sorted(geo_src.iterdir()):
+                    if gp.is_file() and gp.suffix.lower() in (".json", ".geojson", ".md"):
+                        jobs.append((gp, geo_dst / gp.name))
+            fonts_src = assets[0] / "fonts"
+            if fonts_src.is_dir():
+                ptr_file = dest / ".viz-suite" / "font_source.json"
+                ptr_file.parent.mkdir(parents=True, exist_ok=True)
+                ptr_file.write_text(json.dumps({
+                    "fonts_dir": str(fonts_src.resolve()),
+                    "shared_assets": str(assets[0].resolve()),
+                }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         else:
             result["warnings"].append("未找到 shared/assets，已跳过资产复制；viz_style 将使用内置回退令牌")
 

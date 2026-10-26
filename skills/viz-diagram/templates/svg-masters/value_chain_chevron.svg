@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" style="background:#FFFFFF;font-family:Inter,system-ui,sans-serif;">
+  <defs>
+    <filter id="vc-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Masthead -->
+  <g id="slot-header" transform="translate(60, 48)">
+    <rect x="0" y="0" width="4" height="40" fill="#0284C7" rx="2"/>
+    <text x="16" y="24" fill="#0F172A" font-size="24" font-weight="700">波特端到端价值链模型 (Michael Porter Value Chain Analysis)</text>
+    <text x="16" y="44" fill="#64748B" font-size="13">三大支持活动赋能 + 五大核心初级活动燕尾流向，系统化构建差异化竞争护城河与利润边际</text>
+  </g>
+
+  <!-- Upper Support Activities (Horizontal Strips) -->
+  <g id="support-activities" transform="translate(60, 120)">
+    <!-- Support 1: Tech & Digital Infra -->
+    <rect x="0" y="0" width="1080" height="64" fill="#F8FAFC" stroke="#E2E8F0" rx="4"/>
+    <rect x="0" y="0" width="220" height="64" fill="#0F172A" rx="4 0 0 4"/>
+    <text x="20" y="36" fill="#38BDF8" font-size="13" font-weight="700">技术研发与数字化中台</text>
+    <text x="250" y="36" fill="#334155" font-size="12">全栈自研核心算法库、数字孪生产线仿真平台、自动化数据资产目录与云原生算力底座</text>
+
+    <!-- Support 2: HR & Organizational Capability -->
+    <rect x="0" y="74" width="1080" height="64" fill="#F8FAFC" stroke="#E2E8F0" rx="4"/>
+    <rect x="0" y="74" width="220" height="64" fill="#1E293B" rx="4 0 0 4"/>
+    <text x="20" y="110" fill="#F8FAFC" font-size="13" font-weight="700">组织人才与激励机制</text>
+    <text x="250" y="110" fill="#334155" font-size="12">全球化研发人才梯队、基于 OKR 目标敏捷协同机制、核心技术骨干长效股权激励与飞轮文化</text>
+
+    <!-- Support 3: Procurement & Global Compliance -->
+    <rect x="0" y="148" width="1080" height="64" fill="#F8FAFC" stroke="#E2E8F0" rx="4"/>
+    <rect x="0" y="148" width="220" height="64" fill="#334155" rx="4 0 0 4"/>
+    <text x="20" y="184" fill="#94A3B8" font-size="13" font-weight="700">战略采购与全面风控</text>
+    <text x="250" y="184" fill="#334155" font-size="12">关键原料双供应商对冲策略、ESG 绿色供应链溯源审计、全链路知识产权与全球贸易合规保护</text>
+  </g>
+
+  <!-- Right Margin Wedge (Profit Margin) -->
+  <g id="profit-margin" transform="translate(1160, 120)">
+    <path d="M 0 0 L 180 250 L 0 500 L 40 250 Z" fill="#0284C7" filter="url(#vc-shadow)"/>
+    <text x="60" y="240" fill="#FFFFFF" font-size="18" font-weight="700" transform="rotate(90 60 240)">企业净利润空间 (MARGIN)</text>
+    <text x="90" y="240" fill="#E0F2FE" font-size="12" font-weight="600" transform="rotate(90 90 240)">行业领先 EBITDA +18.4%</text>
+  </g>
+
+  <!-- Lower Primary Activities (5 Chevrons) -->
+  <g id="primary-activities" transform="translate(60, 360)">
+    <!-- Chevron 1: Inbound Logistics -->
+    <g transform="translate(0, 0)" filter="url(#vc-shadow)">
+      <path d="M 0 0 L 180 0 L 220 130 L 180 260 L 0 260 L 40 130 Z" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1.5"/>
+      <text x="60" y="40" fill="#0284C7" font-size="12" font-weight="700">PRIMARY 01</text>
+      <text x="60" y="66" fill="#0F172A" font-size="16" font-weight="700">内部后勤</text>
+      <text x="60" y="90" fill="#0369A1" font-size="12">原材料收发与仓储</text>
+      <text x="60" y="118" fill="#64748B" font-size="11">· 自动化立体仓库 (AS/RS)</text>
+      <text x="60" y="138" fill="#64748B" font-size="11">· 供应商 VMI 库存管理</text>
+      <text x="60" y="158" fill="#64748B" font-size="11">· 原材料质检良品率 99.8%</text>
+      <text x="60" y="178" fill="#64748B" font-size="11">· 仓储周转天数 &lt; 14 天</text>
+    </g>
+
+    <!-- Chevron 2: Operations / Manufacturing -->
+    <g transform="translate(200, 0)" filter="url(#vc-shadow)">
+      <path d="M 0 0 L 180 0 L 220 130 L 180 260 L 0 260 L 40 130 Z" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.5"/>
+      <text x="60" y="40" fill="#16A34A" font-size="12" font-weight="700">PRIMARY 02</text>
+      <text x="60" y="66" fill="#0F172A" font-size="16" font-weight="700">生产作业</text>
+      <text x="60" y="90" fill="#15803D" font-size="12">精益组装与柔性智造</text>
+      <text x="60" y="118" fill="#64748B" font-size="11">· 黑灯数字化智慧工厂</text>
+      <text x="60" y="138" fill="#64748B" font-size="11">· 产线 OEE 设备综合效能 89%</text>
+      <text x="60" y="158" fill="#64748B" font-size="11">· 机器视觉在线缺陷检测</text>
+      <text x="60" y="178" fill="#64748B" font-size="11">· 单位制造成本降低 22%</text>
+    </g>
+
+    <!-- Chevron 3: Outbound Logistics -->
+    <g transform="translate(400, 0)" filter="url(#vc-shadow)">
+      <path d="M 0 0 L 180 0 L 220 130 L 180 260 L 0 260 L 40 130 Z" fill="#FEFCE8" stroke="#FEF08A" stroke-width="1.5"/>
+      <text x="60" y="40" fill="#D97706" font-size="12" font-weight="700">PRIMARY 03</text>
+      <text x="60" y="66" fill="#0F172A" font-size="16" font-weight="700">外部后勤</text>
+      <text x="60" y="90" fill="#B45309" font-size="12">成品分拨与干线配送</text>
+      <text x="60" y="118" fill="#64748B" font-size="11">· 全国八大温控区域枢纽</text>
+      <text x="60" y="138" fill="#64748B" font-size="11">· TMS 路径优化智能派单</text>
+      <text x="60" y="158" fill="#64748B" font-size="11">· 核心城市次日达 96.5%</text>
+      <text x="60" y="178" fill="#64748B" font-size="11">· 货损率控制在 0.02% 以下</text>
+    </g>
+
+    <!-- Chevron 4: Marketing & Sales -->
+    <g transform="translate(600, 0)" filter="url(#vc-shadow)">
+      <path d="M 0 0 L 180 0 L 220 130 L 180 260 L 0 260 L 40 130 Z" fill="#FAF5FF" stroke="#E9D5FF" stroke-width="1.5"/>
+      <text x="60" y="40" fill="#9333EA" font-size="12" font-weight="700">PRIMARY 04</text>
+      <text x="60" y="66" fill="#0F172A" font-size="16" font-weight="700">市场与营销</text>
+      <text x="60" y="90" fill="#7E22CE" font-size="12">全域引流与品牌心智</text>
+      <text x="60" y="118" fill="#64748B" font-size="11">· 线上私域与线下体验整合</text>
+      <text x="60" y="138" fill="#64748B" font-size="11">· 品牌第一提及率 34.2%</text>
+      <text x="60" y="158" fill="#64748B" font-size="11">· 精准人群动态出价投放</text>
+      <text x="60" y="178" fill="#64748B" font-size="11">· 销售转化率提升 1.8x</text>
+    </g>
+
+    <!-- Chevron 5: Customer Service & Retention -->
+    <g transform="translate(800, 0)" filter="url(#vc-shadow)">
+      <path d="M 0 0 L 180 0 L 220 130 L 180 260 L 0 260 L 40 130 Z" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1.5"/>
+      <text x="60" y="40" fill="#E11D48" font-size="12" font-weight="700">PRIMARY 05</text>
+      <text x="60" y="66" fill="#0F172A" font-size="16" font-weight="700">售后服务</text>
+      <text x="60" y="90" fill="#BE123C" font-size="12">增值运维与终身关怀</text>
+      <text x="60" y="118" fill="#64748B" font-size="11">· 7×24h 智能客服即时响应</text>
+      <text x="60" y="138" fill="#64748B" font-size="11">· 质保维保数字化一键上门</text>
+      <text x="60" y="158" fill="#64748B" font-size="11">· 客户满意度 CSAT 98.7%</text>
+      <text x="60" y="178" fill="#64748B" font-size="11">· 老客终身价值 LTV 持续拉长</text>
+    </g>
+  </g>
+
+  <!-- Connective Arrows Flow Line -->
+  <path d="M 120 660 L 1020 660" stroke="#0284C7" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="570" y="685" fill="#0284C7" font-size="12" font-weight="600" text-anchor="middle">端到端价值传递流向：信息流、物流与资金流高效闭环</text>
+
+  <!-- Footer -->
+  <g id="slot-footer" transform="translate(60, 856)">
+    <text x="0" y="14" fill="#94A3B8" font-size="11">方法论基础：迈克尔·波特《竞争优势》价值链分析模型 ｜ 制图规范：Antigravity Chevron Master 2026</text>
+    <text x="1280" y="14" fill="#94A3B8" font-size="11" text-anchor="end">核心竞争力评级：AAA 级全链条降本增效 ｜ 端到端交付周期：-35%</text>
+  </g>
+</svg>

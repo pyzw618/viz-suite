@@ -233,7 +233,8 @@ def main() -> int:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
         theme = vs.bootstrap(theme, font_scale=size["font_scale"])
-        pal = vs.palette(theme=theme)
+        pal = vs.select_palette("tol_bright", theme=theme, cli_palette=PALETTE)
+        theme["palette_id"] = pal.id
         groups = list(agg.attrs["group_order"])
         series = [s for s in agg.attrs["series_order"] if s is not None]
         if not series:
@@ -267,14 +268,15 @@ def main() -> int:
             errs = subset["error"].to_numpy(dtype=float)
             color = colors[str(s)]
             kwargs = vs.bar_kwargs(color, theme=theme)
+            err_col = vs.mix("#0F172A", color, 0.45)
             if horizontal:
-                ax.barh(ypos + offsets[i], means, height=bar_h * 0.92, zorder=3, **kwargs)
+                ax.barh(ypos + offsets[i], means, height=bar_h * 0.90, zorder=3, **kwargs)
                 ax.errorbar(means, ypos + offsets[i], xerr=errs, fmt="none",
-                            ecolor=color, elinewidth=1.0, capsize=2.4, capthick=1.0, zorder=4)
+                            ecolor=err_col, elinewidth=1.05, capsize=2.5, capthick=1.05, zorder=4)
             else:
-                ax.bar(ypos + offsets[i], means, width=bar_h * 0.92, zorder=3, **kwargs)
+                ax.bar(ypos + offsets[i], means, width=bar_h * 0.90, zorder=3, **kwargs)
                 ax.errorbar(ypos + offsets[i], means, yerr=errs, fmt="none",
-                            ecolor=color, elinewidth=1.0, capsize=2.4, capthick=1.0, zorder=4)
+                            ecolor=err_col, elinewidth=1.05, capsize=2.5, capthick=1.05, zorder=4)
 
         tick_labels = []
         for g in groups:
@@ -327,22 +329,49 @@ def main() -> int:
                             fontsize=vs.font_size(theme, "annotation"),
                             color=theme["colors"]["roles"]["muted_text"], bbox=mean_bbox, zorder=5)
 
+        overall_ref = float(np.average(agg["mean"], weights=agg["n"]))
         if k > 1:
-            handles = [Patch(facecolor=vs.blend(colors[str(s)], theme["colors"]["backgrounds"]["white"],
-                                                theme["marks"]["fill_alpha"]),
-                             edgecolor=colors[str(s)], linewidth=theme["marks"]["edge_width"])
-                       for s in series]
+            handles = []
+            for s in series:
+                bkw = vs.bar_kwargs(colors[str(s)], theme=theme)
+                handles.append(Patch(facecolor=bkw["color"], edgecolor=bkw["edgecolor"], linewidth=bkw["linewidth"]))
             leg = ax.legend(handles, [str(s) for s in series], loc="lower right",
                             bbox_to_anchor=(1.0, 1.005), ncol=k, frameon=False,
                             handlelength=1.1, columnspacing=1.2, handletextpad=0.5,
                             fontsize=vs.font_size(theme, "legend"))
             vs.style_legend(leg, theme)
+            # 标注榜首组峰值与超额优势（消除分组柱状图缺乏语义焦点的问题）
+            top_idx = int((agg["mean"]).idxmax())
+            top_row = agg.loc[top_idx]
+            g_pos = groups.index(top_row[GROUP_COL])
+            s_pos = series.index(top_row[SERIES_COL]) if SERIES_COL else 0
+            coord = ypos[g_pos] + offsets[s_pos]
+            peak_end = float(top_row["mean"] + top_row["error"])
+            diff_val = float(top_row["mean"] - overall_ref)
+            badge_txt = f"{top_row['mean']:.2f} ({diff_val:+.2f} vs 均值)"
+            if horizontal:
+                ax.set_xlim(0, max(ax.get_xlim()[1], peak_end * 1.48))
+                vs.annotate_champion(ax, peak_end, coord, badge_txt,
+                                     color=colors[str(top_row[SERIES_COL])],
+                                     offset_xy=(5, 0), theme=theme, ha="left", va="center")
+            else:
+                ax.set_ylim(0, max(ax.get_ylim()[1], peak_end * 1.26))
+                near_right = g_pos >= len(groups) - 2
+                vs.annotate_champion(ax, coord, peak_end, badge_txt,
+                                     color=colors[str(top_row[SERIES_COL])],
+                                     offset_xy=(4 if near_right else 0, 10),
+                                     theme=theme,
+                                     ha="right" if near_right else "center",
+                                     va="bottom")
         elif DIRECT_LABELS == "always" or (DIRECT_LABELS == "auto" and k == 1):
+            if horizontal:
+                ax.set_xlim(0, max(ax.get_xlim()[1], float(np.nanmax(agg["mean"] + agg["error"])) * 1.26))
             for i, g in enumerate(groups):
                 row = agg[agg[GROUP_COL] == g].iloc[0]
+                lbl = vs.dual_metric_label(float(row["mean"]), overall_ref, mode="delta", fmt="{:.2f}", pct_fmt="{:.1f}%")
                 if horizontal:
-                    ax.text(row["mean"] + row["error"] + hi * 0.012, i, f"{row['mean']:.2f}",
-                            va="center", ha="left", fontsize=label_size,
+                    ax.text(row["mean"] + row["error"] + hi * 0.012, i, lbl,
+                            va="center", ha="left", fontsize=vs.font_size(theme, "annotation"),
                             color=theme["colors"]["roles"]["text"])
                 else:
                     ax.text(i, row["mean"] + row["error"] + hi * 0.02, f"{row['mean']:.2f}",

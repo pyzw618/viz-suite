@@ -1,7 +1,7 @@
 {
   "schema": "viz-suite.palettes/1",
-  "version": "2026.10",
-  "generated": "2026-10-25",
+  "version": "2026.10-p2",
+  "generated": "2026-10-26",
   "method": {
     "category_order": "seed = designed primary (colors[0]); greedily append the colour maximising the minimum normal-vision CIEDE2000 distance to those already chosen, preferring candidates that remain >=10 ΔE from every selected colour under protanopia and deuteranopia. Colours with WCAG contrast-on-white < 1.6 are demoted to the tail.",
     "delta_e": "CIEDE2000 over CIE Lab (D65)",
@@ -901,6 +901,827 @@
       ],
       "computed_colorblind_safe": false,
       "safe_k": 4
+    },
+    {
+      "id": "tol_bright",
+      "name_zh": "Paul Tol·Bright 科研标准",
+      "source": "Paul Tol Colour Schemes v3.2 (SRON Technical Note); via K-Dense scientific-agent-skills (MIT)",
+      "license": "MIT",
+      "colors": [
+        "#4477AA",
+        "#EE6677",
+        "#228833",
+        "#CCBB44",
+        "#66CCEE",
+        "#AA3377",
+        "#888888"
+      ],
+      "tags": [
+        "colorblind",
+        "academic",
+        "journal",
+        "scientific"
+      ],
+      "recommended_for": [
+        "Nature/Science/Cell 风格科研插图",
+        "2–7 分类对比"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        3,
+        1,
+        2,
+        4,
+        5,
+        6
+      ],
+      "min_delta_e": {
+        "normal": 20.33,
+        "protanopia": 5.93,
+        "deuteranopia": 13.16,
+        "tritanopia": 8.62,
+        "order4_normal": 31.71,
+        "order4_deuteranopia": 15.35
+      },
+      "contrast_on_white": [
+        4.7,
+        3.09,
+        4.53,
+        1.95,
+        1.84,
+        6.09,
+        3.54
+      ],
+      "low_contrast_colors": [
+        "#CCBB44",
+        "#66CCEE"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 6
+    },
+    {
+      "id": "tol_muted",
+      "name_zh": "Paul Tol·Muted 柔和学术",
+      "source": "Paul Tol Colour Schemes v3.2 (SRON Technical Note); via K-Dense scientific-agent-skills (MIT)",
+      "license": "MIT",
+      "colors": [
+        "#332288",
+        "#88CCEE",
+        "#44AA99",
+        "#117733",
+        "#999933",
+        "#DDCC77",
+        "#CC6677",
+        "#882255",
+        "#AA4499"
+      ],
+      "tags": [
+        "colorblind",
+        "academic",
+        "muted",
+        "large-n"
+      ],
+      "recommended_for": [
+        "多组实验对比（≤9 类）",
+        "生物医学与工程论文"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        5,
+        1,
+        6,
+        3,
+        7,
+        2,
+        4,
+        8
+      ],
+      "min_delta_e": {
+        "normal": 15.0,
+        "protanopia": 11.8,
+        "deuteranopia": 14.25,
+        "tritanopia": 11.5,
+        "order4_normal": 40.56,
+        "order4_deuteranopia": 22.51
+      },
+      "contrast_on_white": [
+        12.17,
+        1.76,
+        2.82,
+        5.66,
+        3.02,
+        1.62,
+        3.66,
+        8.73,
+        5.26
+      ],
+      "low_contrast_colors": [
+        "#88CCEE",
+        "#44AA99",
+        "#DDCC77"
+      ],
+      "computed_colorblind_safe": true,
+      "safe_k": 9
+    },
+    {
+      "id": "tol_high_contrast",
+      "name_zh": "Paul Tol·高对比灰度安全",
+      "source": "Paul Tol Colour Schemes v3.2 (SRON Technical Note); via K-Dense scientific-agent-skills (MIT)",
+      "license": "MIT",
+      "colors": [
+        "#004488",
+        "#DDAA33",
+        "#BB5566",
+        "#225555"
+      ],
+      "tags": [
+        "colorblind",
+        "print",
+        "academic",
+        "high-contrast"
+      ],
+      "recommended_for": [
+        "黑白复印兼容",
+        "2–4 核心序列"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "min_delta_e": {
+        "normal": 24.05,
+        "protanopia": 9.7,
+        "deuteranopia": 17.22,
+        "tritanopia": 6.72,
+        "order4_normal": 24.05,
+        "order4_deuteranopia": 17.22
+      },
+      "contrast_on_white": [
+        9.62,
+        2.13,
+        4.56,
+        8.4
+      ],
+      "low_contrast_colors": [
+        "#DDAA33"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 3
+    },
+    {
+      "id": "mckinsey_navy",
+      "name_zh": "麦肯锡深海蓝阶（咨询汇报）",
+      "source": "Adapted from mckinsey-style-visualization-skill (MIT, Copyright 2026 KEN)",
+      "license": "MIT",
+      "colors": [
+        "#15296B",
+        "#2563EB",
+        "#176B50",
+        "#B4232D",
+        "#4F6D8A",
+        "#686B70",
+        "#94A3B8"
+      ],
+      "tags": [
+        "business",
+        "consulting",
+        "executive",
+        "bi"
+      ],
+      "recommended_for": [
+        "高管汇报",
+        "瀑布图/差距图/经营看板"
+      ],
+      "upstream_colorblind": false,
+      "category_order": [
+        0,
+        6,
+        3,
+        1,
+        5,
+        4,
+        2
+      ],
+      "min_delta_e": {
+        "normal": 9.67,
+        "protanopia": 9.68,
+        "deuteranopia": 10.28,
+        "tritanopia": 7.92,
+        "order4_normal": 23.59,
+        "order4_deuteranopia": 23.06
+      },
+      "contrast_on_white": [
+        13.45,
+        5.17,
+        6.45,
+        6.52,
+        5.4,
+        5.35,
+        2.56
+      ],
+      "low_contrast_colors": [
+        "#94A3B8"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 6
+    },
+    {
+      "id": "economist_civic",
+      "name_zh": "政经社论蓝红灰（数据新闻）",
+      "source": "viz-suite original (MIT), inspired by classic financial & civic journalism contrast",
+      "license": "MIT",
+      "colors": [
+        "#006BA2",
+        "#DB444B",
+        "#3EBCD2",
+        "#379A8B",
+        "#EBB434",
+        "#758D99",
+        "#3F4E5A"
+      ],
+      "tags": [
+        "editorial",
+        "story",
+        "business",
+        "high-contrast"
+      ],
+      "recommended_for": [
+        "时间序列报道",
+        "宏观经济与行业研报"
+      ],
+      "upstream_colorblind": false,
+      "category_order": [
+        0,
+        4,
+        1,
+        3,
+        2,
+        6,
+        5
+      ],
+      "min_delta_e": {
+        "normal": 15.7,
+        "protanopia": 10.96,
+        "deuteranopia": 5.24,
+        "tritanopia": 11.68,
+        "order4_normal": 29.87,
+        "order4_deuteranopia": 20.17
+      },
+      "contrast_on_white": [
+        5.79,
+        4.25,
+        2.25,
+        3.41,
+        1.89,
+        3.48,
+        8.58
+      ],
+      "low_contrast_colors": [
+        "#3EBCD2",
+        "#EBB434"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 6
+    },
+    {
+      "id": "editorial_sage_rust",
+      "name_zh": "编辑室鼠尾草与赭石",
+      "source": "Adapted from diagram-design style-guide (MIT, Copyright 2025 Cathryn Lavery)",
+      "license": "MIT",
+      "colors": [
+        "#2E5AA8",
+        "#BF4520",
+        "#5F7A52",
+        "#B8915A",
+        "#6E6479",
+        "#4F5D75"
+      ],
+      "tags": [
+        "editorial",
+        "muted",
+        "story",
+        "architecture"
+      ],
+      "recommended_for": [
+        "深度分析长文",
+        "系统架构与复合分布图"
+      ],
+      "upstream_colorblind": false,
+      "category_order": [
+        0,
+        3,
+        1,
+        2,
+        4,
+        5
+      ],
+      "min_delta_e": {
+        "normal": 10.26,
+        "protanopia": 4.08,
+        "deuteranopia": 6.23,
+        "tritanopia": 8.85,
+        "order4_normal": 25.9,
+        "order4_deuteranopia": 12.98
+      },
+      "contrast_on_white": [
+        6.68,
+        5.14,
+        4.78,
+        2.9,
+        5.58,
+        6.66
+      ],
+      "low_contrast_colors": [
+        "#B8915A"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 5
+    },
+    {
+      "id": "met_hiroshige",
+      "name_zh": "MetBrewer·Hiroshige 珊瑚青蓝",
+      "source": "MetBrewer (CC0 1.0), palette Hiroshige",
+      "license": "CC0-1.0",
+      "colors": [
+        "#E76254",
+        "#EF8A47",
+        "#F7AA58",
+        "#FFD06F",
+        "#AADCE0",
+        "#72BCD5",
+        "#528FAD",
+        "#376795",
+        "#1E466E"
+      ],
+      "tags": [
+        "colorblind",
+        "diverging",
+        "harmonious",
+        "editorial"
+      ],
+      "recommended_for": [
+        "冷暖发散热力/SHAP",
+        "山脊分布渐变",
+        "珊瑚×深青双序列"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        5,
+        8,
+        2,
+        6,
+        7,
+        1,
+        3,
+        4
+      ],
+      "min_delta_e": {
+        "normal": 10.05,
+        "protanopia": 7.84,
+        "deuteranopia": 5.62,
+        "tritanopia": 7.59,
+        "order4_normal": 26.36,
+        "order4_deuteranopia": 13.02
+      },
+      "contrast_on_white": [
+        3.35,
+        2.5,
+        1.94,
+        1.45,
+        1.5,
+        2.13,
+        3.56,
+        5.94,
+        9.74
+      ],
+      "low_contrast_colors": [
+        "#EF8A47",
+        "#F7AA58",
+        "#FFD06F",
+        "#AADCE0",
+        "#72BCD5"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 6
+    },
+    {
+      "id": "met_veronese",
+      "name_zh": "MetBrewer·Veronese 绛红松石",
+      "source": "MetBrewer (CC0 1.0), palette Veronese",
+      "license": "CC0-1.0",
+      "colors": [
+        "#67322E",
+        "#99610A",
+        "#C38F16",
+        "#6E948C",
+        "#2C6B67",
+        "#175449",
+        "#122C43"
+      ],
+      "tags": [
+        "colorblind",
+        "academic",
+        "editorial",
+        "harmonious"
+      ],
+      "recommended_for": [
+        "旗舰复合母版",
+        "长尾排序+内嵌环图",
+        "学术低饱和对比"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        3,
+        2,
+        6,
+        4,
+        1,
+        5
+      ],
+      "min_delta_e": {
+        "normal": 8.65,
+        "protanopia": 7.73,
+        "deuteranopia": 8.77,
+        "tritanopia": 8.07,
+        "order4_normal": 30.25,
+        "order4_deuteranopia": 28.4
+      },
+      "contrast_on_white": [
+        10.13,
+        5.16,
+        2.89,
+        3.35,
+        6.17,
+        8.75,
+        14.31
+      ],
+      "low_contrast_colors": [
+        "#C38F16"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 6
+    },
+    {
+      "id": "met_archambault",
+      "name_zh": "MetBrewer·Archambault 梅紫琥珀",
+      "source": "MetBrewer (CC0 1.0), palette Archambault",
+      "license": "CC0-1.0",
+      "colors": [
+        "#381A61",
+        "#AB3329",
+        "#E78429",
+        "#88A0DC",
+        "#7C4B73",
+        "#ED968C",
+        "#F9D14A"
+      ],
+      "tags": [
+        "colorblind",
+        "categorical",
+        "story"
+      ],
+      "recommended_for": [
+        "多系列折线/面积",
+        "叙事对比"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        2,
+        3,
+        1,
+        5,
+        4,
+        6
+      ],
+      "min_delta_e": {
+        "normal": 19.55,
+        "protanopia": 15.58,
+        "deuteranopia": 13.48,
+        "tritanopia": 7.06,
+        "order4_normal": 30.72,
+        "order4_deuteranopia": 23.73
+      },
+      "contrast_on_white": [
+        14.11,
+        6.49,
+        2.72,
+        2.59,
+        6.75,
+        2.25,
+        1.47
+      ],
+      "low_contrast_colors": [
+        "#E78429",
+        "#88A0DC",
+        "#ED968C",
+        "#F9D14A"
+      ],
+      "computed_colorblind_safe": true,
+      "safe_k": 7
+    },
+    {
+      "id": "met_paquin",
+      "name_zh": "MetBrewer·Paquin 橄榄杏橘",
+      "source": "MetBrewer (CC0 1.0), palette Paquin",
+      "license": "CC0-1.0",
+      "colors": [
+        "#47632A",
+        "#F05B43",
+        "#748F46",
+        "#F78462",
+        "#275024",
+        "#98AB76",
+        "#C62320",
+        "#FEAC81"
+      ],
+      "tags": [
+        "harmonious",
+        "natural",
+        "composite",
+        "shap"
+      ],
+      "recommended_for": [
+        "橄榄绿×杏珊瑚高审美复合图",
+        "SHAP 蜂群与特征分组环图"
+      ],
+      "upstream_colorblind": false,
+      "category_order": [
+        0,
+        1,
+        7,
+        5,
+        6,
+        2,
+        3,
+        4
+      ],
+      "min_delta_e": {
+        "normal": 8.33,
+        "protanopia": 3.09,
+        "deuteranopia": 6.72,
+        "tritanopia": 8.71,
+        "order4_normal": 19.45,
+        "order4_deuteranopia": 9.96
+      },
+      "contrast_on_white": [
+        6.8,
+        3.34,
+        3.65,
+        2.49,
+        9.3,
+        2.49,
+        5.73,
+        1.84
+      ],
+      "low_contrast_colors": [
+        "#F78462",
+        "#98AB76",
+        "#FEAC81"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 3
+    },
+    {
+      "id": "met_hokusai2",
+      "name_zh": "MetBrewer·Hokusai2 海雾普鲁士蓝",
+      "source": "MetBrewer (CC0 1.0), palette Hokusai2",
+      "license": "CC0-1.0",
+      "colors": [
+        "#0A3351",
+        "#134B73",
+        "#2F70A1",
+        "#4692B0",
+        "#72AEB6",
+        "#ABC9C8"
+      ],
+      "tags": [
+        "colorblind",
+        "sequential",
+        "geo",
+        "bi"
+      ],
+      "recommended_for": [
+        "地理分级设色地图",
+        "同色系层级渐变条形"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        5,
+        3,
+        2,
+        4,
+        1
+      ],
+      "min_delta_e": {
+        "normal": 8.08,
+        "protanopia": 8.46,
+        "deuteranopia": 7.73,
+        "tritanopia": 8.46,
+        "order4_normal": 14.17,
+        "order4_deuteranopia": 12.32
+      },
+      "contrast_on_white": [
+        13.08,
+        9.2,
+        5.31,
+        3.5,
+        2.49,
+        1.76
+      ],
+      "low_contrast_colors": [
+        "#72AEB6",
+        "#ABC9C8"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 4
+    },
+    {
+      "id": "met_hokusai3",
+      "name_zh": "MetBrewer·Hokusai3 青苔深海",
+      "source": "MetBrewer (CC0 1.0), palette Hokusai3",
+      "license": "CC0-1.0",
+      "colors": [
+        "#0A2E57",
+        "#295384",
+        "#5A97C1",
+        "#74C8C3",
+        "#95C36E",
+        "#D8D97A"
+      ],
+      "tags": [
+        "colorblind",
+        "sequential",
+        "geo",
+        "scientific"
+      ],
+      "recommended_for": [
+        "三维响应面/等高线",
+        "空间密度场"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        4,
+        2,
+        3,
+        1,
+        5
+      ],
+      "min_delta_e": {
+        "normal": 12.28,
+        "protanopia": 6.88,
+        "deuteranopia": 9.03,
+        "tritanopia": 11.92,
+        "order4_normal": 22.17,
+        "order4_deuteranopia": 17.17
+      },
+      "contrast_on_white": [
+        13.62,
+        7.88,
+        3.17,
+        1.95,
+        2.04,
+        1.49
+      ],
+      "low_contrast_colors": [
+        "#74C8C3",
+        "#95C36E",
+        "#D8D97A"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 5
+    },
+    {
+      "id": "met_isfahan1",
+      "name_zh": "MetBrewer·Isfahan1 古铜孔雀绿",
+      "source": "MetBrewer (CC0 1.0), palette Isfahan1",
+      "license": "CC0-1.0",
+      "colors": [
+        "#175F5D",
+        "#845D29",
+        "#178F92",
+        "#AE8548",
+        "#054544",
+        "#4FB6CA",
+        "#4E3910",
+        "#E3C28B"
+      ],
+      "tags": [
+        "colorblind",
+        "diverging",
+        "academic",
+        "geo"
+      ],
+      "recommended_for": [
+        "古铜×青绿双极对比",
+        "事件研究与森林图"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        7,
+        5,
+        1,
+        3,
+        6,
+        2,
+        4
+      ],
+      "min_delta_e": {
+        "normal": 8.37,
+        "protanopia": 8.55,
+        "deuteranopia": 7.91,
+        "tritanopia": 8.56,
+        "order4_normal": 32.66,
+        "order4_deuteranopia": 28.85
+      },
+      "contrast_on_white": [
+        7.42,
+        5.87,
+        3.9,
+        3.36,
+        10.82,
+        2.37,
+        10.96,
+        1.7
+      ],
+      "low_contrast_colors": [
+        "#4FB6CA",
+        "#E3C28B"
+      ],
+      "computed_colorblind_safe": false,
+      "safe_k": 7
+    },
+    {
+      "id": "met_cassatt2",
+      "name_zh": "MetBrewer·Cassatt2 暮紫森林绿",
+      "source": "MetBrewer (CC0 1.0), palette Cassatt2",
+      "license": "CC0-1.0",
+      "colors": [
+        "#574571",
+        "#466C4B",
+        "#90719F",
+        "#7FA074",
+        "#2D223C",
+        "#2C4B27",
+        "#B695BC",
+        "#C1D1AA"
+      ],
+      "tags": [
+        "colorblind",
+        "diverging",
+        "muted",
+        "academic"
+      ],
+      "recommended_for": [
+        "配对前后对比",
+        "紫×绿无红绿混淆分组"
+      ],
+      "upstream_colorblind": true,
+      "category_order": [
+        0,
+        7,
+        5,
+        6,
+        3,
+        4,
+        2,
+        1
+      ],
+      "min_delta_e": {
+        "normal": 11.31,
+        "protanopia": 11.53,
+        "deuteranopia": 11.07,
+        "tritanopia": 11.25,
+        "order4_normal": 33.26,
+        "order4_deuteranopia": 27.39
+      },
+      "contrast_on_white": [
+        8.42,
+        5.99,
+        4.16,
+        2.92,
+        14.94,
+        9.8,
+        2.62,
+        1.62
+      ],
+      "low_contrast_colors": [
+        "#7FA074",
+        "#B695BC",
+        "#C1D1AA"
+      ],
+      "computed_colorblind_safe": true,
+      "safe_k": 8
     }
   ]
 }

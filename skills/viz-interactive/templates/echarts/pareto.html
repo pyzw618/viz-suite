@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>帕累托二八双轴贡献度分析 · ECharts</title>
+<style>
+:root {
+  --viz-bg: #FFFFFF;
+  --viz-surface: #F8FAFC;
+  --viz-text: #1F2937;
+  --viz-muted: #6B7280;
+  --viz-grid: #E2E8F0;
+  --viz-focal: #0072B2;
+  --viz-context: #CBD5E1;
+  --viz-positive: #198038;
+  --viz-negative: #DA1E28;
+  --viz-alert: #D97706;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--viz-bg); color: var(--viz-text);
+  font-family: "Inter", "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+body { padding: 20px 24px 16px; overflow-x: hidden; }
+header h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
+header p { margin: 0 0 14px; color: var(--viz-muted); font-size: 13px; }
+
+/* KPI Summary Strip */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.stat-card {
+  background: var(--viz-surface);
+  border: 1px solid var(--viz-grid);
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+.stat-label { font-size: 11px; color: var(--viz-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-value { font-size: 20px; font-weight: 700; margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+.stat-sub { font-size: 11px; color: var(--viz-muted); }
+.stat-sub.highlight { color: var(--viz-focal); font-weight: 600; }
+
+#chart { width: 100%; height: calc(100vh - 220px); min-height: 420px; }
+figcaption { font-size: 12px; color: var(--viz-muted); margin-top: 10px; }
+
+@media (max-width: 768px) {
+  body { padding: 12px; }
+  .stat-strip { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  header h1 { font-size: 17px; }
+  #chart { height: calc(100vh - 240px); min-height: 360px; }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --viz-bg: #0B1220;
+    --viz-surface: #1E293B;
+    --viz-text: #E5E7EB;
+    --viz-muted: #9CA3AF;
+    --viz-grid: #334155;
+    --viz-focal: #38BDF8;
+    --viz-context: #475569;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>质量客诉缺陷帕累托归因：前 3 大原因占累计缺陷的 82.4%</h1>
+  <p>双轴二八分析｜柱高表示问题频次（降序），折线表示累计贡献占比｜80% 关键截断红线</p>
+</header>
+
+<div class="stat-strip">
+  <div class="stat-card">
+    <div class="stat-label">总缺陷频次</div>
+    <div class="stat-value" id="val-total">1,280</div>
+    <div class="stat-sub">累计统计 10 项归因</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">关键少数原因</div>
+    <div class="stat-value" id="val-cutoff">3 项</div>
+    <div class="stat-sub highlight">仅占全部分类 30%</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">前 3 项累计贡献</div>
+    <div class="stat-value" id="val-cum">82.4%</div>
+    <div class="stat-sub">跨越 80% 治理红线</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">预期治理效益</div>
+    <div class="stat-value" id="val-impact">1,055 次</div>
+    <div class="stat-sub">优先攻坚可减少客诉</div>
+  </div>
+</div>
+
+<figure>
+  <div id="chart" role="img" aria-label="帕累托二八双轴分析图，前3大原因累计占比突破82.4%"></div>
+  <figcaption>数据来源：企业内部客户服务工单与质量审计中心 ｜ ECharts 5 ｜ 纯前端无外链离线运行</figcaption>
+</figure>
+
+<script src="../../assets/vendor/echarts.min.js"></script>
+<script>
+const css = getComputedStyle(document.documentElement);
+const C = k => css.getPropertyValue(k).trim();
+const ROLE = {
+  text: C('--viz-text'), muted: C('--viz-muted'), grid: C('--viz-grid'),
+  focal: C('--viz-focal'), context: C('--viz-context'),
+  positive: C('--viz-positive'), negative: C('--viz-negative'), alert: C('--viz-alert')
+};
+
+const items = [
+  { name: '包装破损', count: 520 },
+  { name: '物流延期', count: 345 },
+  { name: '配件缺失', count: 190 },
+  { name: '商品异味', count: 72 },
+  { name: '尺码不符', count: 48 },
+  { name: '颜色偏差', count: 35 },
+  { name: '线头未剪', count: 28 },
+  { name: '发票遗漏', count: 20 },
+  { name: '说明书缺页', count: 14 },
+  { name: '其他偶发', count: 8 }
+];
+
+const total = items.reduce((acc, cur) => acc + cur.count, 0);
+let running = 0;
+const cumPct = items.map(it => {
+  running += it.count;
+  return Number(((running / total) * 100).toFixed(1));
+});
+
+// Update KPI strip safely via textContent
+document.getElementById('val-total').textContent = total.toLocaleString() + ' 件';
+const cutoffIdx = cumPct.findIndex(p => p >= 80);
+document.getElementById('val-cutoff').textContent = (cutoffIdx + 1) + ' 项';
+document.getElementById('val-cum').textContent = cumPct[cutoffIdx] + '%';
+const impactCount = items.slice(0, cutoffIdx + 1).reduce((s, c) => s + c.count, 0);
+document.getElementById('val-impact').textContent = impactCount.toLocaleString() + ' 件';
+
+const chart = echarts.init(document.getElementById('chart'), null, { renderer: 'canvas' });
+
+function buildOption(w) {
+  const mobile = w < 600;
+  return {
+    backgroundColor: 'transparent',
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'shadow' },
+      formatter: params => {
+        const cat = params[0].name;
+        const val = params[0].value;
+        const pct = ((val / total) * 100).toFixed(1);
+        const cum = params[1] ? params[1].value : '--';
+        return `<strong>${cat}</strong><br/>` +
+               `缺陷频次：${val} 件 (${pct}%)<br/>` +
+               `累计占比：${cum}%`;
+      }
+    },
+    legend: {
+      data: ['缺陷频次', '累计占比'],
+      top: 0, right: 10,
+      textStyle: { color: ROLE.text, fontSize: mobile ? 11 : 12 }
+    },
+    grid: {
+      left: mobile ? 46 : 60,
+      right: mobile ? 46 : 60,
+      top: 40,
+      bottom: mobile ? 70 : 50
+    },
+    xAxis: {
+      type: 'category',
+      data: items.map(d => d.name),
+      axisLine: { lineStyle: { color: ROLE.grid } },
+      axisTick: { show: false },
+      axisLabel: {
+        color: ROLE.text,
+        fontSize: mobile ? 10 : 12,
+        interval: 0,
+        rotate: mobile ? 40 : 25
+      }
+    },
+    yAxis: [
+      {
+        type: 'value',
+        name: mobile ? '' : '缺陷频次（件）',
+        nameTextStyle: { color: ROLE.muted },
+        axisLabel: { color: ROLE.muted, fontSize: mobile ? 10 : 11 },
+        splitLine: { lineStyle: { color: ROLE.grid, type: 'dashed', opacity: 0.5 } }
+      },
+      {
+        type: 'value',
+        name: mobile ? '' : '累计占比',
+        nameTextStyle: { color: ROLE.muted },
+        min: 0, max: 100, interval: 20,
+        axisLabel: { color: ROLE.muted, formatter: '{value}%', fontSize: mobile ? 10 : 11 },
+        splitLine: { show: false }
+      }
+    ],
+    series: [
+      {
+        name: '缺陷频次',
+        type: 'bar',
+        barWidth: '55%',
+        data: items.map((it, idx) => ({
+          value: it.count,
+          itemStyle: {
+            color: idx <= cutoffIdx ? ROLE.focal : ROLE.context,
+            borderRadius: [3, 3, 0, 0]
+          }
+        }))
+      },
+      {
+        name: '累计占比',
+        type: 'line',
+        yAxisIndex: 1,
+        data: cumPct,
+        symbol: 'circle',
+        symbolSize: 6,
+        lineStyle: { width: 2.2, color: '#D97706' },
+        itemStyle: { color: '#D97706', borderColor: '#FFFFFF', borderWidth: 1.5 },
+        markLine: {
+          symbol: ['none', 'none'],
+          data: [
+            {
+              yAxis: 80,
+              lineStyle: { color: '#DC2626', type: 'dashed', width: 1.5 },
+              label: {
+                formatter: '80% 核心截断线',
+                position: 'insideEndTop',
+                color: '#DC2626',
+                fontSize: 11
+              }
+            }
+          ]
+        }
+      }
+    ]
+  };
+}
+
+function render() {
+  chart.resize();
+  chart.setOption(buildOption(window.innerWidth), true);
+}
+render();
+let timer = null;
+window.addEventListener('resize', () => {
+  clearTimeout(timer);
+  timer = setTimeout(render, 120);
+});
+</script>
+</body>
+</html>

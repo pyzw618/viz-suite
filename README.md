@@ -4,23 +4,25 @@
 
 > 深度审查报告见 [`docs/skill_cluster_evaluation.md`](docs/skill_cluster_evaluation.md)；分阶段演进与验收日志见 [`docs/阶段优化记录.md`](docs/阶段优化记录.md)。
 
-## 一、核心架构（Stage P1 重构后）
+## 一、核心架构（Stage P2 完善后）
 
 ```text
 AGENT.md                         # 仓库级协作与路由概览
-THIRD_PARTY_NOTICES.md           # 开源资产协议与清洁室声明
+THIRD_PARTY_NOTICES.md           # 开源资产协议、OFL 字体与清洁室声明
 skills/
-├── SKILL.md                     # 根薄路由入口 (viz-suite, ≤40 行, 定义 <SKILL>/<WORKSPACE> 与语义分流)
+├── SKILL.md                     # 根薄路由入口 (viz-suite, ≤30 行, 定义 <SKILL>/<WORKSPACE> 与语义分流)
 ├── README.md                    # 挂载指南与快速冒烟命令
-├── shared/                      # 跨通道共享底座（令牌、色板、4 场景 JSON、数据画像、物理与碰撞审计）
+├── shared/                      # 跨通道共享底座（内置 9 款 OFL 字体、合规空间底图、29 套色板、4 场景预设、数据画像）
+│   ├── assets/fonts/            # Inter / IBM Plex Serif / JetBrains Mono / Noto Sans SC 静态 TTF 字体
+│   ├── assets/geo/              # china_prov_tile_grid / ne_110m_countries / us_states_hexgrid
 │   ├── assets/scenes/           # academic.json / bi.json / story.json / geo.json
-│   ├── references/              # host-adapter / decision-tree (61 项映射) / scene-deltas / anti-patterns
+│   ├── references/              # host-adapter / decision-tree (42 统计 + 23 交互 + 12 信息图 + 8 架构 Master)
 │   └── scripts/                 # resolve_runtime.py / profile_data.py / audit_export.py
-├── viz-figure/                  # 通道 1：出版级统计与科学图表（28 黄金配方 + 轻量 JPG 缩略图）+ 逆向提取 (SOURCE/B/C/X)
-├── viz-interactive/             # 通道 2：离线交互图表与响应式看板（15 ECharts + 4 D3 + 驾驶舱/KPI + CDP 双视口验收）
-└── viz-diagram/                 # 通道 3：结构化信息图与逻辑架构图（12 布局 × 4 皮肤 + 100 本地 Lucide 图标 + HTML/SVG）
+├── viz-figure/                  # 通道 1：出版级统计与科学图表（42 黄金配方 + 800px ≤60KB JPG 预览）+ 逆向提取 (SOURCE/B/C/X)
+├── viz-interactive/             # 通道 2：离线交互图表与响应式看板（16 ECharts + 4 D3 + 1 Geo + 驾驶舱/KPI + CDP 双视口验收）
+└── viz-diagram/                 # 通道 3：结构化信息图与逻辑架构图（12 布局 × 6 皮肤 + 8 独立矢量架构 Master + 100 本地图标）
 examples/
-├── fixtures/                    # 测试夹具与脏数据样本
+├── fixtures/                    # 测试夹具与 6 套真实场景脏数据基准
 └── golden-runs/                 # 回归金标（dirty-csv / brand-lock / web-templates / infographic / reverse / end-to-end）
 docs/
 ├── skill_cluster_evaluation.md  # 集群深度审查与对标改进方案

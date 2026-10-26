@@ -36,7 +36,7 @@ STYLES_PATH = ASSETS / "styles.json"
 
 LAYOUT_IDS = ["list-grid", "list-row", "sequence-steps", "timeline", "pyramid", "funnel",
               "quadrant", "compare-binary", "hierarchy-tree", "mindmap", "cycle", "stat-cards"]
-STYLE_IDS = ["editorial", "minimal", "technical", "warm"]
+STYLE_IDS = ["editorial", "minimal", "technical", "warm", "mckinsey", "academic_blueprint"]
 
 TOKEN_RE = re.compile(r"[A-Za-z0-9]+(?:[._%+\-/][A-Za-z0-9]+)*|\s+|.", re.S)
 CLOSING_PUNCT = set("，。；：、,.!?;:!?)]}》」』】")
@@ -705,6 +705,14 @@ def card_html(module: dict, warnings: list[str], cls: str = "") -> str:
         cls_delta = "down" if str(module["delta"]).strip().startswith(("-", "↓", "−")) else "up"
         arrow = "↓" if cls_delta == "down" else "↑"
         delta = f'<div class="delta {cls_delta}">{arrow} {esc(module["delta"].lstrip("+-↑↓− "))}</div>'
+    progress = ""
+    if module.get("progress") is not None:
+        p_val = max(0.0, min(100.0, float(module["progress"])))
+        progress = f'<div class="progress-bar" style="background:var(--surface2, #E5E7EB);height:6px;border-radius:3px;margin:8px 0;overflow:hidden"><div style="background:var(--accent, #00205B);height:100%;width:{p_val:.1f}%"></div></div>'
+    tags = ""
+    if module.get("tags"):
+        chips = "".join(f'<span class="tag-chip" style="display:inline-block;padding:2px 8px;font-size:11px;background:var(--surface2, #E5E7EB);color:var(--muted);border-radius:4px;margin-right:4px;margin-top:4px">{esc(t)}</span>' for t in module["tags"])
+        tags = f'<div class="tags-container" style="margin-top:6px">{chips}</div>'
     items = ""
     if module.get("items"):
         lis = "".join(
@@ -713,8 +721,8 @@ def card_html(module: dict, warnings: list[str], cls: str = "") -> str:
         items = f"<ul>{lis}</ul>"
     body = f'<p>{esc(module["body"])}</p>' if module.get("body") else ""
     icon = html_icon(module.get("icon"), "icon", warnings)
-    return (f'<article class="card {cls}">{icon}{kicker}{value}{label}{delta}'
-            f'<h3>{esc(module["title"])}</h3>{body}{items}</article>')
+    return (f'<article class="card {cls}">{icon}{kicker}{value}{label}{delta}{progress}'
+            f'<h3>{esc(module["title"])}</h3>{body}{items}{tags}</article>')
 
 
 def layout_list_grid(spec, style, warnings):

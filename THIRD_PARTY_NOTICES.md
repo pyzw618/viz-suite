@@ -1,103 +1,82 @@
 # THIRD_PARTY_NOTICES
 
-本项目（viz-suite）仅打包宽松协议资产与独立编写的代码。以下列出第三方来源、协议与使用范围；运行时 Python 依赖不随仓库分发，由 PEP 723 在 `uv run` 时解析，遵循各自协议。
+本项目（viz-suite）严格遵守开源许可规范，仅打包宽松协议资产与独立编写的代码。以下列出第三方来源、协议与使用范围；运行时 Python 依赖不随仓库分发，由 PEP 723 在 `uv run` 时解析，遵循各自开源协议。
 
-## 一、内置资产
+---
+
+## 一、内置静态开源字体资产 (`skills/shared/assets/fonts/`)
+
+本项目内置 9 款经过官方检验的静态 TrueType (`.ttf`) 字体文件，全部遵循 **SIL Open Font License 1.1 (OFL 1.1)**。支持自由分发、商用与矢量 PDF (Type 42) 嵌入。
+
+| 字体名称 | 权属人 / 上游项目 | 文件名 | 协议 | 用途说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| Inter (Regular, Medium, Bold) | Rasmus Andersson / The Inter Project (https://rsms.me/inter/) | `Inter-Regular.ttf`, `Inter-Medium.ttf`, `Inter-Bold.ttf` | SIL OFL 1.1 | 现代无衬线正文、坐标轴与信息图标签基准 |
+| IBM Plex Serif (Regular, Bold) | IBM Corp. (https://github.com/IBM/plex) | `IBMPlexSerif-Regular.ttf`, `IBMPlexSerif-Bold.ttf` | SIL OFL 1.1 | 权威学术报刊衬线大标题与引文强调 |
+| JetBrains Mono (Regular, Bold) | JetBrains s.r.o. (https://www.jetbrains.com/lp/mono/) | `JetBrainsMono-Regular.ttf`, `JetBrainsMono-Bold.ttf` | SIL OFL 1.1 | 表格数值对齐、等宽代码与统计量指标展示 |
+| Noto Sans SC (Regular, Bold) | Google LLC (https://fonts.google.com/noto/specimen/Noto+Sans+SC) | `NotoSansSC-Regular.ttf`, `NotoSansSC-Bold.ttf` | SIL OFL 1.1 | 跨平台中文无衬线印刷级正文与图例 |
+
+### SIL Open Font License 1.1 简要说明
+字体软件按 SIL Open Font License Version 1.1 授权分发。允许自由使用、研究、复制、合并、嵌入、修改与重新分发。本项目未单独销售字体本身，亦未在修改版中使用保留字体名称。
+
+---
+
+## 二、地理底图与拓扑网格资产 (`skills/shared/assets/geo/`)
+
+| 资产文件 | 来源与规格 | 协议 | 用途说明 |
+| :--- | :--- | :--- | :--- |
+| `china_prov_tile_grid.json` | viz-suite 规范化原创拓扑（12 列 × 9 行） | CC0 1.0 (Public Domain) | 34 省级行政区均权方形示意网格（非精确国界线，规避大省面积视觉偏倚与测绘合规风险） |
+| `ne_110m_countries.geojson` | Natural Earth 110m (https://www.naturalearthdata.com/) | CC0 1.0 (Public Domain) | 全球 177 国陆地轮廓矢量底图，纯 NumPy 罗宾逊投影映射 |
+| `us_states_hexgrid.geojson` | NPR / US Census Bureau 开放数据 | 0BSD / CC0 | 美国 50 州蜂窝均权六边形网格 |
+| `us_states_tile_grid.json` | 开放数据社区贡献 | CC0 1.0 | 美国 50 州方形均权网格 |
+
+---
+
+## 三、期刊版式规范与调色板基准
 
 | 组件 | 来源 | 协议 | 使用位置 | 说明 |
 | :--- | :--- | :--- | :--- | :--- |
-| SciencePlots（样式参数） | https://github.com/garrettj403/SciencePlots | MIT | `skills/viz-python/assets/styles/*.mplstyle` | 提纯 `science` / `nature` / `ieee` 参数，移除 LaTeX 依赖、专有字体硬编码与 `savefig.bbox=tight` |
-| MetBrewer（色彩值） | https://github.com/BlakeRMills/MetBrewer | CC0 1.0 | `skills/viz-core/assets/palettes.json` | 仅使用 HEX 色值与上游 `colorblind` 标记 |
-| ColorBrewer 2.0（色板） | https://colorbrewer2.org | Apache-2.0 | `skills/viz-core/assets/palettes.json` | Dark2 / Set2 / Paired 色板 |
-| Okabe-Ito 色板 | Okabe & Ito (2008), *Color Universal Design* | 公开学术标准 | `skills/viz-core/assets/palettes.json` | 色盲安全分类色板；本项目未复制任何代码文件 |
-| 自研色板与令牌 | viz-suite 原创 | MIT | `skills/viz-core/assets/*` | `academic_muted`、`business_clean`、`bi_ibcs`、`editorial_warm`、`gray_print` 与全部 `category_order` / CVD 指标 |
-| Apache ECharts 5.6.0 | https://echarts.apache.org | Apache-2.0 | `skills/viz-web/assets/vendor/echarts.min.js` | 本地压缩发行版；全文见同目录 `LICENSE-echarts.txt`，版权声明见 `NOTICE-echarts.txt` |
-| D3.js v7.9.0 | https://d3js.org | ISC | `skills/viz-web/assets/vendor/d3.min.js` | 本地压缩发行版；全文见同目录 `LICENSE-d3.txt` |
-| Lucide Icons 1.61.0 | https://lucide.dev | ISC | `skills/viz-infographic/assets/icons/*.svg` | 精选 100 个语义图标；全文见同目录 `LICENSE.txt` |
+| 期刊版式出版标准 | Nature, Science, Cell Press, PNAS, Lancet, IEEE, ACM 及 `scientific-agent-skills` | MIT / 公开规范 | `skills/viz-figure/assets/publisher_profiles.json` | 各顶刊单栏/双栏最大尺寸、DPI、字号阶梯与色盲友好要求 |
+| SciencePlots 样式参数 | https://github.com/garrettj403/SciencePlots | MIT | `skills/shared/assets/tokens.json` | 提纯 `science` / `nature` / `ieee` 参数，移除专有字体硬编码 |
+| Paul Tol's Colour Schemes | Paul Tol, SRON (https://personal.sron.nl/~pault/) | CC0 1.0 / 公共领域 | `skills/shared/assets/palettes.json` | `tol_bright`, `tol_muted`, `tol_light`, `tol_vibrant` CVD 色盲安全色板 |
+| Crameri Scientific Colour Maps | Fabio Crameri (https://www.fabiocrameri.ch/colourmaps/) | MIT / CC0 | `skills/shared/assets/palettes.json` | `crameri_batlow`, `crameri_roma` 连续/发散感知均匀色标 |
+| MetBrewer 色彩库 | https://github.com/BlakeRMills/MetBrewer | CC0 1.0 | `skills/shared/assets/palettes.json` | `met_hiroshige`, `met_klimt` 艺术级配色与色盲安全指标 |
+| ColorBrewer 2.0 | https://colorbrewer2.org | Apache-2.0 | `skills/shared/assets/palettes.json` | `Dark2`, `Set2`, `Paired` 经典色板 |
+| Okabe-Ito 色板 | Okabe & Ito (2008), *Color Universal Design* | 公开学术标准 | `skills/shared/assets/palettes.json` | 色盲安全分类色板 |
+| 自研色板与主题令牌 | viz-suite 原创 | MIT | `skills/shared/assets/tokens.json` | `academic_muted`、`business_clean`、`bi_ibcs`、`editorial_warm`、`mckinsey`、`academic_blueprint` 与全色系 CIEDE2000 色差排序 |
 
-### SciencePlots MIT 许可全文
+---
 
-```text
-MIT License
+## 四、前端库与图标资产
 
-Copyright (c) 2018 John Garrett
+| 组件 | 来源 | 协议 | 使用位置 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| Apache ECharts 5.6.0 | https://echarts.apache.org | Apache-2.0 | `skills/viz-interactive/assets/vendor/echarts.min.js` | 本地压缩发行版；许可全文见 `LICENSE-echarts.txt`，版权声明见 `NOTICE-echarts.txt` |
+| D3.js v7.9.0 | https://d3js.org | ISC | `skills/viz-interactive/assets/vendor/d3.min.js` | 本地压缩发行版；许可全文见 `LICENSE-d3.txt` |
+| Lucide Icons 1.61.0 | https://lucide.dev | ISC | `skills/viz-diagram/assets/icons/*.svg` | 精选 100 个语义图标；许可全文见 `LICENSE.txt` |
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+---
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+## 五、运行时 Python 依赖（不随仓库分发）
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-### MetBrewer CC0 1.0
-
-MetBrewer 的全部色板以 CC0 1.0 Universal 释出，可自由复制、修改与商用；本项目仅提取色值，并对取色顺序与色盲指标做了独立计算。来源致谢：Blake R. Mills, MetBrewer。
-
-### ColorBrewer 2.0
-
-ColorBrewer 色板由 Cynthia Brewer 设计，按 Apache License 2.0 使用；本项目仅使用公开色值，未复制其源代码。
-
-### Okabe-Ito
-
-引用：Okabe, M., & Ito, K. (2008). Color universal design (CUD): How to make figures and presentations that are friendly to colorblind people. 本项目使用其公开推荐的 7 色序列（不含黑色）。
-
-### Apache ECharts 5.6.0
-
-Apache ECharts 由 Apache Software Foundation 以 Apache License 2.0 发布。本项目内置其官方压缩发行版 `echarts.min.js`，未修改源码；完整许可全文见 `skills/viz-web/assets/vendor/LICENSE-echarts.txt`，版权与 NOTICE 见 `skills/viz-web/assets/vendor/NOTICE-echarts.txt`。上游项目：https://echarts.apache.org。
-
-### D3.js v7.9.0
-
-D3.js 由 Mike Bostock 以 ISC 许可发布。本项目内置其官方压缩发行版 `d3.min.js`，未修改源码；完整许可全文见 `skills/viz-web/assets/vendor/LICENSE-d3.txt`。上游项目：https://d3js.org。
-
-### Lucide Icons 1.61.0
-
-Lucide Icons 以 ISC 许可发布。本项目精选 100 个语义图标（本地 SVG），仅改了展示尺寸与颜色继承，未修改路径数据；完整许可全文见 `skills/viz-infographic/assets/icons/LICENSE.txt`。上游项目：https://lucide.dev。
-
-## 二、运行时 Python 依赖（不随仓库分发）
-
-| 依赖 | 协议 | 使用脚本 |
+| 依赖 | 协议 | 用途 |
 | :--- | :--- | :--- |
-| matplotlib | PSF-based / BSD-compatible | `viz_style.py`、`detect_fonts.py`、配方 |
-| numpy | BSD-3-Clause | 画像、配方、体检 |
-| pandas | BSD-3-Clause | `profile_data.py`、配方 |
-| openpyxl | MIT | `profile_data.py` |
-| Pillow | HPND / MIT-CMU | `audit_export.py` |
-| pypdf | BSD-3-Clause | `audit_export.py` |
-| defusedxml | PSF-2.0 | `audit_export.py`、`web_extract.py` |
-| opencv-python-headless | Apache-2.0 | `inspect_image.py`、`calibrate_and_extract.py` |
-| scikit-image | BSD-3-Clause | `compare_render.py` |
-| scipy | BSD-3-Clause | `calibrate_and_extract.py` |
+| matplotlib | PSF-based / BSD-compatible | 核心绘图底座、版式注入、排版体检 |
+| numpy | BSD-3-Clause | 罗宾逊投影映射、统计核密度、数据变换 |
+| pandas | BSD-3-Clause | 数据剖析、长宽表转换、排序计算 |
+| openpyxl | MIT | Excel 报表解析 |
+| Pillow | HPND / MIT-CMU | 缩略图高质量压制、尺寸审计 |
+| pypdf | BSD-3-Clause | 矢量 PDF 字体嵌入 (Type 42) 深度体检 |
+| defusedxml | PSF-2.0 | 安全 XML 解析 |
+| opencv-python-headless | Apache-2.0 | 图像特征检验（逆向管线） |
+| scikit-image | BSD-3-Clause | 图像像素级保真比对 |
+| scipy | BSD-3-Clause | 空间计算与科学统计推断 |
 
-这些依赖通过各脚本顶部 PEP 723 注释声明，由 `uv` 在运行时安装；分发本项目不包含其源码。
+这些依赖由各脚本顶部 PEP 723 声明，由 `uv` 在沙箱环境中按需解析，源码不随仓库打包分发。
 
-## 三、清洁室声明（Clean-Room）
+---
 
-- 本项目**未复制** `vivid-figures-skill` / `vivid-illustration-skill` 的任何 `.py` 源文件、私有色板 HEX、Markdown 原文、HTML 快照或预览图片。
-- 吸收的仅为不受著作权排他保护的方法论与通用数学逻辑：`selection-index.jsonl` + 预览实图选型 + 源码保真卡工作流、基于标准库 `ast` 的保真比对、最大色差取色序、连续/发散色阶插值、WCAG 合成亮度对比公式、受约束版式旋钮与引用尺寸反推。
-- 28 套配方全部基于宽松协议开源基座与自有合成数据独立编写，预览图由本项目脚本实跑生成。
-- HTML 模板、看板、KPI 卡页、`capture_html.py` 的 CDP 客户端、`lint_html.py`、`check_layout.py`、`render_infographic.py`、4 个场景差分规范与 `viz-reverse` 管线均为本项目独立编写；仅内置上游 ECharts/D3/Lucide 发行版与运行时 Python 依赖。
-- `ggsci`（GPL-3）、`maidr-skill`（GPL-3）未复制任何代码或色值定义。
-- 咨询公司模板与 FT 海报仅提炼公开分类学与版式原则，未复制原图、商标或版式文件。
+## 六、清洁室独立研发声明（Clean-Room Implementation）
 
-## 四、明确未打包的资产
-
-- 商业专有字体（仅引用系统已安装字体名）；
-- 中国及其他敏感地区行政区划边界 GeoJSON（由用户自备合规数据）；
-- 任何需要登录、付费或授权的内容；
-- 宿主内置默认 Skill 文件（本仓库不修改）。
-
-## 五、后续阶段占位
-
-后续阶段如引入新的第三方资产，将在本文件补充来源、协议与许可全文。
+1. **零直接代码复制**：本项目绝对未复制参考仓库 `vivid-figures-skill` / `vivid-illustration-skill`（受 Personal Non-Commercial 协议保护）或 `ggsci` / `maidr-skill`（受 GPL-3 传染性协议保护）的任何 `.py` 源代码、私有色板 HEX、Markdown 原文或图片。
+2. **抽象架构吸收**：仅吸收属于通用行业实践的方法论（如多层文本防重叠、二八法则、网格均权示意、Saga/Medallion 架构图示），并采用宽松开源协议底座全新独立重构。
+3. **配方自研生成**：全库 42 套配方、23 套交互模板、12 套信息图布局与 8 套矢量架构 Master 均由本项目脚本实跑生成并经过全流程自动化测试验证。

@@ -8,9 +8,9 @@
 
 | 通道目录 | 适用任务语义 | 核心资产与确定性闭环 |
 | :--- | :--- | :--- |
-| [`skills/viz-figure/`](skills/viz-figure/SKILL.md) | 统计与科学图表（PDF/SVG/PNG）、期刊双栏多面板组图、空间分级设色；或从 HTML/SVG/截图逆向提取数据与重绘 | 28 套黄金配方 + `viz_style.py` 流式避让 + `SOURCE/B/C/X` 逆向管线 + Renderer 碰撞自检 |
-| [`skills/viz-interactive/`](skills/viz-interactive/SKILL.md) | 浏览器端筛选联动、Hover 明细、过渡叙事单文件交互图及响应式商业驾驶舱 | 本地 ECharts 5（15 套）+ D3 v7（4 套）+ 12 列看板/KPI + `lint_html` / `check_layout` / CDP 双视口截图 |
-| [`skills/viz-diagram/`](skills/viz-diagram/SKILL.md) | 流程步骤、时间轴、金字塔、四象限、层级树、飞轮闭环、大数卡等结构化观点/架构信息图 | 12 布局 × 4 皮肤 + 100 个本地 Lucide 图标 + HTML/SVG 双端输出 |
+| [`skills/viz-figure/`](skills/viz-figure/SKILL.md) | 统计与科学图表（PDF/SVG/PNG）、期刊双栏多面板组图、空间分级设色；或从 HTML/SVG/截图逆向提取数据与重绘 | 42 套黄金配方 + 内置 OFL 静态字体库 + `viz_style.py` 流式避让 + `SOURCE/B/C/X` 逆向管线 + Renderer 碰撞自检 |
+| [`skills/viz-interactive/`](skills/viz-interactive/SKILL.md) | 浏览器端筛选联动、Hover 明细、过渡叙事单文件交互图及响应式商业驾驶舱 | 本地 ECharts 5（16 套含帕累托）+ D3 v7（4 套）+ 中国均权交互地图 + 顶部 KPI 饰条 + `lint_html` / `check_layout` / CDP 双视口截图 |
+| [`skills/viz-diagram/`](skills/viz-diagram/SKILL.md) | 流程步骤、时间轴、金字塔、四象限、层级树、飞轮闭环、大数卡等结构化观点/架构信息图 | 12 布局 × 6 皮肤（含麦肯锡/学术蓝图）+ 8 套独立矢量架构 Master + 100 个本地 Lucide 图标 + HTML/SVG 双端输出 |
 | [`skills/shared/`](skills/shared/references/host-adapter.md) | 跨通道共享底座（不单独作为子 Skill 挂载） | `tokens.json`、`palettes.json`、`scenes/{academic,bi,story,geo}.json`、`profile_data.py`、`audit_export.py`、`resolve_runtime.py` |
 
 ## 二、路径锚点与工程铁律

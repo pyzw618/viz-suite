@@ -1,15 +1,22 @@
 {
   "id": "geo",
   "title_zh": "空间地理分级设色与区域分析",
-  "palette": "colorbrewer_dark2",
+  "palette": "met_egypt",
   "layout_family": "minimal_tufte",
   "in_canvas_title": true,
   "width_mm": 180,
   "double_column_mm": 183,
   "aspect": 0.72,
   "font_size_level": "regular",
-  "formats": ["pdf", "svg", "png"],
-  "dpi": [300, 600],
+  "formats": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "dpi": [
+    300,
+    600
+  ],
   "top_no_title": 0.92,
   "slots": {
     "title_paradigm": "区域范围 + 标准化指标 + 时间切片；副标题注明分箱方法（分位数/自然断点/等距）与单位。",
@@ -17,6 +24,18 @@
     "color_strategy": "单向指标用 5–7 档顺序色阶，有零点/均值锚点用发散色阶；无数据区域固定浅灰斜纹（hatch），严禁涂成 0 值颜色。",
     "axis_and_grid": "隐藏笛卡尔刻度框，图例、比例尺与来源独立分区摆放，不压盖地图主体。",
     "annotations": "强制在图脚注明投影/坐标系（WGS-84 / CGJ-02 / CGCS2000 / 示意网格）及底图来源许可；面积着色须用密度/人均/比率而非绝对总量。",
-    "prohibitions": ["绝对总量直接做面积分级设色", "擅自下载或拼接未经审核的敏感边界", "缺失区域冒充 0 值", "3D 倾斜透视地图"]
-  }
+    "prohibitions": [
+      "绝对总量直接做面积分级设色",
+      "擅自下载或拼接未经审核的敏感边界",
+      "缺失区域冒充 0 值",
+      "3D 倾斜透视地图"
+    ]
+  },
+  "recommended_palettes": [
+    "met_hokusai2",
+    "met_egypt",
+    "met_hokusai3",
+    "met_hiroshige",
+    "met_isfahan1"
+  ]
 }

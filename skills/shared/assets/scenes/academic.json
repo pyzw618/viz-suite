@@ -8,8 +8,15 @@
   "double_column_mm": 183,
   "aspect": 0.68,
   "font_size_level": "small",
-  "formats": ["pdf", "svg", "png"],
-  "dpi": [300, 600],
+  "formats": [
+    "pdf",
+    "svg",
+    "png"
+  ],
+  "dpi": [
+    300,
+    600
+  ],
   "top_no_title": 0.93,
   "slots": {
     "title_paradigm": "图内不放大标题；子图左上加粗体小写面板标号 a, b, c；结论、n、误差定义与检验名称写入外部图注。",
@@ -17,6 +24,20 @@
     "color_strategy": "色盲安全色板（默认 okabe_ito），叠加线型/点型保证灰度打印可辨；连续色阶限 Viridis/Cividis，严禁 Jet/Rainbow。",
     "axis_and_grid": "经典 L 型（去顶右脊线）或闭合框线 framed_journal；默认无背景网格；柱/面积强制零基线。",
     "annotations": "强制标明样本量 n 与误差棒口径（SD / SEM / 95% CI）；显著性括号仅绘制上游真实检验结果，严禁编造 p 值。",
-    "prohibitions": ["编造 p 值或显著性星号", "Jet/Rainbow 色阶", "伪 3D 饼/柱与装饰性阴影", "截断柱状图零基线", "商业 KPI 宣传话术"]
-  }
+    "prohibitions": [
+      "编造 p 值或显著性星号",
+      "Jet/Rainbow 色阶",
+      "伪 3D 饼/柱与装饰性阴影",
+      "截断柱状图零基线",
+      "商业 KPI 宣传话术"
+    ]
+  },
+  "recommended_palettes": [
+    "okabe_ito",
+    "tol_bright",
+    "tol_muted",
+    "tol_high_contrast",
+    "met_veronese",
+    "met_isfahan1"
+  ]
 }

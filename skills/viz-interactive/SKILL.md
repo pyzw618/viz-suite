@@ -1,6 +1,6 @@
 ---
 name: viz-interactive
-description: 离线自包含交互图表与响应式商业看板通道。基于本地 ECharts 5 与 D3 v7 模板交付零外链单文件 HTML（15 套标准交互图、4 套 D3 定制拓扑、12 列联动驾驶舱与 KPI 卡页），配套无头浏览器双视口截图与溢出体检。不用于期刊静态矢量图（用 viz-figure）、静态信息图（用 viz-diagram）或含后端数据库的完整 Web 应用。
+description: 离线自包含交互图表与响应式商业看板通道。基于本地 ECharts 5 与 D3 v7 模板交付零外链单文件 HTML（16 套标准交互图含帕累托、4 套 D3 定制拓扑、中国均权交互地图、12 列联动驾驶舱与 KPI 卡页），配套无头浏览器双视口截图与溢出体检。不用于期刊静态矢量图（用 viz-figure）、静态信息图（用 viz-diagram）或含后端数据库的完整 Web 应用。
 ---
 
 # viz-interactive · 离线交互图表与响应式看板
@@ -10,7 +10,8 @@ description: 离线自包含交互图表与响应式商业看板通道。基于�
 ## 一、模板选择与场景映射
 
 1. **按复杂度选底座**（完整清单见 [选型决策树](../shared/references/decision-tree.md)）：
-   - **标准交互统计图（优先）**：`templates/echarts/{line,area,bar,hbar,stacked_bar,donut,scatter,bubble,heatmap,radar,funnel,gauge,boxplot,sankey,treemap}.html`（15 套）。
+   - **标准交互统计图（优先）**：`templates/echarts/{line,area,bar,hbar,stacked_bar,donut,scatter,bubble,heatmap,radar,funnel,gauge,boxplot,sankey,treemap,pareto}.html`（16 套）。
+   - **空间均权交互地图**：`templates/geo/china_grid_interactive.html`（中国 34 省级行政区均权网格 + 联动迷你走势）。
    - **非标关系与过渡拓扑**：`templates/d3/{force_network,chord,treemap,line_transition}.html`（4 套；不要用 D3 重写 ECharts 已覆盖的标准图）。
    - **多维筛选驾驶舱与指标卡**：`templates/dashboard/sales_dashboard.html`（12 列 CSS Grid 多图共享状态联动）、`templates/kpi/kpi_cards.html`（纯 SVG Sparkline 大数卡）。
 2. **数据画像与场景令牌**：输入为表格文件时先跑 `<SKILL>/shared/scripts/profile_data.py`；按任务场景加载 `<SKILL>/shared/assets/scenes/{bi,story,geo}.json`（见 [场景增量](../shared/references/scene-deltas.md)），通过语义 CSS 变量（`--viz-focal/context/positive/negative/alert`）统一色彩，跨组件锁定同一实体颜色。

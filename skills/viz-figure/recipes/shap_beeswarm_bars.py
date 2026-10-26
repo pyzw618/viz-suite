@@ -137,29 +137,30 @@ def main() -> int:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
         theme = vs.bootstrap(theme, font_scale=size["font_scale"])
-        pal = vs.palette(theme=theme)
+        pal = vs.select_palette("met_hiroshige", theme=theme, cli_palette=PALETTE)
+        theme["palette_id"] = pal.id
         warnings.extend(size["notes"])
         roles = theme["colors"]["roles"]
 
         fig = plt.figure(figsize=size["figsize"])
         fig.set_facecolor(theme["colors"]["backgrounds"]["white"])
-        gs = fig.add_gridspec(1, 2, width_ratios=[3.8, 1.18], wspace=0.13)
+        gs = fig.add_gridspec(1, 2, width_ratios=[3.4, 1.45], wspace=0.11)
         ax = fig.add_subplot(gs[0, 0])
         ax_bar = fig.add_subplot(gs[0, 1], sharey=ax)
         vs.apply_style(ax, LAYOUT, theme=theme)
         vs.apply_style(ax_bar, LAYOUT, theme=theme)
         ax_bar.tick_params(axis="y", left=False, labelleft=False)
-        ax.yaxis.grid(False)
-        ax.xaxis.grid(True, linestyle="--", linewidth=0.6, color=roles["grid"], alpha=0.3)
+        ax.yaxis.grid(True, linestyle=":", linewidth=0.5, color=roles["grid"], alpha=0.45)
+        ax.xaxis.grid(True, linestyle="--", linewidth=0.6, color=roles["grid"], alpha=0.35)
         ax_bar.yaxis.grid(False)
-        ax_bar.xaxis.grid(True, linestyle="--", linewidth=0.6, color=roles["grid"], alpha=0.3)
+        ax_bar.xaxis.grid(True, linestyle="--", linewidth=0.6, color=roles["grid"], alpha=0.35)
 
         values_all = df[VALUE_COL].to_numpy(dtype=float)
         vmin, vmax = np.percentile(values_all, [2, 98])
         if vmax <= vmin:
             vmin, vmax = float(values_all.min()), float(values_all.max()) + 1e-6
         norm = Normalize(vmin=float(vmin), vmax=float(vmax))
-        cmap = vs.diverging_cmap("#0072B2", other="#D55E00", midpoint="#F3F4F6", n=257)
+        cmap = vs.diverging_cmap("#1E5B88", other="#D1495B", midpoint="#E2E8F0", n=257)
         ypos = {f: i for i, f in enumerate(features)}
         rng = np.random.default_rng(DEMO_SEED)
         for feature in features:
@@ -174,42 +175,62 @@ def main() -> int:
             for b in np.unique(bin_idx):
                 members = np.where(bin_idx == b)[0]
                 m = len(members)
-                local = (np.arange(m) - (m - 1) / 2) * 0.035
+                local = (np.arange(m) - (m - 1) / 2) * 0.036
                 rng.shuffle(local)
                 offsets[members] = local
             offsets = np.clip(offsets, -0.34, 0.34)
             y = ypos[feature] + offsets
             sc = ax.scatter(sub[SHAP_COL], y, c=sub[VALUE_COL], cmap=cmap, norm=norm,
-                            s=10, alpha=0.72, edgecolors="none", zorder=3)
+                            s=12, alpha=0.78, edgecolors="none", zorder=3)
         ax.axvline(0, color=roles["muted_text"], linestyle="--", linewidth=0.9, zorder=2)
 
         means = [float(np.abs(df.loc[df[FEATURE_COL] == f, SHAP_COL]).mean()) for f in features]
-        ax_bar.barh(np.arange(len(features)), means, height=0.62,
-                    **vs.bar_kwargs(roles["focal"], theme=theme), zorder=3)
+        total_imp = max(sum(means), 1e-9)
+        ramp = vs.group_lightness_ramp(pal.colors[0], len(features), light_range=(0.42, 0.94), reverse=True)
+        for i, (value, bar_col) in enumerate(zip(means, ramp)):
+            ax_bar.barh(i, value, height=0.64, **vs.bar_kwargs(bar_col, theme=theme), zorder=3)
         max_mean = max(means) if means else 1.0
         for i, value in enumerate(means):
-            ax_bar.text(value + max_mean * 0.03, i, f"{value:.2f}", va="center", ha="left",
-                        fontsize=vs.font_size(theme, "source"), color=roles["text"])
+            lbl = vs.dual_metric_label(value, total_imp, mode="share", fmt="{:.2f}", pct_fmt="{:.0f}%")
+            ax_bar.text(value + max_mean * 0.03, i, lbl, va="center", ha="left",
+                        fontsize=vs.font_size(theme, "source"),
+                        fontweight="bold" if i == 0 else "normal",
+                        color=roles["text"])
+
+        if len(means) >= 4:
+            top3_share = 100.0 * sum(means[:3]) / total_imp
+            ax.text(0.97, 0.05, f"Top 3 累计贡献 {top3_share:.0f}%",
+                    transform=ax.transAxes, ha="right", va="bottom",
+                    fontsize=vs.font_size(theme, "source"), fontweight="bold",
+                    color=vs.mix("#0F172A", pal.colors[0], 0.55),
+                    bbox={"boxstyle": "round,pad=0.28,rounding_size=0.35",
+                          "facecolor": vs.mix("#FFFFFF", pal.colors[0], 0.10),
+                          "edgecolor": vs.mix("#FFFFFF", pal.colors[0], 0.55), "linewidth": 0.8},
+                    zorder=5)
 
         ax.set_yticks(list(range(len(features))))
         ax.set_yticklabels(features)
         ax.set_ylim(len(features) - 0.5, -0.5)
         ax.set_xlabel(X_LABEL)
         ax.set_ylabel("")
-        ax_bar.set_xlabel(RIGHT_LABEL)
-        ax_bar.set_xlim(0, max_mean * 1.28)
+        ax_bar.set_xlabel(f"{RIGHT_LABEL}（含占比%）")
+        ax_bar.set_xlim(0, max_mean * 1.56)
         ax_bar.set_ylim(len(features) - 0.5, -0.5)
 
-        # 底部横向色条（放在布局调整之后，避免位置漂移）
+        # 底部紧凑横向色条（放在布局调整之后，避免位置漂移与超大底边留白）
         vs.add_header(fig, vs.fill_title(TITLE, **stats), SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        vs.adjust_layout(fig, left=0.16, right=0.97, top=0.80, bottom=0.26, theme=theme)
+        vs.adjust_layout(fig, left=0.14, right=0.97, top=0.80, bottom=0.19, theme=theme)
 
         pos = ax.get_position()
-        cax = fig.add_axes([pos.x0 + 0.22 * pos.width, 0.055, 0.45 * pos.width, 0.014])
+        cax = fig.add_axes([pos.x0 + 0.52 * pos.width, 0.048, 0.44 * pos.width, 0.015])
         cb = fig.colorbar(sc, cax=cax, orientation="horizontal", ticks=[])
-        cb.ax.set_title("特征值：低 → 高", fontsize=vs.font_size(theme, "source"),
-                        color=roles["muted_text"], pad=3)
+        cb.outline.set_linewidth(0.5)
+        cb.outline.set_edgecolor(roles["grid"])
+        cax.text(-0.04, 0.5, "特征值 低", transform=cax.transAxes, ha="right", va="center",
+                 fontsize=vs.font_size(theme, "source"), color=roles["muted_text"])
+        cax.text(1.04, 0.5, "高", transform=cax.transAxes, ha="left", va="center",
+                 fontsize=vs.font_size(theme, "source"), color=roles["muted_text"])
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_data.csv"

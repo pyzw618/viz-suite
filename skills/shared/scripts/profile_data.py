@@ -211,20 +211,45 @@ def chart_hints(columns: list[dict], rules: dict) -> list[dict]:
     dates = [c['name'] for c in columns if c['kind'] == 'datetime']
     hints: list[dict] = []
     if dates and numeric:
-        hints.append({"family": "line_area", "why": "时间维 + 数值维：折线/面积优先，禁止用柱状图掩盖连续趋势"})
+        hints.append({
+            "family": "line_area",
+            "why": "时间维 + 数值维：优先 trend_yoy_decomposed（趋势+YoY拆分双图）或 multi_line_direct_label（焦点尾标+参考带），严禁裸折线",
+            "derived_signals": ["yoy_or_mom_delta_pct", "rolling_smooth_trend", "p25_p75_reference_band", "peak_trough_callout"],
+        })
     if categorical and numeric:
         first = next((c for c in columns if c['name'] == categorical[0]), {})
+        card = int(first.get('unique', 0))
         long_labels = first.get('max_label_units', 0) > rules.get('horizontal_label_units', 12)
-        hints.append({
-            "family": "bar_grouped_horizontal" if long_labels else "bar_grouped_vertical",
-            "why": "分类 + 数值：分组/排序条形图；长标签自动横排",
-        })
+        if card >= 8:
+            hints.append({
+                "family": "bar_composite_ranked",
+                "why": f"长尾分类（{card} 类）：优先 ranked_bar_inset_ring（右下负空间嵌套构成环图）或 hbar_delta_capsule（条形+右侧Δ%胶囊微表融合）",
+                "derived_signals": ["share_pct_of_total", "cumulative_pareto_pct", "group_champion_badge"],
+            })
+        else:
+            hints.append({
+                "family": "bar_grouped_horizontal" if long_labels else "bar_grouped_vertical",
+                "why": "分类 + 数值：分组/排序条形图；推荐附加绝对值+占比%/Δ%双指标标签与 ★ 冠军组锚点",
+                "derived_signals": ["share_pct_of_total", "group_champion_badge", "overall_mean_line"],
+            })
     if len(numeric) >= 2:
-        hints.append({"family": "scatter", "why": "双数值维：散点或带边际密度的回归图"})
+        hints.append({
+            "family": "scatter_or_quadrant",
+            "why": "双数值维：优先 scatter_regression_joint（带边际核密度）或 bubble_quadrant_matrix（双均值十字四象限战略气泡图）",
+            "derived_signals": ["ols_or_lowess_fit", "mean_crosshair_quadrants", "marginal_kde"],
+        })
     if numeric and not categorical and not dates:
-        hints.append({"family": "distribution", "why": "单/多数值列：雨云图、箱线图或直方图"})
+        hints.append({
+            "family": "distribution",
+            "why": "单/多数值列：优先 raincloud_fusion（半提琴+箱线+散点）或 ridgeline_density（山脊核密度+中位数锚点）",
+            "derived_signals": ["median_and_iqr", "kde_envelope"],
+        })
     if len(categorical) >= 2 and numeric:
-        hints.append({"family": "heatmap_or_grouped", "why": "双分类维：聚合热力矩阵或分组小多图"})
+        hints.append({
+            "family": "heatmap_or_small_multiples",
+            "why": "双分类维：优先 overview_small_multiples（左全局总览+右分面小多图）或 heatmap_annotated_grid（带行列均值边际条的热力矩阵）",
+            "derived_signals": ["row_col_marginal_means", "intra_group_lightness_ramp"],
+        })
     return hints
 
 

@@ -1,0 +1,20 @@
+{
+  "schema": "viz-suite.fonts-manifest/1",
+  "version": "2026.10",
+  "bundled": [
+    {"file": "Inter-Regular.ttf", "family": "Inter", "weight": 400, "role": "en_sans", "license": "SIL-OFL-1.1", "license_file": "OFL-Inter.txt"},
+    {"file": "Inter-Medium.ttf", "family": "Inter", "weight": 500, "role": "en_sans", "license": "SIL-OFL-1.1", "license_file": "OFL-Inter.txt"},
+    {"file": "Inter-Bold.ttf", "family": "Inter", "weight": 700, "role": "en_sans", "license": "SIL-OFL-1.1", "license_file": "OFL-Inter.txt"},
+    {"file": "IBMPlexSerif-Regular.ttf", "family": "IBM Plex Serif", "weight": 400, "role": "en_serif", "license": "SIL-OFL-1.1", "license_file": "OFL-IBMPlex.txt"},
+    {"file": "IBMPlexSerif-Bold.ttf", "family": "IBM Plex Serif", "weight": 700, "role": "en_serif", "license": "SIL-OFL-1.1", "license_file": "OFL-IBMPlex.txt"},
+    {"file": "JetBrainsMono-Regular.ttf", "family": "JetBrains Mono", "weight": 400, "role": "mono", "license": "SIL-OFL-1.1", "license_file": "OFL-JetBrainsMono.txt"},
+    {"file": "JetBrainsMono-Bold.ttf", "family": "JetBrains Mono", "weight": 700, "role": "mono", "license": "SIL-OFL-1.1", "license_file": "OFL-JetBrainsMono.txt"},
+    {"file": "NotoSansSC-Regular.ttf", "family": "Noto Sans SC", "weight": 400, "role": "zh_sans", "license": "SIL-OFL-1.1", "license_file": "OFL-NotoSansSC.txt"},
+    {"file": "NotoSansSC-Bold.ttf", "family": "Noto Sans SC", "weight": 700, "role": "zh_sans", "license": "SIL-OFL-1.1", "license_file": "OFL-NotoSansSC.txt"}
+  ],
+  "optional_on_demand": [
+    {"file": "NotoSansSC-Medium.ttf", "family": "Noto Sans SC", "weight": 500, "google_css": "Noto+Sans+SC:wght@500", "license": "SIL-OFL-1.1", "license_file": "OFL-NotoSansSC.txt"},
+    {"file": "NotoSerifSC-Regular.ttf", "family": "Noto Serif SC", "weight": 400, "google_css": "Noto+Serif+SC:wght@400", "license": "SIL-OFL-1.1", "license_file": "OFL-NotoSerifSC.txt"},
+    {"file": "NotoSerifSC-Bold.ttf", "family": "Noto Serif SC", "weight": 700, "google_css": "Noto+Serif+SC:wght@700", "license": "SIL-OFL-1.1", "license_file": "OFL-NotoSerifSC.txt"}
+  ]
+}

@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" style="background:#0F172A;font-family:Inter,system-ui,sans-serif;">
+  <defs>
+    <linearGradient id="lts-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="lts-card-1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="lts-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <filter id="lts-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Header -->
+  <g id="slot-header" transform="translate(60, 48)">
+    <rect x="0" y="0" width="4" height="42" fill="url(#lts-accent)" rx="2"/>
+    <text x="16" y="24" fill="#F8FAFC" font-size="24" font-weight="700" letter-spacing="0.5">分层企业级技术平台架构 (Layered Technology Stack)</text>
+    <text x="16" y="44" fill="#94A3B8" font-size="13" font-weight="400">高并发微服务网关、领域驱动核心服务与弹性云原生基础设施蓝图</text>
+  </g>
+
+  <!-- Layer 1: Client & Touchpoints -->
+  <g id="layer-client" transform="translate(60, 120)">
+    <rect x="0" y="0" width="1280" height="130" fill="url(#lts-card-1)" stroke="#334155" stroke-width="1.2" rx="8" filter="url(#lts-glow)"/>
+    <rect x="0" y="0" width="160" height="130" fill="#1E293B" stroke="#334155" stroke-width="1" rx="8 0 0 8"/>
+    <text x="80" y="58" fill="#38BDF8" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">接入层</text>
+    <text x="80" y="78" fill="#64748B" font-size="11" text-anchor="middle">Clients &amp; Edge</text>
+    
+    <!-- Component 1.1 -->
+    <g transform="translate(190, 20)">
+      <rect x="0" y="0" width="240" height="90" fill="#1E293B" stroke="#3B82F6" stroke-width="1" rx="6"/>
+      <text x="20" y="32" fill="#F8FAFC" font-size="14" font-weight="600">Web SPA / Portal</text>
+      <text x="20" y="52" fill="#94A3B8" font-size="11">Next.js SSR + CDN 边缘缓存</text>
+      <rect x="20" y="66" width="60" height="16" fill="#0284C7" fill-opacity="0.25" rx="3"/>
+      <text x="50" y="78" fill="#38BDF8" font-size="10" font-weight="600" text-anchor="middle">HTTP/3</text>
+    </g>
+    <!-- Component 1.2 -->
+    <g transform="translate(460, 20)">
+      <rect x="0" y="0" width="240" height="90" fill="#1E293B" stroke="#3B82F6" stroke-width="1" rx="6"/>
+      <text x="20" y="32" fill="#F8FAFC" font-size="14" font-weight="600">Mobile Native App</text>
+      <text x="20" y="52" fill="#94A3B8" font-size="11">Flutter / Kotlin Multiplatform</text>
+      <rect x="20" y="66" width="60" height="16" fill="#0284C7" fill-opacity="0.25" rx="3"/>
+      <text x="50" y="78" fill="#38BDF8" font-size="10" font-weight="600" text-anchor="middle">QUIC</text>
+    </g>
+    <!-- Component 1.3 -->
+    <g transform="translate(730, 20)">
+      <rect x="0" y="0" width="240" height="90" fill="#1E293B" stroke="#3B82F6" stroke-width="1" rx="6"/>
+      <text x="20" y="32" fill="#F8FAFC" font-size="14" font-weight="600">Open API / SDK</text>
+      <text x="20" y="52" fill="#94A3B8" font-size="11">三方开发者生态与伙伴集成</text>
+      <rect x="20" y="66" width="60" height="16" fill="#0284C7" fill-opacity="0.25" rx="3"/>
+      <text x="50" y="78" fill="#38BDF8" font-size="10" font-weight="600" text-anchor="middle">OAuth 2.1</text>
+    </g>
+    <!-- Component 1.4 -->
+    <g transform="translate(1000, 20)">
+      <rect x="0" y="0" width="240" height="90" fill="#1E293B" stroke="#3B82F6" stroke-width="1" rx="6"/>
+      <text x="20" y="32" fill="#F8FAFC" font-size="14" font-weight="600">IoT / Sensor Feeds</text>
+      <text x="20" y="52" fill="#94A3B8" font-size="11">高频遥测上报与长连接通信</text>
+      <rect x="20" y="66" width="60" height="16" fill="#0284C7" fill-opacity="0.25" rx="3"/>
+      <text x="50" y="78" fill="#38BDF8" font-size="10" font-weight="600" text-anchor="middle">MQTT</text>
+    </g>
+  </g>
+
+  <!-- Connectors 1 -> 2 -->
+  <path d="M700 250 L700 280" stroke="#38BDF8" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="700,284 695,274 705,274" fill="#38BDF8"/>
+
+  <!-- Layer 2: API Gateway & Traffic Routing -->
+  <g id="layer-gateway" transform="translate(60, 290)">
+    <rect x="0" y="0" width="1280" height="120" fill="url(#lts-card-1)" stroke="#334155" stroke-width="1.2" rx="8" filter="url(#lts-glow)"/>
+    <rect x="0" y="0" width="160" height="120" fill="#1E293B" stroke="#334155" stroke-width="1" rx="8 0 0 8"/>
+    <text x="80" y="54" fill="#818CF8" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">智能网关层</text>
+    <text x="80" y="74" fill="#64748B" font-size="11" text-anchor="middle">API &amp; Security</text>
+
+    <!-- Component 2.1 -->
+    <g transform="translate(190, 18)">
+      <rect x="0" y="0" width="320" height="84" fill="#1E293B" stroke="#6366F1" stroke-width="1" rx="6"/>
+      <text x="20" y="30" fill="#F8FAFC" font-size="14" font-weight="600">Traffic Controller (Envoy)</text>
+      <text x="20" y="50" fill="#94A3B8" font-size="11">动态权重灰度发布、全局金丝雀流控</text>
+      <text x="20" y="68" fill="#818CF8" font-size="11">熔断降级：Token Bucket 限流</text>
+    </g>
+    <!-- Component 2.2 -->
+    <g transform="translate(540, 18)">
+      <rect x="0" y="0" width="340" height="84" fill="#1E293B" stroke="#6366F1" stroke-width="1" rx="6"/>
+      <text x="20" y="30" fill="#F8FAFC" font-size="14" font-weight="600">Zero-Trust Identity Auth</text>
+      <text x="20" y="50" fill="#94A3B8" font-size="11">mTLS 双向认证 + JWT Claims 验签</text>
+      <text x="20" y="68" fill="#818CF8" font-size="11">细粒度 RBAC / ABAC 策略裁决</text>
+    </g>
+    <!-- Component 2.3 -->
+    <g transform="translate(910, 18)">
+      <rect x="0" y="0" width="330" height="84" fill="#1E293B" stroke="#6366F1" stroke-width="1" rx="6"/>
+      <text x="20" y="30" fill="#F8FAFC" font-size="14" font-weight="600">BFF &amp; GraphQL Federation</text>
+      <text x="20" y="50" fill="#94A3B8" font-size="11">面向端侧的响应裁剪与异步并发聚合</text>
+      <text x="20" y="68" fill="#818CF8" font-size="11">P99 延迟 SLA &lt; 8ms</text>
+    </g>
+  </g>
+
+  <!-- Connectors 2 -> 3 -->
+  <path d="M700 410 L700 440" stroke="#818CF8" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="700,444 695,434 705,434" fill="#818CF8"/>
+
+  <!-- Layer 3: Core Domain Microservices -->
+  <g id="layer-services" transform="translate(60, 450)">
+    <rect x="0" y="0" width="1280" height="160" fill="url(#lts-card-1)" stroke="#334155" stroke-width="1.2" rx="8" filter="url(#lts-glow)"/>
+    <rect x="0" y="0" width="160" height="160" fill="#1E293B" stroke="#334155" stroke-width="1" rx="8 0 0 8"/>
+    <text x="80" y="72" fill="#34D399" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">核心业务层</text>
+    <text x="80" y="92" fill="#64748B" font-size="11" text-anchor="middle">Domain Services</text>
+
+    <!-- Service 3.1 -->
+    <g transform="translate(190, 20)">
+      <rect x="0" y="0" width="240" height="120" fill="#1E293B" stroke="#10B981" stroke-width="1" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">订单与交易域</text>
+      <text x="16" y="48" fill="#94A3B8" font-size="11">分布式 Saga 状态机协同</text>
+      <text x="16" y="66" fill="#94A3B8" font-size="11">对账与两阶段一致性</text>
+      <rect x="16" y="86" width="90" height="20" fill="#065F46" fill-opacity="0.4" rx="3"/>
+      <text x="61" y="100" fill="#34D399" font-size="10" font-weight="600" text-anchor="middle">gRPC / Protobuf</text>
+    </g>
+    <!-- Service 3.2 -->
+    <g transform="translate(460, 20)">
+      <rect x="0" y="0" width="240" height="120" fill="#1E293B" stroke="#10B981" stroke-width="1" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">用户与资产域</text>
+      <text x="16" y="48" fill="#94A3B8" font-size="11">统一账户画像与权限模型</text>
+      <text x="16" y="66" fill="#94A3B8" font-size="11">防重放与交易密码沙箱</text>
+      <rect x="16" y="86" width="90" height="20" fill="#065F46" fill-opacity="0.4" rx="3"/>
+      <text x="61" y="100" fill="#34D399" font-size="10" font-weight="600" text-anchor="middle">Redis Cluster</text>
+    </g>
+    <!-- Service 3.3 -->
+    <g transform="translate(730, 20)">
+      <rect x="0" y="0" width="240" height="120" fill="#1E293B" stroke="#10B981" stroke-width="1" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">推荐与策略计算</text>
+      <text x="16" y="48" fill="#94A3B8" font-size="11">向量召回与重排序模型</text>
+      <text x="16" y="66" fill="#94A3B8" font-size="11">实时特征工程管道</text>
+      <rect x="16" y="86" width="90" height="20" fill="#065F46" fill-opacity="0.4" rx="3"/>
+      <text x="61" y="100" fill="#34D399" font-size="10" font-weight="600" text-anchor="middle">Milvus / HNSW</text>
+    </g>
+    <!-- Service 3.4 -->
+    <g transform="translate(1000, 20)">
+      <rect x="0" y="0" width="240" height="120" fill="#1E293B" stroke="#10B981" stroke-width="1" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">通知与事件总线</text>
+      <text x="16" y="48" fill="#94A3B8" font-size="11">事件溯源 Event Sourcing</text>
+      <text x="16" y="66" fill="#94A3B8" font-size="11">多端推送信道智能聚合</text>
+      <rect x="16" y="86" width="90" height="20" fill="#065F46" fill-opacity="0.4" rx="3"/>
+      <text x="61" y="100" fill="#34D399" font-size="10" font-weight="600" text-anchor="middle">Kafka 3.6 KRaft</text>
+    </g>
+  </g>
+
+  <!-- Connectors 3 -> 4 -->
+  <path d="M700 610 L700 640" stroke="#34D399" stroke-width="2" stroke-dasharray="4 4"/>
+  <polygon points="700,644 695,634 705,634" fill="#34D399"/>
+
+  <!-- Layer 4: Storage & Cloud Native Infra -->
+  <g id="layer-infra" transform="translate(60, 650)">
+    <rect x="0" y="0" width="1280" height="170" fill="url(#lts-card-1)" stroke="#334155" stroke-width="1.2" rx="8" filter="url(#lts-glow)"/>
+    <rect x="0" y="0" width="160" height="170" fill="#1E293B" stroke="#334155" stroke-width="1" rx="8 0 0 8"/>
+    <text x="80" y="78" fill="#FBBF24" font-size="14" font-weight="700" text-anchor="middle" letter-spacing="1">数据与底座</text>
+    <text x="80" y="98" fill="#64748B" font-size="11" text-anchor="middle">Data &amp; Infra</text>
+
+    <!-- Infra 4.1 -->
+    <g transform="translate(190, 20)">
+      <rect x="0" y="0" width="240" height="130" fill="#1E293B" stroke="#F59E0B" stroke-width="1" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">分布式关系存储</text>
+      <text x="16" y="48" fill="#94A3B8" font-size="11">TiDB / Aurora Multi-Master</text>
+      <text x="16" y="66" fill="#94A3B8" font-size="11">多地多活容灾 &amp; 读写分离</text>
+      <text x="16" y="84" fill="#FBBF24" font-size="11">RPO = 0, RTO &lt; 30s</text>
+      <rect x="16" y="98" width="80" height="18" fill="#78350F" fill-opacity="0.4" rx="3"/>
+      <text x="56" y="111" fill="#FBBF24" font-size="10" font-weight="600" text-anchor="middle">ACID 保证</text>
+    </g>
+    <!-- Infra 4.2 -->
+    <g transform="translate(460, 20)">
+      <rect x="0" y="0" width="240" height="130" fill="#1E293B" stroke="#F59E0B" stroke-width="1" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">实时计算与湖仓</text>
+      <text x="16" y="48" fill="#94A3B8" font-size="11">Flink CDC + Apache Iceberg</text>
+      <text x="16" y="66" fill="#94A3B8" font-size="11">分钟级指标看板与宽表</text>
+      <text x="16" y="84" fill="#FBBF24" font-size="11">PB 级对象存储冷热分层</text>
+      <rect x="16" y="98" width="80" height="18" fill="#78350F" fill-opacity="0.4" rx="3"/>
+      <text x="56" y="111" fill="#FBBF24" font-size="10" font-weight="600" text-anchor="middle">Lakehouse</text>
+    </g>
+    <!-- Infra 4.3 -->
+    <g transform="translate(730, 20)">
+      <rect x="0" y="0" width="240" height="130" fill="#1E293B" stroke="#F59E0B" stroke-width="1" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">云原生容器调度</text>
+      <text x="16" y="48" fill="#94A3B8" font-size="11">Kubernetes 1.28 + Cilium eBPF</text>
+      <text x="16" y="66" fill="#94A3B8" font-size="11">HPA 弹性扩缩容（秒级响应）</text>
+      <text x="16" y="84" fill="#FBBF24" font-size="11">GitOps 持续交付发布流水线</text>
+      <rect x="16" y="98" width="80" height="18" fill="#78350F" fill-opacity="0.4" rx="3"/>
+      <text x="56" y="111" fill="#FBBF24" font-size="10" font-weight="600" text-anchor="middle">Cloud Native</text>
+    </g>
+    <!-- Infra 4.4 -->
+    <g transform="translate(1000, 20)">
+      <rect x="0" y="0" width="240" height="130" fill="#1E293B" stroke="#F59E0B" stroke-width="1" rx="6"/>
+      <text x="16" y="28" fill="#F8FAFC" font-size="14" font-weight="600">全链路可观测体系</text>
+      <text x="16" y="48" fill="#94A3B8" font-size="11">OpenTelemetry + Prometheus</text>
+      <text x="16" y="66" fill="#94A3B8" font-size="11">Grafana 统一监控与分布式追踪</text>
+      <text x="16" y="84" fill="#FBBF24" font-size="11">AIOps 智能异常根因定位</text>
+      <rect x="16" y="98" width="80" height="18" fill="#78350F" fill-opacity="0.4" rx="3"/>
+      <text x="56" y="111" fill="#FBBF24" font-size="10" font-weight="600" text-anchor="middle">Observability</text>
+    </g>
+  </g>
+
+  <!-- Footer -->
+  <g id="slot-footer" transform="translate(60, 856)">
+    <text x="0" y="14" fill="#475569" font-size="11">制图标准：Antigravity Architecture SVG Master 2026 ｜ 架构演进成熟度：L4 级原生分布式</text>
+    <text x="1280" y="14" fill="#475569" font-size="11" text-anchor="end">SLA 可用性：99.995% ｜ 跨可用区机房双活部署</text>
+  </g>
+</svg>

@@ -1,0 +1,133 @@
+{
+  "version": "2026.10-p2",
+  "masters": [
+    {
+      "id": "layered_tech_stack",
+      "file": "layered_tech_stack.svg",
+      "title": "分层中台技术架构",
+      "description": "现代化分层技术中台架构（客户端/网关/微服务/基础设施底座）",
+      "category": "technical",
+      "viewBox": [
+        0,
+        0,
+        1400,
+        900
+      ],
+      "width": 1400,
+      "height": 900,
+      "theme": "dark"
+    },
+    {
+      "id": "swimlane_pipeline",
+      "file": "swimlane_pipeline.svg",
+      "title": "跨部门泳道交付流水线",
+      "description": "跨部门敏捷研发交付闭环泳道（产品/研发/测试/运维）",
+      "category": "process",
+      "viewBox": [
+        0,
+        0,
+        1400,
+        900
+      ],
+      "width": 1400,
+      "height": 900,
+      "theme": "dark"
+    },
+    {
+      "id": "mckinsey_scqa_pyramid",
+      "file": "mckinsey_scqa_pyramid.svg",
+      "title": "麦肯锡 SCQA 战略金字塔",
+      "description": "麦肯锡金字塔原理 SCQA 战略推导图与三大 MECE 支撑支柱",
+      "category": "consulting",
+      "viewBox": [
+        0,
+        0,
+        1400,
+        900
+      ],
+      "width": 1400,
+      "height": 900,
+      "theme": "light"
+    },
+    {
+      "id": "dual_flywheel_loop",
+      "file": "dual_flywheel_loop.svg",
+      "title": "双飞轮商业网络协同闭环",
+      "description": "双飞轮增长闭环模型：供给端规模效应与需求端网络效应深度耦合",
+      "category": "business",
+      "viewBox": [
+        0,
+        0,
+        1400,
+        900
+      ],
+      "width": 1400,
+      "height": 900,
+      "theme": "dark"
+    },
+    {
+      "id": "value_chain_chevron",
+      "file": "value_chain_chevron.svg",
+      "title": "波特端到端价值链模型",
+      "description": "波特价值链燕尾箭头图：3 大支持活动通栏 + 5 大初级活动燕尾流向",
+      "category": "strategy",
+      "viewBox": [
+        0,
+        0,
+        1400,
+        900
+      ],
+      "width": 1400,
+      "height": 900,
+      "theme": "dark"
+    },
+    {
+      "id": "medallion_lakehouse",
+      "file": "medallion_lakehouse.svg",
+      "title": "现代湖仓一体 Medallion 架构",
+      "description": "现代湖仓一体 Medallion 架构：Bronze/Silver/Gold 分层治理与消费终端",
+      "category": "data",
+      "viewBox": [
+        0,
+        0,
+        1400,
+        900
+      ],
+      "width": 1400,
+      "height": 900,
+      "theme": "dark"
+    },
+    {
+      "id": "agentic_rag_loop",
+      "file": "agentic_rag_loop.svg",
+      "title": "自主 AI 智能体 RAG 反思闭环",
+      "description": "自主 AI 智能体 RAG 检索生成与反思闭环：意图路由、混合检索与自纠错环",
+      "category": "ai",
+      "viewBox": [
+        0,
+        0,
+        1400,
+        900
+      ],
+      "width": 1400,
+      "height": 900,
+      "theme": "dark"
+    },
+    {
+      "id": "competitive_2x2_radar",
+      "file": "competitive_2x2_radar.svg",
+      "title": "战略竞品 2x2 与能力雷达",
+      "description": "竞品对标综合套件：战略四象限定位矩阵与六维核心能力雷达图",
+      "category": "competitive",
+      "viewBox": [
+        0,
+        0,
+        1400,
+        900
+      ],
+      "width": 1400,
+      "height": 900,
+      "theme": "dark"
+    }
+  ]
+}
