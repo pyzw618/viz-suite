@@ -35,6 +35,7 @@ GROUP_ORDER = None
 RISK_TIMES = [0, 6, 12, 18, 24, 30, 36]
 X_LABEL = "随访时间（月）"
 Y_LABEL = "生存率"
+SCENE = None
 PALETTE = None
 LAYOUT = "soft_grid"
 TITLE = "联合组生存率最高，对照组中位生存期约 17 个月"
@@ -112,10 +113,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -126,6 +128,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "km_survival_risk_table"}}
@@ -144,7 +148,13 @@ def main() -> int:
             raise ValueError("清洗后数据为空")
         groups = GROUP_ORDER or list(dict.fromkeys(df[GROUP_COL].astype(str).tolist()))
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (True and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -156,7 +166,7 @@ def main() -> int:
 
         fig = plt.figure(figsize=size["figsize"])
         fig.set_facecolor(theme["colors"]["backgrounds"]["white"])
-        gs = fig.add_gridspec(2, 1, height_ratios=[4.0, 1.15], hspace=0.0)
+        gs = fig.add_gridspec(2, 1, height_ratios=[4.0, 1.18], hspace=0.08)
         ax = fig.add_subplot(gs[0, 0])
         ax_risk = fig.add_subplot(gs[1, 0], sharex=ax)
         vs.apply_style(ax, LAYOUT, theme=theme)
@@ -203,6 +213,7 @@ def main() -> int:
         ax_risk.tick_params(axis="x", labelsize=vs.font_size(theme, "annotation"))
         ax_risk.set_xticks(RISK_TIMES)
         ax_risk.set_xticklabels([str(t) for t in RISK_TIMES])
+        ax.tick_params(axis="x", labelbottom=False)
         for spine in ("top", "right", "left"):
             ax_risk.spines[spine].set_visible(False)
         ax_risk.grid(False)
@@ -218,12 +229,9 @@ def main() -> int:
                              fontsize=vs.font_size(theme, "annotation"),
                              color=roles["text"])
 
-        fig.text(0.015, 0.965, TITLE, ha="left", va="top", fontweight="bold",
-                 fontsize=vs.font_size(theme, "title"), color=roles["text"])
-        fig.text(0.015, 0.925, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"), color=roles["muted_text"])
+        vs.add_header(fig, TITLE, SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.10, right=0.975, top=0.79, bottom=0.13)
+        vs.adjust_layout(fig, left=0.14, right=0.975, top=0.79, bottom=0.13, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_data.csv"
@@ -240,7 +248,7 @@ def main() -> int:
             "figure": {"recipe": "km_survival_risk_table", "groups": groups, "medians": medians,
                        "risk_times": RISK_TIMES, "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001

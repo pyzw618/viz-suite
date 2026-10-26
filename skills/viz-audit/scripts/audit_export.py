@@ -153,12 +153,14 @@ def audit_png(path: Path, args) -> tuple[list, dict]:
     checks: list = []
     metrics: dict = {"file": str(path)}
     name = path.name
+    raw_layout_audit = None
     try:
         with Image.open(path) as im:
             im.load()
             width_px, height_px = im.size
             mode = im.mode
             dpi_info = im.info.get("dpi")
+            raw_layout_audit = im.info.get("viz_layout_audit")
             rgb = im.convert("RGB")
             gray_small = im.convert("L").resize((max(1, width_px // 8), max(1, height_px // 8)))
     except Exception as exc:  # noqa: BLE001
@@ -228,6 +230,29 @@ def audit_png(path: Path, args) -> tuple[list, dict]:
     else:
         add(checks, name, "wcag_contrast", "info", True,
             "未提供 --fg/--bg，跳过精确 WCAG 对比度；请在 SVG/HTML 或设计令牌中核对")
+
+    if raw_layout_audit:
+        try:
+            la = json.loads(raw_layout_audit)
+            metrics["layout_audit"] = la
+            c_cnt = int(la.get("collision_count", 0))
+            cl_cnt = int(la.get("clipped_count", 0))
+            if c_cnt > 0:
+                sample = la.get("collisions", [{}])[0]
+                detail = (f"Renderer 检测到 {c_cnt} 处文本/图例重叠，首例："
+                          f"{sample.get('a_role')}「{sample.get('a_text')}」× "
+                          f"{sample.get('b_role')}「{sample.get('b_text')}」")
+                add(checks, name, "text_collision", "blocking", False, detail,
+                    collisions=la.get("collisions", []))
+            else:
+                add(checks, name, "text_collision", "info", True, "Renderer 文本与图例包围盒零重叠")
+            if cl_cnt > 0:
+                sample_cl = la.get("clipped", [{}])[0]
+                add(checks, name, "text_clipped", "blocking", False,
+                    f"检测到 {cl_cnt} 处文本超出画布边界，首例：{sample_cl.get('role')}「{sample_cl.get('text')}」",
+                    clipped=la.get("clipped", []))
+        except json.JSONDecodeError:
+            pass
 
     return checks, metrics
 

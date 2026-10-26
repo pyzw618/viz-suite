@@ -37,6 +37,7 @@ DROP_DUPLICATES = False               # True 时剔除完全重复行（会在 w
 GROUP_COL = "行业"
 VALUE_COL = "30日留存率"
 GROUP_ORDER = None
+SCENE = None
 PALETTE = None
 LAYOUT = "soft_grid"
 TITLE = "金融行业留存分布最集中，医疗行业离散度最大"
@@ -124,10 +125,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -138,6 +140,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "raincloud_fusion"}}
@@ -175,7 +179,13 @@ def main() -> int:
             raise ValueError("没有可用的分组")
         data = {g: df.loc[df[GROUP_COL].astype(str) == g, VALUE_COL].to_numpy(dtype=float) for g in groups}
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (False and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -281,14 +291,9 @@ def main() -> int:
                             handlelength=1.0, columnspacing=1.2, handletextpad=0.5)
             vs.style_legend(leg, theme)
 
-        fig.text(0.015, 0.965, TITLE, ha="left", va="top", fontweight="bold",
-                 fontsize=vs.font_size(theme, "title"),
-                 color=theme["colors"]["roles"]["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"),
-                 color=theme["colors"]["roles"]["muted_text"])
+        vs.add_header(fig, TITLE, SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.095, right=0.975, top=0.80, bottom=0.225)
+        vs.adjust_layout(fig, left=0.095, right=0.975, top=0.80, bottom=0.225, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_summary.csv"
@@ -310,7 +315,7 @@ def main() -> int:
                 "width_mm": size["width_mm"],
                 "height_mm": size["height_mm"],
                 "kde": "gaussian_silverman",
-                "visual_verified": False,
+                "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                 "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核",
             },
         })

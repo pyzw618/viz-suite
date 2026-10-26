@@ -72,12 +72,18 @@ def _load_json_asset(filename: str) -> dict | None:
     return None
 
 
+_LAST_LAYOUT_AUDIT: dict | None = None
+_CLOSING_PUNCT = set("，。；：、,.!?;:)]}》」』】%")
+
+
 _FALLBACK_TOKENS = {
     "colors": {
         "roles": {"focal": "#0072B2", "context": "#CBD5E1", "positive": "#198038",
                   "negative": "#DA1E28", "alert": "#D97706", "grid": "#E2E8F0",
                   "background": "#FFFFFF", "text": "#1F2937", "muted_text": "#6B7280"},
         "default_palette": "okabe_ito",
+        "palette_by_scene": {"academic": "okabe_ito", "bi": "bi_ibcs",
+                             "story": "editorial_warm", "geo": "met_egypt", "default": "okabe_ito"},
         "backgrounds": {"white": "#FFFFFF", "soft_tint": "#F8FAFC"},
     },
     "typography": {
@@ -108,6 +114,21 @@ _FALLBACK_TOKENS = {
     "rules": {"zero_baseline": True, "horizontal_label_units": 12,
               "horizontal_category_count": 5, "cvd_min_delta_e": 10.0,
               "min_text_contrast_wcag": 4.5, "min_graphic_contrast_wcag": 3.0},
+    "scenes": {
+        "academic": {"palette": "okabe_ito", "layout_family": "clean_open", "in_canvas_title": False,
+                     "width_mm": 89, "double_column_mm": 183, "aspect": 0.68,
+                     "font_size_level": "small", "formats": ["pdf", "svg", "png"], "dpi": [300, 600],
+                     "top_no_title": 0.93},
+        "bi": {"palette": "bi_ibcs", "layout_family": "soft_grid", "in_canvas_title": True,
+               "width_mm": 180, "aspect": 0.58, "font_size_level": "regular",
+               "formats": ["pdf", "png"], "dpi": [300]},
+        "story": {"palette": "editorial_warm", "layout_family": "clean_open", "in_canvas_title": True,
+                  "focal_context_only": True, "width_mm": 254, "aspect": 0.5625,
+                  "font_size_level": "large", "formats": ["svg", "png"], "dpi": [300, 600]},
+        "geo": {"palette": "met_egypt", "layout_family": "clean_open", "in_canvas_title": True,
+                "width_mm": 170, "aspect": 0.72, "font_size_level": "regular",
+                "formats": ["svg", "png"], "dpi": [300]},
+    },
 }
 
 _FALLBACK_PALETTE = {
@@ -122,6 +143,11 @@ _FALLBACK_PALETTE = {
 def warn_once(message: str) -> None:
     if message not in _WARNED:
         _WARNED.add(message)
+        try:
+            if hasattr(sys.stderr, "reconfigure"):
+                sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:  # noqa: BLE001
+            pass
         warnings.warn(message, stacklevel=2)
 
 
@@ -236,48 +262,115 @@ def _find_upwards(name: str, start: Path | None = None) -> Path | None:
     return None
 
 
-def resolve_theme(overrides: dict | None = None) -> dict:
-    """优先级：显式 overrides > 项目 EXTEND.md > 用户 EXTEND.md > figure-manifest.json > tokens。"""
+def _normalize_scene(scene: str | None) -> str | None:
+    if not scene:
+        return None
+    s = str(scene).strip().lower()
+    if s.startswith("viz-scene-"):
+        s = s[len("viz-scene-"):]
+    return s or None
+
+
+def _apply_scene(theme: dict, scene: str | None) -> bool:
+    sid = _normalize_scene(scene)
+    if not sid:
+        return False
+    scenes = theme.get("scenes") or _FALLBACK_TOKENS.get("scenes", {})
+    pal_by_scene = theme.get("colors", {}).get("palette_by_scene") or {}
+    preset = scenes.get(sid)
+    if preset is None and sid not in pal_by_scene:
+        warn_once(f"未知场景预设 {scene!r}（支持 academic/bi/story/geo），已保持基线配置")
+        return False
+    preset = dict(preset or {})
+    pal_id = preset.get("palette") or pal_by_scene.get(sid)
+    if pal_id:
+        theme.setdefault("colors", {})["default_palette"] = pal_id
+        theme["palette_id"] = pal_id
+    if preset.get("layout_family"):
+        theme["layout_family"] = preset["layout_family"]
+    if "in_canvas_title" in preset:
+        theme["in_canvas_title"] = bool(preset["in_canvas_title"])
+    if preset.get("width_mm"):
+        theme.setdefault("figure", {})["default_width_mm"] = preset["width_mm"]
+    if preset.get("aspect"):
+        theme.setdefault("figure", {})["default_aspect"] = preset["aspect"]
+    if preset.get("font_size_level"):
+        theme["font_size_level"] = preset["font_size_level"]
+    theme["scene"] = sid
+    theme["scene_preset"] = preset
+    return True
+
+
+def resolve_theme(overrides: dict | None = None, scene: str | None = None) -> dict:
+    """优先级：显式 overrides / scene > 项目 EXTEND.md > 用户 EXTEND.md > figure-manifest.json > 环境变量 VIZ_SCENE > tokens。"""
     tokens = json.loads(json.dumps(load_tokens()))  # deep copy
     theme = dict(tokens)
     theme["_source"] = "tokens"
+    theme.setdefault("in_canvas_title", True)
+    theme.setdefault("font_size_level", "regular")
 
-    # manifest 提供任务级锁定默认值，但显式的团队/用户品牌规则（EXTEND）优先
     manifest_path = _find_upwards("figure-manifest.json")
+    manifest: dict = {}
     if manifest_path:
         try:
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            theme["manifest"] = manifest
-            theme["manifest_path"] = str(manifest_path)
-            if manifest.get("palette"):
-                theme.setdefault("colors", {})["default_palette"] = manifest["palette"]
-            if manifest.get("layout_family"):
-                theme["layout_family"] = manifest["layout_family"]
-            if manifest.get("series_color_map"):
-                theme["series_color_map"] = manifest["series_color_map"]
-            if manifest.get("width_mm"):
-                theme.setdefault("figure", {})["default_width_mm"] = manifest["width_mm"]
-            if manifest.get("footer"):
-                theme.setdefault("brand", {})["footer"] = manifest["footer"]
-            if manifest.get("fonts"):
-                theme.setdefault("typography", {}).update(manifest["fonts"])
-            theme["_source"] = "manifest"
         except json.JSONDecodeError:
             warn_once(f"figure-manifest.json 解析失败，已忽略：{manifest_path}")
+            manifest = {}
 
-    user_ext = Path.home() / ".viz-suite" / "EXTEND.md"
-    if user_ext.is_file():
-        _merge_extend(theme, read_extend(user_ext))
+    user_ext_path = Path.home() / ".viz-suite" / "EXTEND.md"
+    user_ext = read_extend(user_ext_path) if user_ext_path.is_file() else {}
+    proj_ext_path = _find_upwards(".viz-suite/EXTEND.md") or _find_upwards("EXTEND.md")
+    proj_ext = read_extend(proj_ext_path) if proj_ext_path else {}
+
+    # 1. 环境级或 manifest 声明的场景差分（位于 tokens 之上、manifest 具体字段之下）
+    env_or_manifest_scene = manifest.get("scene") or os.environ.get("VIZ_SCENE")
+    if env_or_manifest_scene and _apply_scene(theme, str(env_or_manifest_scene)):
+        theme["_source"] = f"scene:{theme['scene']}"
+
+    # 2. figure-manifest.json 任务级锁定
+    if manifest:
+        theme["manifest"] = manifest
+        theme["manifest_path"] = str(manifest_path)
+        if manifest.get("palette"):
+            theme.setdefault("colors", {})["default_palette"] = manifest["palette"]
+            theme["palette_id"] = manifest["palette"]
+        if manifest.get("layout_family"):
+            theme["layout_family"] = manifest["layout_family"]
+        if manifest.get("series_color_map"):
+            theme["series_color_map"] = manifest["series_color_map"]
+        if manifest.get("width_mm"):
+            theme.setdefault("figure", {})["default_width_mm"] = manifest["width_mm"]
+        if manifest.get("aspect"):
+            theme.setdefault("figure", {})["default_aspect"] = manifest["aspect"]
+        if "in_canvas_title" in manifest:
+            theme["in_canvas_title"] = bool(manifest["in_canvas_title"])
+        if manifest.get("footer"):
+            theme.setdefault("brand", {})["footer"] = manifest["footer"]
+        if manifest.get("fonts"):
+            theme.setdefault("typography", {}).update(manifest["fonts"])
+        theme["_source"] = "manifest"
+
+    # 3. 用户与项目 EXTEND.md
+    if user_ext:
+        _merge_extend(theme, user_ext)
         theme["_source"] = "user_extend"
-
-    proj_ext = _find_upwards(".viz-suite/EXTEND.md") or _find_upwards("EXTEND.md")
     if proj_ext:
-        _merge_extend(theme, read_extend(proj_ext))
+        _merge_extend(theme, proj_ext)
         theme["_source"] = "project_extend"
 
+    # 4. 当前指令显式传入的 scene 与 overrides 优先级最高
+    explicit_scene = scene or (overrides or {}).get("scene")
+    if explicit_scene and _apply_scene(theme, str(explicit_scene)):
+        theme["_source"] = f"scene:{theme['scene']}"
+
     if overrides:
-        _deep_merge(theme, overrides)
-        theme["_source"] = "overrides"
+        clean_overrides = {k: v for k, v in overrides.items() if k != "scene"}
+        if clean_overrides:
+            _deep_merge(theme, clean_overrides)
+            if "colors" in clean_overrides and "default_palette" in clean_overrides["colors"]:
+                theme["palette_id"] = clean_overrides["colors"]["default_palette"]
+            theme["_source"] = "overrides"
 
     theme.setdefault("palette_id", theme.get("colors", {}).get("default_palette", "okabe_ito"))
     theme.setdefault("layout_family", "clean_open")
@@ -288,13 +381,21 @@ def resolve_theme(overrides: dict | None = None) -> dict:
 def _merge_extend(theme: dict, ext: dict) -> None:
     if not ext:
         return
+    if ext.get("scene"):
+        _apply_scene(theme, str(ext["scene"]))
+    if "in_canvas_title" in ext and ext["in_canvas_title"] is not None:
+        theme["in_canvas_title"] = bool(ext["in_canvas_title"])
     colors = ext.get("colors") or {}
-    if colors:
-        theme.setdefault("colors", {}).setdefault("roles", {}).update(
-            {str(k).lower(): v for k, v in colors.items() if isinstance(v, str)}
-        )
+    if isinstance(colors, dict) and colors:
+        if colors.get("palette"):
+            theme.setdefault("colors", {})["default_palette"] = str(colors["palette"])
+            theme["palette_id"] = str(colors["palette"])
+        role_updates = {str(k).lower(): v for k, v in colors.items()
+                        if isinstance(v, str) and str(k).lower() != "palette"}
+        if role_updates:
+            theme.setdefault("colors", {}).setdefault("roles", {}).update(role_updates)
     typo = ext.get("typography") or {}
-    if typo:
+    if isinstance(typo, dict) and typo:
         theme.setdefault("typography", {})
         for key in ("font_zh", "font_en", "font_serif_zh"):
             if typo.get(key):
@@ -303,10 +404,10 @@ def _merge_extend(theme: dict, ext: dict) -> None:
                     v.strip() for v in str(value).split(",") if v.strip()
                 ]
     brand = ext.get("brand") or {}
-    if brand:
+    if isinstance(brand, dict) and brand:
         theme.setdefault("brand", {}).update(brand)
     stack = ext.get("stack") or {}
-    if stack:
+    if isinstance(stack, dict) and stack:
         theme.setdefault("stack", {}).update(stack)
 
 
@@ -540,11 +641,18 @@ def available_fonts(candidates: list[str]) -> list[str]:
     return [f for f in candidates if f in installed]
 
 
-def bootstrap(theme: dict | None = None, font_scale: float = 1.0) -> dict:
-    """应用字体与全局 rcParams，返回 theme。"""
-    theme = theme or resolve_theme()
+def bootstrap(theme: dict | None = None, font_scale: float = 1.0,
+              scene: str | None = None) -> dict:
+    """应用字体、场景预设与全局 rcParams，返回 theme。"""
+    if theme is None:
+        theme = resolve_theme(scene=scene)
+    elif scene:
+        _apply_scene(theme, scene)
     _silence_benign_font_warnings()
     typo = theme.get("typography", {})
+    levels = typo.get("font_size_levels", {})
+    level_scale = float(levels.get(theme.get("font_size_level", "regular"), 1.0))
+    effective_scale = font_scale * level_scale if not theme.get("_level_applied_in_plan") else font_scale
     zh = available_fonts(typo.get("font_zh", []))
     en = available_fonts(typo.get("font_en", []))
     if not zh:
@@ -563,11 +671,11 @@ def bootstrap(theme: dict | None = None, font_scale: float = 1.0) -> dict:
         "svg.fonttype": "none",
         "figure.dpi": 110,
         "savefig.dpi": 300,
-        "axes.titlesize": typo.get("size_pt", {}).get("title", 13) * font_scale,
-        "axes.labelsize": typo.get("size_pt", {}).get("axis_label", 10) * font_scale,
-        "xtick.labelsize": typo.get("size_pt", {}).get("tick", 9) * font_scale,
-        "ytick.labelsize": typo.get("size_pt", {}).get("tick", 9) * font_scale,
-        "legend.fontsize": typo.get("size_pt", {}).get("legend", 9) * font_scale,
+        "axes.titlesize": typo.get("size_pt", {}).get("title", 13) * effective_scale,
+        "axes.labelsize": typo.get("size_pt", {}).get("axis_label", 10) * effective_scale,
+        "xtick.labelsize": typo.get("size_pt", {}).get("tick", 9) * effective_scale,
+        "ytick.labelsize": typo.get("size_pt", {}).get("tick", 9) * effective_scale,
+        "legend.fontsize": typo.get("size_pt", {}).get("legend", 9) * effective_scale,
         "axes.linewidth": theme.get("layout", {}).get("families", {})
                           .get(theme.get("layout_family", "clean_open"), {})
                           .get("spine_width", 0.9),
@@ -580,7 +688,7 @@ def bootstrap(theme: dict | None = None, font_scale: float = 1.0) -> dict:
         "figure.autolayout": False,
     })
     theme["_font_stack"] = stack
-    theme["_font_scale"] = font_scale
+    theme["_font_scale"] = effective_scale
     return theme
 
 
@@ -761,24 +869,29 @@ def plan_size(width_mm: float | None = None, aspect: float | None = None,
     fig_cfg = theme.get("figure", {})
     width_mm = width_mm or fig_cfg.get("default_width_mm", 160)
     aspect = aspect or fig_cfg.get("default_aspect", 0.62)
-    min_pt = min_pt or theme.get("typography", {}).get("min_effective_pt", 6.0)
-    base_pt = base_pt or theme.get("typography", {}).get("size_pt", {}).get("axis_label", 10.0)
+    typo = theme.get("typography", {})
+    min_pt = min_pt or typo.get("min_effective_pt", 6.0)
+    base_pt = base_pt or typo.get("size_pt", {}).get("axis_label", 10.0)
+    levels = typo.get("font_size_levels", {})
+    level_scale = float(levels.get(theme.get("font_size_level", "regular"), 1.0))
     notes: list[str] = []
 
-    font_scale = 1.0
+    font_scale = level_scale
     if cite_mm and cite_mm < width_mm:
         needed = min_pt * width_mm / cite_mm
-        if base_pt < needed:
+        if base_pt * level_scale < needed:
             font_scale = needed / base_pt
             notes.append(
                 f"目标引用宽度 {cite_mm:.0f}mm 小于原生 {width_mm:.0f}mm，"
                 f"字号已放大 {font_scale:.2f}× 以保证上页 {min_pt:.1f}pt 可读"
             )
         else:
-            notes.append(f"上页实际字号约 {base_pt * cite_mm / width_mm:.1f}pt，满足 ≥{min_pt:.1f}pt")
+            notes.append(f"上页实际字号约 {base_pt * level_scale * cite_mm / width_mm:.1f}pt，满足 ≥{min_pt:.1f}pt")
     if base_font and base_font < min_pt:
         notes.append(f"基准字号 {base_font}pt 低于最小可读 {min_pt}pt")
 
+    theme["_level_applied_in_plan"] = True
+    theme["_planned_width_mm"] = float(width_mm)
     width_in = width_mm / 25.4
     return {
         "figsize": (round(width_in, 3), round(width_in * aspect, 3)),
@@ -792,15 +905,23 @@ def plan_size(width_mm: float | None = None, aspect: float | None = None,
 
 
 def pick_orientation(labels: list[str], threshold: int | None = None,
-                     min_count: int | None = None, theme: dict | None = None) -> str:
+                     min_count: int | None = None, theme: dict | None = None,
+                     width_mm: float | None = None) -> str:
     theme = theme or resolve_theme()
     rules = theme.get("rules", {})
     threshold = threshold or rules.get("horizontal_label_units", 12)
     min_count = min_count or rules.get("horizontal_category_count", 5)
     if not labels:
         return "vertical"
-    longest = max(display_units(x) for x in labels)
-    return "horizontal" if longest > threshold and len(labels) > min_count else "vertical"
+    line_units = [max((display_units(part) for part in str(x).splitlines()), default=0) for x in labels]
+    longest = max(line_units)
+    if longest > threshold and len(labels) > min_count:
+        return "horizontal"
+    w_mm = float(width_mm or theme.get("_planned_width_mm") or theme.get("figure", {}).get("default_width_mm", 160))
+    plot_w_pt = w_mm * 0.88 * (72.0 / 25.4)
+    tick_pt = font_size(theme, "tick")
+    needed_pt = sum((u * 0.50 + 1.15) * tick_pt for u in line_units)
+    return "horizontal" if needed_pt > plot_w_pt and len(labels) >= 3 else "vertical"
 
 
 def ensure_zero_baseline(ax, axis: str = "y"):
@@ -870,32 +991,491 @@ def sig_bracket(ax, x1: float, x2: float, y: float, label: str,
     return ax
 
 
+def wrap_text_units(text: str, max_units: int) -> str:
+    """按中英文显示宽度（CJK=2, ASCII=1）安全折行，避免行首孤立标点与画布右侧裁切。"""
+    text = "" if text is None else str(text).strip()
+    if not text or max_units <= 4:
+        return text
+    out_lines: list[str] = []
+    for raw_line in text.splitlines():
+        raw_line = raw_line.strip()
+        if not raw_line or display_units(raw_line) <= max_units:
+            out_lines.append(raw_line)
+            continue
+        cur: list[str] = []
+        cur_u = 0
+        i = 0
+        n = len(raw_line)
+        while i < n:
+            ch = raw_line[i]
+            # 保持连续 ASCII 词/数字不被拆断
+            if ch.isascii() and (ch.isalnum() or ch in "._%+-/"):
+                j = i + 1
+                while j < n and raw_line[j].isascii() and (raw_line[j].isalnum() or raw_line[j] in "._%+-/"):
+                    j += 1
+                tok = raw_line[i:j]
+                i = j
+            else:
+                tok = ch
+                i += 1
+            tok_u = display_units(tok)
+            if cur and cur_u + tok_u > max_units:
+                if tok in _CLOSING_PUNCT:
+                    cur.append(tok)
+                    out_lines.append("".join(cur).rstrip())
+                    cur, cur_u = [], 0
+                    continue
+                out_lines.append("".join(cur).rstrip())
+                cur = [] if tok.isspace() else [tok]
+                cur_u = 0 if tok.isspace() else tok_u
+            else:
+                cur.append(tok)
+                cur_u += tok_u
+        if cur:
+            out_lines.append("".join(cur).rstrip())
+    return "\n".join(out_lines)
+
+
+def _max_units_for_fig(fig, fontsize_pt: float, x_left: float = 0.015, x_right: float = 0.985) -> int:
+    fig_w_pt = float(fig.get_size_inches()[0]) * 72.0
+    avail_pt = max(36.0, fig_w_pt * max(0.2, x_right - x_left))
+    return max(14, int(avail_pt / max(fontsize_pt * 0.53, 1.0)))
+
+
+def add_header(fig, title: str = "", subtitle: str = "", theme: dict | None = None,
+               x: float = 0.015, top_y: float = 0.972, force: bool = False):
+    """流式页眉：自动适应画布宽度折行、动态串联标题与副标题间距，并响应场景无标题配置。"""
+    theme = theme or resolve_theme()
+    if not force and not theme.get("in_canvas_title", True):
+        fig._viz_header_suppressed = True  # type: ignore[attr-defined]
+        return fig
+    if force:
+        fig._viz_force_header = True  # type: ignore[attr-defined]
+    roles = theme.get("colors", {}).get("roles", {})
+    title_str = (title or "").strip()
+    sub_str = (subtitle or "").strip()
+    cur_y = top_y
+
+    if title_str:
+        t_pt = font_size(theme, "title")
+        wrapped_t = wrap_text_units(title_str, _max_units_for_fig(fig, t_pt, x))
+        t_obj = fig.text(x, cur_y, wrapped_t, ha="left", va="top", fontweight="bold",
+                         fontsize=t_pt, color=roles.get("text", "#1F2937"))
+        t_obj._viz_role = "title"  # type: ignore[attr-defined]
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+        t_bbox = t_obj.get_window_extent(renderer).transformed(fig.transFigure.inverted())
+        cur_y = float(t_bbox.y0) - 0.011
+
+    if sub_str:
+        s_pt = font_size(theme, "subtitle")
+        wrapped_s = wrap_text_units(sub_str, _max_units_for_fig(fig, s_pt, x))
+        s_obj = fig.text(x, cur_y, wrapped_s, ha="left", va="top",
+                         fontsize=s_pt, color=roles.get("muted_text", "#6B7280"))
+        s_obj._viz_role = "subtitle"  # type: ignore[attr-defined]
+    return fig
+
+
 def add_source(fig, text: str, theme: dict | None = None, x: float = 0.01, y: float = 0.005):
     theme = theme or resolve_theme()
     roles = theme.get("colors", {}).get("roles", {})
     color = roles.get("muted_text", "#6B7280")
-    fig.text(x, y, text, ha="left", va="bottom",
-             fontsize=font_size(theme, "source"), color=color)
+    if text and str(text).strip():
+        src_obj = fig.text(x, y, text, ha="left", va="bottom",
+                           fontsize=font_size(theme, "source"), color=color)
+        src_obj._viz_role = "source"  # type: ignore[attr-defined]
     # 品牌页脚与数据来源分列左右；两者都保留，避免品牌声明覆盖数据出处。
     footer = theme.get("brand", {}).get("footer")
-    if footer and footer not in text:
-        fig.text(0.99, y, footer, ha="right", va="bottom",
-                 fontsize=font_size(theme, "source"), color=color)
+    if footer and footer not in (text or ""):
+        ft_obj = fig.text(0.99, y, footer, ha="right", va="bottom",
+                          fontsize=font_size(theme, "source"), color=color)
+        ft_obj._viz_role = "footer"  # type: ignore[attr-defined]
     return fig
+
+
+def _is_header_text(t) -> bool:
+    if not t.get_visible() or not t.get_text().strip():
+        return False
+    role = getattr(t, "_viz_role", None)
+    if role in ("title", "subtitle"):
+        return True
+    if role in ("source", "footer"):
+        return False
+    _, y = t.get_position()
+    txt = t.get_text().strip()
+    # 排除短面板标号如 (a) / a / B
+    if len(txt) <= 4 and (txt.isalpha() or (txt.startswith("(") and txt.endswith(")"))):
+        return False
+    return float(y) >= 0.85
+
+
+def _auto_reflow_figure(fig, theme: dict | None = None) -> None:
+    """渲染前流式避让：
+    1) 学术等无图内标题场景自动隐藏顶栏标题并回收顶部空白；
+    2) 超宽标题/副标题自动折行并消除上下重叠；
+    3) 当轴外右上/左上图例或顶轴标题与页眉碰撞时，动态下调 subplots_adjust(top=...)。
+    """
+    theme = theme or resolve_theme()
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    inv = fig.transFigure.inverted()
+
+    # 1. 场景级无标题抑制（兼容仍直接写 fig.text(0.015, 0.965, ...) 的旧脚本）
+    if not theme.get("in_canvas_title", True) and not getattr(fig, "_viz_force_header", False):
+        for t in fig.texts:
+            if _is_header_text(t):
+                t.set_visible(False)
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+
+    header_texts = [t for t in fig.texts if _is_header_text(t)]
+    header_texts.sort(key=lambda obj: float(obj.get_position()[1]), reverse=True)
+
+    # 2. 超宽页眉折行与标题-副标题纵向防叠
+    changed = False
+    for t in header_texts:
+        bb = t.get_window_extent(renderer).transformed(inv)
+        if bb.x1 > 0.988 and "\n" not in t.get_text():
+            units = display_units(t.get_text())
+            avail_ratio = max(0.35, (0.975 - float(bb.x0)) / max(float(bb.width), 0.05))
+            t.set_text(wrap_text_units(t.get_text(), max(14, int(units * avail_ratio))))
+            changed = True
+    if changed:
+        fig.canvas.draw()
+        renderer = fig.canvas.get_renderer()
+
+    if len(header_texts) >= 2:
+        prev_bb = header_texts[0].get_window_extent(renderer).transformed(inv)
+        for t in header_texts[1:]:
+            bb = t.get_window_extent(renderer).transformed(inv)
+            if bb.y1 > prev_bb.y0 - 0.008:
+                new_y = float(prev_bb.y0) - 0.011
+                t.set_position((t.get_position()[0], new_y))
+                fig.canvas.draw()
+                renderer = fig.canvas.get_renderer()
+                bb = t.get_window_extent(renderer).transformed(inv)
+            prev_bb = bb
+
+    # 底部来源与品牌页脚水平碰撞避让
+    bottom_texts = [t for t in fig.texts if t.get_visible() and t.get_text().strip()
+                    and (getattr(t, "_viz_role", None) in ("source", "footer") or float(t.get_position()[1]) <= 0.04)]
+    if len(bottom_texts) == 2:
+        b0 = bottom_texts[0].get_window_extent(renderer).transformed(inv)
+        b1 = bottom_texts[1].get_window_extent(renderer).transformed(inv)
+        if min(b0.x1, b1.x1) > max(b0.x0, b1.x0) - 0.01 and min(b0.y1, b1.y1) > max(b0.y0, b1.y0):
+            right_t = bottom_texts[1] if bottom_texts[1].get_ha() == "right" else bottom_texts[0]
+            left_bb = b0 if right_t is bottom_texts[1] else b1
+            right_t.set_position((right_t.get_position()[0], float(left_bb.y1) + 0.004))
+            fig.canvas.draw()
+            renderer = fig.canvas.get_renderer()
+
+    has_subplot_axes = any(
+        ax.get_visible() and getattr(ax, "get_subplotspec", lambda: None)() is not None
+        for ax in fig.axes
+    )
+    if not has_subplot_axes:
+        return
+
+    cur_top = float(fig.subplotpars.top)
+    cur_bottom = float(fig.subplotpars.bottom)
+
+    # 收集轴外上方的图例、轴标题与面板标号
+    decor_boxes = []
+    for ax in fig.axes:
+        if not ax.get_visible():
+            continue
+        ax_bb = ax.get_window_extent(renderer).transformed(inv)
+        leg = ax.get_legend()
+        if leg is not None and leg.get_visible():
+            l_bb = leg.get_window_extent(renderer).transformed(inv)
+            if l_bb.y1 > ax_bb.y1 + 0.002:
+                decor_boxes.append(l_bb)
+        for ttl in (ax.title, getattr(ax, "_left_title", None), getattr(ax, "_right_title", None)):
+            if ttl is not None and ttl.get_visible() and ttl.get_text().strip():
+                t_bb = ttl.get_window_extent(renderer).transformed(inv)
+                if t_bb.y1 > ax_bb.y1 + 0.002:
+                    decor_boxes.append(t_bb)
+        for ann in ax.texts:
+            if ann.get_visible() and ann.get_text().strip():
+                a_bb = ann.get_window_extent(renderer).transformed(inv)
+                if a_bb.y0 >= ax_bb.y1 - 0.01 and a_bb.y1 <= 0.99:
+                    decor_boxes.append(a_bb)
+
+    # 3A. 无页眉时自动回收顶部 20% 空白（例如 academic 场景或 TITLE=SUBTITLE=""）
+    if not header_texts:
+        if 0.68 <= cur_top <= 0.84:
+            above_pad = max(( float(b.y1) - cur_top for b in decor_boxes ), default=0.0)
+            above_pad = max(0.0, above_pad)
+            target_top = float(theme.get("scene_preset", {}).get("top_no_title", 0.93))
+            new_top = min(target_top, 0.965 - above_pad)
+            if new_top > cur_top + 0.02:
+                fig.subplots_adjust(top=round(new_top, 4))
+                fig.canvas.draw()
+                renderer = fig.canvas.get_renderer()
+    else:
+        # 3B. 有页眉时检测轴上方装饰（图例/子标题）与页眉的水平+纵向碰撞，动态下移 top
+        h_boxes = [t.get_window_extent(renderer).transformed(inv) for t in header_texts]
+        min_shift = 0.0
+        for hb in h_boxes:
+            for db in decor_boxes:
+                horiz_overlap = min(float(hb.x1), float(db.x1)) > max(float(hb.x0), float(db.x0)) - 0.018
+                if horiz_overlap and float(db.y1) > float(hb.y0) - 0.012:
+                    needed = float(db.y1) - (float(hb.y0) - 0.016)
+                    if needed > min_shift:
+                        min_shift = needed
+
+        if min_shift > 0.001:
+            new_top = max(cur_bottom + 0.30, cur_top - min_shift)
+            if new_top < cur_top - 0.001:
+                fig.subplots_adjust(top=round(new_top, 4))
+                fig.canvas.draw()
+                renderer = fig.canvas.get_renderer()
+
+    # 4. 左边缘刻度/轴标签防裁切 & 底部来源页脚防碰撞
+    cur_left = float(fig.subplotpars.left)
+    cur_right = float(fig.subplotpars.right)
+    cur_bottom = float(fig.subplotpars.bottom)
+    cur_top = float(fig.subplotpars.top)
+    left_boxes = []
+    bottom_axis_boxes = []
+    for ax in fig.axes:
+        if not ax.get_visible() or getattr(ax, "get_subplotspec", lambda: None)() is None:
+            continue
+        if ax.yaxis.label.get_visible() and ax.yaxis.label.get_text().strip():
+            left_boxes.append(ax.yaxis.label.get_window_extent(renderer).transformed(inv))
+        for tl in _in_range_tick_labels(ax, "y"):
+            bb = tl.get_window_extent(renderer).transformed(inv)
+            if bb.x0 < cur_left + 0.02:
+                left_boxes.append(bb)
+        if ax.xaxis.label.get_visible() and ax.xaxis.label.get_text().strip():
+            bottom_axis_boxes.append(ax.xaxis.label.get_window_extent(renderer).transformed(inv))
+        for tl in _in_range_tick_labels(ax, "x"):
+            bb = tl.get_window_extent(renderer).transformed(inv)
+            if bb.y0 < cur_bottom + 0.02:
+                bottom_axis_boxes.append(bb)
+
+    margin_kw = {}
+    if left_boxes:
+        min_x0 = min(float(b.x0) for b in left_boxes)
+        if min_x0 < 0.008 and cur_left < 0.44:
+            new_left = min(0.45, min(cur_right - 0.28, cur_left + (0.014 - min_x0)))
+            if new_left > cur_left + 0.002:
+                margin_kw["left"] = round(new_left, 4)
+
+    if bottom_axis_boxes:
+        src_top = max((float(t.get_window_extent(renderer).transformed(inv).y1) for t in bottom_texts), default=0.0)
+        floor_y = max(0.008, src_top + 0.010)
+        min_y0 = min(float(b.y0) for b in bottom_axis_boxes)
+        if min_y0 < floor_y and cur_bottom < 0.30:
+            new_bottom = min(0.32, min(cur_top - 0.28, cur_bottom + (floor_y - min_y0)))
+            if new_bottom > cur_bottom + 0.002:
+                margin_kw["bottom"] = round(new_bottom, 4)
+
+    if margin_kw:
+        fig.subplots_adjust(**margin_kw)
+        fig.canvas.draw()
+
+
+def adjust_layout(fig, left: float | None = None, right: float | None = None,
+                  top: float | None = None, bottom: float | None = None,
+                  wspace: float | None = None, hspace: float | None = None,
+                  theme: dict | None = None):
+    """封装 subplots_adjust 并立即执行页眉/图例流式避让，确保后续 get_position() 读取最终坐标。"""
+    kwargs = {k: v for k, v in (("left", left), ("right", right), ("top", top),
+                                ("bottom", bottom), ("wspace", wspace), ("hspace", hspace))
+              if v is not None}
+    if kwargs:
+        fig.subplots_adjust(**kwargs)
+    _auto_reflow_figure(fig, theme=theme)
+    return fig
+
+
+def _in_range_tick_labels(ax, axis_name: str) -> list:
+    if axis_name == "x":
+        lo, hi = sorted(ax.get_xlim())
+        ticks = ax.xaxis.get_major_ticks()
+    else:
+        lo, hi = sorted(ax.get_ylim())
+        ticks = ax.yaxis.get_major_ticks()
+    span = max(hi - lo, 1e-9)
+    out = []
+    for tick in ticks:
+        loc = tick.get_loc()
+        if not (lo - 0.02 * span <= loc <= hi + 0.02 * span):
+            continue
+        for lbl in (tick.label1, tick.label2):
+            if lbl.get_visible() and lbl.get_text().strip():
+                out.append(lbl)
+    return out
+
+
+def check_text_collisions(fig, pad_px: float = 1.5) -> dict:
+    """利用 Agg Renderer 精确像素包围盒检测全图文本重叠、图例遮挡与边缘裁切。"""
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    fig_w, fig_h = fig.canvas.get_width_height()
+
+    items: list[dict] = []
+
+    def push(obj, role: str, group: str | None = None, is_box: bool = False, label_override: str | None = None):
+        if obj is None or not obj.get_visible():
+            return
+        text_val = label_override if label_override is not None else getattr(obj, "get_text", lambda: "")()
+        text_val = " ".join(str(text_val).split()).strip()
+        if not text_val:
+            return
+        alpha = obj.get_alpha()
+        if alpha is not None and alpha <= 0.01:
+            return
+        try:
+            bb = obj.get_window_extent(renderer)
+        except Exception:  # noqa: BLE001
+            return
+        if bb.width <= 1.0 or bb.height <= 1.0 or not (np.isfinite(bb.x0) and np.isfinite(bb.y0)):
+            return
+        items.append({
+            "role": role,
+            "text": text_val[:60],
+            "group": group,
+            "is_box": is_box,
+            "raw": (float(bb.x0), float(bb.y0), float(bb.x1), float(bb.y1)),
+        })
+
+    for t in fig.texts:
+        push(t, getattr(t, "_viz_role", "fig_text"))
+
+    for idx, leg in enumerate(fig.legends):
+        gid = f"fig_leg_{idx}"
+        ltxt = " | ".join(t.get_text().strip() for t in leg.get_texts() if t.get_text().strip())
+        push(leg, "legend", group=gid, is_box=True, label_override=f"[图例] {ltxt}")
+        for t in leg.get_texts():
+            push(t, "legend_text", group=gid)
+
+    for ax_i, ax in enumerate(fig.axes):
+        if not ax.get_visible():
+            continue
+        for ttl in (ax.title, getattr(ax, "_left_title", None), getattr(ax, "_right_title", None)):
+            push(ttl, "ax_title")
+        push(ax.xaxis.label, "xlabel")
+        push(ax.yaxis.label, "ylabel")
+        for lbl in _in_range_tick_labels(ax, "x"):
+            push(lbl, f"xtick_{ax_i}")
+        for lbl in _in_range_tick_labels(ax, "y"):
+            push(lbl, f"ytick_{ax_i}")
+        for ann in ax.texts:
+            push(ann, "annotation")
+        leg = ax.get_legend()
+        if leg is not None and leg.get_visible():
+            gid = f"ax_leg_{ax_i}"
+            ltxt = " | ".join(t.get_text().strip() for t in leg.get_texts() if t.get_text().strip())
+            push(leg, "legend", group=gid, is_box=True, label_override=f"[图例] {ltxt}")
+            for t in leg.get_texts():
+                push(t, "legend_text", group=gid)
+
+    clipped: list[dict] = []
+    for it in items:
+        if it["is_box"]:
+            continue
+        x0, y0, x1, y1 = it["raw"]
+        if x0 < -3.0 or y0 < -3.0 or x1 > fig_w + 3.0 or y1 > fig_h + 3.0:
+            clipped.append({
+                "role": it["role"],
+                "text": it["text"],
+                "bbox_px": [round(x0, 1), round(y0, 1), round(x1, 1), round(y1, 1)],
+                "canvas_px": [int(fig_w), int(fig_h)],
+            })
+
+    collisions: list[dict] = []
+    seen_pairs: set[tuple[str, str]] = set()
+    n_items = len(items)
+    for i in range(n_items):
+        a = items[i]
+        ax0, ay0, ax1, ay1 = a["raw"]
+        p_a = 0.5 if a["is_box"] else pad_px
+        ax0, ay0, ax1, ay1 = ax0 + p_a, ay0 + p_a, ax1 - p_a, ay1 - p_a
+        if ax1 <= ax0 or ay1 <= ay0:
+            continue
+        area_a = (ax1 - ax0) * (ay1 - ay0)
+        for j in range(i + 1, n_items):
+            b = items[j]
+            if a["group"] and a["group"] == b["group"]:
+                if a["is_box"] or b["is_box"]:
+                    continue
+            bx0, by0, bx1, by1 = b["raw"]
+            p_b = 0.5 if b["is_box"] else pad_px
+            bx0, by0, bx1, by1 = bx0 + p_b, by0 + p_b, bx1 - p_b, by1 - p_b
+            if bx1 <= bx0 or by1 <= by0:
+                continue
+            iw = min(ax1, bx1) - max(ax0, bx0)
+            ih = min(ay1, by1) - max(ay0, by0)
+            if iw <= 0 or ih <= 0:
+                continue
+            inter = iw * ih
+            min_area = min(area_a, (bx1 - bx0) * (by1 - by0))
+            ratio = inter / max(min_area, 1.0)
+            if inter >= 6.0 and ratio >= 0.05:
+                pair_key = tuple(sorted((f"{a['role']}:{a['text']}", f"{b['role']}:{b['text']}")))
+                if pair_key in seen_pairs:
+                    continue
+                seen_pairs.add(pair_key)
+                collisions.append({
+                    "a_role": a["role"],
+                    "a_text": a["text"],
+                    "b_role": b["role"],
+                    "b_text": b["text"],
+                    "overlap_px2": round(inter, 1),
+                    "overlap_ratio": round(ratio, 3),
+                })
+
+    return {
+        "passed": len(collisions) == 0 and len(clipped) == 0,
+        "collision_count": len(collisions),
+        "clipped_count": len(clipped),
+        "collisions": collisions,
+        "clipped": clipped,
+    }
+
+
+def last_layout_audit() -> dict | None:
+    """获取最近一次 save_figure 执行的 Renderer 文本碰撞与裁切自检结果。"""
+    return _LAST_LAYOUT_AUDIT
 
 
 # --------------------------------------------------------------------------- #
 # 导出
 # --------------------------------------------------------------------------- #
 def save_figure(fig, outdir: str | Path = ".", stem: str = "figure",
-                formats: tuple[str, ...] = ("pdf", "png"),
+                formats: tuple[str, ...] = ("pdf", "svg", "png")[:2],
                 dpi: tuple[int, ...] | list[int] = (300, 600),
                 theme: dict | None = None, tight: bool = False,
-                close: bool = True) -> list[str]:
+                close: bool = True, auto_layout: bool = True) -> list[str]:
     """按格式导出；PNG 以 <stem>_<dpi>dpi.png 命名，PDF/SVG 保持矢量。
 
-    不使用 tight bbox：物理尺寸必须可预测，否则 audit 的栏宽校验会失真。
+    保存前自动执行页眉/图例流式避让与 Renderer 文本包围盒碰撞自检，
+    并将碰撞审计元数据写入 PNG tEXt 块供 viz-audit 闭环核查。
     """
+    global _LAST_LAYOUT_AUDIT
+    if auto_layout and not tight:
+        _auto_reflow_figure(fig, theme=theme)
+    audit = check_text_collisions(fig)
+    _LAST_LAYOUT_AUDIT = audit
+    if theme is not None:
+        theme["_layout_audit"] = audit
+    if not audit["passed"]:
+        for c in audit["collisions"][:3]:
+            warn_once(f"检测到文本/图例重叠：{c['a_role']}「{c['a_text']}」× {c['b_role']}「{c['b_text']}」（重叠 {c['overlap_ratio']:.0%}）")
+        for cl in audit["clipped"][:3]:
+            warn_once(f"检测到文本超出画布边界：{cl['role']}「{cl['text']}」")
+
+    pnginfo = None
+    try:
+        from PIL.PngImagePlugin import PngInfo
+        pnginfo = PngInfo()
+        pnginfo.add_text("Software", f"viz-suite {__version__}")
+        pnginfo.add_text("viz_layout_audit", json.dumps(audit, ensure_ascii=False))
+    except Exception:  # noqa: BLE001
+        pnginfo = None
+
     outdir = Path(outdir)
     outdir.mkdir(parents=True, exist_ok=True)
     outputs: list[str] = []
@@ -909,8 +1489,9 @@ def save_figure(fig, outdir: str | Path = ".", stem: str = "figure",
         elif fmt in ("png", "jpg", "jpeg", "webp"):
             for d in dpi:
                 path = outdir / f"{stem}_{d}dpi.{fmt}"
+                pil_kw = {"pnginfo": pnginfo} if (fmt == "png" and pnginfo is not None) else None
                 fig.savefig(path, format=fmt, dpi=d, bbox_inches="tight" if tight else None,
-                            facecolor=fig.get_facecolor())
+                            facecolor=fig.get_facecolor(), pil_kwargs=pil_kw)
                 outputs.append(str(path))
     if close:
         plt.close(fig)
@@ -919,8 +1500,11 @@ def save_figure(fig, outdir: str | Path = ".", stem: str = "figure",
 
 def describe_theme(theme: dict) -> dict:
     return {
+        "scene": theme.get("scene"),
         "palette": theme.get("palette_id"),
         "layout_family": theme.get("layout_family"),
+        "in_canvas_title": theme.get("in_canvas_title", True),
+        "font_size_level": theme.get("font_size_level", "regular"),
         "fonts": theme.get("_font_stack", [])[:4],
         "source": theme.get("_source"),
         "manifest": theme.get("manifest_path"),
@@ -933,6 +1517,7 @@ if __name__ == "__main__":
     pal = palette(theme=t)
     print(json.dumps({
         "theme": describe_theme(t),
+        "scenes_available": sorted((t.get("scenes") or {}).keys()),
         "palette_pick_4": pal.pick(4),
         "cvd_min_delta_e": pal.min_delta_e,
         "contrast_on_white": {c: round(contrast_ratio(c, "#FFFFFF"), 2) for c in pal.colors},

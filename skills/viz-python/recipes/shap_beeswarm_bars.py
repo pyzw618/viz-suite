@@ -33,6 +33,7 @@ FEATURE_COL = "特征"
 SHAP_COL = "SHAP"
 VALUE_COL = "特征值"
 TOP_N = 10
+SCENE = None
 PALETTE = None
 LAYOUT = "clean_open"
 TITLE = "平均 |SHAP| 最高的特征为 {top1}，其次为 {top2}"
@@ -84,10 +85,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -98,6 +100,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "shap_beeswarm_bars"}}
@@ -122,7 +126,13 @@ def main() -> int:
         features = [f for f in features if f in set(df[FEATURE_COL])]
         stats = {"top1": features[0] if features else "-", "top2": features[1] if len(features) > 1 else "-"}
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (True and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -133,7 +143,7 @@ def main() -> int:
 
         fig = plt.figure(figsize=size["figsize"])
         fig.set_facecolor(theme["colors"]["backgrounds"]["white"])
-        gs = fig.add_gridspec(1, 2, width_ratios=[3.8, 1.15], wspace=0.06)
+        gs = fig.add_gridspec(1, 2, width_ratios=[3.8, 1.18], wspace=0.13)
         ax = fig.add_subplot(gs[0, 0])
         ax_bar = fig.add_subplot(gs[0, 1], sharey=ax)
         vs.apply_style(ax, LAYOUT, theme=theme)
@@ -191,12 +201,9 @@ def main() -> int:
         ax_bar.set_ylim(len(features) - 0.5, -0.5)
 
         # 底部横向色条（放在布局调整之后，避免位置漂移）
-        fig.text(0.015, 0.965, vs.fill_title(TITLE, **stats), ha="left", va="top",
-                 fontweight="bold", fontsize=vs.font_size(theme, "title"), color=roles["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"), color=roles["muted_text"])
+        vs.add_header(fig, vs.fill_title(TITLE, **stats), SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.16, right=0.97, top=0.80, bottom=0.26)
+        vs.adjust_layout(fig, left=0.16, right=0.97, top=0.80, bottom=0.26, theme=theme)
 
         pos = ax.get_position()
         cax = fig.add_axes([pos.x0 + 0.22 * pos.width, 0.055, 0.45 * pos.width, 0.014])
@@ -220,7 +227,7 @@ def main() -> int:
                        "mean_abs_shap": dict(zip(features, [round(m, 4) for m in means])),
                        "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001

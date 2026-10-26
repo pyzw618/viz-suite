@@ -5,7 +5,7 @@
 # -*- coding: utf-8 -*-
 """配方：分组误差棒柱图（浅填深边 + 总体均值线）。
 
-黄金底稿 —— 适配时只改 PARAMS 块，不要删改下方绘制逻辑中的
+黄金底稿 —— 支持三区弹性适配（数据管道改写 / 画布伸缩 / 微质感保护），请保留
 浅填深边、误差帽、零基线、n 标注与直接标注分支。
 
     uv run grouped_errorbar_bar.py --json
@@ -39,6 +39,7 @@ VALUE_COL = "满意度"                  # 原始观测值列
 ERROR_COL = None                      # 已聚合数据的误差列（与 VALUE_COL 同时给出时直接使用）
 AGG = "mean_ci"                       # mean_ci | mean_sd | mean_sem | mean | count
 ORIENTATION = "auto"                  # auto | horizontal | vertical
+SCENE = None
 PALETTE = None
 LAYOUT = "soft_grid"
 GROUP_ORDER = None                    # 显式分类顺序；None → 按总体均值升序（横排时高者在上）
@@ -184,10 +185,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -198,6 +200,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "grouped_errorbar_bar"}}
@@ -218,7 +222,13 @@ def main() -> int:
         agg, dropped, agg_warnings = aggregate(df)
         warnings.extend(dict.fromkeys(agg_warnings))
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (False and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -293,22 +303,29 @@ def main() -> int:
         if SHOW_MEAN_LINE:
             overall = float(np.average(agg["mean"], weights=agg["n"]))
             line = theme["marks"]["mean_line"]
+            mean_bbox = dict(boxstyle="round,pad=0.18", facecolor="#FFFFFF", edgecolor="none", alpha=0.88)
+            first_top = float((agg.loc[agg[GROUP_COL] == groups[0], "mean"] + agg.loc[agg[GROUP_COL] == groups[0], "error"]).max())
+            last_top = float((agg.loc[agg[GROUP_COL] == groups[-1], "mean"] + agg.loc[agg[GROUP_COL] == groups[-1], "error"]).max())
             if horizontal:
                 ax.axvline(overall, color=line["color"], linestyle=line["linestyle"],
                            linewidth=line["linewidth"], zorder=2)
-                ax.annotate(f"总体均值 {overall:.2f}", xy=(overall, 1.0),
-                            xycoords=("data", "axes fraction"), xytext=(4, -2),
-                            textcoords="offset points", ha="left", va="top",
+                y_frac, va = (0.02, "bottom") if first_top <= last_top else (0.98, "top")
+                y_off = 2 if va == "bottom" else -2
+                ax.annotate(f"总体均值 {overall:.2f}", xy=(overall, y_frac),
+                            xycoords=("data", "axes fraction"), xytext=(4, y_off),
+                            textcoords="offset points", ha="left", va=va,
                             fontsize=vs.font_size(theme, "annotation"),
-                            color=theme["colors"]["roles"]["muted_text"])
+                            color=theme["colors"]["roles"]["muted_text"], bbox=mean_bbox, zorder=5)
             else:
                 ax.axhline(overall, color=line["color"], linestyle=line["linestyle"],
                            linewidth=line["linewidth"], zorder=2)
-                ax.annotate(f"总体均值 {overall:.2f}", xy=(0.0, overall),
-                            xycoords=("axes fraction", "data"), xytext=(2, 4),
-                            textcoords="offset points", ha="left", va="bottom",
+                use_left = first_top <= last_top
+                x_frac, ha, x_off = (0.015, "left", 2) if use_left else (0.985, "right", -2)
+                ax.annotate(f"总体均值 {overall:.2f}", xy=(x_frac, overall),
+                            xycoords=("axes fraction", "data"), xytext=(x_off, 4),
+                            textcoords="offset points", ha=ha, va="bottom",
                             fontsize=vs.font_size(theme, "annotation"),
-                            color=theme["colors"]["roles"]["muted_text"])
+                            color=theme["colors"]["roles"]["muted_text"], bbox=mean_bbox, zorder=5)
 
         if k > 1:
             handles = [Patch(facecolor=vs.blend(colors[str(s)], theme["colors"]["backgrounds"]["white"],
@@ -332,12 +349,7 @@ def main() -> int:
                             va="bottom", ha="center", fontsize=label_size,
                             color=theme["colors"]["roles"]["text"])
 
-        fig.text(0.015, 0.965, TITLE, ha="left", va="top", fontweight="bold",
-                 fontsize=vs.font_size(theme, "title"),
-                 color=theme["colors"]["roles"]["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"),
-                 color=theme["colors"]["roles"]["muted_text"])
+        vs.add_header(fig, TITLE, SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
 
         if horizontal:
@@ -345,7 +357,7 @@ def main() -> int:
             left = min(0.42, 0.055 + longest * 0.011)
         else:
             left = 0.09
-        fig.subplots_adjust(left=left, right=0.975, top=0.80, bottom=0.16)
+        vs.adjust_layout(fig, left=left, right=0.975, top=0.80, bottom=0.16, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
 
@@ -371,7 +383,7 @@ def main() -> int:
                 "width_mm": size["width_mm"],
                 "height_mm": size["height_mm"],
                 "stat": str(agg["stat"].iloc[0]),
-                "visual_verified": False,
+                "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                 "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核",
             },
         })

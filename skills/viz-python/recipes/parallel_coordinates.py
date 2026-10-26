@@ -31,6 +31,7 @@ CLASS_COL = "组别"
 DIMENSIONS = ["准确率", "召回率", "F1", "推理时延", "内存占用", "稳定性"]
 LOWER_IS_BETTER = ["推理时延", "内存占用"]
 CLASS_ORDER = None
+SCENE = None
 PALETTE = None
 LAYOUT = "minimal_axis"
 TITLE = "干预 B 在准确率与 F1 上领先，但推理时延与内存占用更高"
@@ -103,10 +104,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -117,6 +119,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "parallel_coordinates"}}
@@ -149,7 +153,13 @@ def main() -> int:
                 z = 1.0 - z
             normalized[dim] = z
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (True and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -205,13 +215,9 @@ def main() -> int:
             ax.text(label_x, y, cls, ha="left", va="center", fontsize=vs.font_size(theme, "annotation"),
                     color=colors[cls], fontweight="bold", clip_on=False)
 
-        fig.text(0.015, 0.965, TITLE, ha="left", va="top", fontweight="bold",
-                 fontsize=vs.font_size(theme, "title"), color=theme["colors"]["roles"]["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"),
-                 color=theme["colors"]["roles"]["muted_text"])
+        vs.add_header(fig, TITLE, SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.055, right=0.86, top=0.735, bottom=0.12)
+        vs.adjust_layout(fig, left=0.055, right=0.86, top=0.735, bottom=0.12, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_data.csv"
@@ -232,7 +238,7 @@ def main() -> int:
                        "inverted": [d for d in dims if d in LOWER_IS_BETTER],
                        "classes": classes, "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001

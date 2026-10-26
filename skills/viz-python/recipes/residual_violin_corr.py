@@ -31,6 +31,7 @@ SHEET = None
 GROUP_COL = "组别"
 RESIDUAL_COL = "残差"
 FEATURES = ["特征1", "特征2", "特征3", "特征4", "特征5"]
+SCENE = None
 PALETTE = None
 LAYOUT = "soft_grid"
 TITLE = "三组残差均值接近 0，但组 C 方差更大"
@@ -85,10 +86,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -99,6 +101,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "residual_violin_corr"}}
@@ -126,7 +130,13 @@ def main() -> int:
         corr = df[features].corr().fillna(0.0).to_numpy(dtype=float)
         stats = {"n": len(df), "k_groups": len(groups), "k_features": len(features)}
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (True and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -205,12 +215,9 @@ def main() -> int:
         ax_corr.set_title("变量相关矩阵", fontsize=vs.font_size(theme, "annotation"),
                           color=roles["muted_text"], pad=6)
 
-        fig.text(0.015, 0.965, TITLE, ha="left", va="top", fontweight="bold",
-                 fontsize=vs.font_size(theme, "title"), color=roles["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"), color=roles["muted_text"])
+        vs.add_header(fig, TITLE, SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.09, right=0.97, top=0.80, bottom=0.18)
+        vs.adjust_layout(fig, left=0.09, right=0.97, top=0.80, bottom=0.18, theme=theme)
         cb = fig.colorbar(im, ax=ax_corr, orientation="horizontal", fraction=0.05, pad=0.10,
                           ticks=[-1, 0, 1])
         cb.ax.set_title("Pearson r", fontsize=vs.font_size(theme, "source"),
@@ -235,7 +242,7 @@ def main() -> int:
             "figure": {"recipe": "residual_violin_corr", "groups": groups, "features": features,
                        "n": len(df), "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001

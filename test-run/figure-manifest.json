@@ -1,0 +1,40 @@
+{
+  "task": "山雾咖啡 2025 上半年经营复盘（管理层）",
+  "palette": "okabe_ito",
+  "layout_family": "soft_grid",
+  "width_mm": 160,
+  "series_color_map": {
+    "堂食": "#0072B2",
+    "外卖": "#E69F00",
+    "自提": "#CC79A7"
+  },
+  "fonts": {
+    "font_zh": ["Microsoft YaHei"],
+    "font_en": ["Arial"]
+  },
+  "scene_overlay": "viz-scene-story（Action Title 写事实结论、关键数值直接标注、来源固定左下角；WIDTH_MM 按用户指令锁定 160mm，不采用 254mm/16:9）",
+  "source_note": "虚构合成数据（山雾咖啡示例，非真实经营数据）",
+  "figures": [
+    {
+      "id": "fig-01",
+      "title": "成都营收 560 万元居六城之首，约为贵阳 2.9 倍；各城均以堂食为主",
+      "recipe": "stacked_bar_total_line",
+      "mapping": "X_COL=城市, SERIES_COL=渠道, VALUE_COL=营收_万元（1–6 月合计）",
+      "file": "outputs/fig-01_stacked_bar_total_line.pdf"
+    },
+    {
+      "id": "fig-02",
+      "title": "6 月营收回升至 409 万元；外卖占比由 28% 升至 43%，6 月首超堂食",
+      "recipe": "stacked_area_events",
+      "mapping": "X_COL=月份, SERIES_COL=渠道, VALUE_COL=营收_万元；EVENTS=[2025-02 春节假期]",
+      "file": "outputs/fig-02_stacked_area_events.pdf"
+    },
+    {
+      "id": "fig-03",
+      "title": "外卖复购率 32.6%，较堂食低 12.1 个百分点",
+      "recipe": "grouped_errorbar_bar",
+      "mapping": "GROUP_COL=渠道, VALUE_COL=复购率, AGG=mean_ci, 无系列维（SORT_GROUPS=False 保持跨图渠道同色）",
+      "file": "outputs/fig-03_grouped_errorbar_bar.pdf"
+    }
+  ]
+}

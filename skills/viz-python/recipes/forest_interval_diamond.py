@@ -37,6 +37,7 @@ WEIGHT_COL = "权重"
 NULL_VALUE = 1.0
 LOG_SCALE = True
 X_LABEL = "OR（95% CI，对数刻度）"
+SCENE = None
 PALETTE = None
 LAYOUT = "soft_grid"
 TITLE = "合并 OR {summary_est:.2f}（95% CI {summary_low:.2f}–{summary_high:.2f}），总体偏向干预"
@@ -86,10 +87,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -100,6 +102,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "forest_interval_diamond"}}
@@ -149,7 +153,13 @@ def main() -> int:
             weights = 1.0 / np.maximum(se.to_numpy(dtype=float) ** 2, 1e-12)
         sizes = 28 + 92 * (weights / max(weights.max(), 1e-9))
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (True and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -221,13 +231,10 @@ def main() -> int:
         ax.set_xlabel(X_LABEL)
 
         title = vs.fill_title(TITLE, **summary_stats) if summary_stats else "多指标效应量与 95% 置信区间"
-        fig.text(0.015, 0.965, title, ha="left", va="top", fontweight="bold",
-                 fontsize=vs.font_size(theme, "title"), color=roles["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"), color=roles["muted_text"])
+        vs.add_header(fig, title, SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
         left = min(0.38, 0.07 + max(vs.display_units(x) for x in studies[LABEL_COL].astype(str)) * 0.011)
-        fig.subplots_adjust(left=left, right=0.80, top=0.80, bottom=0.14)
+        vs.adjust_layout(fig, left=left, right=0.80, top=0.80, bottom=0.14, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_data.csv"
@@ -245,7 +252,7 @@ def main() -> int:
                        "summary": summary_stats, "null": NULL_VALUE,
                        "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001

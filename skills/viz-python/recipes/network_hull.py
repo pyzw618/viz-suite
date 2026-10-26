@@ -37,6 +37,7 @@ Y_COL = "y"
 SOURCE_COL = "source"
 TARGET_COL = "target"
 WEIGHT_COL = "weight"
+SCENE = None
 PALETTE = None
 LAYOUT = "clean_open"
 TITLE = "{n_groups} 个社区内部连接紧密，跨社区桥接集中在枢纽节点"
@@ -151,10 +152,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global NODES_PATH, EDGES_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global NODES_PATH, EDGES_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     NODES_PATH = args.nodes or NODES_PATH
     EDGES_PATH = args.edges or EDGES_PATH
     if args.outdir:
@@ -165,6 +167,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "network_hull"}}
@@ -225,7 +229,13 @@ def main() -> int:
         max_degree = max(degree.values()) if degree else 1.0
         groups = list(dict.fromkeys(group_of[n] for n in node_ids))
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (False and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -297,12 +307,9 @@ def main() -> int:
                         handlelength=1.0, columnspacing=1.2)
         vs.style_legend(leg, theme)
 
-        fig.text(0.015, 0.965, vs.fill_title(TITLE, n_groups=len(groups)), ha="left", va="top",
-                 fontweight="bold", fontsize=vs.font_size(theme, "title"), color=roles["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"), color=roles["muted_text"])
+        vs.add_header(fig, vs.fill_title(TITLE, n_groups=len(groups)), SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.02, right=0.98, top=0.79, bottom=0.05)
+        vs.adjust_layout(fig, left=0.02, right=0.98, top=0.79, bottom=0.05, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         nodes_out = Path(OUTDIR) / f"{STEM}_nodes.csv"
@@ -321,7 +328,7 @@ def main() -> int:
             "figure": {"recipe": "network_hull", "nodes": len(node_ids), "edges": len(edges),
                        "groups": groups, "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001

@@ -32,6 +32,7 @@ EFFECT_COL = "效应量"
 SE_COL = "标准误"
 X_LABEL = "效应量（Hedges' g）"
 Y_LABEL = "标准误（SE，0 在顶部）"
+SCENE = None
 PALETTE = None
 LAYOUT = "clean_open"
 TITLE = "合并效应量 {pooled:+.2f}（95% CI {ci_low:+.2f} 至 {ci_high:+.2f}），共 {k} 项研究"
@@ -82,10 +83,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -96,6 +98,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "meta_funnel"}}
@@ -122,7 +126,13 @@ def main() -> int:
         stats = {"pooled": pooled, "ci_low": ci_low, "ci_high": ci_high,
                  "k": len(df), "pooled_se": pooled_se}
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (False and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -183,12 +193,9 @@ def main() -> int:
                 bbox=dict(facecolor="#FFFFFF", edgecolor=roles["grid"], linewidth=0.5,
                           boxstyle="round,pad=0.35", alpha=0.92))
 
-        fig.text(0.015, 0.965, vs.fill_title(TITLE, **stats), ha="left", va="top",
-                 fontweight="bold", fontsize=vs.font_size(theme, "title"), color=roles["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"), color=roles["muted_text"])
+        vs.add_header(fig, vs.fill_title(TITLE, **stats), SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.10, right=0.975, top=0.80, bottom=0.14)
+        vs.adjust_layout(fig, left=0.10, right=0.975, top=0.80, bottom=0.14, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_data.csv"
@@ -208,7 +215,7 @@ def main() -> int:
                        "ci": [round(ci_low, 3), round(ci_high, 3)],
                        "pooled_se": round(pooled_se, 3), "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001

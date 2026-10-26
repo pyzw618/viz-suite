@@ -33,6 +33,7 @@ FC_COL = "log2FC"
 P_COL = "p值"
 FC_THRESHOLD = 1.0
 P_THRESHOLD = 0.05
+SCENE = None
 PALETTE = None
 LAYOUT = "clean_open"
 TITLE = "上调 {n_up} 个、下调 {n_down} 个基因（|log2FC|>{fc_thr:g} 且 p<{p_thr:g}）"
@@ -99,7 +100,7 @@ def smooth2d(matrix: np.ndarray, sigma: float = 1.3) -> np.ndarray:
 def place_labels(ax, rows, x_span, y_span, theme):
     roles = theme["colors"]["roles"]
     placed: list[tuple[float, float]] = []
-    bx, by = 0.16 * x_span, 0.055 * y_span
+    bx, by = 0.28 * x_span, 0.088 * y_span
     for _, row in rows.iterrows():
         x, y = float(row[FC_COL]), float(row["__y"])
         # 标签一律朝图内放置，避免贴边被裁切；白底框保证压在点云上仍可读
@@ -108,10 +109,13 @@ def place_labels(ax, rows, x_span, y_span, theme):
         else:
             tx, ha = x - 0.09 * x_span, "right"
         ty = y + 0.03 * y_span
-        for attempt in range(12):
+        base_ty = ty
+        for attempt in range(1, 22):
             if not any(abs(tx - px) < bx and abs(ty - py) < by for px, py in placed):
                 break
-            ty += (0.06 if attempt % 2 == 0 else -0.03) * y_span
+            step = ((attempt + 1) // 2) * 0.085 * y_span
+            cand = base_ty + (step if attempt % 2 == 1 else -step)
+            ty = max(0.06 * y_span, min(y_span * 1.04, cand))
         placed.append((tx, ty))
         ax.annotate(str(row[GENE_COL]), xy=(x, y), xytext=(tx, ty),
                     ha=ha, va="center",
@@ -128,10 +132,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -142,6 +147,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "volcano_fusion"}}
@@ -170,7 +177,13 @@ def main() -> int:
         stats = {"n_up": len(up), "n_down": len(down), "n_ns": len(ns), "k": len(df),
                  "fc_thr": FC_THRESHOLD, "p_thr": P_THRESHOLD}
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (False and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -234,12 +247,9 @@ def main() -> int:
                         handletextpad=0.5, columnspacing=1.2)
         vs.style_legend(leg, theme)
 
-        fig.text(0.015, 0.965, vs.fill_title(TITLE, **stats), ha="left", va="top",
-                 fontweight="bold", fontsize=vs.font_size(theme, "title"), color=roles["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"), color=roles["muted_text"])
+        vs.add_header(fig, vs.fill_title(TITLE, **stats), SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.10, right=0.975, top=0.79, bottom=0.14)
+        vs.adjust_layout(fig, left=0.10, right=0.975, top=0.79, bottom=0.14, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_data.csv"
@@ -261,7 +271,7 @@ def main() -> int:
                        "n_ns": len(ns), "thresholds": [FC_THRESHOLD, P_THRESHOLD],
                        "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001

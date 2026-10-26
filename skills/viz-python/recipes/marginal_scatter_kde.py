@@ -34,6 +34,7 @@ Y_COL = "产出评分"
 GROUP_COL = "组别"
 X_LABEL = "投入时长（小时）"
 Y_LABEL = "产出评分（0–100）"
+SCENE = None
 PALETTE = None
 LAYOUT = "clean_open"
 TITLE = "投入时长与产出正相关（R² = {r2:.2f}），高密度区沿对角线分布"
@@ -90,10 +91,11 @@ def main() -> int:
     ap.add_argument("--stem", default=None)
     ap.add_argument("--palette", default=None)
     ap.add_argument("--layout", default=None)
+    ap.add_argument("--scene", default=None, choices=["academic", "bi", "story", "geo"])
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
-    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT
+    global DATA_PATH, OUTDIR, STEM, PALETTE, LAYOUT, SCENE, WIDTH_MM, ASPECT
     if args.data:
         DATA_PATH = args.data
     if args.outdir:
@@ -104,6 +106,8 @@ def main() -> int:
         PALETTE = args.palette
     if args.layout:
         LAYOUT = args.layout
+    if args.scene:
+        SCENE = args.scene
 
     result = {"status": "error", "outputs": [], "rows_used": 0, "rows_dropped": 0,
               "verified": False, "warnings": [], "figure": {"recipe": "marginal_scatter_kde"}}
@@ -134,7 +138,13 @@ def main() -> int:
         r2 = 1 - ss_res / ss_tot if ss_tot > 0 else 0.0
         stats = {"r2": r2, "slope": slope, "n": len(df), "intercept": intercept}
 
-        theme = vs.resolve_theme()
+        theme = vs.resolve_theme(scene=SCENE)
+        if theme.get("scene"):
+            if not args.layout:
+                LAYOUT = theme.get("layout_family", LAYOUT)
+            if args.scene:
+                WIDTH_MM = theme.get("scene_preset", {}).get("double_column_mm", 183) if (True and theme.get("scene") == "academic") else theme["figure"]["default_width_mm"]
+                ASPECT = theme["figure"]["default_aspect"]
         if PALETTE:
             theme["palette_id"] = PALETTE
         size = vs.plan_size(WIDTH_MM, ASPECT, theme=theme, cite_mm=CITE_MM)
@@ -222,12 +232,9 @@ def main() -> int:
                             borderaxespad=0.0)
         vs.style_legend(leg, theme)
 
-        fig.text(0.015, 0.965, vs.fill_title(TITLE, **stats), ha="left", va="top",
-                 fontweight="bold", fontsize=vs.font_size(theme, "title"), color=roles["text"])
-        fig.text(0.015, 0.902, SUBTITLE, ha="left", va="top",
-                 fontsize=vs.font_size(theme, "subtitle"), color=roles["muted_text"])
+        vs.add_header(fig, vs.fill_title(TITLE, **stats), SUBTITLE, theme=theme)
         vs.add_source(fig, SOURCE, theme=theme)
-        fig.subplots_adjust(left=0.09, right=0.975, top=0.80, bottom=0.13)
+        vs.adjust_layout(fig, left=0.09, right=0.975, top=0.80, bottom=0.13, theme=theme)
 
         outputs = vs.save_figure(fig, OUTDIR, STEM, formats=FORMATS, dpi=DPI, theme=theme)
         data_path = Path(OUTDIR) / f"{STEM}_data.csv"
@@ -245,7 +252,7 @@ def main() -> int:
                        "r2": round(float(r2), 4), "groups": unique_groups,
                        "palette": pal.id, "layout": LAYOUT,
                        "width_mm": size["width_mm"], "height_mm": size["height_mm"],
-                       "visual_verified": False,
+                       "scene": theme.get("scene"), "layout_audit": vs.last_layout_audit(), "visual_verified": False,
                        "note": "脚本只验证文件生成；审美与可读性须由 viz-audit / ViewImage 复核"},
         })
     except Exception as exc:  # noqa: BLE001
