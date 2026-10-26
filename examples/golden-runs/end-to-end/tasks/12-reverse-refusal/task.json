@@ -3,14 +3,13 @@
   "title": "低清/3D 逆向降级",
   "prompt": "这张低清柱图和 3D 饼图能不能反推数据？请给出证据等级、风险和可用替代。",
   "route": {
-    "primary": "viz-reverse",
+    "primary": "viz-figure",
     "scenes": [],
     "support": [
-      "viz-audit"
+      "shared"
     ],
     "not_use": [
-      "viz-python",
-      "viz-infographic"
+      "viz-diagram"
     ]
   },
   "inputs": [

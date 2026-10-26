@@ -3,15 +3,15 @@
   "title": "科研森林图（A/B 实验）",
   "prompt": "把 A/B 实验按渠道汇总成森林图，双栏、95% CI、n、汇总菱形，适合期刊投稿。",
   "route": {
-    "primary": "viz-python",
+    "primary": "viz-figure",
     "scenes": [
-      "viz-scene-academic"
+      "academic"
     ],
     "support": [
-      "viz-audit"
+      "shared"
     ],
     "not_use": [
-      "viz-web"
+      "viz-interactive"
     ]
   },
   "inputs": [

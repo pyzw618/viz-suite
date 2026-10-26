@@ -4,16 +4,15 @@
   "passed": 12,
   "missing": [],
   "skill_coverage": [
-    "viz-audit",
-    "viz-core",
-    "viz-infographic",
-    "viz-python",
-    "viz-reverse",
-    "viz-scene-academic",
-    "viz-scene-bi",
-    "viz-scene-geo",
-    "viz-scene-story",
-    "viz-web"
+    "viz-diagram",
+    "viz-figure",
+    "viz-interactive"
+  ],
+  "scene_coverage": [
+    "academic",
+    "bi",
+    "geo",
+    "story"
   ],
   "missing_skills": [],
   "routing": {

@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[6]
-sys.path.insert(0, str(ROOT / "skills" / "viz-python" / "scripts"))
+sys.path.insert(0, str(ROOT / "skills" / "viz-figure" / "scripts"))
 import viz_style as vs  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")

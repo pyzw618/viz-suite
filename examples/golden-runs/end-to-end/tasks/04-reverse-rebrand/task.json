@@ -3,14 +3,13 @@
   "title": "截图逆向换品牌色",
   "prompt": "这张别人的柱状图截图，反推数据后换成我们的品牌色重绘，保留数据但不要复制原图风格。",
   "route": {
-    "primary": "viz-reverse",
+    "primary": "viz-figure",
     "scenes": [],
     "support": [
-      "viz-python",
-      "viz-audit"
+      "shared"
     ],
     "not_use": [
-      "viz-web"
+      "viz-interactive"
     ]
   },
   "inputs": [

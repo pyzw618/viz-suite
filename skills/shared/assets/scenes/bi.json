@@ -1,0 +1,22 @@
+{
+  "id": "bi",
+  "title_zh": "商业经营看板与 IBCS 指标复盘",
+  "palette": "okabe_ito",
+  "layout_family": "soft_grid",
+  "in_canvas_title": true,
+  "width_mm": 160,
+  "double_column_mm": 240,
+  "aspect": 0.58,
+  "font_size_level": "regular",
+  "formats": ["pdf", "png"],
+  "dpi": [300],
+  "top_no_title": 0.91,
+  "slots": {
+    "title_paradigm": "对象 + 指标 + 时间范围 + 状态结论（如：6 月收入 876 万元，目标完成率 104%）；顶栏固定 As-of 日期与口径。",
+    "canvas_sizing": "Web 采用 12 列响应式栅格（桌面 1280×800 一屏见页脚，手机 390×844 单列无横向溢出）；静态图默认宽 160 mm。",
+    "color_strategy": "IBCS 语义：实际值用单一主色实心，预算/目标用中性灰虚线或空框，预测用斜纹；红/琥珀/绿仅表达状态且须配符号文字。",
+    "axis_and_grid": "弱虚线水平网格，数字强制 tabular-nums 等宽右对齐；柱/面积强制零基线。",
+    "annotations": "同比/环比（YoY/MoM）采用箭头 + 数值双重编码；无预算目标时不生造完成率。",
+    "prohibitions": ["满屏炫光大屏装饰边框", "伪 3D 仪表盘", "不同时间窗/口径混排同一 KPI 行", "仅靠红绿颜色区分好坏"]
+  }
+}

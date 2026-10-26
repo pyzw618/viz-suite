@@ -3,15 +3,15 @@
   "title": "区域经营地图（合成网格）",
   "prompt": "用合成网格 GeoJSON 做区域经营指数分级设色，缺失区域斜纹，独立图例，标注 CRS/底图来源。",
   "route": {
-    "primary": "viz-python",
+    "primary": "viz-figure",
     "scenes": [
-      "viz-scene-geo"
+      "geo"
     ],
     "support": [
-      "viz-audit"
+      "shared"
     ],
     "not_use": [
-      "viz-web"
+      "viz-interactive"
     ]
   },
   "inputs": [

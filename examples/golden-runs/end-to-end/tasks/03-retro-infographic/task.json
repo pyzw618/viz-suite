@@ -3,14 +3,15 @@
   "title": "复盘一页纸信息图",
   "prompt": "把 2025 上半年复盘做成一张一页纸信息图，四个核心数字，报刊风格，带来源与口径，输出 HTML/SVG 并检查手机布局。",
   "route": {
-    "primary": "viz-infographic",
+    "primary": "viz-diagram",
     "scenes": [],
     "support": [
-      "viz-web",
-      "viz-audit"
+      "shared",
+      "viz-interactive",
+      "viz-figure"
     ],
     "not_use": [
-      "viz-python"
+      "viz-figure"
     ]
   },
   "inputs": [

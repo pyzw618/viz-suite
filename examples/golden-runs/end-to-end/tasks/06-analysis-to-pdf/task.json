@@ -3,16 +3,15 @@
   "title": "分析→统计→绘图→PDF/PPT 交接",
   "prompt": "从区域销售表完成统计摘要、图表和两页 PDF 报告，并给出 5 页 PPT 交接提纲。",
   "route": {
-    "primary": "viz-core",
+    "primary": "viz-figure",
     "scenes": [],
     "support": [
-      "viz-python",
-      "viz-audit",
+      "shared",
       "host:pdf",
       "host:pptx"
     ],
     "not_use": [
-      "viz-web"
+      "viz-interactive"
     ]
   },
   "inputs": [

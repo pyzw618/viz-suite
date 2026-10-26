@@ -15,7 +15,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent.parent  # examples/golden-runs/scene-gate3 -> examples
 DATA = ROOT / "fixtures" / "经营实验_渠道月度.csv"
-VENDOR = HERE.parent.parent.parent.parent / "skills" / "viz-web" / "assets" / "vendor" / "echarts.min.js"
+VENDOR = HERE.parent.parent.parent.parent / "skills" / "viz-interactive" / "assets" / "vendor" / "echarts.min.js"
 OUT = HERE / "index.html"
 ASSETS = HERE / "assets" / "vendor"
 

@@ -1,9 +1,9 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "description_changes": [
-    "10 个 SKILL.md 的 description 增加“不用于截图逆向（用 viz-reverse）”边界，避免与正向引擎混淆。",
-    "viz-reverse description 增加“不用于正向绘图/看板/信息图（用对应引擎）”，并保留登录/付费墙/版权的负向边界。",
-    "viz-audit 明确不用于逆向数据提取；场景模块明确不用于截图逆向。"
+    "收敛原 10 个平级 Skill 为 1 个薄路由入口 (skills/SKILL.md) + 3 个自闭环通道 (viz-figure / viz-interactive / viz-diagram) + shared 底座。",
+    "原 4 个 viz-scene-* 降维为机器可读预设 skills/shared/assets/scenes/{academic,bi,story,geo}.json。",
+    "各通道按内容语义而非扩展名路由，统一内置 profile_data 与 audit_export 闭环。"
   ],
   "cases": [
     {
@@ -11,17 +11,17 @@
       "task_id": "01-academic-multipanel",
       "prompt": "把三组前后测实验数据做成期刊双栏三面板图，均值 95% CI、趋势带、配对变化，注明 n/CI，不编造显著性。",
       "expected": {
-        "primary": "viz-python",
+        "primary": "viz-figure",
         "scenes": [
-          "viz-scene-academic"
+          "academic"
         ],
         "support": [
-          "viz-audit"
+          "shared"
         ]
       },
       "must_not": [
-        "viz-web",
-        "viz-infographic"
+        "viz-interactive",
+        "viz-diagram"
       ],
       "why": "静态出版图 + academic 12 槽位 + 物理/视觉验收。"
     },
@@ -30,17 +30,18 @@
       "task_id": "02-sales-dashboard",
       "prompt": "用经营数据做可筛选月份/渠道的销售驾驶舱，KPI、实际 vs 目标、渠道构成、明细表，桌面和手机都验收。",
       "expected": {
-        "primary": "viz-web",
+        "primary": "viz-interactive",
         "scenes": [
-          "viz-scene-bi"
+          "bi"
         ],
         "support": [
-          "viz-audit"
+          "shared",
+          "viz-figure"
         ]
       },
       "must_not": [
-        "viz-python",
-        "viz-infographic"
+        "viz-figure",
+        "viz-diagram"
       ],
       "why": "交互/联动 + IBCS 经营看板，需要 HTML 双视口。"
     },
@@ -49,15 +50,16 @@
       "task_id": "03-retro-infographic",
       "prompt": "把 2025 上半年复盘做成一页纸信息图，四个核心数字，报刊风格，带来源口径。",
       "expected": {
-        "primary": "viz-infographic",
+        "primary": "viz-diagram",
         "scenes": [],
         "support": [
-          "viz-web",
-          "viz-audit"
+          "shared",
+          "viz-interactive",
+          "viz-figure"
         ]
       },
       "must_not": [
-        "viz-python"
+        "viz-figure"
       ],
       "why": "结构化信息图，不是统计坐标图。"
     },
@@ -66,15 +68,14 @@
       "task_id": "04-reverse-rebrand",
       "prompt": "这张别人的柱状图截图，反推数据后换成我们的品牌色重绘，保留数据但不要复制原图风格。",
       "expected": {
-        "primary": "viz-reverse",
+        "primary": "viz-figure",
         "scenes": [],
         "support": [
-          "viz-python",
-          "viz-audit"
+          "shared"
         ]
       },
       "must_not": [
-        "viz-web"
+        "viz-interactive"
       ],
       "why": "先 B 级逆向，再用正向引擎换品牌色；不能直接用截图猜数。"
     },
@@ -83,16 +84,13 @@
       "task_id": "05-ugly-chart-fix",
       "prompt": "这张图基线截断、彩虹色、标签旋转、没有来源；诊断并重绘一张可信排序横条图。",
       "expected": {
-        "primary": "viz-audit",
+        "primary": "viz-figure",
         "scenes": [],
         "support": [
-          "viz-python",
-          "viz-core"
+          "shared"
         ]
       },
-      "must_not": [
-        "viz-reverse"
-      ],
+      "must_not": [],
       "why": "存量图诊断 + 正向重绘，不是从截图反推原始数据。"
     },
     {
@@ -100,17 +98,16 @@
       "task_id": "06-analysis-to-pdf",
       "prompt": "从区域销售表完成统计摘要、图表和两页 PDF，并给 5 页 PPT 交接提纲。",
       "expected": {
-        "primary": "viz-core",
+        "primary": "viz-figure",
         "scenes": [],
         "support": [
-          "viz-python",
-          "viz-audit",
+          "shared",
           "host:pdf",
           "host:pptx"
         ]
       },
       "must_not": [
-        "viz-web"
+        "viz-interactive"
       ],
       "why": "认知层规划 + 静态图 + 报告排版交接。"
     },
@@ -119,16 +116,16 @@
       "task_id": "07-academic-forest",
       "prompt": "把 A/B 实验按渠道汇总成森林图，双栏、95% CI、n、汇总菱形，适合期刊投稿。",
       "expected": {
-        "primary": "viz-python",
+        "primary": "viz-figure",
         "scenes": [
-          "viz-scene-academic"
+          "academic"
         ],
         "support": [
-          "viz-audit"
+          "shared"
         ]
       },
       "must_not": [
-        "viz-web"
+        "viz-interactive"
       ],
       "why": "统计森林图 + 学术物理/标注规范。"
     },
@@ -137,16 +134,16 @@
       "task_id": "08-geo-grid-map",
       "prompt": "用合成网格 GeoJSON 做区域分级设色，缺失区域斜纹，独立图例，标注 CRS/底图来源。",
       "expected": {
-        "primary": "viz-python",
+        "primary": "viz-figure",
         "scenes": [
-          "viz-scene-geo"
+          "geo"
         ],
         "support": [
-          "viz-audit"
+          "shared"
         ]
       },
       "must_not": [
-        "viz-web"
+        "viz-interactive"
       ],
       "why": "地理分级设色/缺失值/投影说明。"
     },
@@ -155,16 +152,16 @@
       "task_id": "09-story-slide",
       "prompt": "把上半年渠道变化做成一页 16:9 高管汇报图：Action Title、单焦点色、灰色背景系列、直接标注。",
       "expected": {
-        "primary": "viz-python",
+        "primary": "viz-figure",
         "scenes": [
-          "viz-scene-story"
+          "story"
         ],
         "support": [
-          "viz-audit"
+          "shared"
         ]
       },
       "must_not": [
-        "viz-web"
+        "viz-interactive"
       ],
       "why": "静态故事图；不是交互看板。"
     },
@@ -173,15 +170,16 @@
       "task_id": "10-technical-infographic",
       "prompt": "把离线可视化管线做成技术风步骤信息图，输出 HTML/SVG，桌面与手机无溢出。",
       "expected": {
-        "primary": "viz-infographic",
+        "primary": "viz-diagram",
         "scenes": [],
         "support": [
-          "viz-web",
-          "viz-audit"
+          "shared",
+          "viz-interactive",
+          "viz-figure"
         ]
       },
       "must_not": [
-        "viz-python"
+        "viz-figure"
       ],
       "why": "步骤信息结构 + technical 皮肤。"
     },
@@ -190,15 +188,14 @@
       "task_id": "11-reverse-source-exact",
       "prompt": "从这个本地 ECharts 页面精确提取数据和配置，输出可复现 JS/data.csv，不要像素猜测。",
       "expected": {
-        "primary": "viz-reverse",
+        "primary": "viz-figure",
         "scenes": [],
         "support": [
-          "viz-audit"
+          "shared"
         ]
       },
       "must_not": [
-        "viz-python",
-        "viz-web"
+        "viz-interactive"
       ],
       "why": "SOURCE 级配置提取优先于像素反推。"
     },
@@ -207,15 +204,14 @@
       "task_id": "12-reverse-refusal",
       "prompt": "这张低清柱图和 3D 饼图能不能反推数据？给出证据等级、风险和替代。",
       "expected": {
-        "primary": "viz-reverse",
+        "primary": "viz-figure",
         "scenes": [],
         "support": [
-          "viz-audit"
+          "shared"
         ]
       },
       "must_not": [
-        "viz-python",
-        "viz-infographic"
+        "viz-diagram"
       ],
       "why": "低清 C 级、3D X 级；不能伪装成精确数据。"
     }
@@ -224,39 +220,38 @@
     {
       "id": "N01",
       "prompt": "把这篇论文的森林图改成能筛选月份和渠道的网页看板。",
-      "expected_primary": "viz-web",
+      "expected_primary": "viz-interactive",
       "must_not": [
-        "viz-python",
-        "viz-scene-academic"
+        "viz-figure",
+        "academic"
       ],
       "why": "最终交互形态是看板；学术场景差分不再适用。"
     },
     {
       "id": "N02",
       "prompt": "用 ECharts 画一张要投期刊的双栏矢量图。",
-      "expected_primary": "viz-python",
+      "expected_primary": "viz-figure",
       "must_not": [
-        "viz-web",
-        "viz-infographic"
+        "viz-interactive",
+        "viz-diagram"
       ],
       "why": "期刊矢量/双栏优先于交互引擎。"
     },
     {
       "id": "N03",
       "prompt": "给这张信息图加一个区域筛选器和 Hover 详情。",
-      "expected_primary": "viz-web",
+      "expected_primary": "viz-interactive",
       "must_not": [
-        "viz-infographic"
+        "viz-diagram"
       ],
       "why": "交互筛选是 Web 引擎职责；信息图只负责静态结构。"
     },
     {
       "id": "N04",
       "prompt": "从这张 3D 饼图精确还原每个扇区的数值。",
-      "expected_primary": "viz-reverse",
+      "expected_primary": "viz-figure",
       "must_not": [
-        "viz-python",
-        "viz-infographic"
+        "viz-diagram"
       ],
       "why": "3D 透视不可逆；viz-reverse 必须 X 级拒绝，而不是由正向引擎编数。"
     }

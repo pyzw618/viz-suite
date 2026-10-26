@@ -62,22 +62,34 @@ def main() -> int:
                         "outputs": len(task["outputs"]), "evidence": evidence})
 
     coverage = set()
+    scene_coverage = set()
     for td in task_dirs:
         route = json.loads((td / "task.json").read_text(encoding="utf-8"))["route"]
-        if route["primary"].startswith("viz-") or route["primary"] == "viz-core":
+        if route["primary"].startswith("viz-"):
             coverage.add(route["primary"])
-        coverage.update(route["scenes"])
+        scene_coverage.update(route["scenes"])
         coverage.update(s for s in route["support"] if s.startswith("viz-"))
-    expected_skills = {"viz-core", "viz-python", "viz-web", "viz-infographic", "viz-audit",
-                       "viz-reverse", "viz-scene-academic", "viz-scene-bi",
-                       "viz-scene-story", "viz-scene-geo"}
+    expected_skills = {"viz-figure", "viz-interactive", "viz-diagram"}
+    expected_scenes = {"academic", "bi", "story", "geo"}
+    missing_entrypoints = [
+        p for p in ("skills/SKILL.md", "skills/viz-figure/SKILL.md",
+                    "skills/viz-interactive/SKILL.md", "skills/viz-diagram/SKILL.md")
+        if not rel(p).is_file()
+    ]
+    missing_scene_files = [
+        f"skills/shared/assets/scenes/{sc}.json" for sc in sorted(expected_scenes)
+        if not rel(f"skills/shared/assets/scenes/{sc}.json").is_file()
+    ]
+    missing.extend(missing_entrypoints + missing_scene_files)
+    missing_skills = sorted((expected_skills - coverage) | (expected_scenes - scene_coverage))
     result = {
-        "status": "success" if all(statuses) and not missing else "partial",
+        "status": "success" if all(statuses) and not missing and not missing_skills else "partial",
         "tasks": len(task_dirs),
         "passed": sum(statuses),
         "missing": missing,
         "skill_coverage": sorted(coverage),
-        "missing_skills": sorted(expected_skills - coverage),
+        "scene_coverage": sorted(scene_coverage),
+        "missing_skills": missing_skills,
         "routing": {"cases": len(matrix["cases"]), "negative_cases": len(matrix["negative_cases"]),
                     "task_routes_consistent": all(d["route_ok"] for d in details)},
         "details": details,
@@ -124,7 +136,7 @@ def main() -> int:
             sheet.paste(im, (x, y))
             draw.text((x, y + h + 4), f"任务 {label}", fill="black", font=font)
         sheet.save(HERE / "contact.png")
-    print(json.dumps({k: result[k] for k in ("status", "tasks", "passed", "missing", "skill_coverage", "missing_skills", "routing")},
+    print(json.dumps({k: result[k] for k in ("status", "tasks", "passed", "missing", "skill_coverage", "scene_coverage", "missing_skills", "routing")},
                      ensure_ascii=False, indent=2))
     return 0 if result["status"] == "success" else 1
 

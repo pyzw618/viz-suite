@@ -3,14 +3,15 @@
   "title": "技术管线信息图",
   "prompt": "把离线可视化管线做成技术风步骤信息图，输出 HTML/SVG，桌面与手机无溢出。",
   "route": {
-    "primary": "viz-infographic",
+    "primary": "viz-diagram",
     "scenes": [],
     "support": [
-      "viz-web",
-      "viz-audit"
+      "shared",
+      "viz-interactive",
+      "viz-figure"
     ],
     "not_use": [
-      "viz-python"
+      "viz-figure"
     ]
   },
   "inputs": [

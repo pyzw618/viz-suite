@@ -3,14 +3,13 @@
   "title": "源码级精确提取",
   "prompt": "从这个本地 ECharts 页面精确提取数据和配置，输出可复现的 JS/data.csv，不要做像素猜测。",
   "route": {
-    "primary": "viz-reverse",
+    "primary": "viz-figure",
     "scenes": [],
     "support": [
-      "viz-audit"
+      "shared"
     ],
     "not_use": [
-      "viz-python",
-      "viz-web"
+      "viz-interactive"
     ]
   },
   "inputs": [

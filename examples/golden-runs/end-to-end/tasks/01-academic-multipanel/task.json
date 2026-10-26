@@ -3,16 +3,16 @@
   "title": "科研多面板组图",
   "prompt": "把这份三组前后测实验数据做成期刊双栏三面板图：均值 95% CI、趋势带、配对变化，注明 n/CI，不编造显著性。",
   "route": {
-    "primary": "viz-python",
+    "primary": "viz-figure",
     "scenes": [
-      "viz-scene-academic"
+      "academic"
     ],
     "support": [
-      "viz-audit"
+      "shared"
     ],
     "not_use": [
-      "viz-web",
-      "viz-infographic"
+      "viz-interactive",
+      "viz-diagram"
     ]
   },
   "inputs": [

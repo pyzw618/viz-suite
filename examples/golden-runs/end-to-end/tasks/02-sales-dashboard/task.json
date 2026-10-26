@@ -3,16 +3,17 @@
   "title": "销售联动看板",
   "prompt": "用经营数据做一个可筛选月份/渠道的销售驾驶舱，KPI、实际 vs 目标、渠道构成、明细表，桌面和手机都要验收。",
   "route": {
-    "primary": "viz-web",
+    "primary": "viz-interactive",
     "scenes": [
-      "viz-scene-bi"
+      "bi"
     ],
     "support": [
-      "viz-audit"
+      "shared",
+      "viz-figure"
     ],
     "not_use": [
-      "viz-python",
-      "viz-infographic"
+      "viz-figure",
+      "viz-diagram"
     ]
   },
   "inputs": [

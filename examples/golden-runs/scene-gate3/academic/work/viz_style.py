@@ -51,7 +51,7 @@ def _asset_candidates() -> list[Path]:
     bases = [Path.cwd(), *Path.cwd().parents, here, *here.parents]
     for base in bases:
         for p in (base / ".viz-suite" / "assets",
-                  base / "skills" / "viz-core" / "assets",
+                  base / "skills" / "shared" / "assets",
                   base / "viz-core" / "assets",
                   base / "assets"):
             if p not in seen:
@@ -142,7 +142,7 @@ def load_tokens() -> dict:
     if "tokens" not in _CACHE:
         data = _load_json_asset("tokens.json")
         if data is None:
-            warn_once("未找到 tokens.json，已启用内置最小令牌集（请检查 skills/viz-core/assets 或 .viz-suite/assets）")
+            warn_once("未找到 tokens.json，已启用内置最小令牌集（请检查 skills/shared/assets 或 .viz-suite/assets）")
             data = _FALLBACK_TOKENS
         _CACHE["tokens"] = data
     return _CACHE["tokens"]  # type: ignore[return-value]

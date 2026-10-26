@@ -23,7 +23,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-SCRIPTS = ROOT / "skills" / "viz-reverse" / "scripts"
+SCRIPTS = ROOT / "skills" / "viz-figure" / "scripts"
 OUT = HERE / "reverse-output"
 CHARTS = ["bar", "line", "scatter", "pie", "heatmap"]
 
